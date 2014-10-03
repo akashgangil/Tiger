@@ -1,6 +1,7 @@
 grammar tiger;
 
 options {
+  output = AST;
   language = Java;
 }
 
@@ -93,7 +94,7 @@ var_declaration
 	;
 
 optional_init
-	:	ASSIGN const
+	:	ASSIGN constant
 	|	
 	;
 
@@ -103,7 +104,7 @@ id_list
 	;
 
 optional_int
-	:	ASSIGN const
+	:	ASSIGN constant
 	|	
 	;
 
@@ -112,7 +113,7 @@ stat_seq
 	;
 
 expr
-	:	(const | value | LPAREN expr RPAREN) (options{greedy=true;}:binary_operator expr)*
+	:	(constant | value | LPAREN expr RPAREN) (options{greedy=true;}:binary_operator expr)*
 	;
 
 expr_list
@@ -132,7 +133,7 @@ stat
 	|	FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
 	|	BREAK SEMI
 	|	RETURN expr SEMI
-	|	block
+	|	block_list
 	|	funct_call SEMI
 	;
 
@@ -150,7 +151,7 @@ opt_prefix
 	|	 
 	;
 
-const
+constant
 	:	INTLIT
 	|	FIXEDPTLIT
 	;
