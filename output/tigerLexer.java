@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// $ANTLR 3.5.1 /Users/twb/repos/Tiger/tiger.g 2014-10-03 13:27:02
-=======
-// $ANTLR 3.5 /home/gangil/dev/Tiger/tiger.g 2014-10-03 13:25:59
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
+// $ANTLR 3.5.1 /Users/twb/repos/Tiger/tiger.g 2014-10-03 13:32:11
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -73,24 +69,15 @@ public class tigerLexer extends Lexer {
 	public tigerLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-<<<<<<< HEAD
 	@Override public String getGrammarFileName() { return "/Users/twb/repos/Tiger/tiger.g"; }
-=======
-	@Override public String getGrammarFileName() { return "/home/gangil/dev/Tiger/tiger.g"; }
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 
 	// $ANTLR start "FUNCTION"
 	public final void mFUNCTION() throws RecognitionException {
 		try {
 			int _type = FUNCTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:200:10: ( 'function' )
 			// /Users/twb/repos/Tiger/tiger.g:200:12: 'function'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:200:10: ( 'function' )
-			// /home/gangil/dev/Tiger/tiger.g:200:12: 'function'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("function"); 
 
@@ -110,13 +97,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = BEGIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:201:8: ( 'begin' )
 			// /Users/twb/repos/Tiger/tiger.g:201:10: 'begin'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:201:8: ( 'begin' )
-			// /home/gangil/dev/Tiger/tiger.g:201:10: 'begin'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("begin"); 
 
@@ -136,13 +118,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = END;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:202:7: ( 'end' )
 			// /Users/twb/repos/Tiger/tiger.g:202:9: 'end'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:202:7: ( 'end' )
-			// /home/gangil/dev/Tiger/tiger.g:202:9: 'end'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("end"); 
 
@@ -162,13 +139,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = VOID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:203:7: ( 'void' )
 			// /Users/twb/repos/Tiger/tiger.g:203:9: 'void'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:203:7: ( 'void' )
-			// /home/gangil/dev/Tiger/tiger.g:203:9: 'void'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("void"); 
 
@@ -188,13 +160,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = MAIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:204:7: ( 'main' )
 			// /Users/twb/repos/Tiger/tiger.g:204:9: 'main'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:204:7: ( 'main' )
-			// /home/gangil/dev/Tiger/tiger.g:204:9: 'main'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("main"); 
 
@@ -214,13 +181,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = TYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:205:7: ( 'type' )
 			// /Users/twb/repos/Tiger/tiger.g:205:9: 'type'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:205:7: ( 'type' )
-			// /home/gangil/dev/Tiger/tiger.g:205:9: 'type'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("type"); 
 
@@ -240,13 +202,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ARRAY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:206:8: ( 'array' )
 			// /Users/twb/repos/Tiger/tiger.g:206:10: 'array'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:206:8: ( 'array' )
-			// /home/gangil/dev/Tiger/tiger.g:206:10: 'array'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("array"); 
 
@@ -266,13 +223,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = OF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:207:6: ( 'of' )
 			// /Users/twb/repos/Tiger/tiger.g:207:8: 'of'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:207:6: ( 'of' )
-			// /home/gangil/dev/Tiger/tiger.g:207:8: 'of'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("of"); 
 
@@ -292,13 +244,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = INT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:208:7: ( 'int' )
 			// /Users/twb/repos/Tiger/tiger.g:208:9: 'int'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:208:7: ( 'int' )
-			// /home/gangil/dev/Tiger/tiger.g:208:9: 'int'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("int"); 
 
@@ -318,13 +265,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = FIXEDPT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:209:10: ( 'fixedpt' )
 			// /Users/twb/repos/Tiger/tiger.g:209:12: 'fixedpt'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:209:10: ( 'fixedpt' )
-			// /home/gangil/dev/Tiger/tiger.g:209:12: 'fixedpt'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("fixedpt"); 
 
@@ -344,13 +286,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:210:7: ( 'var' )
 			// /Users/twb/repos/Tiger/tiger.g:210:9: 'var'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:210:7: ( 'var' )
-			// /home/gangil/dev/Tiger/tiger.g:210:9: 'var'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("var"); 
 
@@ -370,13 +307,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = IF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:211:6: ( 'if' )
 			// /Users/twb/repos/Tiger/tiger.g:211:8: 'if'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:211:6: ( 'if' )
-			// /home/gangil/dev/Tiger/tiger.g:211:8: 'if'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("if"); 
 
@@ -396,13 +328,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:212:7: ( 'then' )
 			// /Users/twb/repos/Tiger/tiger.g:212:9: 'then'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:212:7: ( 'then' )
-			// /home/gangil/dev/Tiger/tiger.g:212:9: 'then'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("then"); 
 
@@ -422,13 +349,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ENDIF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:213:8: ( 'endif' )
 			// /Users/twb/repos/Tiger/tiger.g:213:10: 'endif'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:213:8: ( 'endif' )
-			// /home/gangil/dev/Tiger/tiger.g:213:10: 'endif'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("endif"); 
 
@@ -448,13 +370,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ELSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:214:7: ( 'else' )
 			// /Users/twb/repos/Tiger/tiger.g:214:9: 'else'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:214:7: ( 'else' )
-			// /home/gangil/dev/Tiger/tiger.g:214:9: 'else'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("else"); 
 
@@ -474,13 +391,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = WHILE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:215:8: ( 'while' )
 			// /Users/twb/repos/Tiger/tiger.g:215:10: 'while'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:215:8: ( 'while' )
-			// /home/gangil/dev/Tiger/tiger.g:215:10: 'while'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("while"); 
 
@@ -500,13 +412,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ENDDO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:216:8: ( 'enddo' )
 			// /Users/twb/repos/Tiger/tiger.g:216:10: 'enddo'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:216:8: ( 'enddo' )
-			// /home/gangil/dev/Tiger/tiger.g:216:10: 'enddo'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("enddo"); 
 
@@ -526,13 +433,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = FOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:217:7: ( 'for' )
 			// /Users/twb/repos/Tiger/tiger.g:217:9: 'for'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:217:7: ( 'for' )
-			// /home/gangil/dev/Tiger/tiger.g:217:9: 'for'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("for"); 
 
@@ -552,13 +454,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = TO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:218:6: ( 'to' )
 			// /Users/twb/repos/Tiger/tiger.g:218:8: 'to'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:218:6: ( 'to' )
-			// /home/gangil/dev/Tiger/tiger.g:218:8: 'to'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("to"); 
 
@@ -578,13 +475,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = DO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:219:6: ( 'do' )
 			// /Users/twb/repos/Tiger/tiger.g:219:8: 'do'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:219:6: ( 'do' )
-			// /home/gangil/dev/Tiger/tiger.g:219:8: 'do'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("do"); 
 
@@ -604,13 +496,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = BREAK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:220:8: ( 'break' )
 			// /Users/twb/repos/Tiger/tiger.g:220:10: 'break'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:220:8: ( 'break' )
-			// /home/gangil/dev/Tiger/tiger.g:220:10: 'break'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("break"); 
 
@@ -630,13 +517,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = RETURN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:221:9: ( 'return' )
 			// /Users/twb/repos/Tiger/tiger.g:221:11: 'return'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:221:9: ( 'return' )
-			// /home/gangil/dev/Tiger/tiger.g:221:11: 'return'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("return"); 
 
@@ -656,13 +538,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:223:8: ( ',' )
 			// /Users/twb/repos/Tiger/tiger.g:223:10: ','
-=======
-			// /home/gangil/dev/Tiger/tiger.g:223:8: ( ',' )
-			// /home/gangil/dev/Tiger/tiger.g:223:10: ','
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(','); 
 			}
@@ -681,13 +558,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:224:8: ( ':' )
 			// /Users/twb/repos/Tiger/tiger.g:224:10: ':'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:224:8: ( ':' )
-			// /home/gangil/dev/Tiger/tiger.g:224:10: ':'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(':'); 
 			}
@@ -706,13 +578,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = SEMI;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:225:7: ( ';' )
 			// /Users/twb/repos/Tiger/tiger.g:225:9: ';'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:225:7: ( ';' )
-			// /home/gangil/dev/Tiger/tiger.g:225:9: ';'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(';'); 
 			}
@@ -731,13 +598,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = LPAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:226:9: ( '(' )
 			// /Users/twb/repos/Tiger/tiger.g:226:11: '('
-=======
-			// /home/gangil/dev/Tiger/tiger.g:226:9: ( '(' )
-			// /home/gangil/dev/Tiger/tiger.g:226:11: '('
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('('); 
 			}
@@ -756,13 +618,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = RPAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:227:9: ( ')' )
 			// /Users/twb/repos/Tiger/tiger.g:227:11: ')'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:227:9: ( ')' )
-			// /home/gangil/dev/Tiger/tiger.g:227:11: ')'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(')'); 
 			}
@@ -781,13 +638,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = LBRACK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:228:9: ( '[' )
 			// /Users/twb/repos/Tiger/tiger.g:228:11: '['
-=======
-			// /home/gangil/dev/Tiger/tiger.g:228:9: ( '[' )
-			// /home/gangil/dev/Tiger/tiger.g:228:11: '['
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('['); 
 			}
@@ -806,13 +658,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = RBRACK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:229:9: ( ']' )
 			// /Users/twb/repos/Tiger/tiger.g:229:11: ']'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:229:9: ( ']' )
-			// /home/gangil/dev/Tiger/tiger.g:229:11: ']'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(']'); 
 			}
@@ -831,13 +678,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:230:8: ( '+' )
 			// /Users/twb/repos/Tiger/tiger.g:230:10: '+'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:230:8: ( '+' )
-			// /home/gangil/dev/Tiger/tiger.g:230:10: '+'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('+'); 
 			}
@@ -856,13 +698,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:231:9: ( '-' )
 			// /Users/twb/repos/Tiger/tiger.g:231:11: '-'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:231:9: ( '-' )
-			// /home/gangil/dev/Tiger/tiger.g:231:11: '-'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('-'); 
 			}
@@ -881,13 +718,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = MULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:232:8: ( '*' )
 			// /Users/twb/repos/Tiger/tiger.g:232:10: '*'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:232:8: ( '*' )
-			// /home/gangil/dev/Tiger/tiger.g:232:10: '*'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('*'); 
 			}
@@ -906,13 +738,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = DIV;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:233:7: ( '/' )
 			// /Users/twb/repos/Tiger/tiger.g:233:9: '/'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:233:7: ( '/' )
-			// /home/gangil/dev/Tiger/tiger.g:233:9: '/'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('/'); 
 			}
@@ -931,13 +758,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = EQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:234:6: ( '=' )
 			// /Users/twb/repos/Tiger/tiger.g:234:8: '='
-=======
-			// /home/gangil/dev/Tiger/tiger.g:234:6: ( '=' )
-			// /home/gangil/dev/Tiger/tiger.g:234:8: '='
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('='); 
 			}
@@ -956,13 +778,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = NEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:235:7: ( '<>' )
 			// /Users/twb/repos/Tiger/tiger.g:235:9: '<>'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:235:7: ( '<>' )
-			// /home/gangil/dev/Tiger/tiger.g:235:9: '<>'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("<>"); 
 
@@ -982,13 +799,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = LESSER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:236:10: ( '<' )
 			// /Users/twb/repos/Tiger/tiger.g:236:12: '<'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:236:10: ( '<' )
-			// /home/gangil/dev/Tiger/tiger.g:236:12: '<'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('<'); 
 			}
@@ -1007,13 +819,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = LESSEREQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:237:11: ( '<=' )
 			// /Users/twb/repos/Tiger/tiger.g:237:13: '<='
-=======
-			// /home/gangil/dev/Tiger/tiger.g:237:11: ( '<=' )
-			// /home/gangil/dev/Tiger/tiger.g:237:13: '<='
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match("<="); 
 
@@ -1033,13 +840,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = GREATER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:238:10: ( '>' )
 			// /Users/twb/repos/Tiger/tiger.g:238:12: '>'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:238:10: ( '>' )
-			// /home/gangil/dev/Tiger/tiger.g:238:12: '>'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('>'); 
 			}
@@ -1058,13 +860,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = GREATEREQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:239:13: ( '>=' )
 			// /Users/twb/repos/Tiger/tiger.g:239:15: '>='
-=======
-			// /home/gangil/dev/Tiger/tiger.g:239:13: ( '>=' )
-			// /home/gangil/dev/Tiger/tiger.g:239:15: '>='
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(">="); 
 
@@ -1084,13 +881,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:240:7: ( '&' )
 			// /Users/twb/repos/Tiger/tiger.g:240:9: '&'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:240:7: ( '&' )
-			// /home/gangil/dev/Tiger/tiger.g:240:9: '&'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('&'); 
 			}
@@ -1109,13 +901,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:241:7: ( '|' )
 			// /Users/twb/repos/Tiger/tiger.g:241:9: '|'
-=======
-			// /home/gangil/dev/Tiger/tiger.g:241:7: ( '|' )
-			// /home/gangil/dev/Tiger/tiger.g:241:9: '|'
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match('|'); 
 			}
@@ -1134,13 +921,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:242:9: ( ':=' )
 			// /Users/twb/repos/Tiger/tiger.g:242:11: ':='
-=======
-			// /home/gangil/dev/Tiger/tiger.g:242:9: ( ':=' )
-			// /home/gangil/dev/Tiger/tiger.g:242:11: ':='
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(":="); 
 
@@ -1160,13 +942,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:244:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
 			// /Users/twb/repos/Tiger/tiger.g:244:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
-=======
-			// /home/gangil/dev/Tiger/tiger.g:244:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-			// /home/gangil/dev/Tiger/tiger.g:244:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -1176,11 +953,7 @@ public class tigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:244:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
-=======
-			// /home/gangil/dev/Tiger/tiger.g:244:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -1191,11 +964,7 @@ public class tigerLexer extends Lexer {
 
 				switch (alt1) {
 				case 1 :
-<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:
-=======
-					// /home/gangil/dev/Tiger/tiger.g:
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 						input.consume();
@@ -1229,21 +998,12 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:245:10: ( '/*' ( . )* '*/' )
 			// /Users/twb/repos/Tiger/tiger.g:245:12: '/*' ( . )* '*/'
 			{
 			match("/*"); 
 
 			// /Users/twb/repos/Tiger/tiger.g:245:17: ( . )*
-=======
-			// /home/gangil/dev/Tiger/tiger.g:245:10: ( '/*' ( . )* '*/' )
-			// /home/gangil/dev/Tiger/tiger.g:245:12: '/*' ( . )* '*/'
-			{
-			match("/*"); 
-
-			// /home/gangil/dev/Tiger/tiger.g:245:17: ( . )*
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -1264,11 +1024,7 @@ public class tigerLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:245:17: .
-=======
-					// /home/gangil/dev/Tiger/tiger.g:245:17: .
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					matchAny(); 
 					}
@@ -1298,13 +1054,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:246:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
 			// /Users/twb/repos/Tiger/tiger.g:246:8: ( ' ' | '\\t' | '\\r' | '\\n' )
-=======
-			// /home/gangil/dev/Tiger/tiger.g:246:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /home/gangil/dev/Tiger/tiger.g:246:8: ( ' ' | '\\t' | '\\r' | '\\n' )
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1331,13 +1082,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = INTLIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:247:9: ( ( '0' .. '9' ) ( '0' .. '9' )* )
 			// /Users/twb/repos/Tiger/tiger.g:247:11: ( '0' .. '9' ) ( '0' .. '9' )*
-=======
-			// /home/gangil/dev/Tiger/tiger.g:247:9: ( ( '0' .. '9' ) ( '0' .. '9' )* )
-			// /home/gangil/dev/Tiger/tiger.g:247:11: ( '0' .. '9' ) ( '0' .. '9' )*
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -1347,11 +1093,7 @@ public class tigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:247:22: ( '0' .. '9' )*
-=======
-			// /home/gangil/dev/Tiger/tiger.g:247:22: ( '0' .. '9' )*
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -1362,11 +1104,7 @@ public class tigerLexer extends Lexer {
 
 				switch (alt3) {
 				case 1 :
-<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:
-=======
-					// /home/gangil/dev/Tiger/tiger.g:
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1400,13 +1138,8 @@ public class tigerLexer extends Lexer {
 		try {
 			int _type = FIXEDPTLIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:248:12: ( INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )? )
 			// /Users/twb/repos/Tiger/tiger.g:248:14: INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )?
-=======
-			// /home/gangil/dev/Tiger/tiger.g:248:12: ( INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )? )
-			// /home/gangil/dev/Tiger/tiger.g:248:14: INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )?
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			mINTLIT(); 
 
@@ -1419,11 +1152,7 @@ public class tigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:248:36: ( options {greedy=true; } : ( '0' .. '9' ) )?
-=======
-			// /home/gangil/dev/Tiger/tiger.g:248:36: ( options {greedy=true; } : ( '0' .. '9' ) )?
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
@@ -1431,11 +1160,7 @@ public class tigerLexer extends Lexer {
 			}
 			switch (alt4) {
 				case 1 :
-<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:248:60: ( '0' .. '9' )
-=======
-					// /home/gangil/dev/Tiger/tiger.g:248:60: ( '0' .. '9' )
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1450,11 +1175,7 @@ public class tigerLexer extends Lexer {
 
 			}
 
-<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:248:73: ( '0' .. '9' )?
-=======
-			// /home/gangil/dev/Tiger/tiger.g:248:73: ( '0' .. '9' )?
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( ((LA5_0 >= '0' && LA5_0 <= '9')) ) {
@@ -1462,11 +1183,7 @@ public class tigerLexer extends Lexer {
 			}
 			switch (alt5) {
 				case 1 :
-<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:
-=======
-					// /home/gangil/dev/Tiger/tiger.g:
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1494,526 +1211,334 @@ public class tigerLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-<<<<<<< HEAD
 		// /Users/twb/repos/Tiger/tiger.g:1:8: ( FUNCTION | BEGIN | END | VOID | MAIN | TYPE | ARRAY | OF | INT | FIXEDPT | VAR | IF | THEN | ENDIF | ELSE | WHILE | ENDDO | FOR | TO | DO | BREAK | RETURN | COMMA | COLON | SEMI | LPAREN | RPAREN | LBRACK | RBRACK | PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | LESSEREQ | GREATER | GREATEREQ | AND | OR | ASSIGN | ID | COMMENT | WS | INTLIT | FIXEDPTLIT )
-=======
-		// /home/gangil/dev/Tiger/tiger.g:1:8: ( FUNCTION | BEGIN | END | VOID | MAIN | TYPE | ARRAY | OF | INT | FIXEDPT | VAR | IF | THEN | ENDIF | ELSE | WHILE | ENDDO | FOR | TO | DO | BREAK | RETURN | COMMA | COLON | SEMI | LPAREN | RPAREN | LBRACK | RBRACK | PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | LESSEREQ | GREATER | GREATEREQ | AND | OR | ASSIGN | ID | COMMENT | WS | INTLIT | FIXEDPTLIT )
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 		int alt6=47;
 		alt6 = dfa6.predict(input);
 		switch (alt6) {
 			case 1 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:10: FUNCTION
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:10: FUNCTION
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mFUNCTION(); 
 
 				}
 				break;
 			case 2 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:19: BEGIN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:19: BEGIN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mBEGIN(); 
 
 				}
 				break;
 			case 3 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:25: END
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:25: END
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mEND(); 
 
 				}
 				break;
 			case 4 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:29: VOID
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:29: VOID
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mVOID(); 
 
 				}
 				break;
 			case 5 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:34: MAIN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:34: MAIN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mMAIN(); 
 
 				}
 				break;
 			case 6 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:39: TYPE
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:39: TYPE
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mTYPE(); 
 
 				}
 				break;
 			case 7 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:44: ARRAY
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:44: ARRAY
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mARRAY(); 
 
 				}
 				break;
 			case 8 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:50: OF
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:50: OF
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mOF(); 
 
 				}
 				break;
 			case 9 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:53: INT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:53: INT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mINT(); 
 
 				}
 				break;
 			case 10 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:57: FIXEDPT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:57: FIXEDPT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mFIXEDPT(); 
 
 				}
 				break;
 			case 11 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:65: VAR
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:65: VAR
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mVAR(); 
 
 				}
 				break;
 			case 12 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:69: IF
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:69: IF
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mIF(); 
 
 				}
 				break;
 			case 13 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:72: THEN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:72: THEN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mTHEN(); 
 
 				}
 				break;
 			case 14 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:77: ENDIF
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:77: ENDIF
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mENDIF(); 
 
 				}
 				break;
 			case 15 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:83: ELSE
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:83: ELSE
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mELSE(); 
 
 				}
 				break;
 			case 16 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:88: WHILE
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:88: WHILE
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mWHILE(); 
 
 				}
 				break;
 			case 17 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:94: ENDDO
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:94: ENDDO
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mENDDO(); 
 
 				}
 				break;
 			case 18 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:100: FOR
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:100: FOR
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mFOR(); 
 
 				}
 				break;
 			case 19 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:104: TO
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:104: TO
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mTO(); 
 
 				}
 				break;
 			case 20 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:107: DO
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:107: DO
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mDO(); 
 
 				}
 				break;
 			case 21 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:110: BREAK
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:110: BREAK
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mBREAK(); 
 
 				}
 				break;
 			case 22 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:116: RETURN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:116: RETURN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mRETURN(); 
 
 				}
 				break;
 			case 23 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:123: COMMA
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:123: COMMA
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mCOMMA(); 
 
 				}
 				break;
 			case 24 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:129: COLON
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:129: COLON
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mCOLON(); 
 
 				}
 				break;
 			case 25 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:135: SEMI
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:135: SEMI
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mSEMI(); 
 
 				}
 				break;
 			case 26 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:140: LPAREN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:140: LPAREN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mLPAREN(); 
 
 				}
 				break;
 			case 27 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:147: RPAREN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:147: RPAREN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mRPAREN(); 
 
 				}
 				break;
 			case 28 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:154: LBRACK
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:154: LBRACK
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mLBRACK(); 
 
 				}
 				break;
 			case 29 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:161: RBRACK
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:161: RBRACK
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mRBRACK(); 
 
 				}
 				break;
 			case 30 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:168: PLUS
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:168: PLUS
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mPLUS(); 
 
 				}
 				break;
 			case 31 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:173: MINUS
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:173: MINUS
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mMINUS(); 
 
 				}
 				break;
 			case 32 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:179: MULT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:179: MULT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mMULT(); 
 
 				}
 				break;
 			case 33 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:184: DIV
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:184: DIV
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mDIV(); 
 
 				}
 				break;
 			case 34 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:188: EQ
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:188: EQ
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mEQ(); 
 
 				}
 				break;
 			case 35 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:191: NEQ
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:191: NEQ
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mNEQ(); 
 
 				}
 				break;
 			case 36 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:195: LESSER
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:195: LESSER
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mLESSER(); 
 
 				}
 				break;
 			case 37 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:202: LESSEREQ
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:202: LESSEREQ
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mLESSEREQ(); 
 
 				}
 				break;
 			case 38 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:211: GREATER
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:211: GREATER
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mGREATER(); 
 
 				}
 				break;
 			case 39 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:219: GREATEREQ
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:219: GREATEREQ
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mGREATEREQ(); 
 
 				}
 				break;
 			case 40 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:229: AND
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:229: AND
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mAND(); 
 
 				}
 				break;
 			case 41 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:233: OR
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:233: OR
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mOR(); 
 
 				}
 				break;
 			case 42 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:236: ASSIGN
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:236: ASSIGN
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mASSIGN(); 
 
 				}
 				break;
 			case 43 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:243: ID
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:243: ID
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mID(); 
 
 				}
 				break;
 			case 44 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:246: COMMENT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:246: COMMENT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 45 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:254: WS
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:254: WS
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mWS(); 
 
 				}
 				break;
 			case 46 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:257: INTLIT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:257: INTLIT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mINTLIT(); 
 
 				}
 				break;
 			case 47 :
-<<<<<<< HEAD
 				// /Users/twb/repos/Tiger/tiger.g:1:264: FIXEDPTLIT
-=======
-				// /home/gangil/dev/Tiger/tiger.g:1:264: FIXEDPTLIT
->>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 				{
 				mFIXEDPTLIT(); 
 
