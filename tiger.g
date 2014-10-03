@@ -132,7 +132,7 @@ stat
 	|	FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
 	|	BREAK SEMI
 	|	RETURN expr SEMI
-	|	block_list
+	|	block
 	|	funct_call SEMI
 	;
 
