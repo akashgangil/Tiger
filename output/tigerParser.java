@@ -179,7 +179,7 @@ public class tigerParser extends Parser {
 		ParserRuleReturnScope type_declaration4 =null;
 		ParserRuleReturnScope type_declaration_list5 =null;
 
-
+		
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:15:2: ( type_declaration type_declaration_list |)
 			int alt1=2;
