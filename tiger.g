@@ -57,8 +57,7 @@ block_list
 	;
 
 block_tail
-	:	block block_tail
-	|
+	:	block (options{greedy=true;}:block_tail)*
 	;
 
 block
