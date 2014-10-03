@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // $ANTLR 3.5.1 /Users/twb/repos/Tiger/tiger.g 2014-10-03 13:27:02
+=======
+// $ANTLR 3.5 /home/gangil/dev/Tiger/tiger.g 2014-10-03 13:25:58
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -81,16 +85,28 @@ public class tigerParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return tigerParser.tokenNames; }
+<<<<<<< HEAD
 	@Override public String getGrammarFileName() { return "/Users/twb/repos/Tiger/tiger.g"; }
+=======
+	@Override public String getGrammarFileName() { return "/home/gangil/dev/Tiger/tiger.g"; }
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 
 
 
 	// $ANTLR start "tiger_program"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:11:1: tiger_program : type_declaration_list funct_declaration_list main_function ;
 	public final void tiger_program() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:11:14: ( type_declaration_list funct_declaration_list main_function )
 			// /Users/twb/repos/Tiger/tiger.g:11:16: type_declaration_list funct_declaration_list main_function
+=======
+	// /home/gangil/dev/Tiger/tiger.g:11:1: tiger_program : type_declaration_list funct_declaration_list main_function ;
+	public final void tiger_program() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:11:14: ( type_declaration_list funct_declaration_list main_function )
+			// /home/gangil/dev/Tiger/tiger.g:11:16: type_declaration_list funct_declaration_list main_function
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			pushFollow(FOLLOW_type_declaration_list_in_tiger_program27);
 			type_declaration_list();
@@ -120,10 +136,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:13:1: type_declaration_list : ( type_declaration type_declaration_list |);
 	public final void type_declaration_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:14:2: ( type_declaration type_declaration_list |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:13:1: type_declaration_list : ( type_declaration type_declaration_list |);
+	public final void type_declaration_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:14:2: ( type_declaration type_declaration_list |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0==TYPE) ) {
@@ -141,7 +164,11 @@ public class tigerParser extends Parser {
 
 			switch (alt1) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:14:4: type_declaration type_declaration_list
+=======
+					// /home/gangil/dev/Tiger/tiger.g:14:4: type_declaration type_declaration_list
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_type_declaration_in_type_declaration_list40);
 					type_declaration();
@@ -154,7 +181,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:16:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:16:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -174,11 +205,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:18:1: type_declaration : TYPE ID EQ type SEMI ;
 	public final void type_declaration() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:19:2: ( TYPE ID EQ type SEMI )
 			// /Users/twb/repos/Tiger/tiger.g:19:4: TYPE ID EQ type SEMI
+=======
+	// /home/gangil/dev/Tiger/tiger.g:18:1: type_declaration : TYPE ID EQ type SEMI ;
+	public final void type_declaration() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:19:2: ( TYPE ID EQ type SEMI )
+			// /home/gangil/dev/Tiger/tiger.g:19:4: TYPE ID EQ type SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,TYPE,FOLLOW_TYPE_in_type_declaration57); 
 			match(input,ID,FOLLOW_ID_in_type_declaration59); 
@@ -204,10 +243,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_declaration_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:22:1: funct_declaration_list : ( funct_declaration funct_declaration_list |);
 	public final void funct_declaration_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:23:2: ( funct_declaration funct_declaration_list |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:22:1: funct_declaration_list : ( funct_declaration funct_declaration_list |);
+	public final void funct_declaration_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:23:2: ( funct_declaration funct_declaration_list |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==VOID) ) {
@@ -244,7 +290,11 @@ public class tigerParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:23:4: funct_declaration funct_declaration_list
+=======
+					// /home/gangil/dev/Tiger/tiger.g:23:4: funct_declaration funct_declaration_list
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_funct_declaration_in_funct_declaration_list76);
 					funct_declaration();
@@ -257,7 +307,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:25:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:25:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -277,11 +331,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_declaration"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:27:1: funct_declaration : ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ;
 	public final void funct_declaration() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:28:2: ( ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
 			// /Users/twb/repos/Tiger/tiger.g:28:4: ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+=======
+	// /home/gangil/dev/Tiger/tiger.g:27:1: funct_declaration : ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ;
+	public final void funct_declaration() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:28:2: ( ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
+			// /home/gangil/dev/Tiger/tiger.g:28:4: ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			pushFollow(FOLLOW_ret_type_in_funct_declaration93);
 			ret_type();
@@ -318,11 +380,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "main_function"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:31:1: main_function : VOID MAIN LPAREN RPAREN block_list EOF ;
 	public final void main_function() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:32:2: ( VOID MAIN LPAREN RPAREN block_list EOF )
 			// /Users/twb/repos/Tiger/tiger.g:32:4: VOID MAIN LPAREN RPAREN block_list EOF
+=======
+	// /home/gangil/dev/Tiger/tiger.g:31:1: main_function : VOID MAIN LPAREN RPAREN block_list EOF ;
+	public final void main_function() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:32:2: ( VOID MAIN LPAREN RPAREN block_list EOF )
+			// /home/gangil/dev/Tiger/tiger.g:32:4: VOID MAIN LPAREN RPAREN block_list EOF
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,VOID,FOLLOW_VOID_in_main_function123); 
 			match(input,MAIN,FOLLOW_MAIN_in_main_function125); 
@@ -349,10 +419,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "ret_type"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:35:1: ret_type : ( VOID | type_id );
 	public final void ret_type() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:36:2: ( VOID | type_id )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:35:1: ret_type : ( VOID | type_id );
+	public final void ret_type() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:36:2: ( VOID | type_id )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==VOID) ) {
@@ -370,13 +447,21 @@ public class tigerParser extends Parser {
 
 			switch (alt3) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:36:5: VOID
+=======
+					// /home/gangil/dev/Tiger/tiger.g:36:5: VOID
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,VOID,FOLLOW_VOID_in_ret_type146); 
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:37:5: type_id
+=======
+					// /home/gangil/dev/Tiger/tiger.g:37:5: type_id
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_type_id_in_ret_type152);
 					type_id();
@@ -400,10 +485,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:40:1: param_list : ( param param_list_tail |);
 	public final void param_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:41:2: ( param param_list_tail |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:40:1: param_list : ( param param_list_tail |);
+	public final void param_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:41:2: ( param param_list_tail |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0==ID) ) {
@@ -421,7 +513,11 @@ public class tigerParser extends Parser {
 
 			switch (alt4) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:41:4: param param_list_tail
+=======
+					// /home/gangil/dev/Tiger/tiger.g:41:4: param param_list_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_param_in_param_list163);
 					param();
@@ -434,7 +530,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:43:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:43:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -454,10 +554,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param_list_tail"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:45:1: param_list_tail : ( COMMA param param_list_tail |);
 	public final void param_list_tail() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:46:2: ( COMMA param param_list_tail |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:45:1: param_list_tail : ( COMMA param param_list_tail |);
+	public final void param_list_tail() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:46:2: ( COMMA param param_list_tail |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==COMMA) ) {
@@ -475,7 +582,11 @@ public class tigerParser extends Parser {
 
 			switch (alt5) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:46:4: COMMA param param_list_tail
+=======
+					// /home/gangil/dev/Tiger/tiger.g:46:4: COMMA param param_list_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_param_list_tail181); 
 					pushFollow(FOLLOW_param_in_param_list_tail183);
@@ -489,7 +600,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:48:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:48:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -509,11 +624,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:50:1: param : ID COLON type_id ;
 	public final void param() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:51:2: ( ID COLON type_id )
 			// /Users/twb/repos/Tiger/tiger.g:51:4: ID COLON type_id
+=======
+	// /home/gangil/dev/Tiger/tiger.g:50:1: param : ID COLON type_id ;
+	public final void param() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:51:2: ( ID COLON type_id )
+			// /home/gangil/dev/Tiger/tiger.g:51:4: ID COLON type_id
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,ID,FOLLOW_ID_in_param202); 
 			match(input,COLON,FOLLOW_COLON_in_param204); 
@@ -537,11 +660,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:54:1: block_list : block block_tail ;
 	public final void block_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:55:2: ( block block_tail )
 			// /Users/twb/repos/Tiger/tiger.g:55:4: block block_tail
+=======
+	// /home/gangil/dev/Tiger/tiger.g:54:1: block_list : block block_tail ;
+	public final void block_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:55:2: ( block block_tail )
+			// /home/gangil/dev/Tiger/tiger.g:55:4: block block_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			pushFollow(FOLLOW_block_in_block_list218);
 			block();
@@ -567,11 +698,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block_tail"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:58:1: block_tail : block block_tail ;
 	public final void block_tail() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:59:2: ( block block_tail )
 			// /Users/twb/repos/Tiger/tiger.g:59:4: block block_tail
+=======
+	// /home/gangil/dev/Tiger/tiger.g:58:1: block_tail : block block_tail ;
+	public final void block_tail() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:59:2: ( block block_tail )
+			// /home/gangil/dev/Tiger/tiger.g:59:4: block block_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			pushFollow(FOLLOW_block_in_block_tail231);
 			block();
@@ -597,11 +736,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:62:1: block : BEGIN declaration_segment stat_seq END SEMI ;
 	public final void block() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:63:2: ( BEGIN declaration_segment stat_seq END SEMI )
 			// /Users/twb/repos/Tiger/tiger.g:63:4: BEGIN declaration_segment stat_seq END SEMI
+=======
+	// /home/gangil/dev/Tiger/tiger.g:62:1: block : BEGIN declaration_segment stat_seq END SEMI ;
+	public final void block() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:63:2: ( BEGIN declaration_segment stat_seq END SEMI )
+			// /home/gangil/dev/Tiger/tiger.g:63:4: BEGIN declaration_segment stat_seq END SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,BEGIN,FOLLOW_BEGIN_in_block244); 
 			pushFollow(FOLLOW_declaration_segment_in_block246);
@@ -630,11 +777,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "declaration_segment"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:66:1: declaration_segment : type_declaration_list var_declaration_list ;
 	public final void declaration_segment() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:67:2: ( type_declaration_list var_declaration_list )
 			// /Users/twb/repos/Tiger/tiger.g:67:4: type_declaration_list var_declaration_list
+=======
+	// /home/gangil/dev/Tiger/tiger.g:66:1: declaration_segment : type_declaration_list var_declaration_list ;
+	public final void declaration_segment() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:67:2: ( type_declaration_list var_declaration_list )
+			// /home/gangil/dev/Tiger/tiger.g:67:4: type_declaration_list var_declaration_list
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			pushFollow(FOLLOW_type_declaration_list_in_declaration_segment263);
 			type_declaration_list();
@@ -660,10 +815,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:70:1: var_declaration_list : ( var_declaration var_declaration_list |);
 	public final void var_declaration_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:71:2: ( var_declaration var_declaration_list |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:70:1: var_declaration_list : ( var_declaration var_declaration_list |);
+	public final void var_declaration_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:71:2: ( var_declaration var_declaration_list |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0==VAR) ) {
@@ -681,7 +843,11 @@ public class tigerParser extends Parser {
 
 			switch (alt6) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:71:4: var_declaration var_declaration_list
+=======
+					// /home/gangil/dev/Tiger/tiger.g:71:4: var_declaration var_declaration_list
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_var_declaration_in_var_declaration_list276);
 					var_declaration();
@@ -694,7 +860,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:73:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:73:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -714,10 +884,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:75:1: type : ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type );
 	public final void type() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:76:2: ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:75:1: type : ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type );
+	public final void type() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:76:2: ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt7=3;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==FIXEDPT||LA7_0==INT) ) {
@@ -808,7 +985,11 @@ public class tigerParser extends Parser {
 
 			switch (alt7) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:76:4: base_type
+=======
+					// /home/gangil/dev/Tiger/tiger.g:76:4: base_type
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_base_type_in_type293);
 					base_type();
@@ -817,7 +998,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:77:4: ARRAY LBRACK INTLIT RBRACK OF base_type
+=======
+					// /home/gangil/dev/Tiger/tiger.g:77:4: ARRAY LBRACK INTLIT RBRACK OF base_type
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ARRAY,FOLLOW_ARRAY_in_type298); 
 					match(input,LBRACK,FOLLOW_LBRACK_in_type300); 
@@ -831,7 +1016,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:78:4: ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type
+=======
+					// /home/gangil/dev/Tiger/tiger.g:78:4: ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ARRAY,FOLLOW_ARRAY_in_type313); 
 					match(input,LBRACK,FOLLOW_LBRACK_in_type315); 
@@ -863,10 +1052,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_id"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:81:1: type_id : ( base_type | ID );
 	public final void type_id() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:82:2: ( base_type | ID )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:81:1: type_id : ( base_type | ID );
+	public final void type_id() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:82:2: ( base_type | ID )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==FIXEDPT||LA8_0==INT) ) {
@@ -884,7 +1080,11 @@ public class tigerParser extends Parser {
 
 			switch (alt8) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:82:4: base_type
+=======
+					// /home/gangil/dev/Tiger/tiger.g:82:4: base_type
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_base_type_in_type_id340);
 					base_type();
@@ -893,7 +1093,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:83:4: ID
+=======
+					// /home/gangil/dev/Tiger/tiger.g:83:4: ID
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ID,FOLLOW_ID_in_type_id345); 
 					}
@@ -914,11 +1118,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "base_type"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:86:1: base_type : ( INT | FIXEDPT );
 	public final void base_type() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:87:2: ( INT | FIXEDPT )
 			// /Users/twb/repos/Tiger/tiger.g:
+=======
+	// /home/gangil/dev/Tiger/tiger.g:86:1: base_type : ( INT | FIXEDPT );
+	public final void base_type() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:87:2: ( INT | FIXEDPT )
+			// /home/gangil/dev/Tiger/tiger.g:
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( input.LA(1)==FIXEDPT||input.LA(1)==INT ) {
 				input.consume();
@@ -944,11 +1156,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:91:1: var_declaration : VAR id_list COLON type_id optional_init SEMI ;
 	public final void var_declaration() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:92:2: ( VAR id_list COLON type_id optional_init SEMI )
 			// /Users/twb/repos/Tiger/tiger.g:92:4: VAR id_list COLON type_id optional_init SEMI
+=======
+	// /home/gangil/dev/Tiger/tiger.g:91:1: var_declaration : VAR id_list COLON type_id optional_init SEMI ;
+	public final void var_declaration() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:92:2: ( VAR id_list COLON type_id optional_init SEMI )
+			// /home/gangil/dev/Tiger/tiger.g:92:4: VAR id_list COLON type_id optional_init SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,VAR,FOLLOW_VAR_in_var_declaration372); 
 			pushFollow(FOLLOW_id_list_in_var_declaration374);
@@ -981,10 +1201,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "optional_init"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:95:1: optional_init : ( ASSIGN const |);
 	public final void optional_init() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:96:2: ( ASSIGN const |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:95:1: optional_init : ( ASSIGN const |);
+	public final void optional_init() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:96:2: ( ASSIGN const |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==ASSIGN) ) {
@@ -1002,7 +1229,11 @@ public class tigerParser extends Parser {
 
 			switch (alt9) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:96:4: ASSIGN const
+=======
+					// /home/gangil/dev/Tiger/tiger.g:96:4: ASSIGN const
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_init393); 
 					pushFollow(FOLLOW_const_in_optional_init395);
@@ -1012,7 +1243,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:98:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:98:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -1032,10 +1267,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "id_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:100:1: id_list : ( ID | ID COMMA id_list );
 	public final void id_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:101:2: ( ID | ID COMMA id_list )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:100:1: id_list : ( ID | ID COMMA id_list );
+	public final void id_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:101:2: ( ID | ID COMMA id_list )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0==ID) ) {
@@ -1069,13 +1311,21 @@ public class tigerParser extends Parser {
 
 			switch (alt10) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:101:4: ID
+=======
+					// /home/gangil/dev/Tiger/tiger.g:101:4: ID
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ID,FOLLOW_ID_in_id_list410); 
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:102:4: ID COMMA id_list
+=======
+					// /home/gangil/dev/Tiger/tiger.g:102:4: ID COMMA id_list
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ID,FOLLOW_ID_in_id_list415); 
 					match(input,COMMA,FOLLOW_COMMA_in_id_list417); 
@@ -1101,10 +1351,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "optional_int"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:105:1: optional_int : ( ASSIGN const |);
 	public final void optional_int() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:106:2: ( ASSIGN const |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:105:1: optional_int : ( ASSIGN const |);
+	public final void optional_int() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:106:2: ( ASSIGN const |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==ASSIGN) ) {
@@ -1122,7 +1379,11 @@ public class tigerParser extends Parser {
 
 			switch (alt11) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:106:4: ASSIGN const
+=======
+					// /home/gangil/dev/Tiger/tiger.g:106:4: ASSIGN const
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_int430); 
 					pushFollow(FOLLOW_const_in_optional_int432);
@@ -1132,7 +1393,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:108:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:108:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -1152,6 +1417,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "stat_seq"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:110:1: stat_seq : ( stat )* ;
 	public final void stat_seq() throws RecognitionException {
 		try {
@@ -1159,6 +1425,15 @@ public class tigerParser extends Parser {
 			// /Users/twb/repos/Tiger/tiger.g:111:4: ( stat )*
 			{
 			// /Users/twb/repos/Tiger/tiger.g:111:4: ( stat )*
+=======
+	// /home/gangil/dev/Tiger/tiger.g:110:1: stat_seq : ( stat )* ;
+	public final void stat_seq() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:111:2: ( ( stat )* )
+			// /home/gangil/dev/Tiger/tiger.g:111:4: ( stat )*
+			{
+			// /home/gangil/dev/Tiger/tiger.g:111:4: ( stat )*
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop12:
 			while (true) {
 				int alt12=2;
@@ -1169,7 +1444,11 @@ public class tigerParser extends Parser {
 
 				switch (alt12) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:111:5: stat
+=======
+					// /home/gangil/dev/Tiger/tiger.g:111:5: stat
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_stat_in_stat_seq448);
 					stat();
@@ -1199,6 +1478,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:114:1: expr : ( const | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* ;
 	public final void expr() throws RecognitionException {
 		try {
@@ -1206,6 +1486,15 @@ public class tigerParser extends Parser {
 			// /Users/twb/repos/Tiger/tiger.g:115:4: ( const | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )*
 			{
 			// /Users/twb/repos/Tiger/tiger.g:115:4: ( const | value | LPAREN expr RPAREN )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:114:1: expr : ( const | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* ;
+	public final void expr() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:115:2: ( ( const | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* )
+			// /home/gangil/dev/Tiger/tiger.g:115:4: ( const | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )*
+			{
+			// /home/gangil/dev/Tiger/tiger.g:115:4: ( const | value | LPAREN expr RPAREN )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt13=3;
 			switch ( input.LA(1) ) {
 			case FIXEDPTLIT:
@@ -1231,7 +1520,11 @@ public class tigerParser extends Parser {
 			}
 			switch (alt13) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:115:5: const
+=======
+					// /home/gangil/dev/Tiger/tiger.g:115:5: const
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_const_in_expr462);
 					const();
@@ -1240,7 +1533,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:115:13: value
+=======
+					// /home/gangil/dev/Tiger/tiger.g:115:13: value
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_value_in_expr466);
 					value();
@@ -1249,7 +1546,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:115:21: LPAREN expr RPAREN
+=======
+					// /home/gangil/dev/Tiger/tiger.g:115:21: LPAREN expr RPAREN
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,LPAREN,FOLLOW_LPAREN_in_expr470); 
 					pushFollow(FOLLOW_expr_in_expr472);
@@ -1262,7 +1563,11 @@ public class tigerParser extends Parser {
 
 			}
 
+<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:115:41: ( options {greedy=true; } : binary_operator expr )*
+=======
+			// /home/gangil/dev/Tiger/tiger.g:115:41: ( options {greedy=true; } : binary_operator expr )*
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop14:
 			while (true) {
 				int alt14=2;
@@ -1320,7 +1625,11 @@ public class tigerParser extends Parser {
 				}
 				switch (alt14) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:115:64: binary_operator expr
+=======
+					// /home/gangil/dev/Tiger/tiger.g:115:64: binary_operator expr
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_binary_operator_in_expr485);
 					binary_operator();
@@ -1354,10 +1663,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:118:1: expr_list : ( expr expr_list_tail |);
 	public final void expr_list() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:119:2: ( expr expr_list_tail |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:118:1: expr_list : ( expr expr_list_tail |);
+	public final void expr_list() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:119:2: ( expr expr_list_tail |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0==FIXEDPTLIT||LA15_0==ID||LA15_0==INTLIT||LA15_0==LPAREN) ) {
@@ -1375,7 +1691,11 @@ public class tigerParser extends Parser {
 
 			switch (alt15) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:119:4: expr expr_list_tail
+=======
+					// /home/gangil/dev/Tiger/tiger.g:119:4: expr expr_list_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_expr_in_expr_list500);
 					expr();
@@ -1388,7 +1708,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:121:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:121:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -1408,10 +1732,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list_tail"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:123:1: expr_list_tail : ( COMMA expr expr_list_tail |);
 	public final void expr_list_tail() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:124:2: ( COMMA expr expr_list_tail |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:123:1: expr_list_tail : ( COMMA expr expr_list_tail |);
+	public final void expr_list_tail() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:124:2: ( COMMA expr expr_list_tail |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==COMMA) ) {
@@ -1429,7 +1760,11 @@ public class tigerParser extends Parser {
 
 			switch (alt16) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:124:4: COMMA expr expr_list_tail
+=======
+					// /home/gangil/dev/Tiger/tiger.g:124:4: COMMA expr expr_list_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_expr_list_tail517); 
 					pushFollow(FOLLOW_expr_in_expr_list_tail519);
@@ -1443,7 +1778,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:126:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:126:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -1463,10 +1802,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "stat"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:128:1: stat : ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block | funct_call SEMI );
 	public final void stat() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:129:2: ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block | funct_call SEMI )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:128:1: stat : ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block_list | funct_call SEMI );
+	public final void stat() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:129:2: ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block_list | funct_call SEMI )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt18=8;
 			switch ( input.LA(1) ) {
 			case ID:
@@ -1530,14 +1876,22 @@ public class tigerParser extends Parser {
 			}
 			switch (alt18) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:129:4: value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+=======
+					// /home/gangil/dev/Tiger/tiger.g:129:4: value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_value_in_stat536);
 					value();
 					state._fsp--;
 
 					match(input,ASSIGN,FOLLOW_ASSIGN_in_stat538); 
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:129:17: ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+=======
+					// /home/gangil/dev/Tiger/tiger.g:129:17: ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					int alt17=2;
 					int LA17_0 = input.LA(1);
 					if ( (LA17_0==FIXEDPTLIT||LA17_0==ID||LA17_0==INTLIT||LA17_0==LPAREN) ) {
@@ -1555,7 +1909,11 @@ public class tigerParser extends Parser {
 
 					switch (alt17) {
 						case 1 :
+<<<<<<< HEAD
 							// /Users/twb/repos/Tiger/tiger.g:129:18: expr SEMI
+=======
+							// /home/gangil/dev/Tiger/tiger.g:129:18: expr SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 							{
 							pushFollow(FOLLOW_expr_in_stat541);
 							expr();
@@ -1565,7 +1923,11 @@ public class tigerParser extends Parser {
 							}
 							break;
 						case 2 :
+<<<<<<< HEAD
 							// /Users/twb/repos/Tiger/tiger.g:129:30: IF LPAREN expr_list RPAREN SEMI
+=======
+							// /home/gangil/dev/Tiger/tiger.g:129:30: IF LPAREN expr_list RPAREN SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 							{
 							match(input,IF,FOLLOW_IF_in_stat547); 
 							match(input,LPAREN,FOLLOW_LPAREN_in_stat549); 
@@ -1583,7 +1945,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:130:4: if_stmt
+=======
+					// /home/gangil/dev/Tiger/tiger.g:130:4: if_stmt
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_if_stmt_in_stat561);
 					if_stmt();
@@ -1592,7 +1958,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:131:4: WHILE expr DO stat_seq ENDDO SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:131:4: WHILE expr DO stat_seq ENDDO SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,WHILE,FOLLOW_WHILE_in_stat566); 
 					pushFollow(FOLLOW_expr_in_stat568);
@@ -1609,7 +1979,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 4 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:132:4: FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:132:4: FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,FOR,FOLLOW_FOR_in_stat581); 
 					match(input,ID,FOLLOW_ID_in_stat583); 
@@ -1633,14 +2007,22 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 5 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:133:4: BREAK SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:133:4: BREAK SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,BREAK,FOLLOW_BREAK_in_stat604); 
 					match(input,SEMI,FOLLOW_SEMI_in_stat606); 
 					}
 					break;
 				case 6 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:134:4: RETURN expr SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:134:4: RETURN expr SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,RETURN,FOLLOW_RETURN_in_stat611); 
 					pushFollow(FOLLOW_expr_in_stat613);
@@ -1651,16 +2033,27 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 7 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:135:4: block
 					{
 					pushFollow(FOLLOW_block_in_stat620);
 					block();
+=======
+					// /home/gangil/dev/Tiger/tiger.g:135:4: block_list
+					{
+					pushFollow(FOLLOW_block_list_in_stat620);
+					block_list();
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					state._fsp--;
 
 					}
 					break;
 				case 8 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:136:4: funct_call SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:136:4: funct_call SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_funct_call_in_stat625);
 					funct_call();
@@ -1685,11 +2078,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "if_stmt"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:139:1: if_stmt : IF expr THEN stat_seq if_tail ;
 	public final void if_stmt() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:140:2: ( IF expr THEN stat_seq if_tail )
 			// /Users/twb/repos/Tiger/tiger.g:140:4: IF expr THEN stat_seq if_tail
+=======
+	// /home/gangil/dev/Tiger/tiger.g:139:1: if_stmt : IF expr THEN stat_seq if_tail ;
+	public final void if_stmt() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:140:2: ( IF expr THEN stat_seq if_tail )
+			// /home/gangil/dev/Tiger/tiger.g:140:4: IF expr THEN stat_seq if_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,IF,FOLLOW_IF_in_if_stmt638); 
 			pushFollow(FOLLOW_expr_in_if_stmt640);
@@ -1721,10 +2122,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "if_tail"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:143:1: if_tail : ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI );
 	public final void if_tail() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:144:2: ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:143:1: if_tail : ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI );
+	public final void if_tail() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:144:2: ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0==ELSE) ) {
@@ -1742,7 +2150,11 @@ public class tigerParser extends Parser {
 
 			switch (alt19) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:144:4: ELSE stat_seq ENDIF SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:144:4: ELSE stat_seq ENDIF SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ELSE,FOLLOW_ELSE_in_if_tail657); 
 					pushFollow(FOLLOW_stat_seq_in_if_tail659);
@@ -1754,7 +2166,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:145:4: ENDIF SEMI
+=======
+					// /home/gangil/dev/Tiger/tiger.g:145:4: ENDIF SEMI
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,ENDIF,FOLLOW_ENDIF_in_if_tail668); 
 					match(input,SEMI,FOLLOW_SEMI_in_if_tail670); 
@@ -1776,10 +2192,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "opt_prefix"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:148:1: opt_prefix : ( value ASSIGN |);
 	public final void opt_prefix() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:149:2: ( value ASSIGN |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:148:1: opt_prefix : ( value ASSIGN |);
+	public final void opt_prefix() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:149:2: ( value ASSIGN |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0==ID) ) {
@@ -1797,7 +2220,11 @@ public class tigerParser extends Parser {
 
 			switch (alt20) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:149:4: value ASSIGN
+=======
+					// /home/gangil/dev/Tiger/tiger.g:149:4: value ASSIGN
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_value_in_opt_prefix681);
 					value();
@@ -1807,7 +2234,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:151:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:151:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -1827,11 +2258,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "const"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:153:1: const : ( INTLIT | FIXEDPTLIT );
 	public final void const() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:154:2: ( INTLIT | FIXEDPTLIT )
 			// /Users/twb/repos/Tiger/tiger.g:
+=======
+	// /home/gangil/dev/Tiger/tiger.g:153:1: const : ( INTLIT | FIXEDPTLIT );
+	public final void const() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:154:2: ( INTLIT | FIXEDPTLIT )
+			// /home/gangil/dev/Tiger/tiger.g:
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( input.LA(1)==FIXEDPTLIT||input.LA(1)==INTLIT ) {
 				input.consume();
@@ -1857,10 +2296,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "binary_operator"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:158:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR );
 	public final void binary_operator() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:159:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR )
+=======
+	// /home/gangil/dev/Tiger/tiger.g:158:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR );
+	public final void binary_operator() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:159:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR )
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt21=12;
 			switch ( input.LA(1) ) {
 			case PLUS:
@@ -1958,75 +2404,123 @@ public class tigerParser extends Parser {
 			}
 			switch (alt21) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:159:4: PLUS
+=======
+					// /home/gangil/dev/Tiger/tiger.g:159:4: PLUS
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,PLUS,FOLLOW_PLUS_in_binary_operator715); 
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:160:4: MINUS
+=======
+					// /home/gangil/dev/Tiger/tiger.g:160:4: MINUS
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,MINUS,FOLLOW_MINUS_in_binary_operator720); 
 					}
 					break;
 				case 3 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:161:4: MULT
+=======
+					// /home/gangil/dev/Tiger/tiger.g:161:4: MULT
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,MULT,FOLLOW_MULT_in_binary_operator725); 
 					}
 					break;
 				case 4 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:162:4: DIV
+=======
+					// /home/gangil/dev/Tiger/tiger.g:162:4: DIV
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,DIV,FOLLOW_DIV_in_binary_operator730); 
 					}
 					break;
 				case 5 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:163:4: EQ
+=======
+					// /home/gangil/dev/Tiger/tiger.g:163:4: EQ
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,EQ,FOLLOW_EQ_in_binary_operator735); 
 					}
 					break;
 				case 6 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:164:4: NEQ
+=======
+					// /home/gangil/dev/Tiger/tiger.g:164:4: NEQ
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,NEQ,FOLLOW_NEQ_in_binary_operator740); 
 					}
 					break;
 				case 7 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:165:4: LESSER
+=======
+					// /home/gangil/dev/Tiger/tiger.g:165:4: LESSER
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,LESSER,FOLLOW_LESSER_in_binary_operator745); 
 					}
 					break;
 				case 8 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:166:4: GREATER
+=======
+					// /home/gangil/dev/Tiger/tiger.g:166:4: GREATER
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,GREATER,FOLLOW_GREATER_in_binary_operator750); 
 					}
 					break;
 				case 9 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:167:4: LESSER EQ
+=======
+					// /home/gangil/dev/Tiger/tiger.g:167:4: LESSER EQ
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,LESSER,FOLLOW_LESSER_in_binary_operator755); 
 					match(input,EQ,FOLLOW_EQ_in_binary_operator757); 
 					}
 					break;
 				case 10 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:168:4: GREATER EQ
+=======
+					// /home/gangil/dev/Tiger/tiger.g:168:4: GREATER EQ
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,GREATER,FOLLOW_GREATER_in_binary_operator762); 
 					match(input,EQ,FOLLOW_EQ_in_binary_operator764); 
 					}
 					break;
 				case 11 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:169:4: AND
+=======
+					// /home/gangil/dev/Tiger/tiger.g:169:4: AND
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,AND,FOLLOW_AND_in_binary_operator769); 
 					}
 					break;
 				case 12 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:170:4: OR
+=======
+					// /home/gangil/dev/Tiger/tiger.g:170:4: OR
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,OR,FOLLOW_OR_in_binary_operator774); 
 					}
@@ -2047,11 +2541,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "value"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:173:1: value : ID value_tail ;
 	public final void value() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:174:2: ( ID value_tail )
 			// /Users/twb/repos/Tiger/tiger.g:174:4: ID value_tail
+=======
+	// /home/gangil/dev/Tiger/tiger.g:173:1: value : ID value_tail ;
+	public final void value() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:174:2: ( ID value_tail )
+			// /home/gangil/dev/Tiger/tiger.g:174:4: ID value_tail
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,ID,FOLLOW_ID_in_value785); 
 			pushFollow(FOLLOW_value_tail_in_value787);
@@ -2074,10 +2576,17 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "value_tail"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:177:1: value_tail : ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |);
 	public final void value_tail() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:178:2: ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |)
+=======
+	// /home/gangil/dev/Tiger/tiger.g:177:1: value_tail : ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |);
+	public final void value_tail() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:178:2: ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |)
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			int alt23=2;
 			int LA23_0 = input.LA(1);
 			if ( (LA23_0==LBRACK) ) {
@@ -2095,7 +2604,11 @@ public class tigerParser extends Parser {
 
 			switch (alt23) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:178:4: LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )?
+=======
+					// /home/gangil/dev/Tiger/tiger.g:178:4: LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )?
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					match(input,LBRACK,FOLLOW_LBRACK_in_value_tail798); 
 					pushFollow(FOLLOW_index_expr_in_value_tail800);
@@ -2103,7 +2616,11 @@ public class tigerParser extends Parser {
 					state._fsp--;
 
 					match(input,RBRACK,FOLLOW_RBRACK_in_value_tail802); 
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:178:29: ( LBRACK index_expr RBRACK )?
+=======
+					// /home/gangil/dev/Tiger/tiger.g:178:29: ( LBRACK index_expr RBRACK )?
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					int alt22=2;
 					int LA22_0 = input.LA(1);
 					if ( (LA22_0==LBRACK) ) {
@@ -2111,7 +2628,11 @@ public class tigerParser extends Parser {
 					}
 					switch (alt22) {
 						case 1 :
+<<<<<<< HEAD
 							// /Users/twb/repos/Tiger/tiger.g:178:30: LBRACK index_expr RBRACK
+=======
+							// /home/gangil/dev/Tiger/tiger.g:178:30: LBRACK index_expr RBRACK
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 							{
 							match(input,LBRACK,FOLLOW_LBRACK_in_value_tail805); 
 							pushFollow(FOLLOW_index_expr_in_value_tail807);
@@ -2127,7 +2648,11 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:180:2: 
+=======
+					// /home/gangil/dev/Tiger/tiger.g:180:2: 
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					}
 					break;
@@ -2147,11 +2672,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:182:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
 	public final void index_expr() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:183:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
 			// /Users/twb/repos/Tiger/tiger.g:183:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
+=======
+	// /home/gangil/dev/Tiger/tiger.g:182:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
+	public final void index_expr() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:183:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
+			// /home/gangil/dev/Tiger/tiger.g:183:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( input.LA(1)==ID||input.LA(1)==INTLIT ) {
 				input.consume();
@@ -2161,7 +2694,11 @@ public class tigerParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
+<<<<<<< HEAD
 			// /Users/twb/repos/Tiger/tiger.g:183:18: ( options {greedy=true; } : index_oper index_expr )*
+=======
+			// /home/gangil/dev/Tiger/tiger.g:183:18: ( options {greedy=true; } : index_oper index_expr )*
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			loop24:
 			while (true) {
 				int alt24=2;
@@ -2172,7 +2709,11 @@ public class tigerParser extends Parser {
 
 				switch (alt24) {
 				case 1 :
+<<<<<<< HEAD
 					// /Users/twb/repos/Tiger/tiger.g:183:42: index_oper index_expr
+=======
+					// /home/gangil/dev/Tiger/tiger.g:183:42: index_oper index_expr
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 					{
 					pushFollow(FOLLOW_index_oper_in_index_expr843);
 					index_oper();
@@ -2206,11 +2747,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "index_oper"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:186:1: index_oper : ( PLUS | MINUS | MULT );
 	public final void index_oper() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:187:2: ( PLUS | MINUS | MULT )
 			// /Users/twb/repos/Tiger/tiger.g:
+=======
+	// /home/gangil/dev/Tiger/tiger.g:186:1: index_oper : ( PLUS | MINUS | MULT );
+	public final void index_oper() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:187:2: ( PLUS | MINUS | MULT )
+			// /home/gangil/dev/Tiger/tiger.g:
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			if ( (input.LA(1) >= MINUS && input.LA(1) <= MULT)||input.LA(1)==PLUS ) {
 				input.consume();
@@ -2236,11 +2785,19 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_call"
+<<<<<<< HEAD
 	// /Users/twb/repos/Tiger/tiger.g:192:1: funct_call : ID LPAREN id_list RPAREN ;
 	public final void funct_call() throws RecognitionException {
 		try {
 			// /Users/twb/repos/Tiger/tiger.g:193:2: ( ID LPAREN id_list RPAREN )
 			// /Users/twb/repos/Tiger/tiger.g:193:4: ID LPAREN id_list RPAREN
+=======
+	// /home/gangil/dev/Tiger/tiger.g:192:1: funct_call : ID LPAREN id_list RPAREN ;
+	public final void funct_call() throws  {
+		try {
+			// /home/gangil/dev/Tiger/tiger.g:193:2: ( ID LPAREN id_list RPAREN )
+			// /home/gangil/dev/Tiger/tiger.g:193:4: ID LPAREN id_list RPAREN
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 			{
 			match(input,ID,FOLLOW_ID_in_funct_call879); 
 			match(input,LPAREN,FOLLOW_LPAREN_in_funct_call881); 
@@ -2393,7 +2950,11 @@ public class tigerParser extends Parser {
 	public static final BitSet FOLLOW_RETURN_in_stat611 = new BitSet(new long[]{0x0000000112100000L});
 	public static final BitSet FOLLOW_expr_in_stat613 = new BitSet(new long[]{0x0000080000000000L});
 	public static final BitSet FOLLOW_SEMI_in_stat615 = new BitSet(new long[]{0x0000000000000002L});
+<<<<<<< HEAD
 	public static final BitSet FOLLOW_block_in_stat620 = new BitSet(new long[]{0x0000000000000002L});
+=======
+	public static final BitSet FOLLOW_block_list_in_stat620 = new BitSet(new long[]{0x0000000000000002L});
+>>>>>>> 4ba6c6f64b1a350c02528b522d94095f821f968a
 	public static final BitSet FOLLOW_funct_call_in_stat625 = new BitSet(new long[]{0x0000080000000000L});
 	public static final BitSet FOLLOW_SEMI_in_stat627 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_IF_in_if_stmt638 = new BitSet(new long[]{0x0000000112100000L});
