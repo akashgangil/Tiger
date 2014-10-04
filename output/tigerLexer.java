@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/twb/repos/Tiger/Tiger.g 2014-10-04 17:03:45
+// $ANTLR 3.5.1 /Users/twb/repos/Tiger/Tiger.g 2014-10-04 17:29:34
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -80,8 +80,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = FUNCTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:230:10: ( 'function' )
-			// /Users/twb/repos/Tiger/Tiger.g:230:12: 'function'
+			// /Users/twb/repos/Tiger/Tiger.g:231:10: ( 'function' )
+			// /Users/twb/repos/Tiger/Tiger.g:231:12: 'function'
 			{
 			match("function"); 
 
@@ -101,8 +101,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = BEGIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:231:8: ( 'begin' )
-			// /Users/twb/repos/Tiger/Tiger.g:231:10: 'begin'
+			// /Users/twb/repos/Tiger/Tiger.g:232:8: ( 'begin' )
+			// /Users/twb/repos/Tiger/Tiger.g:232:10: 'begin'
 			{
 			match("begin"); 
 
@@ -122,8 +122,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = END;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:232:7: ( 'end' )
-			// /Users/twb/repos/Tiger/Tiger.g:232:9: 'end'
+			// /Users/twb/repos/Tiger/Tiger.g:233:7: ( 'end' )
+			// /Users/twb/repos/Tiger/Tiger.g:233:9: 'end'
 			{
 			match("end"); 
 
@@ -143,8 +143,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = VOID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:233:7: ( 'void' )
-			// /Users/twb/repos/Tiger/Tiger.g:233:9: 'void'
+			// /Users/twb/repos/Tiger/Tiger.g:234:7: ( 'void' )
+			// /Users/twb/repos/Tiger/Tiger.g:234:9: 'void'
 			{
 			match("void"); 
 
@@ -164,8 +164,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = MAIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:234:7: ( 'main' )
-			// /Users/twb/repos/Tiger/Tiger.g:234:9: 'main'
+			// /Users/twb/repos/Tiger/Tiger.g:235:7: ( 'main' )
+			// /Users/twb/repos/Tiger/Tiger.g:235:9: 'main'
 			{
 			match("main"); 
 
@@ -185,8 +185,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = TYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:235:7: ( 'type' )
-			// /Users/twb/repos/Tiger/Tiger.g:235:9: 'type'
+			// /Users/twb/repos/Tiger/Tiger.g:236:7: ( 'type' )
+			// /Users/twb/repos/Tiger/Tiger.g:236:9: 'type'
 			{
 			match("type"); 
 
@@ -206,8 +206,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ARRAY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:236:8: ( 'array' )
-			// /Users/twb/repos/Tiger/Tiger.g:236:10: 'array'
+			// /Users/twb/repos/Tiger/Tiger.g:237:8: ( 'array' )
+			// /Users/twb/repos/Tiger/Tiger.g:237:10: 'array'
 			{
 			match("array"); 
 
@@ -227,8 +227,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = OF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:237:6: ( 'of' )
-			// /Users/twb/repos/Tiger/Tiger.g:237:8: 'of'
+			// /Users/twb/repos/Tiger/Tiger.g:238:6: ( 'of' )
+			// /Users/twb/repos/Tiger/Tiger.g:238:8: 'of'
 			{
 			match("of"); 
 
@@ -248,8 +248,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = INT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:238:7: ( 'int' )
-			// /Users/twb/repos/Tiger/Tiger.g:238:9: 'int'
+			// /Users/twb/repos/Tiger/Tiger.g:239:7: ( 'int' )
+			// /Users/twb/repos/Tiger/Tiger.g:239:9: 'int'
 			{
 			match("int"); 
 
@@ -269,8 +269,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = FIXEDPT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:239:10: ( 'fixedpt' )
-			// /Users/twb/repos/Tiger/Tiger.g:239:12: 'fixedpt'
+			// /Users/twb/repos/Tiger/Tiger.g:240:10: ( 'fixedpt' )
+			// /Users/twb/repos/Tiger/Tiger.g:240:12: 'fixedpt'
 			{
 			match("fixedpt"); 
 
@@ -290,8 +290,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:240:7: ( 'var' )
-			// /Users/twb/repos/Tiger/Tiger.g:240:9: 'var'
+			// /Users/twb/repos/Tiger/Tiger.g:241:7: ( 'var' )
+			// /Users/twb/repos/Tiger/Tiger.g:241:9: 'var'
 			{
 			match("var"); 
 
@@ -311,8 +311,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = IF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:241:6: ( 'if' )
-			// /Users/twb/repos/Tiger/Tiger.g:241:8: 'if'
+			// /Users/twb/repos/Tiger/Tiger.g:242:6: ( 'if' )
+			// /Users/twb/repos/Tiger/Tiger.g:242:8: 'if'
 			{
 			match("if"); 
 
@@ -332,8 +332,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:242:7: ( 'then' )
-			// /Users/twb/repos/Tiger/Tiger.g:242:9: 'then'
+			// /Users/twb/repos/Tiger/Tiger.g:243:7: ( 'then' )
+			// /Users/twb/repos/Tiger/Tiger.g:243:9: 'then'
 			{
 			match("then"); 
 
@@ -353,8 +353,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ENDIF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:243:8: ( 'endif' )
-			// /Users/twb/repos/Tiger/Tiger.g:243:10: 'endif'
+			// /Users/twb/repos/Tiger/Tiger.g:244:8: ( 'endif' )
+			// /Users/twb/repos/Tiger/Tiger.g:244:10: 'endif'
 			{
 			match("endif"); 
 
@@ -374,8 +374,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ELSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:244:7: ( 'else' )
-			// /Users/twb/repos/Tiger/Tiger.g:244:9: 'else'
+			// /Users/twb/repos/Tiger/Tiger.g:245:7: ( 'else' )
+			// /Users/twb/repos/Tiger/Tiger.g:245:9: 'else'
 			{
 			match("else"); 
 
@@ -395,8 +395,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = WHILE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:245:8: ( 'while' )
-			// /Users/twb/repos/Tiger/Tiger.g:245:10: 'while'
+			// /Users/twb/repos/Tiger/Tiger.g:246:8: ( 'while' )
+			// /Users/twb/repos/Tiger/Tiger.g:246:10: 'while'
 			{
 			match("while"); 
 
@@ -416,8 +416,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ENDDO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:246:8: ( 'enddo' )
-			// /Users/twb/repos/Tiger/Tiger.g:246:10: 'enddo'
+			// /Users/twb/repos/Tiger/Tiger.g:247:8: ( 'enddo' )
+			// /Users/twb/repos/Tiger/Tiger.g:247:10: 'enddo'
 			{
 			match("enddo"); 
 
@@ -437,8 +437,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = FOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:247:7: ( 'for' )
-			// /Users/twb/repos/Tiger/Tiger.g:247:9: 'for'
+			// /Users/twb/repos/Tiger/Tiger.g:248:7: ( 'for' )
+			// /Users/twb/repos/Tiger/Tiger.g:248:9: 'for'
 			{
 			match("for"); 
 
@@ -458,8 +458,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = TO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:248:6: ( 'to' )
-			// /Users/twb/repos/Tiger/Tiger.g:248:8: 'to'
+			// /Users/twb/repos/Tiger/Tiger.g:249:6: ( 'to' )
+			// /Users/twb/repos/Tiger/Tiger.g:249:8: 'to'
 			{
 			match("to"); 
 
@@ -479,8 +479,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = DO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:249:6: ( 'do' )
-			// /Users/twb/repos/Tiger/Tiger.g:249:8: 'do'
+			// /Users/twb/repos/Tiger/Tiger.g:250:6: ( 'do' )
+			// /Users/twb/repos/Tiger/Tiger.g:250:8: 'do'
 			{
 			match("do"); 
 
@@ -500,8 +500,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = BREAK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:250:8: ( 'break' )
-			// /Users/twb/repos/Tiger/Tiger.g:250:10: 'break'
+			// /Users/twb/repos/Tiger/Tiger.g:251:8: ( 'break' )
+			// /Users/twb/repos/Tiger/Tiger.g:251:10: 'break'
 			{
 			match("break"); 
 
@@ -521,8 +521,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = RETURN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:251:9: ( 'return' )
-			// /Users/twb/repos/Tiger/Tiger.g:251:11: 'return'
+			// /Users/twb/repos/Tiger/Tiger.g:252:9: ( 'return' )
+			// /Users/twb/repos/Tiger/Tiger.g:252:11: 'return'
 			{
 			match("return"); 
 
@@ -542,8 +542,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:253:8: ( ',' )
-			// /Users/twb/repos/Tiger/Tiger.g:253:10: ','
+			// /Users/twb/repos/Tiger/Tiger.g:254:8: ( ',' )
+			// /Users/twb/repos/Tiger/Tiger.g:254:10: ','
 			{
 			match(','); 
 			}
@@ -562,8 +562,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:254:8: ( ':' )
-			// /Users/twb/repos/Tiger/Tiger.g:254:10: ':'
+			// /Users/twb/repos/Tiger/Tiger.g:255:8: ( ':' )
+			// /Users/twb/repos/Tiger/Tiger.g:255:10: ':'
 			{
 			match(':'); 
 			}
@@ -582,8 +582,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = SEMI;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:255:7: ( ';' )
-			// /Users/twb/repos/Tiger/Tiger.g:255:9: ';'
+			// /Users/twb/repos/Tiger/Tiger.g:256:7: ( ';' )
+			// /Users/twb/repos/Tiger/Tiger.g:256:9: ';'
 			{
 			match(';'); 
 			}
@@ -602,8 +602,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = LPAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:256:9: ( '(' )
-			// /Users/twb/repos/Tiger/Tiger.g:256:11: '('
+			// /Users/twb/repos/Tiger/Tiger.g:257:9: ( '(' )
+			// /Users/twb/repos/Tiger/Tiger.g:257:11: '('
 			{
 			match('('); 
 			}
@@ -622,8 +622,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = RPAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:257:9: ( ')' )
-			// /Users/twb/repos/Tiger/Tiger.g:257:11: ')'
+			// /Users/twb/repos/Tiger/Tiger.g:258:9: ( ')' )
+			// /Users/twb/repos/Tiger/Tiger.g:258:11: ')'
 			{
 			match(')'); 
 			}
@@ -642,8 +642,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = LBRACK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:258:9: ( '[' )
-			// /Users/twb/repos/Tiger/Tiger.g:258:11: '['
+			// /Users/twb/repos/Tiger/Tiger.g:259:9: ( '[' )
+			// /Users/twb/repos/Tiger/Tiger.g:259:11: '['
 			{
 			match('['); 
 			}
@@ -662,8 +662,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = RBRACK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:259:9: ( ']' )
-			// /Users/twb/repos/Tiger/Tiger.g:259:11: ']'
+			// /Users/twb/repos/Tiger/Tiger.g:260:9: ( ']' )
+			// /Users/twb/repos/Tiger/Tiger.g:260:11: ']'
 			{
 			match(']'); 
 			}
@@ -682,8 +682,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:260:8: ( '+' )
-			// /Users/twb/repos/Tiger/Tiger.g:260:10: '+'
+			// /Users/twb/repos/Tiger/Tiger.g:261:8: ( '+' )
+			// /Users/twb/repos/Tiger/Tiger.g:261:10: '+'
 			{
 			match('+'); 
 			}
@@ -702,8 +702,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:261:9: ( '-' )
-			// /Users/twb/repos/Tiger/Tiger.g:261:11: '-'
+			// /Users/twb/repos/Tiger/Tiger.g:262:9: ( '-' )
+			// /Users/twb/repos/Tiger/Tiger.g:262:11: '-'
 			{
 			match('-'); 
 			}
@@ -722,8 +722,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = MULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:262:8: ( '*' )
-			// /Users/twb/repos/Tiger/Tiger.g:262:10: '*'
+			// /Users/twb/repos/Tiger/Tiger.g:263:8: ( '*' )
+			// /Users/twb/repos/Tiger/Tiger.g:263:10: '*'
 			{
 			match('*'); 
 			}
@@ -742,8 +742,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = DIV;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:263:7: ( '/' )
-			// /Users/twb/repos/Tiger/Tiger.g:263:9: '/'
+			// /Users/twb/repos/Tiger/Tiger.g:264:7: ( '/' )
+			// /Users/twb/repos/Tiger/Tiger.g:264:9: '/'
 			{
 			match('/'); 
 			}
@@ -762,8 +762,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = EQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:264:6: ( '=' )
-			// /Users/twb/repos/Tiger/Tiger.g:264:8: '='
+			// /Users/twb/repos/Tiger/Tiger.g:265:6: ( '=' )
+			// /Users/twb/repos/Tiger/Tiger.g:265:8: '='
 			{
 			match('='); 
 			}
@@ -782,8 +782,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = NEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:265:7: ( '<>' )
-			// /Users/twb/repos/Tiger/Tiger.g:265:9: '<>'
+			// /Users/twb/repos/Tiger/Tiger.g:266:7: ( '<>' )
+			// /Users/twb/repos/Tiger/Tiger.g:266:9: '<>'
 			{
 			match("<>"); 
 
@@ -803,8 +803,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = LESSER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:266:10: ( '<' )
-			// /Users/twb/repos/Tiger/Tiger.g:266:12: '<'
+			// /Users/twb/repos/Tiger/Tiger.g:267:10: ( '<' )
+			// /Users/twb/repos/Tiger/Tiger.g:267:12: '<'
 			{
 			match('<'); 
 			}
@@ -823,8 +823,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = LESSEREQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:267:11: ( '<=' )
-			// /Users/twb/repos/Tiger/Tiger.g:267:13: '<='
+			// /Users/twb/repos/Tiger/Tiger.g:268:11: ( '<=' )
+			// /Users/twb/repos/Tiger/Tiger.g:268:13: '<='
 			{
 			match("<="); 
 
@@ -844,8 +844,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = GREATER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:268:10: ( '>' )
-			// /Users/twb/repos/Tiger/Tiger.g:268:12: '>'
+			// /Users/twb/repos/Tiger/Tiger.g:269:10: ( '>' )
+			// /Users/twb/repos/Tiger/Tiger.g:269:12: '>'
 			{
 			match('>'); 
 			}
@@ -864,8 +864,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = GREATEREQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:269:13: ( '>=' )
-			// /Users/twb/repos/Tiger/Tiger.g:269:15: '>='
+			// /Users/twb/repos/Tiger/Tiger.g:270:13: ( '>=' )
+			// /Users/twb/repos/Tiger/Tiger.g:270:15: '>='
 			{
 			match(">="); 
 
@@ -885,8 +885,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:270:7: ( '&' )
-			// /Users/twb/repos/Tiger/Tiger.g:270:9: '&'
+			// /Users/twb/repos/Tiger/Tiger.g:271:7: ( '&' )
+			// /Users/twb/repos/Tiger/Tiger.g:271:9: '&'
 			{
 			match('&'); 
 			}
@@ -905,8 +905,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:271:7: ( '|' )
-			// /Users/twb/repos/Tiger/Tiger.g:271:9: '|'
+			// /Users/twb/repos/Tiger/Tiger.g:272:7: ( '|' )
+			// /Users/twb/repos/Tiger/Tiger.g:272:9: '|'
 			{
 			match('|'); 
 			}
@@ -925,8 +925,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:272:9: ( ':=' )
-			// /Users/twb/repos/Tiger/Tiger.g:272:11: ':='
+			// /Users/twb/repos/Tiger/Tiger.g:273:9: ( ':=' )
+			// /Users/twb/repos/Tiger/Tiger.g:273:11: ':='
 			{
 			match(":="); 
 
@@ -946,8 +946,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:274:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-			// /Users/twb/repos/Tiger/Tiger.g:274:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// /Users/twb/repos/Tiger/Tiger.g:275:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+			// /Users/twb/repos/Tiger/Tiger.g:275:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -957,7 +957,7 @@ public class TigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/twb/repos/Tiger/Tiger.g:274:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// /Users/twb/repos/Tiger/Tiger.g:275:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -1002,12 +1002,12 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:275:10: ( '/*' ( . )* '*/' )
-			// /Users/twb/repos/Tiger/Tiger.g:275:12: '/*' ( . )* '*/'
+			// /Users/twb/repos/Tiger/Tiger.g:276:10: ( '/*' ( . )* '*/' )
+			// /Users/twb/repos/Tiger/Tiger.g:276:12: '/*' ( . )* '*/'
 			{
 			match("/*"); 
 
-			// /Users/twb/repos/Tiger/Tiger.g:275:17: ( . )*
+			// /Users/twb/repos/Tiger/Tiger.g:276:17: ( . )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -1028,7 +1028,7 @@ public class TigerLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:275:17: .
+					// /Users/twb/repos/Tiger/Tiger.g:276:17: .
 					{
 					matchAny(); 
 					}
@@ -1058,8 +1058,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:276:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /Users/twb/repos/Tiger/Tiger.g:276:8: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// /Users/twb/repos/Tiger/Tiger.g:277:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// /Users/twb/repos/Tiger/Tiger.g:277:8: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1086,8 +1086,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = INTLIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:277:9: ( ( '0' .. '9' ) ( '0' .. '9' )* )
-			// /Users/twb/repos/Tiger/Tiger.g:277:11: ( '0' .. '9' ) ( '0' .. '9' )*
+			// /Users/twb/repos/Tiger/Tiger.g:278:9: ( ( '0' .. '9' ) ( '0' .. '9' )* )
+			// /Users/twb/repos/Tiger/Tiger.g:278:11: ( '0' .. '9' ) ( '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -1097,7 +1097,7 @@ public class TigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/twb/repos/Tiger/Tiger.g:277:22: ( '0' .. '9' )*
+			// /Users/twb/repos/Tiger/Tiger.g:278:22: ( '0' .. '9' )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -1142,8 +1142,8 @@ public class TigerLexer extends Lexer {
 		try {
 			int _type = FIXEDPTLIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/twb/repos/Tiger/Tiger.g:278:12: ( INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )? )
-			// /Users/twb/repos/Tiger/Tiger.g:278:14: INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )?
+			// /Users/twb/repos/Tiger/Tiger.g:279:12: ( INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )? )
+			// /Users/twb/repos/Tiger/Tiger.g:279:14: INTLIT '.' ( '0' .. '9' ) ( options {greedy=true; } : ( '0' .. '9' ) )? ( '0' .. '9' )?
 			{
 			mINTLIT(); 
 
@@ -1156,7 +1156,7 @@ public class TigerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/twb/repos/Tiger/Tiger.g:278:36: ( options {greedy=true; } : ( '0' .. '9' ) )?
+			// /Users/twb/repos/Tiger/Tiger.g:279:36: ( options {greedy=true; } : ( '0' .. '9' ) )?
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
@@ -1164,7 +1164,7 @@ public class TigerLexer extends Lexer {
 			}
 			switch (alt4) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:278:60: ( '0' .. '9' )
+					// /Users/twb/repos/Tiger/Tiger.g:279:60: ( '0' .. '9' )
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1179,7 +1179,7 @@ public class TigerLexer extends Lexer {
 
 			}
 
-			// /Users/twb/repos/Tiger/Tiger.g:278:73: ( '0' .. '9' )?
+			// /Users/twb/repos/Tiger/Tiger.g:279:73: ( '0' .. '9' )?
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( ((LA5_0 >= '0' && LA5_0 <= '9')) ) {

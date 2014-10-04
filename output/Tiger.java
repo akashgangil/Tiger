@@ -27,8 +27,8 @@ public class Tiger {
     public static void main(String[] args) {
         try {
             String src = readFile("input.tiger", StandardCharsets.UTF_8);
-            tigerLexer lexer = new tigerLexer(new ANTLRStringStream(src));
-            tigerParser parser = new tigerParser(new CommonTokenStream(lexer));
+            TigerLexer lexer = new TigerLexer(new ANTLRStringStream(src));
+            TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
