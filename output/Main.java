@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
 		try {
 			String src = readFile("input.tiger", StandardCharsets.UTF_8);
-			System.out.println(src + "\n\n\n");
     	    tigerLexer lexer     = new tigerLexer(new ANTLRStringStream(src));
     	    tigerParser parser   = new tigerParser(new CommonTokenStream(lexer));
     	    CommonTree tree      = (CommonTree)(parser.tiger_program().getTree());
