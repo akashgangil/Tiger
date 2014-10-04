@@ -7,6 +7,7 @@ options {
 
 tokens {
 	BLOCK;
+	PARAMS;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -43,12 +44,12 @@ ret_type
 	;
 
 param_list
-	:	param param_list_tail
+	:	param param_list_tail 
 	|	
 	;
 	
 param_list_tail
-	:	COMMA param param_list_tail -> ^(COMMA param param_list_tail)
+	:	COMMA param param_list_tail 
 	|	
 	;
 	
@@ -214,7 +215,7 @@ index_oper
 	;
 
 funct_call
-	: ID LPAREN id_list RPAREN
+	: ID LPAREN id_list RPAREN -> ^(ID id_list)
 	;
 
 /////////////////////////////////////////////////////////////////////
