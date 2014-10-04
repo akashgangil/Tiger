@@ -5,6 +5,10 @@ options {
   language = Java;
 }
 
+tokens {
+	BLOCK;
+}
+
 /////////////////////////////////////////////////////////////////////
 // Parser
 /////////////////////////////////////////////////////////////////////
@@ -17,7 +21,7 @@ type_declaration_list
 	;
 
 type_declaration
-	:	TYPE ID EQ type SEMI
+	:	(TYPE ID EQ type SEMI) -> ^(TYPE ID type)
 	;
 
 funct_declaration_list
@@ -30,7 +34,7 @@ funct_declaration
 	;
 	
 main_function
-	:	VOID MAIN LPAREN RPAREN block_list EOF
+	:	(VOID MAIN LPAREN RPAREN block_list EOF) -> ^(MAIN block_list)
 	;
 	
 ret_type
@@ -62,7 +66,8 @@ block_tail
 	;
 
 block
-	:	BEGIN declaration_segment stat_seq END SEMI
+	:	BEGIN 	| (declaration_segment stat_seq END SEMI -> ^(BLOCK declaration_segment stat_seq))
+				| (stat_seq END SEMI -> ^(BLOCK stat_seq))
 	;
 
 declaration_segment
@@ -76,8 +81,8 @@ var_declaration_list
 
 type
 	:	base_type
-	|	ARRAY LBRACK INTLIT RBRACK OF base_type
-	|	ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type
+	|	(ARRAY array_index_const OF base_type) -> ^(ARRAY array_index_const base_type)
+	|	(ARRAY width=array_index_const height=array_index_const OF base_type) -> ^(ARRAY $width $height base_type)
 	;
 
 type_id
@@ -91,17 +96,17 @@ base_type
 	;
 
 var_declaration
-	:	VAR id_list COLON type_id optional_init SEMI
+	:	(VAR id_list COLON type_id optional_init SEMI) -> ^(VAR id_list type_id optional_init)
 	;
 
 optional_init
-	:	ASSIGN constant
+	:	ASSIGN constant -> constant
 	|	
 	;
 
 id_list
 	:	ID
-	|	ID COMMA id_list
+	|	(ID COMMA id_list) -> ^(COMMA ID id_list)
 	;
 
 optional_int
@@ -114,7 +119,7 @@ stat_seq
 	;
 
 expr
-	:	(constant | value | LPAREN expr RPAREN) (options{greedy=true;}:binary_operator expr)*
+	:	(constant | value | LPAREN expr RPAREN) (options{greedy=true;}:binary_operator^ expr)*
 	;
 
 expr_list
@@ -128,14 +133,23 @@ expr_list_tail
 	;
 
 stat
-	:	value ASSIGN (expr SEMI | IF LPAREN expr_list RPAREN SEMI)
+	:	value ASSIGN stat_assignment -> ^(ASSIGN value stat_assignment)
 	|	if_stmt
-	|	WHILE expr DO stat_seq ENDDO SEMI
-	|	FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
-	|	BREAK SEMI
+	|	(WHILE expr DO stat_seq ENDDO SEMI) -> ^(WHILE expr stat_seq)
+	|	(FOR ID ASSIGN range DO stat_seq ENDDO SEMI) -> ^(FOR range stat_seq)
+	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI
 	|	block
-	|	funct_call SEMI
+	|	funct_call SEMI -> funct_call
+	;
+
+range
+	:	(start=index_expr TO stop=index_expr) -> ^(TO $start $stop)
+	;
+
+stat_assignment
+	:	expr SEMI -> expr
+	|	IF LPAREN expr_list RPAREN SEMI
 	;
 
 if_stmt
@@ -177,8 +191,17 @@ value
 	;
 
 value_tail
-	:	LBRACK index_expr RBRACK (LBRACK index_expr RBRACK)?
+	:	array_index
+	|	array_index array_index
 	|	
+	;
+
+array_index_const
+	:	(LBRACK INTLIT RBRACK) -> INTLIT
+	;
+
+array_index
+	:	(LBRACK index_expr RBRACK) -> index_expr
 	;
 
 index_expr

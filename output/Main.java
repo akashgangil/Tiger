@@ -23,7 +23,7 @@ public class Main {
     	    StringTemplate st    = gen.toDOT(tree);
     	    System.out.println(st);
 		} catch (Exception e) {
-			System.out.println("exception");
+			System.out.println(e);
 		}
     }
 }
