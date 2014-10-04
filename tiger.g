@@ -55,7 +55,7 @@ param_list_tail
 	;
 	
 param	
-	:	ID COLON type_id
+	:	ID COLON type_id -> ^(COLON ID type_id)
 	;
 	
 block_list
@@ -155,11 +155,14 @@ stat_assignment
 	;
 
 if_stmt
-	:	IF expr THEN stat_seq if_tail
+	:	IF expr  then_stmt-> ^(IF expr then_stmt)
 	;
-
+	
+then_stmt
+	: 	THEN stat_seq if_tail -> ^(THEN stat_seq if_tail)
+	;
 if_tail
-	:	ELSE stat_seq ENDIF SEMI
+	:	ELSE stat_seq ENDIF SEMI -> ^(ELSE stat_seq)
 	|	ENDIF SEMI
 	;
 
