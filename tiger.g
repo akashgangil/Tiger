@@ -30,7 +30,7 @@ funct_declaration_list
 	;
 
 funct_declaration
-	:	ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+	:	ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI -> ^(ID param_list block_list)
 	;
 	
 main_function
@@ -48,7 +48,7 @@ param_list
 	;
 	
 param_list_tail
-	:	COMMA param param_list_tail
+	:	COMMA param param_list_tail -> ^(COMMA param param_list_tail)
 	|	
 	;
 	
@@ -138,7 +138,7 @@ stat
 	|	(WHILE expr DO stat_seq ENDDO SEMI) -> ^(WHILE expr stat_seq)
 	|	(FOR ID ASSIGN range DO stat_seq ENDDO SEMI) -> ^(FOR range stat_seq)
 	|	BREAK SEMI -> BREAK
-	|	RETURN expr SEMI
+	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
 	|	funct_call SEMI -> funct_call
 	;
