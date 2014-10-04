@@ -45,12 +45,12 @@ ret_type
 	;
 
 param_list
-	:	param param_list_tail 
+	:	param param_list_tail -> ^(PARAMS param param_list_tail)
 	|	
 	;
 	
 param_list_tail
-	:	COMMA param param_list_tail 
+	:	COMMA! param param_list_tail 
 	|	
 	;
 	
