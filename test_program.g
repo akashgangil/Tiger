@@ -11,6 +11,7 @@ begin
       end = b-1;
     else
       start = b+1;
+    b = (start+end)/2;
   enddo;
     
   if (start>end) then
