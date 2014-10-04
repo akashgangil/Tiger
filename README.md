@@ -1,12 +1,9 @@
-TODO:
+# TODO:
 
-Add AST for sample program
-
-Add a sample Tiger program
-
-Add checks to find syntactic errors in the program
-
-Do Testing and output report
+- Add AST for sample program
+- Add a sample Tiger program
+- Add checks to find syntactic errors in the program
+- Do Testing and output report
 
 output/
 contains tigerLexer.java, tigerParser.java, Main.java which generates the AST which can be fed to http://graphviz-dev.appspot.com/ to generate the graph.
