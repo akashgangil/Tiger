@@ -16,3 +16,7 @@ test_program.tiger : sample test program contributed by us
 tiger.g : tiger grammar
 
 
+Now the Main.java generates a dot file which can then be fed to 'dot' tool to generate the graph
+sudo apt-get install dot
+dot -Tpng input.dot -o test.png
+
