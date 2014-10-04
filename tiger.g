@@ -66,8 +66,8 @@ block_tail
 	;
 
 block
-	:	BEGIN 	| (declaration_segment stat_seq END SEMI -> ^(BLOCK declaration_segment stat_seq))
-				| (stat_seq END SEMI -> ^(BLOCK stat_seq))
+	:	(BEGIN opt=declaration_segment stat_seq END SEMI) 	-> {opt.getTree() != null}? 	^(BLOCK $opt stat_seq)
+															->								^(BLOCK stat_seq)
 	;
 
 declaration_segment
@@ -191,8 +191,7 @@ value
 	;
 
 value_tail
-	:	array_index
-	|	array_index array_index
+	:	array_index array_index?
 	|	
 	;
 
