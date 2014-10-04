@@ -9,6 +9,7 @@ tokens {
 	BLOCK;
 	PARAMS;
 	EXPRS;
+	IDS;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -108,7 +109,7 @@ optional_init
 
 id_list
 	:	ID
-	|	(ID COMMA id_list) -> ^(COMMA ID id_list)
+	|	(ID COMMA id_list) -> ^(IDS ID id_list)
 	;
 
 optional_int
