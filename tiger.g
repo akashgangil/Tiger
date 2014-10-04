@@ -8,6 +8,7 @@ options {
 tokens {
 	BLOCK;
 	PARAMS;
+	EXPRS;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -120,11 +121,11 @@ stat_seq
 	;
 
 expr
-	:	(constant | value | LPAREN expr RPAREN) (options{greedy=true;}:binary_operator^ expr)*
+	:	(constant | value | LPAREN! expr RPAREN!) (options{greedy=true;}:binary_operator^ expr)*
 	;
 
 expr_list
-	:	expr expr_list_tail
+	:	expr expr_list_tail -> ^(EXPRS expr expr_list_tail) 
 	|	
 	;
 
