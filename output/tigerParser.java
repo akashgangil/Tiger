@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gangil/dev/Tiger/tiger.g 2014-10-03 18:52:03
+// $ANTLR 3.5.1 /Users/twb/repos/Tiger/tiger.g 2014-10-03 21:38:33
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -92,7 +92,7 @@ public class tigerParser extends Parser {
 		return adaptor;
 	}
 	@Override public String[] getTokenNames() { return tigerParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "/home/gangil/dev/Tiger/tiger.g"; }
+	@Override public String getGrammarFileName() { return "/Users/twb/repos/Tiger/tiger.g"; }
 
 
 	public static class tiger_program_return extends ParserRuleReturnScope {
@@ -103,7 +103,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "tiger_program"
-	// /home/gangil/dev/Tiger/tiger.g:12:1: tiger_program : type_declaration_list funct_declaration_list main_function ;
+	// /Users/twb/repos/Tiger/tiger.g:12:1: tiger_program : type_declaration_list funct_declaration_list main_function ;
 	public final tigerParser.tiger_program_return tiger_program() throws RecognitionException {
 		tigerParser.tiger_program_return retval = new tigerParser.tiger_program_return();
 		retval.start = input.LT(1);
@@ -116,8 +116,8 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:12:14: ( type_declaration_list funct_declaration_list main_function )
-			// /home/gangil/dev/Tiger/tiger.g:12:16: type_declaration_list funct_declaration_list main_function
+			// /Users/twb/repos/Tiger/tiger.g:12:14: ( type_declaration_list funct_declaration_list main_function )
+			// /Users/twb/repos/Tiger/tiger.g:12:16: type_declaration_list funct_declaration_list main_function
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -169,7 +169,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration_list"
-	// /home/gangil/dev/Tiger/tiger.g:14:1: type_declaration_list : ( type_declaration type_declaration_list |);
+	// /Users/twb/repos/Tiger/tiger.g:14:1: type_declaration_list : ( type_declaration type_declaration_list |);
 	public final tigerParser.type_declaration_list_return type_declaration_list() throws RecognitionException {
 		tigerParser.type_declaration_list_return retval = new tigerParser.type_declaration_list_return();
 		retval.start = input.LT(1);
@@ -181,7 +181,7 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:15:2: ( type_declaration type_declaration_list |)
+			// /Users/twb/repos/Tiger/tiger.g:15:2: ( type_declaration type_declaration_list |)
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0==TYPE) ) {
@@ -199,7 +199,7 @@ public class tigerParser extends Parser {
 
 			switch (alt1) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:15:4: type_declaration type_declaration_list
+					// /Users/twb/repos/Tiger/tiger.g:15:4: type_declaration type_declaration_list
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -219,7 +219,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:17:2: 
+					// /Users/twb/repos/Tiger/tiger.g:17:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -255,7 +255,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration"
-	// /home/gangil/dev/Tiger/tiger.g:19:1: type_declaration : TYPE ID EQ type SEMI ;
+	// /Users/twb/repos/Tiger/tiger.g:19:1: type_declaration : TYPE ID EQ type SEMI ;
 	public final tigerParser.type_declaration_return type_declaration() throws RecognitionException {
 		tigerParser.type_declaration_return retval = new tigerParser.type_declaration_return();
 		retval.start = input.LT(1);
@@ -274,8 +274,8 @@ public class tigerParser extends Parser {
 		Object SEMI10_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:20:2: ( TYPE ID EQ type SEMI )
-			// /home/gangil/dev/Tiger/tiger.g:20:4: TYPE ID EQ type SEMI
+			// /Users/twb/repos/Tiger/tiger.g:20:2: ( TYPE ID EQ type SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:20:4: TYPE ID EQ type SEMI
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -331,7 +331,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_declaration_list"
-	// /home/gangil/dev/Tiger/tiger.g:23:1: funct_declaration_list : ( funct_declaration funct_declaration_list |);
+	// /Users/twb/repos/Tiger/tiger.g:23:1: funct_declaration_list : ( funct_declaration funct_declaration_list |);
 	public final tigerParser.funct_declaration_list_return funct_declaration_list() throws RecognitionException {
 		tigerParser.funct_declaration_list_return retval = new tigerParser.funct_declaration_list_return();
 		retval.start = input.LT(1);
@@ -343,7 +343,7 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:24:2: ( funct_declaration funct_declaration_list |)
+			// /Users/twb/repos/Tiger/tiger.g:24:2: ( funct_declaration funct_declaration_list |)
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==VOID) ) {
@@ -380,7 +380,7 @@ public class tigerParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:24:4: funct_declaration funct_declaration_list
+					// /Users/twb/repos/Tiger/tiger.g:24:4: funct_declaration funct_declaration_list
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -400,7 +400,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:26:2: 
+					// /Users/twb/repos/Tiger/tiger.g:26:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -436,7 +436,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_declaration"
-	// /home/gangil/dev/Tiger/tiger.g:28:1: funct_declaration : ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ;
+	// /Users/twb/repos/Tiger/tiger.g:28:1: funct_declaration : ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ;
 	public final tigerParser.funct_declaration_return funct_declaration() throws RecognitionException {
 		tigerParser.funct_declaration_return retval = new tigerParser.funct_declaration_return();
 		retval.start = input.LT(1);
@@ -463,8 +463,8 @@ public class tigerParser extends Parser {
 		Object SEMI22_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:29:2: ( ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
-			// /home/gangil/dev/Tiger/tiger.g:29:4: ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+			// /Users/twb/repos/Tiger/tiger.g:29:2: ( ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:29:4: ret_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -544,7 +544,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "main_function"
-	// /home/gangil/dev/Tiger/tiger.g:32:1: main_function : VOID MAIN LPAREN RPAREN block_list EOF ;
+	// /Users/twb/repos/Tiger/tiger.g:32:1: main_function : VOID MAIN LPAREN RPAREN block_list EOF ;
 	public final tigerParser.main_function_return main_function() throws RecognitionException {
 		tigerParser.main_function_return retval = new tigerParser.main_function_return();
 		retval.start = input.LT(1);
@@ -565,8 +565,8 @@ public class tigerParser extends Parser {
 		Object EOF28_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:33:2: ( VOID MAIN LPAREN RPAREN block_list EOF )
-			// /home/gangil/dev/Tiger/tiger.g:33:4: VOID MAIN LPAREN RPAREN block_list EOF
+			// /Users/twb/repos/Tiger/tiger.g:33:2: ( VOID MAIN LPAREN RPAREN block_list EOF )
+			// /Users/twb/repos/Tiger/tiger.g:33:4: VOID MAIN LPAREN RPAREN block_list EOF
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -626,7 +626,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "ret_type"
-	// /home/gangil/dev/Tiger/tiger.g:36:1: ret_type : ( VOID | type_id );
+	// /Users/twb/repos/Tiger/tiger.g:36:1: ret_type : ( VOID | type_id );
 	public final tigerParser.ret_type_return ret_type() throws RecognitionException {
 		tigerParser.ret_type_return retval = new tigerParser.ret_type_return();
 		retval.start = input.LT(1);
@@ -639,7 +639,7 @@ public class tigerParser extends Parser {
 		Object VOID29_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:37:2: ( VOID | type_id )
+			// /Users/twb/repos/Tiger/tiger.g:37:2: ( VOID | type_id )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==VOID) ) {
@@ -657,7 +657,7 @@ public class tigerParser extends Parser {
 
 			switch (alt3) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:37:5: VOID
+					// /Users/twb/repos/Tiger/tiger.g:37:5: VOID
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -669,7 +669,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:38:5: type_id
+					// /Users/twb/repos/Tiger/tiger.g:38:5: type_id
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -711,7 +711,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param_list"
-	// /home/gangil/dev/Tiger/tiger.g:41:1: param_list : ( param param_list_tail |);
+	// /Users/twb/repos/Tiger/tiger.g:41:1: param_list : ( param param_list_tail |);
 	public final tigerParser.param_list_return param_list() throws RecognitionException {
 		tigerParser.param_list_return retval = new tigerParser.param_list_return();
 		retval.start = input.LT(1);
@@ -723,7 +723,7 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:42:2: ( param param_list_tail |)
+			// /Users/twb/repos/Tiger/tiger.g:42:2: ( param param_list_tail |)
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0==ID) ) {
@@ -741,7 +741,7 @@ public class tigerParser extends Parser {
 
 			switch (alt4) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:42:4: param param_list_tail
+					// /Users/twb/repos/Tiger/tiger.g:42:4: param param_list_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -761,7 +761,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:44:2: 
+					// /Users/twb/repos/Tiger/tiger.g:44:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -797,7 +797,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param_list_tail"
-	// /home/gangil/dev/Tiger/tiger.g:46:1: param_list_tail : ( COMMA param param_list_tail |);
+	// /Users/twb/repos/Tiger/tiger.g:46:1: param_list_tail : ( COMMA param param_list_tail |);
 	public final tigerParser.param_list_tail_return param_list_tail() throws RecognitionException {
 		tigerParser.param_list_tail_return retval = new tigerParser.param_list_tail_return();
 		retval.start = input.LT(1);
@@ -811,7 +811,7 @@ public class tigerParser extends Parser {
 		Object COMMA33_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:47:2: ( COMMA param param_list_tail |)
+			// /Users/twb/repos/Tiger/tiger.g:47:2: ( COMMA param param_list_tail |)
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==COMMA) ) {
@@ -829,7 +829,7 @@ public class tigerParser extends Parser {
 
 			switch (alt5) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:47:4: COMMA param param_list_tail
+					// /Users/twb/repos/Tiger/tiger.g:47:4: COMMA param param_list_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -853,7 +853,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:49:2: 
+					// /Users/twb/repos/Tiger/tiger.g:49:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -889,7 +889,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "param"
-	// /home/gangil/dev/Tiger/tiger.g:51:1: param : ID COLON type_id ;
+	// /Users/twb/repos/Tiger/tiger.g:51:1: param : ID COLON type_id ;
 	public final tigerParser.param_return param() throws RecognitionException {
 		tigerParser.param_return retval = new tigerParser.param_return();
 		retval.start = input.LT(1);
@@ -904,8 +904,8 @@ public class tigerParser extends Parser {
 		Object COLON37_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:52:2: ( ID COLON type_id )
-			// /home/gangil/dev/Tiger/tiger.g:52:4: ID COLON type_id
+			// /Users/twb/repos/Tiger/tiger.g:52:2: ( ID COLON type_id )
+			// /Users/twb/repos/Tiger/tiger.g:52:4: ID COLON type_id
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -953,7 +953,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block_list"
-	// /home/gangil/dev/Tiger/tiger.g:55:1: block_list : block block_tail ;
+	// /Users/twb/repos/Tiger/tiger.g:55:1: block_list : block block_tail ;
 	public final tigerParser.block_list_return block_list() throws RecognitionException {
 		tigerParser.block_list_return retval = new tigerParser.block_list_return();
 		retval.start = input.LT(1);
@@ -965,8 +965,8 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:56:2: ( block block_tail )
-			// /home/gangil/dev/Tiger/tiger.g:56:4: block block_tail
+			// /Users/twb/repos/Tiger/tiger.g:56:2: ( block block_tail )
+			// /Users/twb/repos/Tiger/tiger.g:56:4: block block_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -1012,7 +1012,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block_tail"
-	// /home/gangil/dev/Tiger/tiger.g:59:1: block_tail : block ( options {greedy=true; } : block_tail )* ;
+	// /Users/twb/repos/Tiger/tiger.g:59:1: block_tail : ( block block_tail |);
 	public final tigerParser.block_tail_return block_tail() throws RecognitionException {
 		tigerParser.block_tail_return retval = new tigerParser.block_tail_return();
 		retval.start = input.LT(1);
@@ -1024,32 +1024,36 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:60:2: ( block ( options {greedy=true; } : block_tail )* )
-			// /home/gangil/dev/Tiger/tiger.g:60:4: block ( options {greedy=true; } : block_tail )*
-			{
-			root_0 = (Object)adaptor.nil();
+			// /Users/twb/repos/Tiger/tiger.g:60:2: ( block block_tail |)
+			int alt6=2;
+			int LA6_0 = input.LA(1);
+			if ( (LA6_0==BEGIN) ) {
+				alt6=1;
+			}
+			else if ( (LA6_0==EOF||LA6_0==END) ) {
+				alt6=2;
+			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 6, 0, input);
+				throw nvae;
+			}
 
-			pushFollow(FOLLOW_block_in_block_tail240);
-			block41=block();
-			state._fsp--;
-
-			adaptor.addChild(root_0, block41.getTree());
-
-			// /home/gangil/dev/Tiger/tiger.g:60:10: ( options {greedy=true; } : block_tail )*
-			loop6:
-			while (true) {
-				int alt6=2;
-				int LA6_0 = input.LA(1);
-				if ( (LA6_0==BEGIN) ) {
-					alt6=1;
-				}
-
-				switch (alt6) {
+			switch (alt6) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:60:33: block_tail
+					// /Users/twb/repos/Tiger/tiger.g:60:4: block block_tail
 					{
-					pushFollow(FOLLOW_block_tail_in_block_tail250);
+					root_0 = (Object)adaptor.nil();
+
+
+					pushFollow(FOLLOW_block_in_block_tail240);
+					block41=block();
+					state._fsp--;
+
+					adaptor.addChild(root_0, block41.getTree());
+
+					pushFollow(FOLLOW_block_tail_in_block_tail242);
 					block_tail42=block_tail();
 					state._fsp--;
 
@@ -1057,14 +1061,16 @@ public class tigerParser extends Parser {
 
 					}
 					break;
+				case 2 :
+					// /Users/twb/repos/Tiger/tiger.g:62:2: 
+					{
+					root_0 = (Object)adaptor.nil();
 
-				default :
-					break loop6;
-				}
+
+					}
+					break;
+
 			}
-
-			}
-
 			retval.stop = input.LT(-1);
 
 			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
@@ -1092,7 +1098,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "block"
-	// /home/gangil/dev/Tiger/tiger.g:63:1: block : BEGIN declaration_segment stat_seq END SEMI ;
+	// /Users/twb/repos/Tiger/tiger.g:64:1: block : BEGIN declaration_segment stat_seq END SEMI ;
 	public final tigerParser.block_return block() throws RecognitionException {
 		tigerParser.block_return retval = new tigerParser.block_return();
 		retval.start = input.LT(1);
@@ -1110,33 +1116,33 @@ public class tigerParser extends Parser {
 		Object SEMI47_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:64:2: ( BEGIN declaration_segment stat_seq END SEMI )
-			// /home/gangil/dev/Tiger/tiger.g:64:4: BEGIN declaration_segment stat_seq END SEMI
+			// /Users/twb/repos/Tiger/tiger.g:65:2: ( BEGIN declaration_segment stat_seq END SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:65:4: BEGIN declaration_segment stat_seq END SEMI
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			BEGIN43=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_block263); 
+			BEGIN43=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_block257); 
 			BEGIN43_tree = (Object)adaptor.create(BEGIN43);
 			adaptor.addChild(root_0, BEGIN43_tree);
 
-			pushFollow(FOLLOW_declaration_segment_in_block265);
+			pushFollow(FOLLOW_declaration_segment_in_block259);
 			declaration_segment44=declaration_segment();
 			state._fsp--;
 
 			adaptor.addChild(root_0, declaration_segment44.getTree());
 
-			pushFollow(FOLLOW_stat_seq_in_block267);
+			pushFollow(FOLLOW_stat_seq_in_block261);
 			stat_seq45=stat_seq();
 			state._fsp--;
 
 			adaptor.addChild(root_0, stat_seq45.getTree());
 
-			END46=(Token)match(input,END,FOLLOW_END_in_block269); 
+			END46=(Token)match(input,END,FOLLOW_END_in_block263); 
 			END46_tree = (Object)adaptor.create(END46);
 			adaptor.addChild(root_0, END46_tree);
 
-			SEMI47=(Token)match(input,SEMI,FOLLOW_SEMI_in_block271); 
+			SEMI47=(Token)match(input,SEMI,FOLLOW_SEMI_in_block265); 
 			SEMI47_tree = (Object)adaptor.create(SEMI47);
 			adaptor.addChild(root_0, SEMI47_tree);
 
@@ -1169,7 +1175,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "declaration_segment"
-	// /home/gangil/dev/Tiger/tiger.g:67:1: declaration_segment : type_declaration_list var_declaration_list ;
+	// /Users/twb/repos/Tiger/tiger.g:68:1: declaration_segment : type_declaration_list var_declaration_list ;
 	public final tigerParser.declaration_segment_return declaration_segment() throws RecognitionException {
 		tigerParser.declaration_segment_return retval = new tigerParser.declaration_segment_return();
 		retval.start = input.LT(1);
@@ -1181,19 +1187,19 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:68:2: ( type_declaration_list var_declaration_list )
-			// /home/gangil/dev/Tiger/tiger.g:68:4: type_declaration_list var_declaration_list
+			// /Users/twb/repos/Tiger/tiger.g:69:2: ( type_declaration_list var_declaration_list )
+			// /Users/twb/repos/Tiger/tiger.g:69:4: type_declaration_list var_declaration_list
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			pushFollow(FOLLOW_type_declaration_list_in_declaration_segment282);
+			pushFollow(FOLLOW_type_declaration_list_in_declaration_segment276);
 			type_declaration_list48=type_declaration_list();
 			state._fsp--;
 
 			adaptor.addChild(root_0, type_declaration_list48.getTree());
 
-			pushFollow(FOLLOW_var_declaration_list_in_declaration_segment284);
+			pushFollow(FOLLOW_var_declaration_list_in_declaration_segment278);
 			var_declaration_list49=var_declaration_list();
 			state._fsp--;
 
@@ -1228,7 +1234,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration_list"
-	// /home/gangil/dev/Tiger/tiger.g:71:1: var_declaration_list : ( var_declaration var_declaration_list |);
+	// /Users/twb/repos/Tiger/tiger.g:72:1: var_declaration_list : ( var_declaration var_declaration_list |);
 	public final tigerParser.var_declaration_list_return var_declaration_list() throws RecognitionException {
 		tigerParser.var_declaration_list_return retval = new tigerParser.var_declaration_list_return();
 		retval.start = input.LT(1);
@@ -1240,7 +1246,7 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:72:2: ( var_declaration var_declaration_list |)
+			// /Users/twb/repos/Tiger/tiger.g:73:2: ( var_declaration var_declaration_list |)
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==VAR) ) {
@@ -1258,18 +1264,18 @@ public class tigerParser extends Parser {
 
 			switch (alt7) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:72:4: var_declaration var_declaration_list
+					// /Users/twb/repos/Tiger/tiger.g:73:4: var_declaration var_declaration_list
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_var_declaration_in_var_declaration_list295);
+					pushFollow(FOLLOW_var_declaration_in_var_declaration_list289);
 					var_declaration50=var_declaration();
 					state._fsp--;
 
 					adaptor.addChild(root_0, var_declaration50.getTree());
 
-					pushFollow(FOLLOW_var_declaration_list_in_var_declaration_list297);
+					pushFollow(FOLLOW_var_declaration_list_in_var_declaration_list291);
 					var_declaration_list51=var_declaration_list();
 					state._fsp--;
 
@@ -1278,7 +1284,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:74:2: 
+					// /Users/twb/repos/Tiger/tiger.g:75:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1314,7 +1320,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type"
-	// /home/gangil/dev/Tiger/tiger.g:76:1: type : ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type );
+	// /Users/twb/repos/Tiger/tiger.g:77:1: type : ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type );
 	public final tigerParser.type_return type() throws RecognitionException {
 		tigerParser.type_return retval = new tigerParser.type_return();
 		retval.start = input.LT(1);
@@ -1353,7 +1359,7 @@ public class tigerParser extends Parser {
 		Object OF66_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:77:2: ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type )
+			// /Users/twb/repos/Tiger/tiger.g:78:2: ( base_type | ARRAY LBRACK INTLIT RBRACK OF base_type | ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type )
 			int alt8=3;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==FIXEDPT||LA8_0==INT) ) {
@@ -1444,12 +1450,12 @@ public class tigerParser extends Parser {
 
 			switch (alt8) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:77:4: base_type
+					// /Users/twb/repos/Tiger/tiger.g:78:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_base_type_in_type312);
+					pushFollow(FOLLOW_base_type_in_type306);
 					base_type52=base_type();
 					state._fsp--;
 
@@ -1458,32 +1464,32 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:78:4: ARRAY LBRACK INTLIT RBRACK OF base_type
+					// /Users/twb/repos/Tiger/tiger.g:79:4: ARRAY LBRACK INTLIT RBRACK OF base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ARRAY53=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type317); 
+					ARRAY53=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type311); 
 					ARRAY53_tree = (Object)adaptor.create(ARRAY53);
 					adaptor.addChild(root_0, ARRAY53_tree);
 
-					LBRACK54=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type319); 
+					LBRACK54=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type313); 
 					LBRACK54_tree = (Object)adaptor.create(LBRACK54);
 					adaptor.addChild(root_0, LBRACK54_tree);
 
-					INTLIT55=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type321); 
+					INTLIT55=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type315); 
 					INTLIT55_tree = (Object)adaptor.create(INTLIT55);
 					adaptor.addChild(root_0, INTLIT55_tree);
 
-					RBRACK56=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type323); 
+					RBRACK56=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type317); 
 					RBRACK56_tree = (Object)adaptor.create(RBRACK56);
 					adaptor.addChild(root_0, RBRACK56_tree);
 
-					OF57=(Token)match(input,OF,FOLLOW_OF_in_type325); 
+					OF57=(Token)match(input,OF,FOLLOW_OF_in_type319); 
 					OF57_tree = (Object)adaptor.create(OF57);
 					adaptor.addChild(root_0, OF57_tree);
 
-					pushFollow(FOLLOW_base_type_in_type327);
+					pushFollow(FOLLOW_base_type_in_type321);
 					base_type58=base_type();
 					state._fsp--;
 
@@ -1492,44 +1498,44 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /home/gangil/dev/Tiger/tiger.g:79:4: ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type
+					// /Users/twb/repos/Tiger/tiger.g:80:4: ARRAY LBRACK INTLIT RBRACK LPAREN INTLIT RPAREN OF base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ARRAY59=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type332); 
+					ARRAY59=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type326); 
 					ARRAY59_tree = (Object)adaptor.create(ARRAY59);
 					adaptor.addChild(root_0, ARRAY59_tree);
 
-					LBRACK60=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type334); 
+					LBRACK60=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type328); 
 					LBRACK60_tree = (Object)adaptor.create(LBRACK60);
 					adaptor.addChild(root_0, LBRACK60_tree);
 
-					INTLIT61=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type336); 
+					INTLIT61=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type330); 
 					INTLIT61_tree = (Object)adaptor.create(INTLIT61);
 					adaptor.addChild(root_0, INTLIT61_tree);
 
-					RBRACK62=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type338); 
+					RBRACK62=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type332); 
 					RBRACK62_tree = (Object)adaptor.create(RBRACK62);
 					adaptor.addChild(root_0, RBRACK62_tree);
 
-					LPAREN63=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type340); 
+					LPAREN63=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type334); 
 					LPAREN63_tree = (Object)adaptor.create(LPAREN63);
 					adaptor.addChild(root_0, LPAREN63_tree);
 
-					INTLIT64=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type342); 
+					INTLIT64=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type336); 
 					INTLIT64_tree = (Object)adaptor.create(INTLIT64);
 					adaptor.addChild(root_0, INTLIT64_tree);
 
-					RPAREN65=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type344); 
+					RPAREN65=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type338); 
 					RPAREN65_tree = (Object)adaptor.create(RPAREN65);
 					adaptor.addChild(root_0, RPAREN65_tree);
 
-					OF66=(Token)match(input,OF,FOLLOW_OF_in_type346); 
+					OF66=(Token)match(input,OF,FOLLOW_OF_in_type340); 
 					OF66_tree = (Object)adaptor.create(OF66);
 					adaptor.addChild(root_0, OF66_tree);
 
-					pushFollow(FOLLOW_base_type_in_type348);
+					pushFollow(FOLLOW_base_type_in_type342);
 					base_type67=base_type();
 					state._fsp--;
 
@@ -1566,7 +1572,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "type_id"
-	// /home/gangil/dev/Tiger/tiger.g:82:1: type_id : ( base_type | ID );
+	// /Users/twb/repos/Tiger/tiger.g:83:1: type_id : ( base_type | ID );
 	public final tigerParser.type_id_return type_id() throws RecognitionException {
 		tigerParser.type_id_return retval = new tigerParser.type_id_return();
 		retval.start = input.LT(1);
@@ -1579,7 +1585,7 @@ public class tigerParser extends Parser {
 		Object ID69_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:83:2: ( base_type | ID )
+			// /Users/twb/repos/Tiger/tiger.g:84:2: ( base_type | ID )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==FIXEDPT||LA9_0==INT) ) {
@@ -1597,12 +1603,12 @@ public class tigerParser extends Parser {
 
 			switch (alt9) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:83:4: base_type
+					// /Users/twb/repos/Tiger/tiger.g:84:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_base_type_in_type_id359);
+					pushFollow(FOLLOW_base_type_in_type_id353);
 					base_type68=base_type();
 					state._fsp--;
 
@@ -1611,12 +1617,12 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:84:4: ID
+					// /Users/twb/repos/Tiger/tiger.g:85:4: ID
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ID69=(Token)match(input,ID,FOLLOW_ID_in_type_id364); 
+					ID69=(Token)match(input,ID,FOLLOW_ID_in_type_id358); 
 					ID69_tree = (Object)adaptor.create(ID69);
 					adaptor.addChild(root_0, ID69_tree);
 
@@ -1651,7 +1657,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "base_type"
-	// /home/gangil/dev/Tiger/tiger.g:87:1: base_type : ( INT | FIXEDPT );
+	// /Users/twb/repos/Tiger/tiger.g:88:1: base_type : ( INT | FIXEDPT );
 	public final tigerParser.base_type_return base_type() throws RecognitionException {
 		tigerParser.base_type_return retval = new tigerParser.base_type_return();
 		retval.start = input.LT(1);
@@ -1663,8 +1669,8 @@ public class tigerParser extends Parser {
 		Object set70_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:88:2: ( INT | FIXEDPT )
-			// /home/gangil/dev/Tiger/tiger.g:
+			// /Users/twb/repos/Tiger/tiger.g:89:2: ( INT | FIXEDPT )
+			// /Users/twb/repos/Tiger/tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -1708,7 +1714,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration"
-	// /home/gangil/dev/Tiger/tiger.g:92:1: var_declaration : VAR id_list COLON type_id optional_init SEMI ;
+	// /Users/twb/repos/Tiger/tiger.g:93:1: var_declaration : VAR id_list COLON type_id optional_init SEMI ;
 	public final tigerParser.var_declaration_return var_declaration() throws RecognitionException {
 		tigerParser.var_declaration_return retval = new tigerParser.var_declaration_return();
 		retval.start = input.LT(1);
@@ -1727,39 +1733,39 @@ public class tigerParser extends Parser {
 		Object SEMI76_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:93:2: ( VAR id_list COLON type_id optional_init SEMI )
-			// /home/gangil/dev/Tiger/tiger.g:93:4: VAR id_list COLON type_id optional_init SEMI
+			// /Users/twb/repos/Tiger/tiger.g:94:2: ( VAR id_list COLON type_id optional_init SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:94:4: VAR id_list COLON type_id optional_init SEMI
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			VAR71=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration391); 
+			VAR71=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration385); 
 			VAR71_tree = (Object)adaptor.create(VAR71);
 			adaptor.addChild(root_0, VAR71_tree);
 
-			pushFollow(FOLLOW_id_list_in_var_declaration393);
+			pushFollow(FOLLOW_id_list_in_var_declaration387);
 			id_list72=id_list();
 			state._fsp--;
 
 			adaptor.addChild(root_0, id_list72.getTree());
 
-			COLON73=(Token)match(input,COLON,FOLLOW_COLON_in_var_declaration395); 
+			COLON73=(Token)match(input,COLON,FOLLOW_COLON_in_var_declaration389); 
 			COLON73_tree = (Object)adaptor.create(COLON73);
 			adaptor.addChild(root_0, COLON73_tree);
 
-			pushFollow(FOLLOW_type_id_in_var_declaration397);
+			pushFollow(FOLLOW_type_id_in_var_declaration391);
 			type_id74=type_id();
 			state._fsp--;
 
 			adaptor.addChild(root_0, type_id74.getTree());
 
-			pushFollow(FOLLOW_optional_init_in_var_declaration399);
+			pushFollow(FOLLOW_optional_init_in_var_declaration393);
 			optional_init75=optional_init();
 			state._fsp--;
 
 			adaptor.addChild(root_0, optional_init75.getTree());
 
-			SEMI76=(Token)match(input,SEMI,FOLLOW_SEMI_in_var_declaration401); 
+			SEMI76=(Token)match(input,SEMI,FOLLOW_SEMI_in_var_declaration395); 
 			SEMI76_tree = (Object)adaptor.create(SEMI76);
 			adaptor.addChild(root_0, SEMI76_tree);
 
@@ -1792,7 +1798,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "optional_init"
-	// /home/gangil/dev/Tiger/tiger.g:96:1: optional_init : ( ASSIGN constant |);
+	// /Users/twb/repos/Tiger/tiger.g:97:1: optional_init : ( ASSIGN constant |);
 	public final tigerParser.optional_init_return optional_init() throws RecognitionException {
 		tigerParser.optional_init_return retval = new tigerParser.optional_init_return();
 		retval.start = input.LT(1);
@@ -1805,7 +1811,7 @@ public class tigerParser extends Parser {
 		Object ASSIGN77_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:97:2: ( ASSIGN constant |)
+			// /Users/twb/repos/Tiger/tiger.g:98:2: ( ASSIGN constant |)
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0==ASSIGN) ) {
@@ -1823,16 +1829,16 @@ public class tigerParser extends Parser {
 
 			switch (alt10) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:97:4: ASSIGN constant
+					// /Users/twb/repos/Tiger/tiger.g:98:4: ASSIGN constant
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ASSIGN77=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_init412); 
+					ASSIGN77=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_init406); 
 					ASSIGN77_tree = (Object)adaptor.create(ASSIGN77);
 					adaptor.addChild(root_0, ASSIGN77_tree);
 
-					pushFollow(FOLLOW_constant_in_optional_init414);
+					pushFollow(FOLLOW_constant_in_optional_init408);
 					constant78=constant();
 					state._fsp--;
 
@@ -1841,7 +1847,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:99:2: 
+					// /Users/twb/repos/Tiger/tiger.g:100:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1877,7 +1883,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "id_list"
-	// /home/gangil/dev/Tiger/tiger.g:101:1: id_list : ( ID | ID COMMA id_list );
+	// /Users/twb/repos/Tiger/tiger.g:102:1: id_list : ( ID | ID COMMA id_list );
 	public final tigerParser.id_list_return id_list() throws RecognitionException {
 		tigerParser.id_list_return retval = new tigerParser.id_list_return();
 		retval.start = input.LT(1);
@@ -1894,7 +1900,7 @@ public class tigerParser extends Parser {
 		Object COMMA81_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:102:2: ( ID | ID COMMA id_list )
+			// /Users/twb/repos/Tiger/tiger.g:103:2: ( ID | ID COMMA id_list )
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==ID) ) {
@@ -1928,32 +1934,32 @@ public class tigerParser extends Parser {
 
 			switch (alt11) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:102:4: ID
+					// /Users/twb/repos/Tiger/tiger.g:103:4: ID
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ID79=(Token)match(input,ID,FOLLOW_ID_in_id_list429); 
+					ID79=(Token)match(input,ID,FOLLOW_ID_in_id_list423); 
 					ID79_tree = (Object)adaptor.create(ID79);
 					adaptor.addChild(root_0, ID79_tree);
 
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:103:4: ID COMMA id_list
+					// /Users/twb/repos/Tiger/tiger.g:104:4: ID COMMA id_list
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ID80=(Token)match(input,ID,FOLLOW_ID_in_id_list434); 
+					ID80=(Token)match(input,ID,FOLLOW_ID_in_id_list428); 
 					ID80_tree = (Object)adaptor.create(ID80);
 					adaptor.addChild(root_0, ID80_tree);
 
-					COMMA81=(Token)match(input,COMMA,FOLLOW_COMMA_in_id_list436); 
+					COMMA81=(Token)match(input,COMMA,FOLLOW_COMMA_in_id_list430); 
 					COMMA81_tree = (Object)adaptor.create(COMMA81);
 					adaptor.addChild(root_0, COMMA81_tree);
 
-					pushFollow(FOLLOW_id_list_in_id_list438);
+					pushFollow(FOLLOW_id_list_in_id_list432);
 					id_list82=id_list();
 					state._fsp--;
 
@@ -1990,7 +1996,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "optional_int"
-	// /home/gangil/dev/Tiger/tiger.g:106:1: optional_int : ( ASSIGN constant |);
+	// /Users/twb/repos/Tiger/tiger.g:107:1: optional_int : ( ASSIGN constant |);
 	public final tigerParser.optional_int_return optional_int() throws RecognitionException {
 		tigerParser.optional_int_return retval = new tigerParser.optional_int_return();
 		retval.start = input.LT(1);
@@ -2003,7 +2009,7 @@ public class tigerParser extends Parser {
 		Object ASSIGN83_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:107:2: ( ASSIGN constant |)
+			// /Users/twb/repos/Tiger/tiger.g:108:2: ( ASSIGN constant |)
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==ASSIGN) ) {
@@ -2021,16 +2027,16 @@ public class tigerParser extends Parser {
 
 			switch (alt12) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:107:4: ASSIGN constant
+					// /Users/twb/repos/Tiger/tiger.g:108:4: ASSIGN constant
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ASSIGN83=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_int449); 
+					ASSIGN83=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_int443); 
 					ASSIGN83_tree = (Object)adaptor.create(ASSIGN83);
 					adaptor.addChild(root_0, ASSIGN83_tree);
 
-					pushFollow(FOLLOW_constant_in_optional_int451);
+					pushFollow(FOLLOW_constant_in_optional_int445);
 					constant84=constant();
 					state._fsp--;
 
@@ -2039,7 +2045,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:109:2: 
+					// /Users/twb/repos/Tiger/tiger.g:110:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2075,7 +2081,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "stat_seq"
-	// /home/gangil/dev/Tiger/tiger.g:111:1: stat_seq : ( stat )* ;
+	// /Users/twb/repos/Tiger/tiger.g:112:1: stat_seq : ( stat )* ;
 	public final tigerParser.stat_seq_return stat_seq() throws RecognitionException {
 		tigerParser.stat_seq_return retval = new tigerParser.stat_seq_return();
 		retval.start = input.LT(1);
@@ -2086,13 +2092,13 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:112:2: ( ( stat )* )
-			// /home/gangil/dev/Tiger/tiger.g:112:4: ( stat )*
+			// /Users/twb/repos/Tiger/tiger.g:113:2: ( ( stat )* )
+			// /Users/twb/repos/Tiger/tiger.g:113:4: ( stat )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			// /home/gangil/dev/Tiger/tiger.g:112:4: ( stat )*
+			// /Users/twb/repos/Tiger/tiger.g:113:4: ( stat )*
 			loop13:
 			while (true) {
 				int alt13=2;
@@ -2103,9 +2109,9 @@ public class tigerParser extends Parser {
 
 				switch (alt13) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:112:5: stat
+					// /Users/twb/repos/Tiger/tiger.g:113:5: stat
 					{
-					pushFollow(FOLLOW_stat_in_stat_seq467);
+					pushFollow(FOLLOW_stat_in_stat_seq461);
 					stat85=stat();
 					state._fsp--;
 
@@ -2148,7 +2154,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr"
-	// /home/gangil/dev/Tiger/tiger.g:115:1: expr : ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* ;
+	// /Users/twb/repos/Tiger/tiger.g:116:1: expr : ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* ;
 	public final tigerParser.expr_return expr() throws RecognitionException {
 		tigerParser.expr_return retval = new tigerParser.expr_return();
 		retval.start = input.LT(1);
@@ -2167,13 +2173,13 @@ public class tigerParser extends Parser {
 		Object RPAREN90_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:116:2: ( ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* )
-			// /home/gangil/dev/Tiger/tiger.g:116:4: ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )*
+			// /Users/twb/repos/Tiger/tiger.g:117:2: ( ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )* )
+			// /Users/twb/repos/Tiger/tiger.g:117:4: ( constant | value | LPAREN expr RPAREN ) ( options {greedy=true; } : binary_operator expr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			// /home/gangil/dev/Tiger/tiger.g:116:4: ( constant | value | LPAREN expr RPAREN )
+			// /Users/twb/repos/Tiger/tiger.g:117:4: ( constant | value | LPAREN expr RPAREN )
 			int alt14=3;
 			switch ( input.LA(1) ) {
 			case FIXEDPTLIT:
@@ -2199,9 +2205,9 @@ public class tigerParser extends Parser {
 			}
 			switch (alt14) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:116:5: constant
+					// /Users/twb/repos/Tiger/tiger.g:117:5: constant
 					{
-					pushFollow(FOLLOW_constant_in_expr481);
+					pushFollow(FOLLOW_constant_in_expr475);
 					constant86=constant();
 					state._fsp--;
 
@@ -2210,9 +2216,9 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:116:16: value
+					// /Users/twb/repos/Tiger/tiger.g:117:16: value
 					{
-					pushFollow(FOLLOW_value_in_expr485);
+					pushFollow(FOLLOW_value_in_expr479);
 					value87=value();
 					state._fsp--;
 
@@ -2221,19 +2227,19 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /home/gangil/dev/Tiger/tiger.g:116:24: LPAREN expr RPAREN
+					// /Users/twb/repos/Tiger/tiger.g:117:24: LPAREN expr RPAREN
 					{
-					LPAREN88=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr489); 
+					LPAREN88=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr483); 
 					LPAREN88_tree = (Object)adaptor.create(LPAREN88);
 					adaptor.addChild(root_0, LPAREN88_tree);
 
-					pushFollow(FOLLOW_expr_in_expr491);
+					pushFollow(FOLLOW_expr_in_expr485);
 					expr89=expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, expr89.getTree());
 
-					RPAREN90=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_expr493); 
+					RPAREN90=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_expr487); 
 					RPAREN90_tree = (Object)adaptor.create(RPAREN90);
 					adaptor.addChild(root_0, RPAREN90_tree);
 
@@ -2242,7 +2248,7 @@ public class tigerParser extends Parser {
 
 			}
 
-			// /home/gangil/dev/Tiger/tiger.g:116:44: ( options {greedy=true; } : binary_operator expr )*
+			// /Users/twb/repos/Tiger/tiger.g:117:44: ( options {greedy=true; } : binary_operator expr )*
 			loop15:
 			while (true) {
 				int alt15=2;
@@ -2300,15 +2306,15 @@ public class tigerParser extends Parser {
 				}
 				switch (alt15) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:116:67: binary_operator expr
+					// /Users/twb/repos/Tiger/tiger.g:117:67: binary_operator expr
 					{
-					pushFollow(FOLLOW_binary_operator_in_expr504);
+					pushFollow(FOLLOW_binary_operator_in_expr498);
 					binary_operator91=binary_operator();
 					state._fsp--;
 
 					adaptor.addChild(root_0, binary_operator91.getTree());
 
-					pushFollow(FOLLOW_expr_in_expr506);
+					pushFollow(FOLLOW_expr_in_expr500);
 					expr92=expr();
 					state._fsp--;
 
@@ -2351,7 +2357,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list"
-	// /home/gangil/dev/Tiger/tiger.g:119:1: expr_list : ( expr expr_list_tail |);
+	// /Users/twb/repos/Tiger/tiger.g:120:1: expr_list : ( expr expr_list_tail |);
 	public final tigerParser.expr_list_return expr_list() throws RecognitionException {
 		tigerParser.expr_list_return retval = new tigerParser.expr_list_return();
 		retval.start = input.LT(1);
@@ -2363,7 +2369,7 @@ public class tigerParser extends Parser {
 
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:120:2: ( expr expr_list_tail |)
+			// /Users/twb/repos/Tiger/tiger.g:121:2: ( expr expr_list_tail |)
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==FIXEDPTLIT||LA16_0==ID||LA16_0==INTLIT||LA16_0==LPAREN) ) {
@@ -2381,18 +2387,18 @@ public class tigerParser extends Parser {
 
 			switch (alt16) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:120:4: expr expr_list_tail
+					// /Users/twb/repos/Tiger/tiger.g:121:4: expr expr_list_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_expr_in_expr_list519);
+					pushFollow(FOLLOW_expr_in_expr_list513);
 					expr93=expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, expr93.getTree());
 
-					pushFollow(FOLLOW_expr_list_tail_in_expr_list521);
+					pushFollow(FOLLOW_expr_list_tail_in_expr_list515);
 					expr_list_tail94=expr_list_tail();
 					state._fsp--;
 
@@ -2401,7 +2407,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:122:2: 
+					// /Users/twb/repos/Tiger/tiger.g:123:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2437,7 +2443,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list_tail"
-	// /home/gangil/dev/Tiger/tiger.g:124:1: expr_list_tail : ( COMMA expr expr_list_tail |);
+	// /Users/twb/repos/Tiger/tiger.g:125:1: expr_list_tail : ( COMMA expr expr_list_tail |);
 	public final tigerParser.expr_list_tail_return expr_list_tail() throws RecognitionException {
 		tigerParser.expr_list_tail_return retval = new tigerParser.expr_list_tail_return();
 		retval.start = input.LT(1);
@@ -2451,7 +2457,7 @@ public class tigerParser extends Parser {
 		Object COMMA95_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:125:2: ( COMMA expr expr_list_tail |)
+			// /Users/twb/repos/Tiger/tiger.g:126:2: ( COMMA expr expr_list_tail |)
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0==COMMA) ) {
@@ -2469,22 +2475,22 @@ public class tigerParser extends Parser {
 
 			switch (alt17) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:125:4: COMMA expr expr_list_tail
+					// /Users/twb/repos/Tiger/tiger.g:126:4: COMMA expr expr_list_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					COMMA95=(Token)match(input,COMMA,FOLLOW_COMMA_in_expr_list_tail536); 
+					COMMA95=(Token)match(input,COMMA,FOLLOW_COMMA_in_expr_list_tail530); 
 					COMMA95_tree = (Object)adaptor.create(COMMA95);
 					adaptor.addChild(root_0, COMMA95_tree);
 
-					pushFollow(FOLLOW_expr_in_expr_list_tail538);
+					pushFollow(FOLLOW_expr_in_expr_list_tail532);
 					expr96=expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, expr96.getTree());
 
-					pushFollow(FOLLOW_expr_list_tail_in_expr_list_tail540);
+					pushFollow(FOLLOW_expr_list_tail_in_expr_list_tail534);
 					expr_list_tail97=expr_list_tail();
 					state._fsp--;
 
@@ -2493,7 +2499,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:127:2: 
+					// /Users/twb/repos/Tiger/tiger.g:128:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2529,7 +2535,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "stat"
-	// /home/gangil/dev/Tiger/tiger.g:129:1: stat : ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block_list | funct_call SEMI );
+	// /Users/twb/repos/Tiger/tiger.g:130:1: stat : ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block | funct_call SEMI );
 	public final tigerParser.stat_return stat() throws RecognitionException {
 		tigerParser.stat_return retval = new tigerParser.stat_return();
 		retval.start = input.LT(1);
@@ -2568,7 +2574,7 @@ public class tigerParser extends Parser {
 		ParserRuleReturnScope index_expr119 =null;
 		ParserRuleReturnScope stat_seq121 =null;
 		ParserRuleReturnScope expr127 =null;
-		ParserRuleReturnScope block_list129 =null;
+		ParserRuleReturnScope block129 =null;
 		ParserRuleReturnScope funct_call130 =null;
 
 		Object ASSIGN99_tree=null;
@@ -2595,7 +2601,7 @@ public class tigerParser extends Parser {
 		Object SEMI131_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:130:2: ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block_list | funct_call SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:131:2: ( value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI ) | if_stmt | WHILE expr DO stat_seq ENDDO SEMI | FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI | BREAK SEMI | RETURN expr SEMI | block | funct_call SEMI )
 			int alt19=8;
 			switch ( input.LA(1) ) {
 			case ID:
@@ -2659,22 +2665,22 @@ public class tigerParser extends Parser {
 			}
 			switch (alt19) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:130:4: value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+					// /Users/twb/repos/Tiger/tiger.g:131:4: value ASSIGN ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_value_in_stat555);
+					pushFollow(FOLLOW_value_in_stat549);
 					value98=value();
 					state._fsp--;
 
 					adaptor.addChild(root_0, value98.getTree());
 
-					ASSIGN99=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat557); 
+					ASSIGN99=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat551); 
 					ASSIGN99_tree = (Object)adaptor.create(ASSIGN99);
 					adaptor.addChild(root_0, ASSIGN99_tree);
 
-					// /home/gangil/dev/Tiger/tiger.g:130:17: ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
+					// /Users/twb/repos/Tiger/tiger.g:131:17: ( expr SEMI | IF LPAREN expr_list RPAREN SEMI )
 					int alt18=2;
 					int LA18_0 = input.LA(1);
 					if ( (LA18_0==FIXEDPTLIT||LA18_0==ID||LA18_0==INTLIT||LA18_0==LPAREN) ) {
@@ -2692,42 +2698,42 @@ public class tigerParser extends Parser {
 
 					switch (alt18) {
 						case 1 :
-							// /home/gangil/dev/Tiger/tiger.g:130:18: expr SEMI
+							// /Users/twb/repos/Tiger/tiger.g:131:18: expr SEMI
 							{
-							pushFollow(FOLLOW_expr_in_stat560);
+							pushFollow(FOLLOW_expr_in_stat554);
 							expr100=expr();
 							state._fsp--;
 
 							adaptor.addChild(root_0, expr100.getTree());
 
-							SEMI101=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat562); 
+							SEMI101=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat556); 
 							SEMI101_tree = (Object)adaptor.create(SEMI101);
 							adaptor.addChild(root_0, SEMI101_tree);
 
 							}
 							break;
 						case 2 :
-							// /home/gangil/dev/Tiger/tiger.g:130:30: IF LPAREN expr_list RPAREN SEMI
+							// /Users/twb/repos/Tiger/tiger.g:131:30: IF LPAREN expr_list RPAREN SEMI
 							{
-							IF102=(Token)match(input,IF,FOLLOW_IF_in_stat566); 
+							IF102=(Token)match(input,IF,FOLLOW_IF_in_stat560); 
 							IF102_tree = (Object)adaptor.create(IF102);
 							adaptor.addChild(root_0, IF102_tree);
 
-							LPAREN103=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_stat568); 
+							LPAREN103=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_stat562); 
 							LPAREN103_tree = (Object)adaptor.create(LPAREN103);
 							adaptor.addChild(root_0, LPAREN103_tree);
 
-							pushFollow(FOLLOW_expr_list_in_stat570);
+							pushFollow(FOLLOW_expr_list_in_stat564);
 							expr_list104=expr_list();
 							state._fsp--;
 
 							adaptor.addChild(root_0, expr_list104.getTree());
 
-							RPAREN105=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_stat572); 
+							RPAREN105=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_stat566); 
 							RPAREN105_tree = (Object)adaptor.create(RPAREN105);
 							adaptor.addChild(root_0, RPAREN105_tree);
 
-							SEMI106=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat574); 
+							SEMI106=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat568); 
 							SEMI106_tree = (Object)adaptor.create(SEMI106);
 							adaptor.addChild(root_0, SEMI106_tree);
 
@@ -2739,12 +2745,12 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:131:4: if_stmt
+					// /Users/twb/repos/Tiger/tiger.g:132:4: if_stmt
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_if_stmt_in_stat580);
+					pushFollow(FOLLOW_if_stmt_in_stat574);
 					if_stmt107=if_stmt();
 					state._fsp--;
 
@@ -2753,160 +2759,160 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /home/gangil/dev/Tiger/tiger.g:132:4: WHILE expr DO stat_seq ENDDO SEMI
+					// /Users/twb/repos/Tiger/tiger.g:133:4: WHILE expr DO stat_seq ENDDO SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					WHILE108=(Token)match(input,WHILE,FOLLOW_WHILE_in_stat585); 
+					WHILE108=(Token)match(input,WHILE,FOLLOW_WHILE_in_stat579); 
 					WHILE108_tree = (Object)adaptor.create(WHILE108);
 					adaptor.addChild(root_0, WHILE108_tree);
 
-					pushFollow(FOLLOW_expr_in_stat587);
+					pushFollow(FOLLOW_expr_in_stat581);
 					expr109=expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, expr109.getTree());
 
-					DO110=(Token)match(input,DO,FOLLOW_DO_in_stat589); 
+					DO110=(Token)match(input,DO,FOLLOW_DO_in_stat583); 
 					DO110_tree = (Object)adaptor.create(DO110);
 					adaptor.addChild(root_0, DO110_tree);
 
-					pushFollow(FOLLOW_stat_seq_in_stat591);
+					pushFollow(FOLLOW_stat_seq_in_stat585);
 					stat_seq111=stat_seq();
 					state._fsp--;
 
 					adaptor.addChild(root_0, stat_seq111.getTree());
 
-					ENDDO112=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat593); 
+					ENDDO112=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat587); 
 					ENDDO112_tree = (Object)adaptor.create(ENDDO112);
 					adaptor.addChild(root_0, ENDDO112_tree);
 
-					SEMI113=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat595); 
+					SEMI113=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat589); 
 					SEMI113_tree = (Object)adaptor.create(SEMI113);
 					adaptor.addChild(root_0, SEMI113_tree);
 
 					}
 					break;
 				case 4 :
-					// /home/gangil/dev/Tiger/tiger.g:133:4: FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
+					// /Users/twb/repos/Tiger/tiger.g:134:4: FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					FOR114=(Token)match(input,FOR,FOLLOW_FOR_in_stat600); 
+					FOR114=(Token)match(input,FOR,FOLLOW_FOR_in_stat594); 
 					FOR114_tree = (Object)adaptor.create(FOR114);
 					adaptor.addChild(root_0, FOR114_tree);
 
-					ID115=(Token)match(input,ID,FOLLOW_ID_in_stat602); 
+					ID115=(Token)match(input,ID,FOLLOW_ID_in_stat596); 
 					ID115_tree = (Object)adaptor.create(ID115);
 					adaptor.addChild(root_0, ID115_tree);
 
-					ASSIGN116=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat604); 
+					ASSIGN116=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat598); 
 					ASSIGN116_tree = (Object)adaptor.create(ASSIGN116);
 					adaptor.addChild(root_0, ASSIGN116_tree);
 
-					pushFollow(FOLLOW_index_expr_in_stat606);
+					pushFollow(FOLLOW_index_expr_in_stat600);
 					index_expr117=index_expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, index_expr117.getTree());
 
-					TO118=(Token)match(input,TO,FOLLOW_TO_in_stat608); 
+					TO118=(Token)match(input,TO,FOLLOW_TO_in_stat602); 
 					TO118_tree = (Object)adaptor.create(TO118);
 					adaptor.addChild(root_0, TO118_tree);
 
-					pushFollow(FOLLOW_index_expr_in_stat610);
+					pushFollow(FOLLOW_index_expr_in_stat604);
 					index_expr119=index_expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, index_expr119.getTree());
 
-					DO120=(Token)match(input,DO,FOLLOW_DO_in_stat612); 
+					DO120=(Token)match(input,DO,FOLLOW_DO_in_stat606); 
 					DO120_tree = (Object)adaptor.create(DO120);
 					adaptor.addChild(root_0, DO120_tree);
 
-					pushFollow(FOLLOW_stat_seq_in_stat614);
+					pushFollow(FOLLOW_stat_seq_in_stat608);
 					stat_seq121=stat_seq();
 					state._fsp--;
 
 					adaptor.addChild(root_0, stat_seq121.getTree());
 
-					ENDDO122=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat616); 
+					ENDDO122=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat610); 
 					ENDDO122_tree = (Object)adaptor.create(ENDDO122);
 					adaptor.addChild(root_0, ENDDO122_tree);
 
-					SEMI123=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat618); 
+					SEMI123=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat612); 
 					SEMI123_tree = (Object)adaptor.create(SEMI123);
 					adaptor.addChild(root_0, SEMI123_tree);
 
 					}
 					break;
 				case 5 :
-					// /home/gangil/dev/Tiger/tiger.g:134:4: BREAK SEMI
+					// /Users/twb/repos/Tiger/tiger.g:135:4: BREAK SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					BREAK124=(Token)match(input,BREAK,FOLLOW_BREAK_in_stat623); 
+					BREAK124=(Token)match(input,BREAK,FOLLOW_BREAK_in_stat617); 
 					BREAK124_tree = (Object)adaptor.create(BREAK124);
 					adaptor.addChild(root_0, BREAK124_tree);
 
-					SEMI125=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat625); 
+					SEMI125=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat619); 
 					SEMI125_tree = (Object)adaptor.create(SEMI125);
 					adaptor.addChild(root_0, SEMI125_tree);
 
 					}
 					break;
 				case 6 :
-					// /home/gangil/dev/Tiger/tiger.g:135:4: RETURN expr SEMI
+					// /Users/twb/repos/Tiger/tiger.g:136:4: RETURN expr SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					RETURN126=(Token)match(input,RETURN,FOLLOW_RETURN_in_stat630); 
+					RETURN126=(Token)match(input,RETURN,FOLLOW_RETURN_in_stat624); 
 					RETURN126_tree = (Object)adaptor.create(RETURN126);
 					adaptor.addChild(root_0, RETURN126_tree);
 
-					pushFollow(FOLLOW_expr_in_stat632);
+					pushFollow(FOLLOW_expr_in_stat626);
 					expr127=expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, expr127.getTree());
 
-					SEMI128=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat634); 
+					SEMI128=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat628); 
 					SEMI128_tree = (Object)adaptor.create(SEMI128);
 					adaptor.addChild(root_0, SEMI128_tree);
 
 					}
 					break;
 				case 7 :
-					// /home/gangil/dev/Tiger/tiger.g:136:4: block_list
+					// /Users/twb/repos/Tiger/tiger.g:137:4: block
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_block_list_in_stat639);
-					block_list129=block_list();
+					pushFollow(FOLLOW_block_in_stat633);
+					block129=block();
 					state._fsp--;
 
-					adaptor.addChild(root_0, block_list129.getTree());
+					adaptor.addChild(root_0, block129.getTree());
 
 					}
 					break;
 				case 8 :
-					// /home/gangil/dev/Tiger/tiger.g:137:4: funct_call SEMI
+					// /Users/twb/repos/Tiger/tiger.g:138:4: funct_call SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_funct_call_in_stat644);
+					pushFollow(FOLLOW_funct_call_in_stat638);
 					funct_call130=funct_call();
 					state._fsp--;
 
 					adaptor.addChild(root_0, funct_call130.getTree());
 
-					SEMI131=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat646); 
+					SEMI131=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat640); 
 					SEMI131_tree = (Object)adaptor.create(SEMI131);
 					adaptor.addChild(root_0, SEMI131_tree);
 
@@ -2941,7 +2947,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "if_stmt"
-	// /home/gangil/dev/Tiger/tiger.g:140:1: if_stmt : IF expr THEN stat_seq if_tail ;
+	// /Users/twb/repos/Tiger/tiger.g:141:1: if_stmt : IF expr THEN stat_seq if_tail ;
 	public final tigerParser.if_stmt_return if_stmt() throws RecognitionException {
 		tigerParser.if_stmt_return retval = new tigerParser.if_stmt_return();
 		retval.start = input.LT(1);
@@ -2958,33 +2964,33 @@ public class tigerParser extends Parser {
 		Object THEN134_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:141:2: ( IF expr THEN stat_seq if_tail )
-			// /home/gangil/dev/Tiger/tiger.g:141:4: IF expr THEN stat_seq if_tail
+			// /Users/twb/repos/Tiger/tiger.g:142:2: ( IF expr THEN stat_seq if_tail )
+			// /Users/twb/repos/Tiger/tiger.g:142:4: IF expr THEN stat_seq if_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			IF132=(Token)match(input,IF,FOLLOW_IF_in_if_stmt657); 
+			IF132=(Token)match(input,IF,FOLLOW_IF_in_if_stmt651); 
 			IF132_tree = (Object)adaptor.create(IF132);
 			adaptor.addChild(root_0, IF132_tree);
 
-			pushFollow(FOLLOW_expr_in_if_stmt659);
+			pushFollow(FOLLOW_expr_in_if_stmt653);
 			expr133=expr();
 			state._fsp--;
 
 			adaptor.addChild(root_0, expr133.getTree());
 
-			THEN134=(Token)match(input,THEN,FOLLOW_THEN_in_if_stmt661); 
+			THEN134=(Token)match(input,THEN,FOLLOW_THEN_in_if_stmt655); 
 			THEN134_tree = (Object)adaptor.create(THEN134);
 			adaptor.addChild(root_0, THEN134_tree);
 
-			pushFollow(FOLLOW_stat_seq_in_if_stmt663);
+			pushFollow(FOLLOW_stat_seq_in_if_stmt657);
 			stat_seq135=stat_seq();
 			state._fsp--;
 
 			adaptor.addChild(root_0, stat_seq135.getTree());
 
-			pushFollow(FOLLOW_if_tail_in_if_stmt665);
+			pushFollow(FOLLOW_if_tail_in_if_stmt659);
 			if_tail136=if_tail();
 			state._fsp--;
 
@@ -3019,7 +3025,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "if_tail"
-	// /home/gangil/dev/Tiger/tiger.g:144:1: if_tail : ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI );
+	// /Users/twb/repos/Tiger/tiger.g:145:1: if_tail : ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI );
 	public final tigerParser.if_tail_return if_tail() throws RecognitionException {
 		tigerParser.if_tail_return retval = new tigerParser.if_tail_return();
 		retval.start = input.LT(1);
@@ -3040,7 +3046,7 @@ public class tigerParser extends Parser {
 		Object SEMI142_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:145:2: ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI )
+			// /Users/twb/repos/Tiger/tiger.g:146:2: ( ELSE stat_seq ENDIF SEMI | ENDIF SEMI )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0==ELSE) ) {
@@ -3058,42 +3064,42 @@ public class tigerParser extends Parser {
 
 			switch (alt20) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:145:4: ELSE stat_seq ENDIF SEMI
+					// /Users/twb/repos/Tiger/tiger.g:146:4: ELSE stat_seq ENDIF SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ELSE137=(Token)match(input,ELSE,FOLLOW_ELSE_in_if_tail676); 
+					ELSE137=(Token)match(input,ELSE,FOLLOW_ELSE_in_if_tail670); 
 					ELSE137_tree = (Object)adaptor.create(ELSE137);
 					adaptor.addChild(root_0, ELSE137_tree);
 
-					pushFollow(FOLLOW_stat_seq_in_if_tail678);
+					pushFollow(FOLLOW_stat_seq_in_if_tail672);
 					stat_seq138=stat_seq();
 					state._fsp--;
 
 					adaptor.addChild(root_0, stat_seq138.getTree());
 
-					ENDIF139=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_tail680); 
+					ENDIF139=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_tail674); 
 					ENDIF139_tree = (Object)adaptor.create(ENDIF139);
 					adaptor.addChild(root_0, ENDIF139_tree);
 
-					SEMI140=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_tail682); 
+					SEMI140=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_tail676); 
 					SEMI140_tree = (Object)adaptor.create(SEMI140);
 					adaptor.addChild(root_0, SEMI140_tree);
 
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:146:4: ENDIF SEMI
+					// /Users/twb/repos/Tiger/tiger.g:147:4: ENDIF SEMI
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ENDIF141=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_tail687); 
+					ENDIF141=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_tail681); 
 					ENDIF141_tree = (Object)adaptor.create(ENDIF141);
 					adaptor.addChild(root_0, ENDIF141_tree);
 
-					SEMI142=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_tail689); 
+					SEMI142=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_tail683); 
 					SEMI142_tree = (Object)adaptor.create(SEMI142);
 					adaptor.addChild(root_0, SEMI142_tree);
 
@@ -3128,7 +3134,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "opt_prefix"
-	// /home/gangil/dev/Tiger/tiger.g:149:1: opt_prefix : ( value ASSIGN |);
+	// /Users/twb/repos/Tiger/tiger.g:150:1: opt_prefix : ( value ASSIGN |);
 	public final tigerParser.opt_prefix_return opt_prefix() throws RecognitionException {
 		tigerParser.opt_prefix_return retval = new tigerParser.opt_prefix_return();
 		retval.start = input.LT(1);
@@ -3141,7 +3147,7 @@ public class tigerParser extends Parser {
 		Object ASSIGN144_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:150:2: ( value ASSIGN |)
+			// /Users/twb/repos/Tiger/tiger.g:151:2: ( value ASSIGN |)
 			int alt21=2;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0==ID) ) {
@@ -3159,25 +3165,25 @@ public class tigerParser extends Parser {
 
 			switch (alt21) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:150:4: value ASSIGN
+					// /Users/twb/repos/Tiger/tiger.g:151:4: value ASSIGN
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_value_in_opt_prefix700);
+					pushFollow(FOLLOW_value_in_opt_prefix694);
 					value143=value();
 					state._fsp--;
 
 					adaptor.addChild(root_0, value143.getTree());
 
-					ASSIGN144=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_opt_prefix702); 
+					ASSIGN144=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_opt_prefix696); 
 					ASSIGN144_tree = (Object)adaptor.create(ASSIGN144);
 					adaptor.addChild(root_0, ASSIGN144_tree);
 
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:152:2: 
+					// /Users/twb/repos/Tiger/tiger.g:153:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3213,7 +3219,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "constant"
-	// /home/gangil/dev/Tiger/tiger.g:154:1: constant : ( INTLIT | FIXEDPTLIT );
+	// /Users/twb/repos/Tiger/tiger.g:155:1: constant : ( INTLIT | FIXEDPTLIT );
 	public final tigerParser.constant_return constant() throws RecognitionException {
 		tigerParser.constant_return retval = new tigerParser.constant_return();
 		retval.start = input.LT(1);
@@ -3225,8 +3231,8 @@ public class tigerParser extends Parser {
 		Object set145_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:155:2: ( INTLIT | FIXEDPTLIT )
-			// /home/gangil/dev/Tiger/tiger.g:
+			// /Users/twb/repos/Tiger/tiger.g:156:2: ( INTLIT | FIXEDPTLIT )
+			// /Users/twb/repos/Tiger/tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -3270,7 +3276,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "binary_operator"
-	// /home/gangil/dev/Tiger/tiger.g:159:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR );
+	// /Users/twb/repos/Tiger/tiger.g:160:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR );
 	public final tigerParser.binary_operator_return binary_operator() throws RecognitionException {
 		tigerParser.binary_operator_return retval = new tigerParser.binary_operator_return();
 		retval.start = input.LT(1);
@@ -3308,7 +3314,7 @@ public class tigerParser extends Parser {
 		Object OR159_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:160:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR )
+			// /Users/twb/repos/Tiger/tiger.g:161:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LESSER EQ | GREATER EQ | AND | OR )
 			int alt22=12;
 			switch ( input.LA(1) ) {
 			case PLUS:
@@ -3406,152 +3412,152 @@ public class tigerParser extends Parser {
 			}
 			switch (alt22) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:160:4: PLUS
+					// /Users/twb/repos/Tiger/tiger.g:161:4: PLUS
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					PLUS146=(Token)match(input,PLUS,FOLLOW_PLUS_in_binary_operator734); 
+					PLUS146=(Token)match(input,PLUS,FOLLOW_PLUS_in_binary_operator728); 
 					PLUS146_tree = (Object)adaptor.create(PLUS146);
 					adaptor.addChild(root_0, PLUS146_tree);
 
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:161:4: MINUS
+					// /Users/twb/repos/Tiger/tiger.g:162:4: MINUS
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					MINUS147=(Token)match(input,MINUS,FOLLOW_MINUS_in_binary_operator739); 
+					MINUS147=(Token)match(input,MINUS,FOLLOW_MINUS_in_binary_operator733); 
 					MINUS147_tree = (Object)adaptor.create(MINUS147);
 					adaptor.addChild(root_0, MINUS147_tree);
 
 					}
 					break;
 				case 3 :
-					// /home/gangil/dev/Tiger/tiger.g:162:4: MULT
+					// /Users/twb/repos/Tiger/tiger.g:163:4: MULT
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					MULT148=(Token)match(input,MULT,FOLLOW_MULT_in_binary_operator744); 
+					MULT148=(Token)match(input,MULT,FOLLOW_MULT_in_binary_operator738); 
 					MULT148_tree = (Object)adaptor.create(MULT148);
 					adaptor.addChild(root_0, MULT148_tree);
 
 					}
 					break;
 				case 4 :
-					// /home/gangil/dev/Tiger/tiger.g:163:4: DIV
+					// /Users/twb/repos/Tiger/tiger.g:164:4: DIV
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					DIV149=(Token)match(input,DIV,FOLLOW_DIV_in_binary_operator749); 
+					DIV149=(Token)match(input,DIV,FOLLOW_DIV_in_binary_operator743); 
 					DIV149_tree = (Object)adaptor.create(DIV149);
 					adaptor.addChild(root_0, DIV149_tree);
 
 					}
 					break;
 				case 5 :
-					// /home/gangil/dev/Tiger/tiger.g:164:4: EQ
+					// /Users/twb/repos/Tiger/tiger.g:165:4: EQ
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					EQ150=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator754); 
+					EQ150=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator748); 
 					EQ150_tree = (Object)adaptor.create(EQ150);
 					adaptor.addChild(root_0, EQ150_tree);
 
 					}
 					break;
 				case 6 :
-					// /home/gangil/dev/Tiger/tiger.g:165:4: NEQ
+					// /Users/twb/repos/Tiger/tiger.g:166:4: NEQ
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					NEQ151=(Token)match(input,NEQ,FOLLOW_NEQ_in_binary_operator759); 
+					NEQ151=(Token)match(input,NEQ,FOLLOW_NEQ_in_binary_operator753); 
 					NEQ151_tree = (Object)adaptor.create(NEQ151);
 					adaptor.addChild(root_0, NEQ151_tree);
 
 					}
 					break;
 				case 7 :
-					// /home/gangil/dev/Tiger/tiger.g:166:4: LESSER
+					// /Users/twb/repos/Tiger/tiger.g:167:4: LESSER
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					LESSER152=(Token)match(input,LESSER,FOLLOW_LESSER_in_binary_operator764); 
+					LESSER152=(Token)match(input,LESSER,FOLLOW_LESSER_in_binary_operator758); 
 					LESSER152_tree = (Object)adaptor.create(LESSER152);
 					adaptor.addChild(root_0, LESSER152_tree);
 
 					}
 					break;
 				case 8 :
-					// /home/gangil/dev/Tiger/tiger.g:167:4: GREATER
+					// /Users/twb/repos/Tiger/tiger.g:168:4: GREATER
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					GREATER153=(Token)match(input,GREATER,FOLLOW_GREATER_in_binary_operator769); 
+					GREATER153=(Token)match(input,GREATER,FOLLOW_GREATER_in_binary_operator763); 
 					GREATER153_tree = (Object)adaptor.create(GREATER153);
 					adaptor.addChild(root_0, GREATER153_tree);
 
 					}
 					break;
 				case 9 :
-					// /home/gangil/dev/Tiger/tiger.g:168:4: LESSER EQ
+					// /Users/twb/repos/Tiger/tiger.g:169:4: LESSER EQ
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					LESSER154=(Token)match(input,LESSER,FOLLOW_LESSER_in_binary_operator774); 
+					LESSER154=(Token)match(input,LESSER,FOLLOW_LESSER_in_binary_operator768); 
 					LESSER154_tree = (Object)adaptor.create(LESSER154);
 					adaptor.addChild(root_0, LESSER154_tree);
 
-					EQ155=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator776); 
+					EQ155=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator770); 
 					EQ155_tree = (Object)adaptor.create(EQ155);
 					adaptor.addChild(root_0, EQ155_tree);
 
 					}
 					break;
 				case 10 :
-					// /home/gangil/dev/Tiger/tiger.g:169:4: GREATER EQ
+					// /Users/twb/repos/Tiger/tiger.g:170:4: GREATER EQ
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					GREATER156=(Token)match(input,GREATER,FOLLOW_GREATER_in_binary_operator781); 
+					GREATER156=(Token)match(input,GREATER,FOLLOW_GREATER_in_binary_operator775); 
 					GREATER156_tree = (Object)adaptor.create(GREATER156);
 					adaptor.addChild(root_0, GREATER156_tree);
 
-					EQ157=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator783); 
+					EQ157=(Token)match(input,EQ,FOLLOW_EQ_in_binary_operator777); 
 					EQ157_tree = (Object)adaptor.create(EQ157);
 					adaptor.addChild(root_0, EQ157_tree);
 
 					}
 					break;
 				case 11 :
-					// /home/gangil/dev/Tiger/tiger.g:170:4: AND
+					// /Users/twb/repos/Tiger/tiger.g:171:4: AND
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					AND158=(Token)match(input,AND,FOLLOW_AND_in_binary_operator788); 
+					AND158=(Token)match(input,AND,FOLLOW_AND_in_binary_operator782); 
 					AND158_tree = (Object)adaptor.create(AND158);
 					adaptor.addChild(root_0, AND158_tree);
 
 					}
 					break;
 				case 12 :
-					// /home/gangil/dev/Tiger/tiger.g:171:4: OR
+					// /Users/twb/repos/Tiger/tiger.g:172:4: OR
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					OR159=(Token)match(input,OR,FOLLOW_OR_in_binary_operator793); 
+					OR159=(Token)match(input,OR,FOLLOW_OR_in_binary_operator787); 
 					OR159_tree = (Object)adaptor.create(OR159);
 					adaptor.addChild(root_0, OR159_tree);
 
@@ -3586,7 +3592,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// /home/gangil/dev/Tiger/tiger.g:174:1: value : ID value_tail ;
+	// /Users/twb/repos/Tiger/tiger.g:175:1: value : ID value_tail ;
 	public final tigerParser.value_return value() throws RecognitionException {
 		tigerParser.value_return retval = new tigerParser.value_return();
 		retval.start = input.LT(1);
@@ -3599,17 +3605,17 @@ public class tigerParser extends Parser {
 		Object ID160_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:175:2: ( ID value_tail )
-			// /home/gangil/dev/Tiger/tiger.g:175:4: ID value_tail
+			// /Users/twb/repos/Tiger/tiger.g:176:2: ( ID value_tail )
+			// /Users/twb/repos/Tiger/tiger.g:176:4: ID value_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			ID160=(Token)match(input,ID,FOLLOW_ID_in_value804); 
+			ID160=(Token)match(input,ID,FOLLOW_ID_in_value798); 
 			ID160_tree = (Object)adaptor.create(ID160);
 			adaptor.addChild(root_0, ID160_tree);
 
-			pushFollow(FOLLOW_value_tail_in_value806);
+			pushFollow(FOLLOW_value_tail_in_value800);
 			value_tail161=value_tail();
 			state._fsp--;
 
@@ -3644,7 +3650,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "value_tail"
-	// /home/gangil/dev/Tiger/tiger.g:178:1: value_tail : ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |);
+	// /Users/twb/repos/Tiger/tiger.g:179:1: value_tail : ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |);
 	public final tigerParser.value_tail_return value_tail() throws RecognitionException {
 		tigerParser.value_tail_return retval = new tigerParser.value_tail_return();
 		retval.start = input.LT(1);
@@ -3664,7 +3670,7 @@ public class tigerParser extends Parser {
 		Object RBRACK167_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:179:2: ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |)
+			// /Users/twb/repos/Tiger/tiger.g:180:2: ( LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )? |)
 			int alt24=2;
 			int LA24_0 = input.LA(1);
 			if ( (LA24_0==LBRACK) ) {
@@ -3682,26 +3688,26 @@ public class tigerParser extends Parser {
 
 			switch (alt24) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:179:4: LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )?
+					// /Users/twb/repos/Tiger/tiger.g:180:4: LBRACK index_expr RBRACK ( LBRACK index_expr RBRACK )?
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					LBRACK162=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_value_tail817); 
+					LBRACK162=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_value_tail811); 
 					LBRACK162_tree = (Object)adaptor.create(LBRACK162);
 					adaptor.addChild(root_0, LBRACK162_tree);
 
-					pushFollow(FOLLOW_index_expr_in_value_tail819);
+					pushFollow(FOLLOW_index_expr_in_value_tail813);
 					index_expr163=index_expr();
 					state._fsp--;
 
 					adaptor.addChild(root_0, index_expr163.getTree());
 
-					RBRACK164=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_value_tail821); 
+					RBRACK164=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_value_tail815); 
 					RBRACK164_tree = (Object)adaptor.create(RBRACK164);
 					adaptor.addChild(root_0, RBRACK164_tree);
 
-					// /home/gangil/dev/Tiger/tiger.g:179:29: ( LBRACK index_expr RBRACK )?
+					// /Users/twb/repos/Tiger/tiger.g:180:29: ( LBRACK index_expr RBRACK )?
 					int alt23=2;
 					int LA23_0 = input.LA(1);
 					if ( (LA23_0==LBRACK) ) {
@@ -3709,19 +3715,19 @@ public class tigerParser extends Parser {
 					}
 					switch (alt23) {
 						case 1 :
-							// /home/gangil/dev/Tiger/tiger.g:179:30: LBRACK index_expr RBRACK
+							// /Users/twb/repos/Tiger/tiger.g:180:30: LBRACK index_expr RBRACK
 							{
-							LBRACK165=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_value_tail824); 
+							LBRACK165=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_value_tail818); 
 							LBRACK165_tree = (Object)adaptor.create(LBRACK165);
 							adaptor.addChild(root_0, LBRACK165_tree);
 
-							pushFollow(FOLLOW_index_expr_in_value_tail826);
+							pushFollow(FOLLOW_index_expr_in_value_tail820);
 							index_expr166=index_expr();
 							state._fsp--;
 
 							adaptor.addChild(root_0, index_expr166.getTree());
 
-							RBRACK167=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_value_tail828); 
+							RBRACK167=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_value_tail822); 
 							RBRACK167_tree = (Object)adaptor.create(RBRACK167);
 							adaptor.addChild(root_0, RBRACK167_tree);
 
@@ -3733,7 +3739,7 @@ public class tigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/gangil/dev/Tiger/tiger.g:181:2: 
+					// /Users/twb/repos/Tiger/tiger.g:182:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3769,7 +3775,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr"
-	// /home/gangil/dev/Tiger/tiger.g:183:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
+	// /Users/twb/repos/Tiger/tiger.g:184:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
 	public final tigerParser.index_expr_return index_expr() throws RecognitionException {
 		tigerParser.index_expr_return retval = new tigerParser.index_expr_return();
 		retval.start = input.LT(1);
@@ -3783,8 +3789,8 @@ public class tigerParser extends Parser {
 		Object set168_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:184:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
-			// /home/gangil/dev/Tiger/tiger.g:184:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
+			// /Users/twb/repos/Tiger/tiger.g:185:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
+			// /Users/twb/repos/Tiger/tiger.g:185:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -3799,7 +3805,7 @@ public class tigerParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			// /home/gangil/dev/Tiger/tiger.g:184:18: ( options {greedy=true; } : index_oper index_expr )*
+			// /Users/twb/repos/Tiger/tiger.g:185:18: ( options {greedy=true; } : index_oper index_expr )*
 			loop25:
 			while (true) {
 				int alt25=2;
@@ -3810,15 +3816,15 @@ public class tigerParser extends Parser {
 
 				switch (alt25) {
 				case 1 :
-					// /home/gangil/dev/Tiger/tiger.g:184:42: index_oper index_expr
+					// /Users/twb/repos/Tiger/tiger.g:185:42: index_oper index_expr
 					{
-					pushFollow(FOLLOW_index_oper_in_index_expr862);
+					pushFollow(FOLLOW_index_oper_in_index_expr856);
 					index_oper169=index_oper();
 					state._fsp--;
 
 					adaptor.addChild(root_0, index_oper169.getTree());
 
-					pushFollow(FOLLOW_index_expr_in_index_expr864);
+					pushFollow(FOLLOW_index_expr_in_index_expr858);
 					index_expr170=index_expr();
 					state._fsp--;
 
@@ -3861,7 +3867,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "index_oper"
-	// /home/gangil/dev/Tiger/tiger.g:187:1: index_oper : ( PLUS | MINUS | MULT );
+	// /Users/twb/repos/Tiger/tiger.g:188:1: index_oper : ( PLUS | MINUS | MULT );
 	public final tigerParser.index_oper_return index_oper() throws RecognitionException {
 		tigerParser.index_oper_return retval = new tigerParser.index_oper_return();
 		retval.start = input.LT(1);
@@ -3873,8 +3879,8 @@ public class tigerParser extends Parser {
 		Object set171_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:188:2: ( PLUS | MINUS | MULT )
-			// /home/gangil/dev/Tiger/tiger.g:
+			// /Users/twb/repos/Tiger/tiger.g:189:2: ( PLUS | MINUS | MULT )
+			// /Users/twb/repos/Tiger/tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -3918,7 +3924,7 @@ public class tigerParser extends Parser {
 
 
 	// $ANTLR start "funct_call"
-	// /home/gangil/dev/Tiger/tiger.g:193:1: funct_call : ID LPAREN id_list RPAREN ;
+	// /Users/twb/repos/Tiger/tiger.g:194:1: funct_call : ID LPAREN id_list RPAREN ;
 	public final tigerParser.funct_call_return funct_call() throws RecognitionException {
 		tigerParser.funct_call_return retval = new tigerParser.funct_call_return();
 		retval.start = input.LT(1);
@@ -3935,27 +3941,27 @@ public class tigerParser extends Parser {
 		Object RPAREN175_tree=null;
 
 		try {
-			// /home/gangil/dev/Tiger/tiger.g:194:2: ( ID LPAREN id_list RPAREN )
-			// /home/gangil/dev/Tiger/tiger.g:194:4: ID LPAREN id_list RPAREN
+			// /Users/twb/repos/Tiger/tiger.g:195:2: ( ID LPAREN id_list RPAREN )
+			// /Users/twb/repos/Tiger/tiger.g:195:4: ID LPAREN id_list RPAREN
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			ID172=(Token)match(input,ID,FOLLOW_ID_in_funct_call898); 
+			ID172=(Token)match(input,ID,FOLLOW_ID_in_funct_call892); 
 			ID172_tree = (Object)adaptor.create(ID172);
 			adaptor.addChild(root_0, ID172_tree);
 
-			LPAREN173=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_funct_call900); 
+			LPAREN173=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_funct_call894); 
 			LPAREN173_tree = (Object)adaptor.create(LPAREN173);
 			adaptor.addChild(root_0, LPAREN173_tree);
 
-			pushFollow(FOLLOW_id_list_in_funct_call902);
+			pushFollow(FOLLOW_id_list_in_funct_call896);
 			id_list174=id_list();
 			state._fsp--;
 
 			adaptor.addChild(root_0, id_list174.getTree());
 
-			RPAREN175=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_funct_call904); 
+			RPAREN175=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_funct_call898); 
 			RPAREN175_tree = (Object)adaptor.create(RPAREN175);
 			adaptor.addChild(root_0, RPAREN175_tree);
 
@@ -4023,136 +4029,136 @@ public class tigerParser extends Parser {
 	public static final BitSet FOLLOW_type_id_in_param215 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_block_in_block_list227 = new BitSet(new long[]{0x0000000000000080L});
 	public static final BitSet FOLLOW_block_tail_in_block_list229 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_in_block_tail240 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_block_tail_in_block_tail250 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_BEGIN_in_block263 = new BitSet(new long[]{0x0000C00000000000L});
-	public static final BitSet FOLLOW_declaration_segment_in_block265 = new BitSet(new long[]{0x0002020006208180L});
-	public static final BitSet FOLLOW_stat_seq_in_block267 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_END_in_block269 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_block271 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_type_declaration_list_in_declaration_segment282 = new BitSet(new long[]{0x0000800000000000L});
-	public static final BitSet FOLLOW_var_declaration_list_in_declaration_segment284 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_var_declaration_in_var_declaration_list295 = new BitSet(new long[]{0x0000800000000000L});
-	public static final BitSet FOLLOW_var_declaration_list_in_var_declaration_list297 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_type_in_type312 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARRAY_in_type317 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_LBRACK_in_type319 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_INTLIT_in_type321 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_type323 = new BitSet(new long[]{0x0000002000000000L});
-	public static final BitSet FOLLOW_OF_in_type325 = new BitSet(new long[]{0x0000000008080000L});
-	public static final BitSet FOLLOW_base_type_in_type327 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARRAY_in_type332 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_LBRACK_in_type334 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_INTLIT_in_type336 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_type338 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_LPAREN_in_type340 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_INTLIT_in_type342 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_type344 = new BitSet(new long[]{0x0000002000000000L});
-	public static final BitSet FOLLOW_OF_in_type346 = new BitSet(new long[]{0x0000000008080000L});
-	public static final BitSet FOLLOW_base_type_in_type348 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_type_in_type_id359 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_type_id364 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VAR_in_var_declaration391 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_id_list_in_var_declaration393 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_COLON_in_var_declaration395 = new BitSet(new long[]{0x000000000A080000L});
-	public static final BitSet FOLLOW_type_id_in_var_declaration397 = new BitSet(new long[]{0x0000080000000040L});
-	public static final BitSet FOLLOW_optional_init_in_var_declaration399 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_var_declaration401 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASSIGN_in_optional_init412 = new BitSet(new long[]{0x0000000010100000L});
-	public static final BitSet FOLLOW_constant_in_optional_init414 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_id_list429 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_id_list434 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COMMA_in_id_list436 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_id_list_in_id_list438 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASSIGN_in_optional_int449 = new BitSet(new long[]{0x0000000010100000L});
-	public static final BitSet FOLLOW_constant_in_optional_int451 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_stat_in_stat_seq467 = new BitSet(new long[]{0x0002020006200182L});
-	public static final BitSet FOLLOW_constant_in_expr481 = new BitSet(new long[]{0x000000DC40841012L});
-	public static final BitSet FOLLOW_value_in_expr485 = new BitSet(new long[]{0x000000DC40841012L});
-	public static final BitSet FOLLOW_LPAREN_in_expr489 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_expr491 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_expr493 = new BitSet(new long[]{0x000000DC40841012L});
-	public static final BitSet FOLLOW_binary_operator_in_expr504 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_expr506 = new BitSet(new long[]{0x000000DC40841012L});
-	public static final BitSet FOLLOW_expr_in_expr_list519 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_expr_list_tail_in_expr_list521 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_expr_list_tail536 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_expr_list_tail538 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_expr_list_tail_in_expr_list_tail540 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_value_in_stat555 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ASSIGN_in_stat557 = new BitSet(new long[]{0x0000000116100000L});
-	public static final BitSet FOLLOW_expr_in_stat560 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat562 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_stat566 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_LPAREN_in_stat568 = new BitSet(new long[]{0x0000040112100000L});
-	public static final BitSet FOLLOW_expr_list_in_stat570 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_stat572 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat574 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_if_stmt_in_stat580 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WHILE_in_stat585 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_stat587 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_DO_in_stat589 = new BitSet(new long[]{0x0002020006210180L});
-	public static final BitSet FOLLOW_stat_seq_in_stat591 = new BitSet(new long[]{0x0000000000010000L});
-	public static final BitSet FOLLOW_ENDDO_in_stat593 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat595 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FOR_in_stat600 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_stat602 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ASSIGN_in_stat604 = new BitSet(new long[]{0x0000000012000000L});
-	public static final BitSet FOLLOW_index_expr_in_stat606 = new BitSet(new long[]{0x0000200000000000L});
-	public static final BitSet FOLLOW_TO_in_stat608 = new BitSet(new long[]{0x0000000012000000L});
-	public static final BitSet FOLLOW_index_expr_in_stat610 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_DO_in_stat612 = new BitSet(new long[]{0x0002020006210180L});
-	public static final BitSet FOLLOW_stat_seq_in_stat614 = new BitSet(new long[]{0x0000000000010000L});
-	public static final BitSet FOLLOW_ENDDO_in_stat616 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat618 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BREAK_in_stat623 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat625 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_RETURN_in_stat630 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_stat632 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat634 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_list_in_stat639 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_funct_call_in_stat644 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat646 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_if_stmt657 = new BitSet(new long[]{0x0000000112100000L});
-	public static final BitSet FOLLOW_expr_in_if_stmt659 = new BitSet(new long[]{0x0000100000000000L});
-	public static final BitSet FOLLOW_THEN_in_if_stmt661 = new BitSet(new long[]{0x0002020006224180L});
-	public static final BitSet FOLLOW_stat_seq_in_if_stmt663 = new BitSet(new long[]{0x0000000000024000L});
-	public static final BitSet FOLLOW_if_tail_in_if_stmt665 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ELSE_in_if_tail676 = new BitSet(new long[]{0x0002020006220180L});
-	public static final BitSet FOLLOW_stat_seq_in_if_tail678 = new BitSet(new long[]{0x0000000000020000L});
-	public static final BitSet FOLLOW_ENDIF_in_if_tail680 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_if_tail682 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ENDIF_in_if_tail687 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_SEMI_in_if_tail689 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_value_in_opt_prefix700 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ASSIGN_in_opt_prefix702 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PLUS_in_binary_operator734 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MINUS_in_binary_operator739 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MULT_in_binary_operator744 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DIV_in_binary_operator749 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_EQ_in_binary_operator754 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NEQ_in_binary_operator759 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LESSER_in_binary_operator764 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_GREATER_in_binary_operator769 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LESSER_in_binary_operator774 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_EQ_in_binary_operator776 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_GREATER_in_binary_operator781 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_EQ_in_binary_operator783 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AND_in_binary_operator788 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_OR_in_binary_operator793 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_value804 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_value_tail_in_value806 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LBRACK_in_value_tail817 = new BitSet(new long[]{0x0000000012000000L});
-	public static final BitSet FOLLOW_index_expr_in_value_tail819 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_value_tail821 = new BitSet(new long[]{0x0000000020000002L});
-	public static final BitSet FOLLOW_LBRACK_in_value_tail824 = new BitSet(new long[]{0x0000000012000000L});
-	public static final BitSet FOLLOW_index_expr_in_value_tail826 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_value_tail828 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_index_expr845 = new BitSet(new long[]{0x0000008C00000002L});
-	public static final BitSet FOLLOW_index_oper_in_index_expr862 = new BitSet(new long[]{0x0000000012000000L});
-	public static final BitSet FOLLOW_index_expr_in_index_expr864 = new BitSet(new long[]{0x0000008C00000002L});
-	public static final BitSet FOLLOW_ID_in_funct_call898 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_LPAREN_in_funct_call900 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_id_list_in_funct_call902 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_funct_call904 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_block_tail240 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_tail_in_block_tail242 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BEGIN_in_block257 = new BitSet(new long[]{0x0000C00000000000L});
+	public static final BitSet FOLLOW_declaration_segment_in_block259 = new BitSet(new long[]{0x0002020006208180L});
+	public static final BitSet FOLLOW_stat_seq_in_block261 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_END_in_block263 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_block265 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_type_declaration_list_in_declaration_segment276 = new BitSet(new long[]{0x0000800000000000L});
+	public static final BitSet FOLLOW_var_declaration_list_in_declaration_segment278 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_var_declaration_in_var_declaration_list289 = new BitSet(new long[]{0x0000800000000000L});
+	public static final BitSet FOLLOW_var_declaration_list_in_var_declaration_list291 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_base_type_in_type306 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARRAY_in_type311 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_LBRACK_in_type313 = new BitSet(new long[]{0x0000000010000000L});
+	public static final BitSet FOLLOW_INTLIT_in_type315 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_type317 = new BitSet(new long[]{0x0000002000000000L});
+	public static final BitSet FOLLOW_OF_in_type319 = new BitSet(new long[]{0x0000000008080000L});
+	public static final BitSet FOLLOW_base_type_in_type321 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARRAY_in_type326 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_LBRACK_in_type328 = new BitSet(new long[]{0x0000000010000000L});
+	public static final BitSet FOLLOW_INTLIT_in_type330 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_type332 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_LPAREN_in_type334 = new BitSet(new long[]{0x0000000010000000L});
+	public static final BitSet FOLLOW_INTLIT_in_type336 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_type338 = new BitSet(new long[]{0x0000002000000000L});
+	public static final BitSet FOLLOW_OF_in_type340 = new BitSet(new long[]{0x0000000008080000L});
+	public static final BitSet FOLLOW_base_type_in_type342 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_base_type_in_type_id353 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_type_id358 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VAR_in_var_declaration385 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_id_list_in_var_declaration387 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_COLON_in_var_declaration389 = new BitSet(new long[]{0x000000000A080000L});
+	public static final BitSet FOLLOW_type_id_in_var_declaration391 = new BitSet(new long[]{0x0000080000000040L});
+	public static final BitSet FOLLOW_optional_init_in_var_declaration393 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_var_declaration395 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASSIGN_in_optional_init406 = new BitSet(new long[]{0x0000000010100000L});
+	public static final BitSet FOLLOW_constant_in_optional_init408 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_id_list423 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_id_list428 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COMMA_in_id_list430 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_id_list_in_id_list432 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASSIGN_in_optional_int443 = new BitSet(new long[]{0x0000000010100000L});
+	public static final BitSet FOLLOW_constant_in_optional_int445 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_in_stat_seq461 = new BitSet(new long[]{0x0002020006200182L});
+	public static final BitSet FOLLOW_constant_in_expr475 = new BitSet(new long[]{0x000000DC40841012L});
+	public static final BitSet FOLLOW_value_in_expr479 = new BitSet(new long[]{0x000000DC40841012L});
+	public static final BitSet FOLLOW_LPAREN_in_expr483 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_expr485 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_expr487 = new BitSet(new long[]{0x000000DC40841012L});
+	public static final BitSet FOLLOW_binary_operator_in_expr498 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_expr500 = new BitSet(new long[]{0x000000DC40841012L});
+	public static final BitSet FOLLOW_expr_in_expr_list513 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_expr_list_tail_in_expr_list515 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_expr_list_tail530 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_expr_list_tail532 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_expr_list_tail_in_expr_list_tail534 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_value_in_stat549 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_stat551 = new BitSet(new long[]{0x0000000116100000L});
+	public static final BitSet FOLLOW_expr_in_stat554 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat556 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_stat560 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_LPAREN_in_stat562 = new BitSet(new long[]{0x0000040112100000L});
+	public static final BitSet FOLLOW_expr_list_in_stat564 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_stat566 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat568 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_if_stmt_in_stat574 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WHILE_in_stat579 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_stat581 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_DO_in_stat583 = new BitSet(new long[]{0x0002020006210180L});
+	public static final BitSet FOLLOW_stat_seq_in_stat585 = new BitSet(new long[]{0x0000000000010000L});
+	public static final BitSet FOLLOW_ENDDO_in_stat587 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat589 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FOR_in_stat594 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_stat596 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_stat598 = new BitSet(new long[]{0x0000000012000000L});
+	public static final BitSet FOLLOW_index_expr_in_stat600 = new BitSet(new long[]{0x0000200000000000L});
+	public static final BitSet FOLLOW_TO_in_stat602 = new BitSet(new long[]{0x0000000012000000L});
+	public static final BitSet FOLLOW_index_expr_in_stat604 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_DO_in_stat606 = new BitSet(new long[]{0x0002020006210180L});
+	public static final BitSet FOLLOW_stat_seq_in_stat608 = new BitSet(new long[]{0x0000000000010000L});
+	public static final BitSet FOLLOW_ENDDO_in_stat610 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat612 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BREAK_in_stat617 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat619 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_RETURN_in_stat624 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_stat626 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat628 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_stat633 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_funct_call_in_stat638 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_stat640 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_if_stmt651 = new BitSet(new long[]{0x0000000112100000L});
+	public static final BitSet FOLLOW_expr_in_if_stmt653 = new BitSet(new long[]{0x0000100000000000L});
+	public static final BitSet FOLLOW_THEN_in_if_stmt655 = new BitSet(new long[]{0x0002020006224180L});
+	public static final BitSet FOLLOW_stat_seq_in_if_stmt657 = new BitSet(new long[]{0x0000000000024000L});
+	public static final BitSet FOLLOW_if_tail_in_if_stmt659 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ELSE_in_if_tail670 = new BitSet(new long[]{0x0002020006220180L});
+	public static final BitSet FOLLOW_stat_seq_in_if_tail672 = new BitSet(new long[]{0x0000000000020000L});
+	public static final BitSet FOLLOW_ENDIF_in_if_tail674 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_if_tail676 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ENDIF_in_if_tail681 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_SEMI_in_if_tail683 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_value_in_opt_prefix694 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_opt_prefix696 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PLUS_in_binary_operator728 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MINUS_in_binary_operator733 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MULT_in_binary_operator738 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DIV_in_binary_operator743 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_EQ_in_binary_operator748 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NEQ_in_binary_operator753 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LESSER_in_binary_operator758 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_GREATER_in_binary_operator763 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LESSER_in_binary_operator768 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_EQ_in_binary_operator770 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_GREATER_in_binary_operator775 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_EQ_in_binary_operator777 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AND_in_binary_operator782 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_OR_in_binary_operator787 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_value798 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_value_tail_in_value800 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LBRACK_in_value_tail811 = new BitSet(new long[]{0x0000000012000000L});
+	public static final BitSet FOLLOW_index_expr_in_value_tail813 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_value_tail815 = new BitSet(new long[]{0x0000000020000002L});
+	public static final BitSet FOLLOW_LBRACK_in_value_tail818 = new BitSet(new long[]{0x0000000012000000L});
+	public static final BitSet FOLLOW_index_expr_in_value_tail820 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_value_tail822 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_index_expr839 = new BitSet(new long[]{0x0000008C00000002L});
+	public static final BitSet FOLLOW_index_oper_in_index_expr856 = new BitSet(new long[]{0x0000000012000000L});
+	public static final BitSet FOLLOW_index_expr_in_index_expr858 = new BitSet(new long[]{0x0000008C00000002L});
+	public static final BitSet FOLLOW_ID_in_funct_call892 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_LPAREN_in_funct_call894 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_id_list_in_funct_call896 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_funct_call898 = new BitSet(new long[]{0x0000000000000002L});
 }
