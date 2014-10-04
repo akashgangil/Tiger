@@ -57,7 +57,8 @@ block_list
 	;
 
 block_tail
-	:	block (options{greedy=true;}:block_tail)*
+	:	block block_tail
+	|	
 	;
 
 block
@@ -133,7 +134,7 @@ stat
 	|	FOR ID ASSIGN index_expr TO index_expr DO stat_seq ENDDO SEMI
 	|	BREAK SEMI
 	|	RETURN expr SEMI
-	|	block_list
+	|	block
 	|	funct_call SEMI
 	;
 
