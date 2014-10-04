@@ -1,3 +1,10 @@
+int function sqaure(n:int, m:int)
+begin
+  begin
+    return n*n;
+  end;
+end;
+
 void main() begin
 begin
 type ArrayInt = array [100] of int; var X, Y : ArrayInt := 10;
@@ -6,5 +13,17 @@ begin
 for i := 1 to 100 do
 sum := sum + X[i] * Y[i];
 enddo;
-printi(sum); end;
+begin
+  while((a>4)  & (b<2)) do
+    printi(i);
+    printi(y);
+  enddo;
+end;
+if(a>4) then
+ printi(b);
+else
+ printi(c);
+endif;
+
+printi(sum, a); end;
 end; end;
