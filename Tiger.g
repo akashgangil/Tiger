@@ -19,7 +19,6 @@ tokens {
 	EXPRS;
 	IDS;
 	INVOKE;
-	SUBSCRIPT;
 	STATEMENTS;
 	REFERENCE;
 	VARIABLES;
@@ -185,20 +184,20 @@ stat
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
-	|	ID statement_ref SEMI -> ^(REFERENCE ID statement_ref)
-	;
-
-statement_ref
-	:	LPAREN id_list RPAREN -> ^(INVOKE id_list)
-	|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN optional_subscript? statement_assignment)
+	|	ID 	(	
+			:	LPAREN id_list RPAREN 		-> ^(INVOKE ID id_list)
+			|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN ID statement_assignment optional_subscript?)
+			) SEMI
 	;
 
 value
-	:	(ID optional_subscript)	-> ^(ID optional_subscript?)
+	:	ID	(
+			:	optional_subscript		-> ^(REFERENCE ID optional_subscript?)
+			)
 	;
 
 optional_subscript
-	:	(array_subscripts) -> ^(SUBSCRIPT array_subscripts)
+	:	array_subscripts
 	|	
 	;
 
@@ -237,20 +236,12 @@ binary_operator
 	|	DIV
 	|	EQ
 	|	NEQ
-	|	LESSER less_equality
-	|	GREATER great_equality
+	|	LESSER
+	|	GREATER
+	|	LEQ
+	|	GEQ
 	|	AND
 	|	OR
-	;
-
-less_equality
-	:	EQ
-	|
-	;
-	
-great_equality
-	:	EQ
-	|
 	;
 	
 array_dimensions
@@ -320,9 +311,9 @@ DIV 		: '/';
 EQ			: '=';
 NEQ 		: '<>';
 LESSER 		: '<';
-LESSEREQ 	: '<=';
 GREATER 	: '>';
-GREATEREQ  	: '>=';
+LEQ			: '<=';
+GEQ			: '>=';
 AND 		: '&';
 OR 			: '|';
 ASSIGN		: ':=';
