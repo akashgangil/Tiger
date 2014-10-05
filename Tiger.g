@@ -15,9 +15,11 @@ tokens {
 	MAIN;
 	BLOCK;
 	PARAMS;
+	PARAM;
 	EXPRS;
 	IDS;
 	INVOKE;
+	SUBSCRIPT;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -25,11 +27,13 @@ tokens {
 /////////////////////////////////////////////////////////////////////
 
 tiger_program
-	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM type_declaration_list function_declaration_list)
+	: (opt=type_declaration_list function_declaration_list EOF) 	-> {opt.getTree() != null}? 	^(PROGRAM type_declaration_list function_declaration_list)
+																	->								^(PROGRAM function_declaration_list)
 	;
 
 type_declaration_list
-	:	(type_declaration type_declaration_list) -> ^(TYPES type_declaration type_declaration_list)
+	:	(type_declaration opt=type_declaration_list) 	-> {opt.getTree() != null}? 	^(TYPES type_declaration type_declaration_list)
+														->								^(TYPES type_declaration)
 	|	
 	;
 
@@ -38,26 +42,27 @@ type_declaration
 	;
 
 function_declaration_list
-	:	(function_definition function_declaration_list) -> ^(FUNCTIONS function_definition function_declaration_list) 
+	:	(function_definition opt=function_declaration_list) 	-> {opt.getTree() != null}?		function_definition function_declaration_list
+																->								function_definition
 	|	
 	;
 
 function_definition
-	:	type_id FUNCTION function_definition_body
-	|	VOID function_definition_void
+	:	(type_id function_definition_body) -> ^(FUNCTION type_id function_definition_body)
+	|	(VOID function_definition_void) -> ^(FUNCTION VOID function_definition_void)
 	;
 
 function_definition_void
-	:	FUNCTION function_definition_body
-	|	MAIN function_definition_main
+	:	function_definition_body
+	|	function_definition_main
 	;
 
 function_definition_body
-	:	(ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ^(FUNCTION ID param_list block_list)
+	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ^(ID param_list block_list)
 	;
 	
 function_definition_main
-	:	(LPAREN RPAREN block_list) -> ^(MAIN block_list)
+	:	(MAIN LPAREN RPAREN block_list) -> ^(MAIN block_list)
 	;
 
 param_list
@@ -66,12 +71,13 @@ param_list
 	;
 	
 param_list_tail
-	:	(COMMA param param_list_tail) -> param param_list_tail
+	:	(COMMA param opt=param_list_tail) 	-> {opt.getTree() != null}?		param param_list_tail
+											-> 								param
 	|	
 	;
 	
 param	
-	:	ID COLON type_id -> ^(COLON ID type_id)
+	:	ID COLON type_id -> ^(PARAM ID type_id)
 	;
 	
 block_list
@@ -99,8 +105,7 @@ var_declaration_list
 
 type
 	:	base_type
-	|	(ARRAY array_index_const OF base_type) -> ^(ARRAY array_index_const base_type)
-	|	(ARRAY width=array_index_const height=array_index_const OF base_type) -> ^(ARRAY $width $height base_type)
+	|	(ARRAY array_dimension OF base_type) -> ^(ARRAY array_dimension base_type)
 	;
 
 type_id
@@ -123,21 +128,22 @@ optional_init
 	;
 
 id_list
-	:	ID id_list_tail
+	:	(id_list_head) -> ^(IDS id_list_head)
+	;
+
+id_list_head
+	:	(ID opt=id_list_tail) 	-> {opt.getTree() != null}?		ID id_list_tail
+								->								ID
 	;
 
 id_list_tail
-	:	COMMA ID id_list_tail -> ID
+	:	COMMA id_list_head -> id_list_head
 	|
 	;
 
 optional_int
 	:	ASSIGN constant
 	|	
-	;
-
-stat_seq
-	:	(stat)*
 	;
 
 expr
@@ -154,36 +160,52 @@ expr_list_tail
 	|	
 	;
 
+stat_seq
+	:	stat*
+	;
+
 stat
-	:	value ASSIGN stat_assignment -> ^(ASSIGN value stat_assignment)
-	|	if_stmt
+	:	if_stmt
 	|	(WHILE expr DO stat_seq ENDDO SEMI) -> ^(WHILE expr stat_seq)
 	|	(FOR ID ASSIGN range DO stat_seq ENDDO SEMI) -> ^(FOR range stat_seq)
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
-	|	funct_call SEMI -> funct_call
+	|	ID statement_ref SEMI -> ^(ID statement_ref)
+	;
+
+statement_ref
+	:	LPAREN id_list RPAREN -> ^(INVOKE id_list)
+	|	opt=optional_subscript ASSIGN statement_assignment 		-> {opt.getTree() != null}?		^(ASSIGN optional_subscript statement_assignment)
+																->								^(ASSIGN statement_assignment)
+	;
+
+value
+	:	(ID opt=optional_subscript)		-> {opt.getTree() != null}? 	^(ID optional_subscript)
+										-> 								^(ID)
+	;
+
+optional_subscript
+	:	(array_subscripts) -> ^(SUBSCRIPT array_subscripts)
+	|	
 	;
 
 range
 	:	(start=index_expr TO stop=index_expr) -> ^(TO $start $stop)
 	;
 
-stat_assignment
-	:	expr SEMI -> expr
-	|	IF LPAREN expr_list RPAREN SEMI
+statement_assignment
+	:	expr
+	|	IF LPAREN expr_list RPAREN -> expr_list
 	;
 
 if_stmt
-	:	IF expr  then_stmt-> ^(IF expr then_stmt)
+	:	(IF expr THEN stat_seq else_stmt ENDIF SEMI) -> ^(IF expr stat_seq else_stmt)
 	;
 	
-then_stmt
-	: 	THEN stat_seq if_tail -> ^(THEN stat_seq if_tail)
-	;
-if_tail
-	:	ELSE stat_seq ENDIF SEMI -> ^(ELSE stat_seq)
-	|	ENDIF SEMI
+else_stmt
+	:	ELSE stat_seq -> stat_seq
+	|	
 	;
 
 opt_prefix
@@ -218,15 +240,6 @@ great_equality
 	:	EQ
 	|
 	;
-
-value
-	:	ID value_tail
-	;
-
-value_tail
-	:	array_index array_index?
-	|	
-	;
 	
 array_dimensions
 	:	array_dimension array_dimension?
@@ -252,10 +265,6 @@ index_oper
 	:	PLUS
 	|	MINUS
 	|	MULT
-	;
-
-funct_call
-	: ID LPAREN id_list RPAREN -> ^(INVOKE ID id_list)
 	;
 
 /////////////////////////////////////////////////////////////////////
