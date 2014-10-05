@@ -58,11 +58,11 @@ function_definition_void
 	;
 
 function_definition_body
-	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ^(ID param_list block_list)
+	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ID param_list block_list
 	;
 	
 function_definition_main
-	:	(MAIN LPAREN RPAREN block_list) -> ^(MAIN block_list)
+	:	(MAIN LPAREN RPAREN block_list) -> MAIN PARAMS block_list
 	;
 
 param_list
