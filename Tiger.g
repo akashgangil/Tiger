@@ -20,6 +20,9 @@ tokens {
 	IDS;
 	INVOKE;
 	SUBSCRIPT;
+	STATEMENTS;
+	REFERENCE;
+	VARIABLES;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -27,14 +30,16 @@ tokens {
 /////////////////////////////////////////////////////////////////////
 
 tiger_program
-	: (opt=type_declaration_list function_declaration_list EOF) 	-> {opt.getTree() != null}? 	^(PROGRAM type_declaration_list function_declaration_list)
-																	->								^(PROGRAM function_declaration_list)
+	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM type_declaration_list? function_declaration_list)
 	;
 
 type_declaration_list
-	:	(type_declaration opt=type_declaration_list) 	-> {opt.getTree() != null}? 	^(TYPES type_declaration type_declaration_list)
-														->								^(TYPES type_declaration)
-	|	
+	:	(type_declaration_tail) -> ^(TYPES type_declaration_tail?)
+	;
+
+type_declaration_tail
+	:	type_declaration type_declaration_tail
+	|
 	;
 
 type_declaration
@@ -42,9 +47,12 @@ type_declaration
 	;
 
 function_declaration_list
-	:	(function_definition opt=function_declaration_list) 	-> {opt.getTree() != null}?		function_definition function_declaration_list
-																->								function_definition
-	|	
+	:	function_declaration_tail -> ^(FUNCTIONS function_declaration_tail?)
+	;
+
+function_declaration_tail
+	:	function_definition function_declaration_tail
+	|
 	;
 
 function_definition
@@ -71,8 +79,7 @@ param_list
 	;
 	
 param_list_tail
-	:	(COMMA param opt=param_list_tail) 	-> {opt.getTree() != null}?		param param_list_tail
-											-> 								param
+	:	(COMMA param param_list_tail) -> param param_list_tail?
 	|	
 	;
 	
@@ -90,8 +97,7 @@ block_tail
 	;
 
 block
-	:	(BEGIN opt=declaration_segment stat_seq END SEMI) 	-> {opt.getTree() != null}? 	^(BLOCK $opt stat_seq)
-															->								^(BLOCK stat_seq)
+	:	(BEGIN declaration_segment stat_seq END SEMI) -> ^(BLOCK declaration_segment? stat_seq)
 	;
 
 declaration_segment
@@ -99,8 +105,12 @@ declaration_segment
 	;
 
 var_declaration_list
-	:	var_declaration var_declaration_list
-	|	
+	:	var_declaration_tail -> ^(VARIABLES var_declaration_tail?)
+	;
+
+var_declaration_tail
+	:	var_declaration var_declaration_tail
+	|
 	;
 
 type
@@ -132,8 +142,7 @@ id_list
 	;
 
 id_list_head
-	:	(ID opt=id_list_tail) 	-> {opt.getTree() != null}?		ID id_list_tail
-								->								ID
+	:	(ID id_list_tail) -> ID id_list_tail?
 	;
 
 id_list_tail
@@ -142,7 +151,7 @@ id_list_tail
 	;
 
 optional_int
-	:	ASSIGN constant
+	:	ASSIGN constant -> constant
 	|	
 	;
 
@@ -161,7 +170,12 @@ expr_list_tail
 	;
 
 stat_seq
-	:	stat*
+	:	stat_tail -> ^(STATEMENTS stat_tail?)
+	;
+
+stat_tail
+	:	stat stat_tail -> stat stat_tail?
+	|
 	;
 
 stat
@@ -171,18 +185,16 @@ stat
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
-	|	ID statement_ref SEMI -> ^(ID statement_ref)
+	|	ID statement_ref SEMI -> ^(REFERENCE ID statement_ref)
 	;
 
 statement_ref
 	:	LPAREN id_list RPAREN -> ^(INVOKE id_list)
-	|	opt=optional_subscript ASSIGN statement_assignment 		-> {opt.getTree() != null}?		^(ASSIGN optional_subscript statement_assignment)
-																->								^(ASSIGN statement_assignment)
+	|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN optional_subscript? statement_assignment)
 	;
 
 value
-	:	(ID opt=optional_subscript)		-> {opt.getTree() != null}? 	^(ID optional_subscript)
-										-> 								^(ID)
+	:	(ID optional_subscript)	-> ^(ID optional_subscript?)
 	;
 
 optional_subscript
@@ -191,7 +203,7 @@ optional_subscript
 	;
 
 range
-	:	(start=index_expr TO stop=index_expr) -> ^(TO $start $stop)
+	:	(start=index_expr TO stop=index_expr) -> $start $stop
 	;
 
 statement_assignment
