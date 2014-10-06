@@ -1,6 +1,8 @@
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.*;
+import org.antlr.runtime.Token.*;
+
 import java.nio.charset.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,6 +33,20 @@ public class Tiger {
             String src = readFile(args[0], StandardCharsets.UTF_8);
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(src));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
+            
+            /*To print lexer symbols of the program*/
+            TigerLexer lexer1 = new TigerLexer(new ANTLRStringStream(src));
+            CommonTokenStream cts = new CommonTokenStream(lexer1);
+            
+            int i = 1;
+            Token to = cts.LT(i);
+            while(to.getType() != -1){
+                System.out.print(TigerParser.tokenNames[to.getType()] + " ");
+                if(to.getType() == -1) break;
+                to = cts.LT(++i);
+            }
+            System.out.println();
+
             CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
