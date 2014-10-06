@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <INPUT TIGER PROGRAM FILE>" >&2
   exit 1
@@ -14,14 +13,10 @@ if ! [ -f "$1" ]; then
   exit 1
 fi
 
-
 fullfile=$1
 filename=$(basename "$fullfile")
 extension="${filename##*.}"
 filename="${filename%.*}"
-
-echo $filename
-echo $extension
 
 javac -d ./classes/ -classpath antlr-runtime.jar:antlr-stringtemplate.jar:antlr.jar:. TigerParser.java TigerLexer.java Tiger.java
 java -classpath antlr-runtime.jar:antlr-stringtemplate.jar:antlr.jar:./classes/ Tiger "$filename.tiger"  
