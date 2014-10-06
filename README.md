@@ -1,6 +1,6 @@
 # Run:
 
-- ./run.sh <tiger program file>
+- ./run.sh {tiger program file}
 
 # TODO:
 
