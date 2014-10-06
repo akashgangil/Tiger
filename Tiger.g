@@ -24,6 +24,36 @@ tokens {
 	VARIABLES;
 }
 
+/*@rulecatch {
+    // ANTLR does not generate its normal rule try/catch
+    catch(RecognitionException e) {
+        throw e;
+    }
+}
+
+@parser::members {
+    @Override
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        msg = "testing";
+        throw new RuntimeException(hdr + ":" + msg);
+    }
+}
+*/
+
+@lexer::members {
+    private static final boolean DEBUG = true;
+	
+    /*@Override
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        msg = "testing";
+        throw new RuntimeException(hdr + ":" + msg);
+    }*/
+}
+
 /////////////////////////////////////////////////////////////////////
 // Parser
 /////////////////////////////////////////////////////////////////////
@@ -274,52 +304,52 @@ index_oper
 // Lexer
 /////////////////////////////////////////////////////////////////////
 
-FUNCTION	: 'function' ;
-BEGIN		: 'begin';
-END			: 'end';
-VOID		: 'void';
-MAIN		: 'main';
-TYPE		: 'type';
-ARRAY		: 'array';
-OF			: 'of';
-INT			: 'int';
-FIXEDPT		: 'fixedpt';
-VAR			: 'var';
-IF			: 'if';
-THEN		: 'then';
-ENDIF		: 'endif';
-ELSE		: 'else';
-WHILE		: 'while';
-ENDDO		: 'enddo';
-FOR			: 'for';
-TO			: 'to';
-DO			: 'do';
-BREAK		: 'break';
-RETURN		: 'return';
+FUNCTION	: 'function' {if (DEBUG) System.out.print("FUNCTION ");};
+BEGIN		: 'begin'{if (DEBUG) System.out.println("BEGIN ");};
+END			: 'end'{if (DEBUG) System.out.print("END ");};
+VOID		: 'void'{if (DEBUG) System.out.print("VOID ");};
+MAIN		: 'main'{if (DEBUG) System.out.print("MAIN ");};
+TYPE		: 'type'{if (DEBUG) System.out.print("TYPE ");};
+ARRAY		: 'array'{if (DEBUG) System.out.print("ARRAY ");};
+OF			: 'of'{if (DEBUG) System.out.print("OF ");};
+INT			: 'int'{if (DEBUG) System.out.print("INT ");};
+FIXEDPT		: 'fixedpt'{if (DEBUG) System.out.print("FIXEDPT ");};
+VAR			: 'var' { if (DEBUG) System.out.print("VAR "); };
+IF			: 'if' { if (DEBUG) System.out.print("IF "); };
+THEN		: 'then' { if (DEBUG) System.out.print("THEN "); };
+ENDIF		: 'endif'{if (DEBUG) System.out.print("ENDIF ");};
+ELSE		: 'else'{if (DEBUG) System.out.print("ELSE ");};
+WHILE		: 'while'{if (DEBUG) System.out.print("WHILE ");};
+ENDDO		: 'enddo'{if (DEBUG) System.out.print("ENDDO ");};
+FOR			: 'for'{if (DEBUG) System.out.print("FOR ");};
+TO			: 'to'{if (DEBUG) System.out.print("TO ");};
+DO			: 'do'{if (DEBUG) System.out.print("DO ");};
+BREAK		: 'break'{if (DEBUG) System.out.print("BREAK ");};
+RETURN		: 'return'{if (DEBUG) System.out.print("RETURN ");};
 
-COMMA		: ',' ;
-COLON		: ':';
-SEMI		: ';';
-LPAREN		: '(';
-RPAREN		: ')';
-LBRACK		: '[';
-RBRACK		: ']';
-PLUS 		: '+';
-MINUS 		: '-';
-MULT 		: '*';
-DIV 		: '/';
-EQ			: '=';
-NEQ 		: '<>';
-LESSER 		: '<';
-GREATER 	: '>';
-LEQ			: '<=';
-GEQ			: '>=';
-AND 		: '&';
-OR 			: '|';
-ASSIGN		: ':=';
+COMMA		: ','{if (DEBUG) System.out.print("COMMA ");};
+COLON		: ':'{if (DEBUG) System.out.print("COLON ");};
+SEMI		: ';'{if (DEBUG) System.out.println("SEMI ");};
+LPAREN		: '('{if (DEBUG) System.out.print("LPAREN ");};
+RPAREN		: ')'{if (DEBUG) System.out.print("RPAREN ");};
+LBRACK		: '['{if (DEBUG) System.out.print("LBRACK ");};
+RBRACK		: ']'{if (DEBUG) System.out.print("RBRACK ");};
+PLUS 		: '+'{if (DEBUG) System.out.print("PLUS ");};
+MINUS 		: '-'{if (DEBUG) System.out.print("MINUS ");};
+MULT 		: '*'{if (DEBUG) System.out.print("MULT ");};
+DIV 		: '/'{if (DEBUG) System.out.print("DIV ");};
+EQ			: '='{if (DEBUG) System.out.print("EQ ");};
+NEQ 		: '<>'{if (DEBUG) System.out.print("NEQ ");};
+LESSER 		: '<'{if (DEBUG) System.out.print("LESSER ");};
+GREATER 	: '>'{if (DEBUG) System.out.print("GREATER ");};
+LEQ			: '<='{if (DEBUG) System.out.print("LEQ ");};
+GEQ			: '>='{if (DEBUG) System.out.print("GEQ ");};
+AND 		: '&'{if (DEBUG) System.out.print("AND ");};
+OR 			: '|'{if (DEBUG) System.out.print("OR ");};
+ASSIGN		: ':='{if (DEBUG) System.out.print("ASSIGN ");};
 
-ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9')*;
+ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9')*{if (DEBUG) System.out.print("ID ");};
 COMMENT		: '/*' .* '*/' {skip();} ;
 WS			: (' ' | '\t' | '\r'| '\n') {skip();};
-INTLIT		: ('0'..'9') ('0'..'9')*;
-FIXEDPTLIT	: INTLIT '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?;
+INTLIT		: ('0'..'9') ('0'..'9')*{if (DEBUG) System.out.print("INTLIT ");};
+FIXEDPTLIT	: INTLIT '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?{if (DEBUG) System.out.print("FIXEDPTLIT ");};
