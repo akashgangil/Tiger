@@ -18,6 +18,7 @@ begin
 
     /*Variable Declaration*/
     var i, sum : int := 0;
+    var x: fixedpt := 43.50;
     begin
 
       /*For loop*/
