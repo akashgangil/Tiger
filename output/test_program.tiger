@@ -17,7 +17,7 @@ begin
     type ArrayInt = array [100] of int; var X, Y : ArrayInt := 10;
 
     /*Variable Declaration*/
-    var i, sum : int := 0;
+	var i:int := 12.1;
     begin
 
       /*For loop*/

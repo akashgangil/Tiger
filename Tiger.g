@@ -224,8 +224,12 @@ opt_prefix
 	;
 
 constant
-	:	INTLIT
-	|	FIXEDPTLIT
+	:	INTLIT constant_tail
+	;
+
+constant_tail
+	: FIXEDPTLITTAIL
+	|
 	;
 
 binary_operator
@@ -320,5 +324,5 @@ ASSIGN		: ':=';
 ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9')*;
 COMMENT		: '/*' .* '*/' {skip();} ;
 WS			: (' ' | '\t' | '\r'| '\n') {skip();};
-INTLIT		: ('0'..'9') ('0'..'9')*;
-FIXEDPTLIT	: INTLIT '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?;
+INTLIT			: ('0'..'9') ('0'..'9')*;
+FIXEDPTLITTAIL	: '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?;
