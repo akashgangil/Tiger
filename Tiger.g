@@ -157,7 +157,7 @@ base_type
 	;
 
 var_declaration
-	:	(VAR id_list COLON type_id optional_init SEMI) -> ^(VAR id_list type_id optional_init)
+	:	(VAR id_list COLON type_id optional_init SEMI) -> ^(VAR id_list type_id optional_init?)
 	;
 
 optional_init
