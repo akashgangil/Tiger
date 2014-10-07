@@ -23,6 +23,36 @@ tokens {
 	REFERENCE;
 	VARIABLES;
 }
+
+//add new members to generated lexer
+@lexer::members {
+    private  java.util.List<String> errors = new java.util.LinkedList<String>();
+    public void displayRecognitionError(String[] tokenNames,
+                                        RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        errors.add(hdr + " " + msg);
+    }
+    public  java.util.List<String> getErrors() {
+        return errors;
+    }
+}
+
+//add new members to generated parser
+@parser::members {
+    private  java.util.List<String> errors = new java.util.LinkedList<String>();
+    public   void displayRecognitionError(String[] tokenNames,
+                                        RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        errors.add(hdr + " " + msg);
+    }
+    public java.util.List<String> getErrors() {
+        return errors;
+    }
+}
+
+
 /////////////////////////////////////////////////////////////////////
 // Parser
 /////////////////////////////////////////////////////////////////////
@@ -224,12 +254,8 @@ opt_prefix
 	;
 
 constant
-	:	INTLIT constant_tail
-	;
-
-constant_tail
-	: FIXEDPTLITTAIL
-	|
+	:	INTLIT
+	|	FIXEDPTLIT
 	;
 
 binary_operator
@@ -324,5 +350,5 @@ ASSIGN		: ':=';
 ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9')*;
 COMMENT		: '/*' .* '*/' {skip();} ;
 WS			: (' ' | '\t' | '\r'| '\n') {skip();};
-INTLIT			: ('0'..'9') ('0'..'9')*;
-FIXEDPTLITTAIL	: '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?;
+INTLIT		: ('0'..'9') ('0'..'9')*;
+FIXEDPTLIT	: INTLIT '.' ('0'..'9') (options{greedy=true;}: ('0'..'9'))? ('0'..'9')?;

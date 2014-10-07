@@ -51,6 +51,21 @@ public class Tiger {
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
             writeDotFile(file_tokens[0]+".dot", st.toString(), StandardCharsets.UTF_8);
+    
+            if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
+                System.out.println("***Successful Parse***");
+            }
+            else{
+                if(!parser.getErrors().isEmpty()){
+                    System.out.println("*** Parser Errors ***"); 
+                    for(String s : parser.getErrors()) System.out.println(s);
+                }
+
+                if(!lexer.getErrors().isEmpty()){
+                    System.out.println("*** Lexer Errors ***"); 
+                    for(String s : lexer.getErrors()) System.out.println(s);
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
