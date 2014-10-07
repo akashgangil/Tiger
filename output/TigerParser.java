@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gangil/dev/Tiger/Tiger.g 2014-10-06 21:21:01
+// $ANTLR 3.5.1 /home/gangil/dev/Tiger/Tiger.g 2014-10-06 22:29:07
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -113,7 +113,7 @@ public class TigerParser extends Parser {
 	                                        RecognitionException e) {
 	        String hdr = getErrorHeader(e);
 	        String msg = getErrorMessage(e, tokenNames);
-	        errors.add(hdr + " " + msg);
+	        errors.add(hdr + " " + msg + "            Character at which the error occured: " +  "['" + Character.toString((char)e.c) + "']");
 	    }
 	    public java.util.List<String> getErrors() {
 	        return errors;
@@ -167,7 +167,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: type_declaration_list, function_declaration_list
+			// elements: function_declaration_list, type_declaration_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -448,7 +448,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: ID, TYPE, type
+			// elements: TYPE, type, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -769,7 +769,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: VOID, function_definition_void
+					// elements: function_definition_void, VOID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -987,7 +987,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: param_list, ID, block_list
+			// elements: ID, block_list, param_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1295,7 +1295,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: param, param_list_tail
+					// elements: param_list_tail, param
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1391,7 +1391,7 @@ public class TigerParser extends Parser {
 
 			stream_type_id.add(type_id41.getTree());
 			// AST REWRITE
-			// elements: ID, type_id
+			// elements: type_id, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2004,7 +2004,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: array_dimension, base_type, ARRAY
+					// elements: base_type, array_dimension, ARRAY
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2261,7 +2261,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: optional_init, id_list, type_id, VAR
+			// elements: optional_init, id_list, VAR, type_id
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3488,7 +3488,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: WHILE, stat_seq, expr
+					// elements: stat_seq, expr, WHILE
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3553,7 +3553,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: FOR, stat_seq, range
+					// elements: stat_seq, FOR, range
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3705,7 +3705,7 @@ public class TigerParser extends Parser {
 							stream_RPAREN.add(RPAREN118);
 
 							// AST REWRITE
-							// elements: id_list, ID
+							// elements: ID, id_list
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3750,7 +3750,7 @@ public class TigerParser extends Parser {
 
 							stream_statement_assignment.add(statement_assignment121.getTree());
 							// AST REWRITE
-							// elements: ASSIGN, optional_subscript, statement_assignment, ID
+							// elements: statement_assignment, ID, ASSIGN, optional_subscript
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -4264,7 +4264,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: else_stmt, IF, stat_seq, expr
+			// elements: expr, IF, else_stmt, stat_seq
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 

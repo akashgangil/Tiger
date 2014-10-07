@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/gangil/dev/Tiger/Tiger.g 2014-10-06 21:21:02
+// $ANTLR 3.5.1 /home/gangil/dev/Tiger/Tiger.g 2014-10-06 22:29:07
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -73,7 +73,7 @@ public class TigerLexer extends Lexer {
 	                                        RecognitionException e) {
 	        String hdr = getErrorHeader(e);
 	        String msg = getErrorMessage(e, tokenNames);
-	        errors.add(hdr + " " + msg);
+	        errors.add(hdr + " " + msg +  "           Character at which the error occured: " +  "['" + Character.toString((char)e.c) + "']");
 	    }
 	    public  java.util.List<String> getErrors() {
 	        return errors;
