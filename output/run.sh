@@ -18,6 +18,7 @@ filename=$(basename "$fullfile")
 extension="${filename##*.}"
 filename="${filename%.*}"
 
+mkdir -p classes
 javac -d ./classes/ -classpath antlr-runtime.jar:antlr-stringtemplate.jar:antlr.jar:. TigerParser.java TigerLexer.java Tiger.java
 java -classpath antlr-runtime.jar:antlr-stringtemplate.jar:antlr.jar:./classes/ Tiger "$filename.tiger"  
 dot -Tpng "$filename.dot" -o "$filename.png"
