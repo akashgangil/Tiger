@@ -198,7 +198,7 @@ expr_list_tail
 	;
 
 stat_seq
-	:	stat_tail -> ^(STATEMENTS stat_tail?)
+	:	stat stat_tail -> ^(STATEMENTS stat stat_tail?)
 	;
 
 stat_tail
