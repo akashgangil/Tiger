@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/twb/repos/Tiger/Tiger.g 2014-10-08 18:26:13
+// $ANTLR 3.5.1 /Users/twb/repos/Tiger/Tiger.g 2014-10-08 18:59:05
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -113,7 +113,7 @@ public class TigerParser extends Parser {
 	                                        RecognitionException e) {
 	        String hdr = getErrorHeader(e);
 	        String msg = getErrorMessage(e, tokenNames);
-	        errors.add(hdr + " " + msg + "            Character at which the error occured: " +  "['" + Character.toString((char)e.c) + "']");
+	        errors.add(hdr + " " + msg + "            Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
 	    }
 	    public java.util.List<String> getErrors() {
 	        return errors;
@@ -167,7 +167,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: function_declaration_list, type_declaration_list
+			// elements: type_declaration_list, function_declaration_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -448,7 +448,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: type, ID, TYPE
+			// elements: TYPE, ID, type
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -724,7 +724,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: type_id, function_definition_body
+					// elements: function_definition_body, type_id
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -769,7 +769,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: VOID, function_definition_void
+					// elements: function_definition_void, VOID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -987,7 +987,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: param_list, ID, block_list
+			// elements: block_list, ID, param_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1080,7 +1080,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: block_list, MAIN
+			// elements: MAIN, block_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1174,7 +1174,7 @@ public class TigerParser extends Parser {
 
 					stream_param_list_tail.add(param_list_tail35.getTree());
 					// AST REWRITE
-					// elements: param_list_tail, param
+					// elements: param, param_list_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1295,7 +1295,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: param_list_tail, param
+					// elements: param, param_list_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1391,7 +1391,7 @@ public class TigerParser extends Parser {
 
 			stream_type_id.add(type_id41.getTree());
 			// AST REWRITE
-			// elements: type_id, ID
+			// elements: ID, type_id
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1642,7 +1642,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: stat_seq, declaration_segment
+			// elements: declaration_segment, stat_seq
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2004,7 +2004,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: ARRAY, array_dimensions, base_type
+					// elements: ARRAY, base_type, array_dimensions
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2261,7 +2261,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: id_list, type_id, VAR, optional_init
+			// elements: VAR, type_id, optional_init, id_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2984,7 +2984,7 @@ public class TigerParser extends Parser {
 
 					stream_expr_list_tail.add(expr_list_tail87.getTree());
 					// AST REWRITE
-					// elements: expr, expr_list_tail
+					// elements: expr_list_tail, expr
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3274,7 +3274,7 @@ public class TigerParser extends Parser {
 
 					stream_stat_tail.add(stat_tail94.getTree());
 					// AST REWRITE
-					// elements: stat, stat_tail
+					// elements: stat_tail, stat
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3501,7 +3501,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: WHILE, stat_seq, expr
+					// elements: expr, WHILE, stat_seq
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3566,7 +3566,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: range, stat_seq, FOR
+					// elements: range, FOR, stat_seq
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3639,7 +3639,7 @@ public class TigerParser extends Parser {
 					stream_SEMI.add(SEMI114);
 
 					// AST REWRITE
-					// elements: RETURN, expr
+					// elements: expr, RETURN
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3718,7 +3718,7 @@ public class TigerParser extends Parser {
 							stream_RPAREN.add(RPAREN119);
 
 							// AST REWRITE
-							// elements: ID, id_list
+							// elements: id_list, ID
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3763,7 +3763,7 @@ public class TigerParser extends Parser {
 
 							stream_statement_assignment.add(statement_assignment122.getTree());
 							// AST REWRITE
-							// elements: statement_assignment, ASSIGN, ID, optional_subscript
+							// elements: ID, statement_assignment, ASSIGN, optional_subscript
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3864,7 +3864,7 @@ public class TigerParser extends Parser {
 
 			stream_optional_subscript.add(optional_subscript125.getTree());
 			// AST REWRITE
-			// elements: ID, optional_subscript
+			// elements: optional_subscript, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -4043,7 +4043,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: stop, start
+			// elements: start, stop
 			// token labels: 
 			// rule labels: stop, start, retval
 			// token list labels: 
@@ -4277,7 +4277,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: IF, else_stmt, stat_seq, expr
+			// elements: IF, expr, stat_seq, else_stmt
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 

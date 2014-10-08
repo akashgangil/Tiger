@@ -31,7 +31,7 @@ tokens {
                                         RecognitionException e) {
         String hdr = getErrorHeader(e);
         String msg = getErrorMessage(e, tokenNames);
-        errors.add(hdr + " " + msg +  "           Character at which the error occured: " +  "['" + Character.toString((char)e.c) + "']");
+        errors.add(hdr + " " + msg +  "           Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
     }
     public  java.util.List<String> getErrors() {
         return errors;
@@ -45,7 +45,7 @@ tokens {
                                         RecognitionException e) {
         String hdr = getErrorHeader(e);
         String msg = getErrorMessage(e, tokenNames);
-        errors.add(hdr + " " + msg + "            Character at which the error occured: " +  "['" + Character.toString((char)e.c) + "']");
+        errors.add(hdr + " " + msg + "            Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
     }
     public java.util.List<String> getErrors() {
         return errors;
