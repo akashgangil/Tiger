@@ -143,7 +143,7 @@ var_declaration_tail
 
 type
 	:	base_type
-	|	(ARRAY array_dimension OF base_type) -> ^(ARRAY array_dimension base_type)
+	|	(ARRAY array_dimensions OF base_type) -> ^(ARRAY array_dimensions base_type)
 	;
 
 type_id
