@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/twb/repos/Tiger/Tiger.g 2014-10-08 18:59:05
+// $ANTLR 3.5.1 grammar/Tiger.g 2014-10-09 10:11:24
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -105,7 +105,7 @@ public class TigerParser extends Parser {
 		return adaptor;
 	}
 	@Override public String[] getTokenNames() { return TigerParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "/Users/twb/repos/Tiger/Tiger.g"; }
+	@Override public String getGrammarFileName() { return "grammar/Tiger.g"; }
 
 
 	    private  java.util.List<String> errors = new java.util.LinkedList<String>();
@@ -128,7 +128,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "tiger_program"
-	// /Users/twb/repos/Tiger/Tiger.g:60:1: tiger_program : ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ( type_declaration_list )? function_declaration_list ) ;
+	// grammar/Tiger.g:60:1: tiger_program : ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ( type_declaration_list )? function_declaration_list ) ;
 	public final TigerParser.tiger_program_return tiger_program() throws RecognitionException {
 		TigerParser.tiger_program_return retval = new TigerParser.tiger_program_return();
 		retval.start = input.LT(1);
@@ -145,11 +145,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:61:2: ( ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ( type_declaration_list )? function_declaration_list ) )
-			// /Users/twb/repos/Tiger/Tiger.g:61:4: ( type_declaration_list function_declaration_list EOF )
+			// grammar/Tiger.g:61:2: ( ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ( type_declaration_list )? function_declaration_list ) )
+			// grammar/Tiger.g:61:4: ( type_declaration_list function_declaration_list EOF )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:61:4: ( type_declaration_list function_declaration_list EOF )
-			// /Users/twb/repos/Tiger/Tiger.g:61:5: type_declaration_list function_declaration_list EOF
+			// grammar/Tiger.g:61:4: ( type_declaration_list function_declaration_list EOF )
+			// grammar/Tiger.g:61:5: type_declaration_list function_declaration_list EOF
 			{
 			pushFollow(FOLLOW_type_declaration_list_in_tiger_program139);
 			type_declaration_list1=type_declaration_list();
@@ -179,11 +179,11 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 61:58: -> ^( PROGRAM ( type_declaration_list )? function_declaration_list )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:61:61: ^( PROGRAM ( type_declaration_list )? function_declaration_list )
+				// grammar/Tiger.g:61:61: ^( PROGRAM ( type_declaration_list )? function_declaration_list )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PROGRAM, "PROGRAM"), root_1);
-				// /Users/twb/repos/Tiger/Tiger.g:61:71: ( type_declaration_list )?
+				// grammar/Tiger.g:61:71: ( type_declaration_list )?
 				if ( stream_type_declaration_list.hasNext() ) {
 					adaptor.addChild(root_1, stream_type_declaration_list.nextTree());
 				}
@@ -227,7 +227,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration_list"
-	// /Users/twb/repos/Tiger/Tiger.g:64:1: type_declaration_list : ( type_declaration_tail ) -> ^( TYPES ( type_declaration_tail )? ) ;
+	// grammar/Tiger.g:64:1: type_declaration_list : ( type_declaration_tail ) -> ^( TYPES ( type_declaration_tail )? ) ;
 	public final TigerParser.type_declaration_list_return type_declaration_list() throws RecognitionException {
 		TigerParser.type_declaration_list_return retval = new TigerParser.type_declaration_list_return();
 		retval.start = input.LT(1);
@@ -239,11 +239,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type_declaration_tail=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:65:2: ( ( type_declaration_tail ) -> ^( TYPES ( type_declaration_tail )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:65:4: ( type_declaration_tail )
+			// grammar/Tiger.g:65:2: ( ( type_declaration_tail ) -> ^( TYPES ( type_declaration_tail )? ) )
+			// grammar/Tiger.g:65:4: ( type_declaration_tail )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:65:4: ( type_declaration_tail )
-			// /Users/twb/repos/Tiger/Tiger.g:65:5: type_declaration_tail
+			// grammar/Tiger.g:65:4: ( type_declaration_tail )
+			// grammar/Tiger.g:65:5: type_declaration_tail
 			{
 			pushFollow(FOLLOW_type_declaration_tail_in_type_declaration_list167);
 			type_declaration_tail4=type_declaration_tail();
@@ -265,11 +265,11 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 65:28: -> ^( TYPES ( type_declaration_tail )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:65:31: ^( TYPES ( type_declaration_tail )? )
+				// grammar/Tiger.g:65:31: ^( TYPES ( type_declaration_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(TYPES, "TYPES"), root_1);
-				// /Users/twb/repos/Tiger/Tiger.g:65:39: ( type_declaration_tail )?
+				// grammar/Tiger.g:65:39: ( type_declaration_tail )?
 				if ( stream_type_declaration_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_type_declaration_tail.nextTree());
 				}
@@ -312,7 +312,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:68:1: type_declaration_tail : ( type_declaration type_declaration_tail |);
+	// grammar/Tiger.g:68:1: type_declaration_tail : ( type_declaration type_declaration_tail |);
 	public final TigerParser.type_declaration_tail_return type_declaration_tail() throws RecognitionException {
 		TigerParser.type_declaration_tail_return retval = new TigerParser.type_declaration_tail_return();
 		retval.start = input.LT(1);
@@ -324,7 +324,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:69:2: ( type_declaration type_declaration_tail |)
+			// grammar/Tiger.g:69:2: ( type_declaration type_declaration_tail |)
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0==TYPE) ) {
@@ -342,7 +342,7 @@ public class TigerParser extends Parser {
 
 			switch (alt1) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:69:4: type_declaration type_declaration_tail
+					// grammar/Tiger.g:69:4: type_declaration type_declaration_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -362,7 +362,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:71:2: 
+					// grammar/Tiger.g:71:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -398,7 +398,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration"
-	// /Users/twb/repos/Tiger/Tiger.g:73:1: type_declaration : ( TYPE ID EQ type SEMI ) -> ^( TYPE ID type ) ;
+	// grammar/Tiger.g:73:1: type_declaration : ( TYPE ID EQ type SEMI ) -> ^( TYPE ID type ) ;
 	public final TigerParser.type_declaration_return type_declaration() throws RecognitionException {
 		TigerParser.type_declaration_return retval = new TigerParser.type_declaration_return();
 		retval.start = input.LT(1);
@@ -422,11 +422,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:74:2: ( ( TYPE ID EQ type SEMI ) -> ^( TYPE ID type ) )
-			// /Users/twb/repos/Tiger/Tiger.g:74:4: ( TYPE ID EQ type SEMI )
+			// grammar/Tiger.g:74:2: ( ( TYPE ID EQ type SEMI ) -> ^( TYPE ID type ) )
+			// grammar/Tiger.g:74:4: ( TYPE ID EQ type SEMI )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:74:4: ( TYPE ID EQ type SEMI )
-			// /Users/twb/repos/Tiger/Tiger.g:74:5: TYPE ID EQ type SEMI
+			// grammar/Tiger.g:74:4: ( TYPE ID EQ type SEMI )
+			// grammar/Tiger.g:74:5: TYPE ID EQ type SEMI
 			{
 			TYPE7=(Token)match(input,TYPE,FOLLOW_TYPE_in_type_declaration205);  
 			stream_TYPE.add(TYPE7);
@@ -448,7 +448,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: TYPE, ID, type
+			// elements: type, TYPE, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -460,7 +460,7 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 74:27: -> ^( TYPE ID type )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:74:30: ^( TYPE ID type )
+				// grammar/Tiger.g:74:30: ^( TYPE ID type )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot(stream_TYPE.nextNode(), root_1);
@@ -503,7 +503,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_declaration_list"
-	// /Users/twb/repos/Tiger/Tiger.g:77:1: function_declaration_list : function_declaration_tail -> ^( FUNCTIONS ( function_declaration_tail )? ) ;
+	// grammar/Tiger.g:77:1: function_declaration_list : function_declaration_tail -> ^( FUNCTIONS ( function_declaration_tail )? ) ;
 	public final TigerParser.function_declaration_list_return function_declaration_list() throws RecognitionException {
 		TigerParser.function_declaration_list_return retval = new TigerParser.function_declaration_list_return();
 		retval.start = input.LT(1);
@@ -515,8 +515,8 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_function_declaration_tail=new RewriteRuleSubtreeStream(adaptor,"rule function_declaration_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:78:2: ( function_declaration_tail -> ^( FUNCTIONS ( function_declaration_tail )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:78:4: function_declaration_tail
+			// grammar/Tiger.g:78:2: ( function_declaration_tail -> ^( FUNCTIONS ( function_declaration_tail )? ) )
+			// grammar/Tiger.g:78:4: function_declaration_tail
 			{
 			pushFollow(FOLLOW_function_declaration_tail_in_function_declaration_list235);
 			function_declaration_tail12=function_declaration_tail();
@@ -536,11 +536,11 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 78:30: -> ^( FUNCTIONS ( function_declaration_tail )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:78:33: ^( FUNCTIONS ( function_declaration_tail )? )
+				// grammar/Tiger.g:78:33: ^( FUNCTIONS ( function_declaration_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTIONS, "FUNCTIONS"), root_1);
-				// /Users/twb/repos/Tiger/Tiger.g:78:45: ( function_declaration_tail )?
+				// grammar/Tiger.g:78:45: ( function_declaration_tail )?
 				if ( stream_function_declaration_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_function_declaration_tail.nextTree());
 				}
@@ -583,7 +583,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_declaration_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:81:1: function_declaration_tail : ( function_definition function_declaration_tail |);
+	// grammar/Tiger.g:81:1: function_declaration_tail : ( function_definition function_declaration_tail |);
 	public final TigerParser.function_declaration_tail_return function_declaration_tail() throws RecognitionException {
 		TigerParser.function_declaration_tail_return retval = new TigerParser.function_declaration_tail_return();
 		retval.start = input.LT(1);
@@ -595,7 +595,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:82:2: ( function_definition function_declaration_tail |)
+			// grammar/Tiger.g:82:2: ( function_definition function_declaration_tail |)
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==FIXEDPT||LA2_0==ID||LA2_0==INT||LA2_0==VOID) ) {
@@ -613,7 +613,7 @@ public class TigerParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:82:4: function_definition function_declaration_tail
+					// grammar/Tiger.g:82:4: function_definition function_declaration_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -633,7 +633,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:84:2: 
+					// grammar/Tiger.g:84:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -669,7 +669,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_definition"
-	// /Users/twb/repos/Tiger/Tiger.g:86:1: function_definition : ( ( type_id function_definition_body ) -> ^( FUNCTION type_id function_definition_body ) | ( VOID function_definition_void ) -> ^( FUNCTION VOID function_definition_void ) );
+	// grammar/Tiger.g:86:1: function_definition : ( ( type_id function_definition_body ) -> ^( FUNCTION type_id function_definition_body ) | ( VOID function_definition_void ) -> ^( FUNCTION VOID function_definition_void ) );
 	public final TigerParser.function_definition_return function_definition() throws RecognitionException {
 		TigerParser.function_definition_return retval = new TigerParser.function_definition_return();
 		retval.start = input.LT(1);
@@ -688,7 +688,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_function_definition_body=new RewriteRuleSubtreeStream(adaptor,"rule function_definition_body");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:87:2: ( ( type_id function_definition_body ) -> ^( FUNCTION type_id function_definition_body ) | ( VOID function_definition_void ) -> ^( FUNCTION VOID function_definition_void ) )
+			// grammar/Tiger.g:87:2: ( ( type_id function_definition_body ) -> ^( FUNCTION type_id function_definition_body ) | ( VOID function_definition_void ) -> ^( FUNCTION VOID function_definition_void ) )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==FIXEDPT||LA3_0==ID||LA3_0==INT) ) {
@@ -706,10 +706,10 @@ public class TigerParser extends Parser {
 
 			switch (alt3) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:87:4: ( type_id function_definition_body )
+					// grammar/Tiger.g:87:4: ( type_id function_definition_body )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:87:4: ( type_id function_definition_body )
-					// /Users/twb/repos/Tiger/Tiger.g:87:5: type_id function_definition_body
+					// grammar/Tiger.g:87:4: ( type_id function_definition_body )
+					// grammar/Tiger.g:87:5: type_id function_definition_body
 					{
 					pushFollow(FOLLOW_type_id_in_function_definition272);
 					type_id15=type_id();
@@ -736,7 +736,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 87:39: -> ^( FUNCTION type_id function_definition_body )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:87:42: ^( FUNCTION type_id function_definition_body )
+						// grammar/Tiger.g:87:42: ^( FUNCTION type_id function_definition_body )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTION, "FUNCTION"), root_1);
@@ -753,10 +753,10 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:88:4: ( VOID function_definition_void )
+					// grammar/Tiger.g:88:4: ( VOID function_definition_void )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:88:4: ( VOID function_definition_void )
-					// /Users/twb/repos/Tiger/Tiger.g:88:5: VOID function_definition_void
+					// grammar/Tiger.g:88:4: ( VOID function_definition_void )
+					// grammar/Tiger.g:88:5: VOID function_definition_void
 					{
 					VOID17=(Token)match(input,VOID,FOLLOW_VOID_in_function_definition291);  
 					stream_VOID.add(VOID17);
@@ -769,7 +769,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: function_definition_void, VOID
+					// elements: VOID, function_definition_void
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -781,7 +781,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 88:36: -> ^( FUNCTION VOID function_definition_void )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:88:39: ^( FUNCTION VOID function_definition_void )
+						// grammar/Tiger.g:88:39: ^( FUNCTION VOID function_definition_void )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTION, "FUNCTION"), root_1);
@@ -826,7 +826,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_definition_void"
-	// /Users/twb/repos/Tiger/Tiger.g:91:1: function_definition_void : ( function_definition_body | function_definition_main );
+	// grammar/Tiger.g:91:1: function_definition_void : ( function_definition_body | function_definition_main );
 	public final TigerParser.function_definition_void_return function_definition_void() throws RecognitionException {
 		TigerParser.function_definition_void_return retval = new TigerParser.function_definition_void_return();
 		retval.start = input.LT(1);
@@ -838,7 +838,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:92:2: ( function_definition_body | function_definition_main )
+			// grammar/Tiger.g:92:2: ( function_definition_body | function_definition_main )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0==FUNCTION) ) {
@@ -856,7 +856,7 @@ public class TigerParser extends Parser {
 
 			switch (alt4) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:92:4: function_definition_body
+					// grammar/Tiger.g:92:4: function_definition_body
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -870,7 +870,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:93:4: function_definition_main
+					// grammar/Tiger.g:93:4: function_definition_main
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -912,7 +912,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_definition_body"
-	// /Users/twb/repos/Tiger/Tiger.g:96:1: function_definition_body : ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) -> ID param_list block_list ;
+	// grammar/Tiger.g:96:1: function_definition_body : ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) -> ID param_list block_list ;
 	public final TigerParser.function_definition_body_return function_definition_body() throws RecognitionException {
 		TigerParser.function_definition_body_return retval = new TigerParser.function_definition_body_return();
 		retval.start = input.LT(1);
@@ -947,11 +947,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_param_list=new RewriteRuleSubtreeStream(adaptor,"rule param_list");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:97:2: ( ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) -> ID param_list block_list )
-			// /Users/twb/repos/Tiger/Tiger.g:97:4: ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
+			// grammar/Tiger.g:97:2: ( ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) -> ID param_list block_list )
+			// grammar/Tiger.g:97:4: ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:97:4: ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
-			// /Users/twb/repos/Tiger/Tiger.g:97:5: FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+			// grammar/Tiger.g:97:4: ( FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
+			// grammar/Tiger.g:97:5: FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
 			{
 			FUNCTION21=(Token)match(input,FUNCTION,FOLLOW_FUNCTION_in_function_definition_body332);  
 			stream_FUNCTION.add(FUNCTION21);
@@ -987,7 +987,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: block_list, ID, param_list
+			// elements: ID, param_list, block_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1036,7 +1036,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_definition_main"
-	// /Users/twb/repos/Tiger/Tiger.g:100:1: function_definition_main : ( MAIN LPAREN RPAREN block_list ) -> MAIN PARAMS block_list ;
+	// grammar/Tiger.g:100:1: function_definition_main : ( MAIN LPAREN RPAREN block_list ) -> MAIN PARAMS block_list ;
 	public final TigerParser.function_definition_main_return function_definition_main() throws RecognitionException {
 		TigerParser.function_definition_main_return retval = new TigerParser.function_definition_main_return();
 		retval.start = input.LT(1);
@@ -1057,11 +1057,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_block_list=new RewriteRuleSubtreeStream(adaptor,"rule block_list");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:101:2: ( ( MAIN LPAREN RPAREN block_list ) -> MAIN PARAMS block_list )
-			// /Users/twb/repos/Tiger/Tiger.g:101:4: ( MAIN LPAREN RPAREN block_list )
+			// grammar/Tiger.g:101:2: ( ( MAIN LPAREN RPAREN block_list ) -> MAIN PARAMS block_list )
+			// grammar/Tiger.g:101:4: ( MAIN LPAREN RPAREN block_list )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:101:4: ( MAIN LPAREN RPAREN block_list )
-			// /Users/twb/repos/Tiger/Tiger.g:101:5: MAIN LPAREN RPAREN block_list
+			// grammar/Tiger.g:101:4: ( MAIN LPAREN RPAREN block_list )
+			// grammar/Tiger.g:101:5: MAIN LPAREN RPAREN block_list
 			{
 			MAIN30=(Token)match(input,MAIN,FOLLOW_MAIN_in_function_definition_main370);  
 			stream_MAIN.add(MAIN30);
@@ -1080,7 +1080,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: MAIN, block_list
+			// elements: block_list, MAIN
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1129,7 +1129,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "param_list"
-	// /Users/twb/repos/Tiger/Tiger.g:104:1: param_list : ( param param_list_tail -> ^( PARAMS param param_list_tail ) |);
+	// grammar/Tiger.g:104:1: param_list : ( param param_list_tail -> ^( PARAMS param param_list_tail ) |);
 	public final TigerParser.param_list_return param_list() throws RecognitionException {
 		TigerParser.param_list_return retval = new TigerParser.param_list_return();
 		retval.start = input.LT(1);
@@ -1143,7 +1143,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_param=new RewriteRuleSubtreeStream(adaptor,"rule param");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:105:2: ( param param_list_tail -> ^( PARAMS param param_list_tail ) |)
+			// grammar/Tiger.g:105:2: ( param param_list_tail -> ^( PARAMS param param_list_tail ) |)
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==ID) ) {
@@ -1161,7 +1161,7 @@ public class TigerParser extends Parser {
 
 			switch (alt5) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:105:4: param param_list_tail
+					// grammar/Tiger.g:105:4: param param_list_tail
 					{
 					pushFollow(FOLLOW_param_in_param_list396);
 					param34=param();
@@ -1174,7 +1174,7 @@ public class TigerParser extends Parser {
 
 					stream_param_list_tail.add(param_list_tail35.getTree());
 					// AST REWRITE
-					// elements: param, param_list_tail
+					// elements: param_list_tail, param
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1186,7 +1186,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 105:26: -> ^( PARAMS param param_list_tail )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:105:29: ^( PARAMS param param_list_tail )
+						// grammar/Tiger.g:105:29: ^( PARAMS param param_list_tail )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PARAMS, "PARAMS"), root_1);
@@ -1203,7 +1203,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:107:2: 
+					// grammar/Tiger.g:107:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1239,7 +1239,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "param_list_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:109:1: param_list_tail : ( ( COMMA param param_list_tail ) -> param ( param_list_tail )? |);
+	// grammar/Tiger.g:109:1: param_list_tail : ( ( COMMA param param_list_tail ) -> param ( param_list_tail )? |);
 	public final TigerParser.param_list_tail_return param_list_tail() throws RecognitionException {
 		TigerParser.param_list_tail_return retval = new TigerParser.param_list_tail_return();
 		retval.start = input.LT(1);
@@ -1256,7 +1256,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_param=new RewriteRuleSubtreeStream(adaptor,"rule param");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:110:2: ( ( COMMA param param_list_tail ) -> param ( param_list_tail )? |)
+			// grammar/Tiger.g:110:2: ( ( COMMA param param_list_tail ) -> param ( param_list_tail )? |)
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0==COMMA) ) {
@@ -1274,10 +1274,10 @@ public class TigerParser extends Parser {
 
 			switch (alt6) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:110:4: ( COMMA param param_list_tail )
+					// grammar/Tiger.g:110:4: ( COMMA param param_list_tail )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:110:4: ( COMMA param param_list_tail )
-					// /Users/twb/repos/Tiger/Tiger.g:110:5: COMMA param param_list_tail
+					// grammar/Tiger.g:110:4: ( COMMA param param_list_tail )
+					// grammar/Tiger.g:110:5: COMMA param param_list_tail
 					{
 					COMMA36=(Token)match(input,COMMA,FOLLOW_COMMA_in_param_list_tail425);  
 					stream_COMMA.add(COMMA36);
@@ -1308,7 +1308,7 @@ public class TigerParser extends Parser {
 					// 110:34: -> param ( param_list_tail )?
 					{
 						adaptor.addChild(root_0, stream_param.nextTree());
-						// /Users/twb/repos/Tiger/Tiger.g:110:43: ( param_list_tail )?
+						// grammar/Tiger.g:110:43: ( param_list_tail )?
 						if ( stream_param_list_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_param_list_tail.nextTree());
 						}
@@ -1322,7 +1322,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:112:2: 
+					// grammar/Tiger.g:112:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1358,7 +1358,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "param"
-	// /Users/twb/repos/Tiger/Tiger.g:114:1: param : ID COLON type_id -> ^( PARAM ID type_id ) ;
+	// grammar/Tiger.g:114:1: param : ID COLON type_id -> ^( PARAM ID type_id ) ;
 	public final TigerParser.param_return param() throws RecognitionException {
 		TigerParser.param_return retval = new TigerParser.param_return();
 		retval.start = input.LT(1);
@@ -1376,8 +1376,8 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:115:2: ( ID COLON type_id -> ^( PARAM ID type_id ) )
-			// /Users/twb/repos/Tiger/Tiger.g:115:4: ID COLON type_id
+			// grammar/Tiger.g:115:2: ( ID COLON type_id -> ^( PARAM ID type_id ) )
+			// grammar/Tiger.g:115:4: ID COLON type_id
 			{
 			ID39=(Token)match(input,ID,FOLLOW_ID_in_param454);  
 			stream_ID.add(ID39);
@@ -1391,7 +1391,7 @@ public class TigerParser extends Parser {
 
 			stream_type_id.add(type_id41.getTree());
 			// AST REWRITE
-			// elements: ID, type_id
+			// elements: type_id, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1403,7 +1403,7 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 115:21: -> ^( PARAM ID type_id )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:115:24: ^( PARAM ID type_id )
+				// grammar/Tiger.g:115:24: ^( PARAM ID type_id )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PARAM, "PARAM"), root_1);
@@ -1446,7 +1446,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block_list"
-	// /Users/twb/repos/Tiger/Tiger.g:118:1: block_list : block block_tail ;
+	// grammar/Tiger.g:118:1: block_list : block block_tail ;
 	public final TigerParser.block_list_return block_list() throws RecognitionException {
 		TigerParser.block_list_return retval = new TigerParser.block_list_return();
 		retval.start = input.LT(1);
@@ -1458,8 +1458,8 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:119:2: ( block block_tail )
-			// /Users/twb/repos/Tiger/Tiger.g:119:4: block block_tail
+			// grammar/Tiger.g:119:2: ( block block_tail )
+			// grammar/Tiger.g:119:4: block block_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -1505,7 +1505,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:122:1: block_tail : ( block block_tail |);
+	// grammar/Tiger.g:122:1: block_tail : ( block block_tail |);
 	public final TigerParser.block_tail_return block_tail() throws RecognitionException {
 		TigerParser.block_tail_return retval = new TigerParser.block_tail_return();
 		retval.start = input.LT(1);
@@ -1517,7 +1517,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:123:2: ( block block_tail |)
+			// grammar/Tiger.g:123:2: ( block block_tail |)
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==BEGIN) ) {
@@ -1535,7 +1535,7 @@ public class TigerParser extends Parser {
 
 			switch (alt7) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:123:4: block block_tail
+					// grammar/Tiger.g:123:4: block block_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1555,7 +1555,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:125:2: 
+					// grammar/Tiger.g:125:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1591,7 +1591,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block"
-	// /Users/twb/repos/Tiger/Tiger.g:127:1: block : ( BEGIN declaration_segment stat_seq END SEMI ) -> ^( BLOCK ( declaration_segment )? stat_seq ) ;
+	// grammar/Tiger.g:127:1: block : ( BEGIN declaration_segment stat_seq END SEMI ) -> ^( BLOCK ( declaration_segment )? stat_seq ) ;
 	public final TigerParser.block_return block() throws RecognitionException {
 		TigerParser.block_return retval = new TigerParser.block_return();
 		retval.start = input.LT(1);
@@ -1614,11 +1614,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_declaration_segment=new RewriteRuleSubtreeStream(adaptor,"rule declaration_segment");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:128:2: ( ( BEGIN declaration_segment stat_seq END SEMI ) -> ^( BLOCK ( declaration_segment )? stat_seq ) )
-			// /Users/twb/repos/Tiger/Tiger.g:128:4: ( BEGIN declaration_segment stat_seq END SEMI )
+			// grammar/Tiger.g:128:2: ( ( BEGIN declaration_segment stat_seq END SEMI ) -> ^( BLOCK ( declaration_segment )? stat_seq ) )
+			// grammar/Tiger.g:128:4: ( BEGIN declaration_segment stat_seq END SEMI )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:128:4: ( BEGIN declaration_segment stat_seq END SEMI )
-			// /Users/twb/repos/Tiger/Tiger.g:128:5: BEGIN declaration_segment stat_seq END SEMI
+			// grammar/Tiger.g:128:4: ( BEGIN declaration_segment stat_seq END SEMI )
+			// grammar/Tiger.g:128:5: BEGIN declaration_segment stat_seq END SEMI
 			{
 			BEGIN46=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_block511);  
 			stream_BEGIN.add(BEGIN46);
@@ -1642,7 +1642,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: declaration_segment, stat_seq
+			// elements: stat_seq, declaration_segment
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1654,11 +1654,11 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 128:50: -> ^( BLOCK ( declaration_segment )? stat_seq )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:128:53: ^( BLOCK ( declaration_segment )? stat_seq )
+				// grammar/Tiger.g:128:53: ^( BLOCK ( declaration_segment )? stat_seq )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BLOCK, "BLOCK"), root_1);
-				// /Users/twb/repos/Tiger/Tiger.g:128:61: ( declaration_segment )?
+				// grammar/Tiger.g:128:61: ( declaration_segment )?
 				if ( stream_declaration_segment.hasNext() ) {
 					adaptor.addChild(root_1, stream_declaration_segment.nextTree());
 				}
@@ -1702,7 +1702,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "declaration_segment"
-	// /Users/twb/repos/Tiger/Tiger.g:131:1: declaration_segment : type_declaration_list var_declaration_list ;
+	// grammar/Tiger.g:131:1: declaration_segment : type_declaration_list var_declaration_list ;
 	public final TigerParser.declaration_segment_return declaration_segment() throws RecognitionException {
 		TigerParser.declaration_segment_return retval = new TigerParser.declaration_segment_return();
 		retval.start = input.LT(1);
@@ -1714,8 +1714,8 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:132:2: ( type_declaration_list var_declaration_list )
-			// /Users/twb/repos/Tiger/Tiger.g:132:4: type_declaration_list var_declaration_list
+			// grammar/Tiger.g:132:2: ( type_declaration_list var_declaration_list )
+			// grammar/Tiger.g:132:4: type_declaration_list var_declaration_list
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -1761,7 +1761,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration_list"
-	// /Users/twb/repos/Tiger/Tiger.g:135:1: var_declaration_list : var_declaration_tail -> ^( VARIABLES ( var_declaration_tail )? ) ;
+	// grammar/Tiger.g:135:1: var_declaration_list : var_declaration_tail -> ^( VARIABLES ( var_declaration_tail )? ) ;
 	public final TigerParser.var_declaration_list_return var_declaration_list() throws RecognitionException {
 		TigerParser.var_declaration_list_return retval = new TigerParser.var_declaration_list_return();
 		retval.start = input.LT(1);
@@ -1773,8 +1773,8 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_var_declaration_tail=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:136:2: ( var_declaration_tail -> ^( VARIABLES ( var_declaration_tail )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:136:4: var_declaration_tail
+			// grammar/Tiger.g:136:2: ( var_declaration_tail -> ^( VARIABLES ( var_declaration_tail )? ) )
+			// grammar/Tiger.g:136:4: var_declaration_tail
 			{
 			pushFollow(FOLLOW_var_declaration_tail_in_var_declaration_list555);
 			var_declaration_tail53=var_declaration_tail();
@@ -1794,11 +1794,11 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 136:25: -> ^( VARIABLES ( var_declaration_tail )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:136:28: ^( VARIABLES ( var_declaration_tail )? )
+				// grammar/Tiger.g:136:28: ^( VARIABLES ( var_declaration_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARIABLES, "VARIABLES"), root_1);
-				// /Users/twb/repos/Tiger/Tiger.g:136:40: ( var_declaration_tail )?
+				// grammar/Tiger.g:136:40: ( var_declaration_tail )?
 				if ( stream_var_declaration_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_var_declaration_tail.nextTree());
 				}
@@ -1841,7 +1841,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:139:1: var_declaration_tail : ( var_declaration var_declaration_tail |);
+	// grammar/Tiger.g:139:1: var_declaration_tail : ( var_declaration var_declaration_tail |);
 	public final TigerParser.var_declaration_tail_return var_declaration_tail() throws RecognitionException {
 		TigerParser.var_declaration_tail_return retval = new TigerParser.var_declaration_tail_return();
 		retval.start = input.LT(1);
@@ -1853,7 +1853,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:140:2: ( var_declaration var_declaration_tail |)
+			// grammar/Tiger.g:140:2: ( var_declaration var_declaration_tail |)
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==VAR) ) {
@@ -1871,7 +1871,7 @@ public class TigerParser extends Parser {
 
 			switch (alt8) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:140:4: var_declaration var_declaration_tail
+					// grammar/Tiger.g:140:4: var_declaration var_declaration_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1891,7 +1891,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:142:2: 
+					// grammar/Tiger.g:142:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1927,7 +1927,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type"
-	// /Users/twb/repos/Tiger/Tiger.g:144:1: type : ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) );
+	// grammar/Tiger.g:144:1: type : ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) );
 	public final TigerParser.type_return type() throws RecognitionException {
 		TigerParser.type_return retval = new TigerParser.type_return();
 		retval.start = input.LT(1);
@@ -1948,7 +1948,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_array_dimensions=new RewriteRuleSubtreeStream(adaptor,"rule array_dimensions");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:145:2: ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) )
+			// grammar/Tiger.g:145:2: ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==FIXEDPT||LA9_0==INT) ) {
@@ -1966,7 +1966,7 @@ public class TigerParser extends Parser {
 
 			switch (alt9) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:145:4: base_type
+					// grammar/Tiger.g:145:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1980,10 +1980,10 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:146:4: ( ARRAY array_dimensions OF base_type )
+					// grammar/Tiger.g:146:4: ( ARRAY array_dimensions OF base_type )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:146:4: ( ARRAY array_dimensions OF base_type )
-					// /Users/twb/repos/Tiger/Tiger.g:146:5: ARRAY array_dimensions OF base_type
+					// grammar/Tiger.g:146:4: ( ARRAY array_dimensions OF base_type )
+					// grammar/Tiger.g:146:5: ARRAY array_dimensions OF base_type
 					{
 					ARRAY57=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type597);  
 					stream_ARRAY.add(ARRAY57);
@@ -2004,7 +2004,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: ARRAY, base_type, array_dimensions
+					// elements: base_type, array_dimensions, ARRAY
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2016,7 +2016,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 146:42: -> ^( ARRAY array_dimensions base_type )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:146:45: ^( ARRAY array_dimensions base_type )
+						// grammar/Tiger.g:146:45: ^( ARRAY array_dimensions base_type )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_ARRAY.nextNode(), root_1);
@@ -2061,7 +2061,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_id"
-	// /Users/twb/repos/Tiger/Tiger.g:149:1: type_id : ( base_type | ID );
+	// grammar/Tiger.g:149:1: type_id : ( base_type | ID );
 	public final TigerParser.type_id_return type_id() throws RecognitionException {
 		TigerParser.type_id_return retval = new TigerParser.type_id_return();
 		retval.start = input.LT(1);
@@ -2074,7 +2074,7 @@ public class TigerParser extends Parser {
 		Object ID62_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:150:2: ( base_type | ID )
+			// grammar/Tiger.g:150:2: ( base_type | ID )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0==FIXEDPT||LA10_0==INT) ) {
@@ -2092,7 +2092,7 @@ public class TigerParser extends Parser {
 
 			switch (alt10) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:150:4: base_type
+					// grammar/Tiger.g:150:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2106,7 +2106,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:151:4: ID
+					// grammar/Tiger.g:151:4: ID
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2146,7 +2146,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "base_type"
-	// /Users/twb/repos/Tiger/Tiger.g:154:1: base_type : ( INT | FIXEDPT );
+	// grammar/Tiger.g:154:1: base_type : ( INT | FIXEDPT );
 	public final TigerParser.base_type_return base_type() throws RecognitionException {
 		TigerParser.base_type_return retval = new TigerParser.base_type_return();
 		retval.start = input.LT(1);
@@ -2158,8 +2158,8 @@ public class TigerParser extends Parser {
 		Object set63_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:155:2: ( INT | FIXEDPT )
-			// /Users/twb/repos/Tiger/Tiger.g:
+			// grammar/Tiger.g:155:2: ( INT | FIXEDPT )
+			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -2203,7 +2203,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration"
-	// /Users/twb/repos/Tiger/Tiger.g:159:1: var_declaration : ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) ;
+	// grammar/Tiger.g:159:1: var_declaration : ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) ;
 	public final TigerParser.var_declaration_return var_declaration() throws RecognitionException {
 		TigerParser.var_declaration_return retval = new TigerParser.var_declaration_return();
 		retval.start = input.LT(1);
@@ -2228,11 +2228,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_optional_init=new RewriteRuleSubtreeStream(adaptor,"rule optional_init");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:160:2: ( ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:160:4: ( VAR id_list COLON type_id optional_init SEMI )
+			// grammar/Tiger.g:160:2: ( ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) )
+			// grammar/Tiger.g:160:4: ( VAR id_list COLON type_id optional_init SEMI )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:160:4: ( VAR id_list COLON type_id optional_init SEMI )
-			// /Users/twb/repos/Tiger/Tiger.g:160:5: VAR id_list COLON type_id optional_init SEMI
+			// grammar/Tiger.g:160:4: ( VAR id_list COLON type_id optional_init SEMI )
+			// grammar/Tiger.g:160:5: VAR id_list COLON type_id optional_init SEMI
 			{
 			VAR64=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration658);  
 			stream_VAR.add(VAR64);
@@ -2261,7 +2261,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: VAR, type_id, optional_init, id_list
+			// elements: id_list, type_id, VAR, optional_init
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2273,13 +2273,13 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 160:51: -> ^( VAR id_list type_id ( optional_init )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:160:54: ^( VAR id_list type_id ( optional_init )? )
+				// grammar/Tiger.g:160:54: ^( VAR id_list type_id ( optional_init )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot(stream_VAR.nextNode(), root_1);
 				adaptor.addChild(root_1, stream_id_list.nextTree());
 				adaptor.addChild(root_1, stream_type_id.nextTree());
-				// /Users/twb/repos/Tiger/Tiger.g:160:76: ( optional_init )?
+				// grammar/Tiger.g:160:76: ( optional_init )?
 				if ( stream_optional_init.hasNext() ) {
 					adaptor.addChild(root_1, stream_optional_init.nextTree());
 				}
@@ -2322,7 +2322,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "optional_init"
-	// /Users/twb/repos/Tiger/Tiger.g:163:1: optional_init : ( ASSIGN constant -> constant |);
+	// grammar/Tiger.g:163:1: optional_init : ( ASSIGN constant -> constant |);
 	public final TigerParser.optional_init_return optional_init() throws RecognitionException {
 		TigerParser.optional_init_return retval = new TigerParser.optional_init_return();
 		retval.start = input.LT(1);
@@ -2337,7 +2337,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:164:2: ( ASSIGN constant -> constant |)
+			// grammar/Tiger.g:164:2: ( ASSIGN constant -> constant |)
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==ASSIGN) ) {
@@ -2355,7 +2355,7 @@ public class TigerParser extends Parser {
 
 			switch (alt11) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:164:4: ASSIGN constant
+					// grammar/Tiger.g:164:4: ASSIGN constant
 					{
 					ASSIGN70=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_init693);  
 					stream_ASSIGN.add(ASSIGN70);
@@ -2387,7 +2387,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:166:2: 
+					// grammar/Tiger.g:166:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2423,7 +2423,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "id_list"
-	// /Users/twb/repos/Tiger/Tiger.g:168:1: id_list : ( id_list_head ) -> ^( IDS id_list_head ) ;
+	// grammar/Tiger.g:168:1: id_list : ( id_list_head ) -> ^( IDS id_list_head ) ;
 	public final TigerParser.id_list_return id_list() throws RecognitionException {
 		TigerParser.id_list_return retval = new TigerParser.id_list_return();
 		retval.start = input.LT(1);
@@ -2435,11 +2435,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_id_list_head=new RewriteRuleSubtreeStream(adaptor,"rule id_list_head");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:169:2: ( ( id_list_head ) -> ^( IDS id_list_head ) )
-			// /Users/twb/repos/Tiger/Tiger.g:169:4: ( id_list_head )
+			// grammar/Tiger.g:169:2: ( ( id_list_head ) -> ^( IDS id_list_head ) )
+			// grammar/Tiger.g:169:4: ( id_list_head )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:169:4: ( id_list_head )
-			// /Users/twb/repos/Tiger/Tiger.g:169:5: id_list_head
+			// grammar/Tiger.g:169:4: ( id_list_head )
+			// grammar/Tiger.g:169:5: id_list_head
 			{
 			pushFollow(FOLLOW_id_list_head_in_id_list715);
 			id_list_head72=id_list_head();
@@ -2461,7 +2461,7 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 169:19: -> ^( IDS id_list_head )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:169:22: ^( IDS id_list_head )
+				// grammar/Tiger.g:169:22: ^( IDS id_list_head )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(IDS, "IDS"), root_1);
@@ -2503,7 +2503,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "id_list_head"
-	// /Users/twb/repos/Tiger/Tiger.g:172:1: id_list_head : ( ID id_list_tail ) -> ID ( id_list_tail )? ;
+	// grammar/Tiger.g:172:1: id_list_head : ( ID id_list_tail ) -> ID ( id_list_tail )? ;
 	public final TigerParser.id_list_head_return id_list_head() throws RecognitionException {
 		TigerParser.id_list_head_return retval = new TigerParser.id_list_head_return();
 		retval.start = input.LT(1);
@@ -2518,11 +2518,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_id_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule id_list_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:173:2: ( ( ID id_list_tail ) -> ID ( id_list_tail )? )
-			// /Users/twb/repos/Tiger/Tiger.g:173:4: ( ID id_list_tail )
+			// grammar/Tiger.g:173:2: ( ( ID id_list_tail ) -> ID ( id_list_tail )? )
+			// grammar/Tiger.g:173:4: ( ID id_list_tail )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:173:4: ( ID id_list_tail )
-			// /Users/twb/repos/Tiger/Tiger.g:173:5: ID id_list_tail
+			// grammar/Tiger.g:173:4: ( ID id_list_tail )
+			// grammar/Tiger.g:173:5: ID id_list_tail
 			{
 			ID73=(Token)match(input,ID,FOLLOW_ID_in_id_list_head736);  
 			stream_ID.add(ID73);
@@ -2548,7 +2548,7 @@ public class TigerParser extends Parser {
 			// 173:22: -> ID ( id_list_tail )?
 			{
 				adaptor.addChild(root_0, stream_ID.nextNode());
-				// /Users/twb/repos/Tiger/Tiger.g:173:28: ( id_list_tail )?
+				// grammar/Tiger.g:173:28: ( id_list_tail )?
 				if ( stream_id_list_tail.hasNext() ) {
 					adaptor.addChild(root_0, stream_id_list_tail.nextTree());
 				}
@@ -2588,7 +2588,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "id_list_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:176:1: id_list_tail : ( COMMA id_list_head -> id_list_head |);
+	// grammar/Tiger.g:176:1: id_list_tail : ( COMMA id_list_head -> id_list_head |);
 	public final TigerParser.id_list_tail_return id_list_tail() throws RecognitionException {
 		TigerParser.id_list_tail_return retval = new TigerParser.id_list_tail_return();
 		retval.start = input.LT(1);
@@ -2603,7 +2603,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_id_list_head=new RewriteRuleSubtreeStream(adaptor,"rule id_list_head");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:177:2: ( COMMA id_list_head -> id_list_head |)
+			// grammar/Tiger.g:177:2: ( COMMA id_list_head -> id_list_head |)
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==COMMA) ) {
@@ -2621,7 +2621,7 @@ public class TigerParser extends Parser {
 
 			switch (alt12) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:177:4: COMMA id_list_head
+					// grammar/Tiger.g:177:4: COMMA id_list_head
 					{
 					COMMA75=(Token)match(input,COMMA,FOLLOW_COMMA_in_id_list_tail757);  
 					stream_COMMA.add(COMMA75);
@@ -2653,7 +2653,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:179:2: 
+					// grammar/Tiger.g:179:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2689,7 +2689,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "optional_int"
-	// /Users/twb/repos/Tiger/Tiger.g:181:1: optional_int : ( ASSIGN constant -> constant |);
+	// grammar/Tiger.g:181:1: optional_int : ( ASSIGN constant -> constant |);
 	public final TigerParser.optional_int_return optional_int() throws RecognitionException {
 		TigerParser.optional_int_return retval = new TigerParser.optional_int_return();
 		retval.start = input.LT(1);
@@ -2704,7 +2704,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:182:2: ( ASSIGN constant -> constant |)
+			// grammar/Tiger.g:182:2: ( ASSIGN constant -> constant |)
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0==ASSIGN) ) {
@@ -2722,7 +2722,7 @@ public class TigerParser extends Parser {
 
 			switch (alt13) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:182:4: ASSIGN constant
+					// grammar/Tiger.g:182:4: ASSIGN constant
 					{
 					ASSIGN77=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_int777);  
 					stream_ASSIGN.add(ASSIGN77);
@@ -2754,7 +2754,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:184:2: 
+					// grammar/Tiger.g:184:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2790,7 +2790,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr"
-	// /Users/twb/repos/Tiger/Tiger.g:186:1: expr : ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )* ;
+	// grammar/Tiger.g:186:1: expr : ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )* ;
 	public final TigerParser.expr_return expr() throws RecognitionException {
 		TigerParser.expr_return retval = new TigerParser.expr_return();
 		retval.start = input.LT(1);
@@ -2809,13 +2809,13 @@ public class TigerParser extends Parser {
 		Object RPAREN83_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:187:2: ( ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )* )
-			// /Users/twb/repos/Tiger/Tiger.g:187:4: ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )*
+			// grammar/Tiger.g:187:2: ( ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )* )
+			// grammar/Tiger.g:187:4: ( constant | value | LPAREN ! expr RPAREN !) ( options {greedy=true; } : binary_operator ^ expr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			// /Users/twb/repos/Tiger/Tiger.g:187:4: ( constant | value | LPAREN ! expr RPAREN !)
+			// grammar/Tiger.g:187:4: ( constant | value | LPAREN ! expr RPAREN !)
 			int alt14=3;
 			switch ( input.LA(1) ) {
 			case FIXEDPTLIT:
@@ -2841,7 +2841,7 @@ public class TigerParser extends Parser {
 			}
 			switch (alt14) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:187:5: constant
+					// grammar/Tiger.g:187:5: constant
 					{
 					pushFollow(FOLLOW_constant_in_expr799);
 					constant79=constant();
@@ -2852,7 +2852,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:187:16: value
+					// grammar/Tiger.g:187:16: value
 					{
 					pushFollow(FOLLOW_value_in_expr803);
 					value80=value();
@@ -2863,7 +2863,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /Users/twb/repos/Tiger/Tiger.g:187:24: LPAREN ! expr RPAREN !
+					// grammar/Tiger.g:187:24: LPAREN ! expr RPAREN !
 					{
 					LPAREN81=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr807); 
 					pushFollow(FOLLOW_expr_in_expr810);
@@ -2878,7 +2878,7 @@ public class TigerParser extends Parser {
 
 			}
 
-			// /Users/twb/repos/Tiger/Tiger.g:187:46: ( options {greedy=true; } : binary_operator ^ expr )*
+			// grammar/Tiger.g:187:46: ( options {greedy=true; } : binary_operator ^ expr )*
 			loop15:
 			while (true) {
 				int alt15=2;
@@ -2889,7 +2889,7 @@ public class TigerParser extends Parser {
 
 				switch (alt15) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:187:69: binary_operator ^ expr
+					// grammar/Tiger.g:187:69: binary_operator ^ expr
 					{
 					pushFollow(FOLLOW_binary_operator_in_expr824);
 					binary_operator84=binary_operator();
@@ -2939,7 +2939,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list"
-	// /Users/twb/repos/Tiger/Tiger.g:190:1: expr_list : ( expr expr_list_tail -> ^( EXPRS expr expr_list_tail ) |);
+	// grammar/Tiger.g:190:1: expr_list : ( expr expr_list_tail -> ^( EXPRS expr expr_list_tail ) |);
 	public final TigerParser.expr_list_return expr_list() throws RecognitionException {
 		TigerParser.expr_list_return retval = new TigerParser.expr_list_return();
 		retval.start = input.LT(1);
@@ -2953,7 +2953,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:191:2: ( expr expr_list_tail -> ^( EXPRS expr expr_list_tail ) |)
+			// grammar/Tiger.g:191:2: ( expr expr_list_tail -> ^( EXPRS expr expr_list_tail ) |)
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==FIXEDPTLIT||LA16_0==ID||LA16_0==INTLIT||LA16_0==LPAREN) ) {
@@ -2971,7 +2971,7 @@ public class TigerParser extends Parser {
 
 			switch (alt16) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:191:4: expr expr_list_tail
+					// grammar/Tiger.g:191:4: expr expr_list_tail
 					{
 					pushFollow(FOLLOW_expr_in_expr_list840);
 					expr86=expr();
@@ -2984,7 +2984,7 @@ public class TigerParser extends Parser {
 
 					stream_expr_list_tail.add(expr_list_tail87.getTree());
 					// AST REWRITE
-					// elements: expr_list_tail, expr
+					// elements: expr, expr_list_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2996,7 +2996,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 191:24: -> ^( EXPRS expr expr_list_tail )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:191:27: ^( EXPRS expr expr_list_tail )
+						// grammar/Tiger.g:191:27: ^( EXPRS expr expr_list_tail )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPRS, "EXPRS"), root_1);
@@ -3013,7 +3013,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:193:2: 
+					// grammar/Tiger.g:193:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3049,7 +3049,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:195:1: expr_list_tail : ( COMMA expr expr_list_tail |);
+	// grammar/Tiger.g:195:1: expr_list_tail : ( COMMA expr expr_list_tail |);
 	public final TigerParser.expr_list_tail_return expr_list_tail() throws RecognitionException {
 		TigerParser.expr_list_tail_return retval = new TigerParser.expr_list_tail_return();
 		retval.start = input.LT(1);
@@ -3063,7 +3063,7 @@ public class TigerParser extends Parser {
 		Object COMMA88_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:196:2: ( COMMA expr expr_list_tail |)
+			// grammar/Tiger.g:196:2: ( COMMA expr expr_list_tail |)
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0==COMMA) ) {
@@ -3081,7 +3081,7 @@ public class TigerParser extends Parser {
 
 			switch (alt17) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:196:4: COMMA expr expr_list_tail
+					// grammar/Tiger.g:196:4: COMMA expr expr_list_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3105,7 +3105,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:198:2: 
+					// grammar/Tiger.g:198:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3141,7 +3141,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "stat_seq"
-	// /Users/twb/repos/Tiger/Tiger.g:200:1: stat_seq : stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) ;
+	// grammar/Tiger.g:200:1: stat_seq : stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) ;
 	public final TigerParser.stat_seq_return stat_seq() throws RecognitionException {
 		TigerParser.stat_seq_return retval = new TigerParser.stat_seq_return();
 		retval.start = input.LT(1);
@@ -3155,8 +3155,8 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_stat_tail=new RewriteRuleSubtreeStream(adaptor,"rule stat_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:201:2: ( stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:201:4: stat stat_tail
+			// grammar/Tiger.g:201:2: ( stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) )
+			// grammar/Tiger.g:201:4: stat stat_tail
 			{
 			pushFollow(FOLLOW_stat_in_stat_seq887);
 			stat91=stat();
@@ -3169,7 +3169,7 @@ public class TigerParser extends Parser {
 
 			stream_stat_tail.add(stat_tail92.getTree());
 			// AST REWRITE
-			// elements: stat_tail, stat
+			// elements: stat, stat_tail
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3181,12 +3181,12 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 201:19: -> ^( STATEMENTS stat ( stat_tail )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:201:22: ^( STATEMENTS stat ( stat_tail )? )
+				// grammar/Tiger.g:201:22: ^( STATEMENTS stat ( stat_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(STATEMENTS, "STATEMENTS"), root_1);
 				adaptor.addChild(root_1, stream_stat.nextTree());
-				// /Users/twb/repos/Tiger/Tiger.g:201:40: ( stat_tail )?
+				// grammar/Tiger.g:201:40: ( stat_tail )?
 				if ( stream_stat_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_stat_tail.nextTree());
 				}
@@ -3229,7 +3229,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "stat_tail"
-	// /Users/twb/repos/Tiger/Tiger.g:204:1: stat_tail : ( stat stat_tail -> stat ( stat_tail )? |);
+	// grammar/Tiger.g:204:1: stat_tail : ( stat stat_tail -> stat ( stat_tail )? |);
 	public final TigerParser.stat_tail_return stat_tail() throws RecognitionException {
 		TigerParser.stat_tail_return retval = new TigerParser.stat_tail_return();
 		retval.start = input.LT(1);
@@ -3243,7 +3243,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_stat_tail=new RewriteRuleSubtreeStream(adaptor,"rule stat_tail");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:205:2: ( stat stat_tail -> stat ( stat_tail )? |)
+			// grammar/Tiger.g:205:2: ( stat stat_tail -> stat ( stat_tail )? |)
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0==BEGIN||LA18_0==BREAK||LA18_0==FOR||LA18_0==ID||LA18_0==IF||LA18_0==RETURN||LA18_0==WHILE) ) {
@@ -3261,7 +3261,7 @@ public class TigerParser extends Parser {
 
 			switch (alt18) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:205:4: stat stat_tail
+					// grammar/Tiger.g:205:4: stat stat_tail
 					{
 					pushFollow(FOLLOW_stat_in_stat_tail911);
 					stat93=stat();
@@ -3274,7 +3274,7 @@ public class TigerParser extends Parser {
 
 					stream_stat_tail.add(stat_tail94.getTree());
 					// AST REWRITE
-					// elements: stat_tail, stat
+					// elements: stat, stat_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3287,7 +3287,7 @@ public class TigerParser extends Parser {
 					// 205:19: -> stat ( stat_tail )?
 					{
 						adaptor.addChild(root_0, stream_stat.nextTree());
-						// /Users/twb/repos/Tiger/Tiger.g:205:27: ( stat_tail )?
+						// grammar/Tiger.g:205:27: ( stat_tail )?
 						if ( stream_stat_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_stat_tail.nextTree());
 						}
@@ -3301,7 +3301,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:207:2: 
+					// grammar/Tiger.g:207:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3337,7 +3337,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "stat"
-	// /Users/twb/repos/Tiger/Tiger.g:209:1: stat : ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI );
+	// grammar/Tiger.g:209:1: stat : ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI );
 	public final TigerParser.stat_return stat() throws RecognitionException {
 		TigerParser.stat_return retval = new TigerParser.stat_return();
 		retval.start = input.LT(1);
@@ -3412,7 +3412,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:210:2: ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI )
+			// grammar/Tiger.g:210:2: ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI )
 			int alt20=7;
 			switch ( input.LA(1) ) {
 			case IF:
@@ -3457,7 +3457,7 @@ public class TigerParser extends Parser {
 			}
 			switch (alt20) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:210:4: if_stmt
+					// grammar/Tiger.g:210:4: if_stmt
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3471,10 +3471,10 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:211:4: ( WHILE expr DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:211:4: ( WHILE expr DO stat_seq ENDDO SEMI )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:211:4: ( WHILE expr DO stat_seq ENDDO SEMI )
-					// /Users/twb/repos/Tiger/Tiger.g:211:5: WHILE expr DO stat_seq ENDDO SEMI
+					// grammar/Tiger.g:211:4: ( WHILE expr DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:211:5: WHILE expr DO stat_seq ENDDO SEMI
 					{
 					WHILE96=(Token)match(input,WHILE,FOLLOW_WHILE_in_stat940);  
 					stream_WHILE.add(WHILE96);
@@ -3501,7 +3501,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: expr, WHILE, stat_seq
+					// elements: WHILE, expr, stat_seq
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3513,7 +3513,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 211:40: -> ^( WHILE expr stat_seq )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:211:43: ^( WHILE expr stat_seq )
+						// grammar/Tiger.g:211:43: ^( WHILE expr stat_seq )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_WHILE.nextNode(), root_1);
@@ -3530,10 +3530,10 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /Users/twb/repos/Tiger/Tiger.g:212:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:212:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
 					{
-					// /Users/twb/repos/Tiger/Tiger.g:212:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
-					// /Users/twb/repos/Tiger/Tiger.g:212:5: FOR ID ASSIGN range DO stat_seq ENDDO SEMI
+					// grammar/Tiger.g:212:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:212:5: FOR ID ASSIGN range DO stat_seq ENDDO SEMI
 					{
 					FOR102=(Token)match(input,FOR,FOLLOW_FOR_in_stat967);  
 					stream_FOR.add(FOR102);
@@ -3566,7 +3566,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: range, FOR, stat_seq
+					// elements: range, stat_seq, FOR
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3578,7 +3578,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 212:49: -> ^( FOR range stat_seq )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:212:52: ^( FOR range stat_seq )
+						// grammar/Tiger.g:212:52: ^( FOR range stat_seq )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_FOR.nextNode(), root_1);
@@ -3595,7 +3595,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 4 :
-					// /Users/twb/repos/Tiger/Tiger.g:213:4: BREAK SEMI
+					// grammar/Tiger.g:213:4: BREAK SEMI
 					{
 					BREAK110=(Token)match(input,BREAK,FOLLOW_BREAK_in_stat997);  
 					stream_BREAK.add(BREAK110);
@@ -3625,7 +3625,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 5 :
-					// /Users/twb/repos/Tiger/Tiger.g:214:4: RETURN expr SEMI
+					// grammar/Tiger.g:214:4: RETURN expr SEMI
 					{
 					RETURN112=(Token)match(input,RETURN,FOLLOW_RETURN_in_stat1008);  
 					stream_RETURN.add(RETURN112);
@@ -3651,7 +3651,7 @@ public class TigerParser extends Parser {
 					root_0 = (Object)adaptor.nil();
 					// 214:21: -> ^( RETURN expr )
 					{
-						// /Users/twb/repos/Tiger/Tiger.g:214:24: ^( RETURN expr )
+						// grammar/Tiger.g:214:24: ^( RETURN expr )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_RETURN.nextNode(), root_1);
@@ -3667,7 +3667,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 6 :
-					// /Users/twb/repos/Tiger/Tiger.g:215:4: block
+					// grammar/Tiger.g:215:4: block
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3681,12 +3681,12 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 7 :
-					// /Users/twb/repos/Tiger/Tiger.g:216:4: ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI
+					// grammar/Tiger.g:216:4: ID ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) ) SEMI
 					{
 					ID116=(Token)match(input,ID,FOLLOW_ID_in_stat1030);  
 					stream_ID.add(ID116);
 
-					// /Users/twb/repos/Tiger/Tiger.g:216:8: ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) )
+					// grammar/Tiger.g:216:8: ( LPAREN id_list RPAREN -> ^( INVOKE ID id_list ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ID statement_assignment ( optional_subscript )? ) )
 					int alt19=2;
 					int LA19_0 = input.LA(1);
 					if ( (LA19_0==LPAREN) ) {
@@ -3704,7 +3704,7 @@ public class TigerParser extends Parser {
 
 					switch (alt19) {
 						case 1 :
-							// /Users/twb/repos/Tiger/Tiger.g:217:6: LPAREN id_list RPAREN
+							// grammar/Tiger.g:217:6: LPAREN id_list RPAREN
 							{
 							LPAREN117=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_stat1041);  
 							stream_LPAREN.add(LPAREN117);
@@ -3730,7 +3730,7 @@ public class TigerParser extends Parser {
 							root_0 = (Object)adaptor.nil();
 							// 217:30: -> ^( INVOKE ID id_list )
 							{
-								// /Users/twb/repos/Tiger/Tiger.g:217:33: ^( INVOKE ID id_list )
+								// grammar/Tiger.g:217:33: ^( INVOKE ID id_list )
 								{
 								Object root_1 = (Object)adaptor.nil();
 								root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INVOKE, "INVOKE"), root_1);
@@ -3747,7 +3747,7 @@ public class TigerParser extends Parser {
 							}
 							break;
 						case 2 :
-							// /Users/twb/repos/Tiger/Tiger.g:218:6: optional_subscript ASSIGN statement_assignment
+							// grammar/Tiger.g:218:6: optional_subscript ASSIGN statement_assignment
 							{
 							pushFollow(FOLLOW_optional_subscript_in_stat1064);
 							optional_subscript120=optional_subscript();
@@ -3763,7 +3763,7 @@ public class TigerParser extends Parser {
 
 							stream_statement_assignment.add(statement_assignment122.getTree());
 							// AST REWRITE
-							// elements: ID, statement_assignment, ASSIGN, optional_subscript
+							// elements: statement_assignment, optional_subscript, ASSIGN, ID
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3775,13 +3775,13 @@ public class TigerParser extends Parser {
 							root_0 = (Object)adaptor.nil();
 							// 218:53: -> ^( ASSIGN ID statement_assignment ( optional_subscript )? )
 							{
-								// /Users/twb/repos/Tiger/Tiger.g:218:56: ^( ASSIGN ID statement_assignment ( optional_subscript )? )
+								// grammar/Tiger.g:218:56: ^( ASSIGN ID statement_assignment ( optional_subscript )? )
 								{
 								Object root_1 = (Object)adaptor.nil();
 								root_1 = (Object)adaptor.becomeRoot(stream_ASSIGN.nextNode(), root_1);
 								adaptor.addChild(root_1, stream_ID.nextNode());
 								adaptor.addChild(root_1, stream_statement_assignment.nextTree());
-								// /Users/twb/repos/Tiger/Tiger.g:218:89: ( optional_subscript )?
+								// grammar/Tiger.g:218:89: ( optional_subscript )?
 								if ( stream_optional_subscript.hasNext() ) {
 									adaptor.addChild(root_1, stream_optional_subscript.nextTree());
 								}
@@ -3834,7 +3834,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// /Users/twb/repos/Tiger/Tiger.g:222:1: value : ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) ) ;
+	// grammar/Tiger.g:222:1: value : ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) ) ;
 	public final TigerParser.value_return value() throws RecognitionException {
 		TigerParser.value_return retval = new TigerParser.value_return();
 		retval.start = input.LT(1);
@@ -3849,14 +3849,14 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:223:2: ( ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) ) )
-			// /Users/twb/repos/Tiger/Tiger.g:223:4: ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) )
+			// grammar/Tiger.g:223:2: ( ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) ) )
+			// grammar/Tiger.g:223:4: ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) )
 			{
 			ID124=(Token)match(input,ID,FOLLOW_ID_in_value1099);  
 			stream_ID.add(ID124);
 
-			// /Users/twb/repos/Tiger/Tiger.g:223:7: ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) )
-			// /Users/twb/repos/Tiger/Tiger.g:224:6: optional_subscript
+			// grammar/Tiger.g:223:7: ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) )
+			// grammar/Tiger.g:224:6: optional_subscript
 			{
 			pushFollow(FOLLOW_optional_subscript_in_value1108);
 			optional_subscript125=optional_subscript();
@@ -3876,12 +3876,12 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 224:26: -> ^( REFERENCE ID ( optional_subscript )? )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:224:29: ^( REFERENCE ID ( optional_subscript )? )
+				// grammar/Tiger.g:224:29: ^( REFERENCE ID ( optional_subscript )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(REFERENCE, "REFERENCE"), root_1);
 				adaptor.addChild(root_1, stream_ID.nextNode());
-				// /Users/twb/repos/Tiger/Tiger.g:224:44: ( optional_subscript )?
+				// grammar/Tiger.g:224:44: ( optional_subscript )?
 				if ( stream_optional_subscript.hasNext() ) {
 					adaptor.addChild(root_1, stream_optional_subscript.nextTree());
 				}
@@ -3926,7 +3926,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "optional_subscript"
-	// /Users/twb/repos/Tiger/Tiger.g:228:1: optional_subscript : ( array_subscripts |);
+	// grammar/Tiger.g:228:1: optional_subscript : ( array_subscripts |);
 	public final TigerParser.optional_subscript_return optional_subscript() throws RecognitionException {
 		TigerParser.optional_subscript_return retval = new TigerParser.optional_subscript_return();
 		retval.start = input.LT(1);
@@ -3937,7 +3937,7 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:229:2: ( array_subscripts |)
+			// grammar/Tiger.g:229:2: ( array_subscripts |)
 			int alt21=2;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0==LBRACK) ) {
@@ -3955,7 +3955,7 @@ public class TigerParser extends Parser {
 
 			switch (alt21) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:229:4: array_subscripts
+					// grammar/Tiger.g:229:4: array_subscripts
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3969,7 +3969,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:231:2: 
+					// grammar/Tiger.g:231:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4005,7 +4005,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "range"
-	// /Users/twb/repos/Tiger/Tiger.g:233:1: range : (start= index_expr TO stop= index_expr ) -> $start $stop;
+	// grammar/Tiger.g:233:1: range : (start= index_expr TO stop= index_expr ) -> $start $stop;
 	public final TigerParser.range_return range() throws RecognitionException {
 		TigerParser.range_return retval = new TigerParser.range_return();
 		retval.start = input.LT(1);
@@ -4021,11 +4021,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:234:2: ( (start= index_expr TO stop= index_expr ) -> $start $stop)
-			// /Users/twb/repos/Tiger/Tiger.g:234:4: (start= index_expr TO stop= index_expr )
+			// grammar/Tiger.g:234:2: ( (start= index_expr TO stop= index_expr ) -> $start $stop)
+			// grammar/Tiger.g:234:4: (start= index_expr TO stop= index_expr )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:234:4: (start= index_expr TO stop= index_expr )
-			// /Users/twb/repos/Tiger/Tiger.g:234:5: start= index_expr TO stop= index_expr
+			// grammar/Tiger.g:234:4: (start= index_expr TO stop= index_expr )
+			// grammar/Tiger.g:234:5: start= index_expr TO stop= index_expr
 			{
 			pushFollow(FOLLOW_index_expr_in_range1154);
 			start=index_expr();
@@ -4093,7 +4093,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "statement_assignment"
-	// /Users/twb/repos/Tiger/Tiger.g:237:1: statement_assignment : ( expr | IF LPAREN expr_list RPAREN -> expr_list );
+	// grammar/Tiger.g:237:1: statement_assignment : ( expr | IF LPAREN expr_list RPAREN -> expr_list );
 	public final TigerParser.statement_assignment_return statement_assignment() throws RecognitionException {
 		TigerParser.statement_assignment_return retval = new TigerParser.statement_assignment_return();
 		retval.start = input.LT(1);
@@ -4115,7 +4115,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:238:2: ( expr | IF LPAREN expr_list RPAREN -> expr_list )
+			// grammar/Tiger.g:238:2: ( expr | IF LPAREN expr_list RPAREN -> expr_list )
 			int alt22=2;
 			int LA22_0 = input.LA(1);
 			if ( (LA22_0==FIXEDPTLIT||LA22_0==ID||LA22_0==INTLIT||LA22_0==LPAREN) ) {
@@ -4133,7 +4133,7 @@ public class TigerParser extends Parser {
 
 			switch (alt22) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:238:4: expr
+					// grammar/Tiger.g:238:4: expr
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4147,7 +4147,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:239:4: IF LPAREN expr_list RPAREN
+					// grammar/Tiger.g:239:4: IF LPAREN expr_list RPAREN
 					{
 					IF129=(Token)match(input,IF,FOLLOW_IF_in_statement_assignment1185);  
 					stream_IF.add(IF129);
@@ -4213,7 +4213,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "if_stmt"
-	// /Users/twb/repos/Tiger/Tiger.g:242:1: if_stmt : ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq else_stmt ) ;
+	// grammar/Tiger.g:242:1: if_stmt : ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq else_stmt ) ;
 	public final TigerParser.if_stmt_return if_stmt() throws RecognitionException {
 		TigerParser.if_stmt_return retval = new TigerParser.if_stmt_return();
 		retval.start = input.LT(1);
@@ -4241,11 +4241,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_else_stmt=new RewriteRuleSubtreeStream(adaptor,"rule else_stmt");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:243:2: ( ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq else_stmt ) )
-			// /Users/twb/repos/Tiger/Tiger.g:243:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
+			// grammar/Tiger.g:243:2: ( ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq else_stmt ) )
+			// grammar/Tiger.g:243:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:243:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
-			// /Users/twb/repos/Tiger/Tiger.g:243:5: IF expr THEN stat_seq else_stmt ENDIF SEMI
+			// grammar/Tiger.g:243:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
+			// grammar/Tiger.g:243:5: IF expr THEN stat_seq else_stmt ENDIF SEMI
 			{
 			IF133=(Token)match(input,IF,FOLLOW_IF_in_if_stmt1207);  
 			stream_IF.add(IF133);
@@ -4277,7 +4277,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: IF, expr, stat_seq, else_stmt
+			// elements: else_stmt, expr, stat_seq, IF
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -4289,7 +4289,7 @@ public class TigerParser extends Parser {
 			root_0 = (Object)adaptor.nil();
 			// 243:49: -> ^( IF expr stat_seq else_stmt )
 			{
-				// /Users/twb/repos/Tiger/Tiger.g:243:52: ^( IF expr stat_seq else_stmt )
+				// grammar/Tiger.g:243:52: ^( IF expr stat_seq else_stmt )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot(stream_IF.nextNode(), root_1);
@@ -4333,7 +4333,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "else_stmt"
-	// /Users/twb/repos/Tiger/Tiger.g:246:1: else_stmt : ( ELSE stat_seq -> stat_seq |);
+	// grammar/Tiger.g:246:1: else_stmt : ( ELSE stat_seq -> stat_seq |);
 	public final TigerParser.else_stmt_return else_stmt() throws RecognitionException {
 		TigerParser.else_stmt_return retval = new TigerParser.else_stmt_return();
 		retval.start = input.LT(1);
@@ -4348,7 +4348,7 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:247:2: ( ELSE stat_seq -> stat_seq |)
+			// grammar/Tiger.g:247:2: ( ELSE stat_seq -> stat_seq |)
 			int alt23=2;
 			int LA23_0 = input.LA(1);
 			if ( (LA23_0==ELSE) ) {
@@ -4366,7 +4366,7 @@ public class TigerParser extends Parser {
 
 			switch (alt23) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:247:4: ELSE stat_seq
+					// grammar/Tiger.g:247:4: ELSE stat_seq
 					{
 					ELSE140=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_stmt1244);  
 					stream_ELSE.add(ELSE140);
@@ -4398,7 +4398,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:249:2: 
+					// grammar/Tiger.g:249:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4434,7 +4434,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "opt_prefix"
-	// /Users/twb/repos/Tiger/Tiger.g:251:1: opt_prefix : ( value ASSIGN |);
+	// grammar/Tiger.g:251:1: opt_prefix : ( value ASSIGN |);
 	public final TigerParser.opt_prefix_return opt_prefix() throws RecognitionException {
 		TigerParser.opt_prefix_return retval = new TigerParser.opt_prefix_return();
 		retval.start = input.LT(1);
@@ -4447,7 +4447,7 @@ public class TigerParser extends Parser {
 		Object ASSIGN143_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:252:2: ( value ASSIGN |)
+			// grammar/Tiger.g:252:2: ( value ASSIGN |)
 			int alt24=2;
 			int LA24_0 = input.LA(1);
 			if ( (LA24_0==ID) ) {
@@ -4465,7 +4465,7 @@ public class TigerParser extends Parser {
 
 			switch (alt24) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:252:4: value ASSIGN
+					// grammar/Tiger.g:252:4: value ASSIGN
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4483,7 +4483,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/twb/repos/Tiger/Tiger.g:254:2: 
+					// grammar/Tiger.g:254:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4519,7 +4519,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "constant"
-	// /Users/twb/repos/Tiger/Tiger.g:256:1: constant : ( INTLIT | FIXEDPTLIT );
+	// grammar/Tiger.g:256:1: constant : ( INTLIT | FIXEDPTLIT );
 	public final TigerParser.constant_return constant() throws RecognitionException {
 		TigerParser.constant_return retval = new TigerParser.constant_return();
 		retval.start = input.LT(1);
@@ -4531,8 +4531,8 @@ public class TigerParser extends Parser {
 		Object set144_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:257:2: ( INTLIT | FIXEDPTLIT )
-			// /Users/twb/repos/Tiger/Tiger.g:
+			// grammar/Tiger.g:257:2: ( INTLIT | FIXEDPTLIT )
+			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -4576,7 +4576,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "binary_operator"
-	// /Users/twb/repos/Tiger/Tiger.g:261:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR );
+	// grammar/Tiger.g:261:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR );
 	public final TigerParser.binary_operator_return binary_operator() throws RecognitionException {
 		TigerParser.binary_operator_return retval = new TigerParser.binary_operator_return();
 		retval.start = input.LT(1);
@@ -4588,8 +4588,8 @@ public class TigerParser extends Parser {
 		Object set145_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:262:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR )
-			// /Users/twb/repos/Tiger/Tiger.g:
+			// grammar/Tiger.g:262:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR )
+			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -4633,7 +4633,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "array_dimensions"
-	// /Users/twb/repos/Tiger/Tiger.g:276:1: array_dimensions : array_dimension ( array_dimension )? ;
+	// grammar/Tiger.g:276:1: array_dimensions : array_dimension ( array_dimension )? ;
 	public final TigerParser.array_dimensions_return array_dimensions() throws RecognitionException {
 		TigerParser.array_dimensions_return retval = new TigerParser.array_dimensions_return();
 		retval.start = input.LT(1);
@@ -4645,8 +4645,8 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:277:2: ( array_dimension ( array_dimension )? )
-			// /Users/twb/repos/Tiger/Tiger.g:277:4: array_dimension ( array_dimension )?
+			// grammar/Tiger.g:277:2: ( array_dimension ( array_dimension )? )
+			// grammar/Tiger.g:277:4: array_dimension ( array_dimension )?
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -4657,7 +4657,7 @@ public class TigerParser extends Parser {
 
 			adaptor.addChild(root_0, array_dimension146.getTree());
 
-			// /Users/twb/repos/Tiger/Tiger.g:277:20: ( array_dimension )?
+			// grammar/Tiger.g:277:20: ( array_dimension )?
 			int alt25=2;
 			int LA25_0 = input.LA(1);
 			if ( (LA25_0==LBRACK) ) {
@@ -4665,7 +4665,7 @@ public class TigerParser extends Parser {
 			}
 			switch (alt25) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:277:20: array_dimension
+					// grammar/Tiger.g:277:20: array_dimension
 					{
 					pushFollow(FOLLOW_array_dimension_in_array_dimensions1368);
 					array_dimension147=array_dimension();
@@ -4707,7 +4707,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "array_dimension"
-	// /Users/twb/repos/Tiger/Tiger.g:280:1: array_dimension : ( LBRACK INTLIT RBRACK ) -> INTLIT ;
+	// grammar/Tiger.g:280:1: array_dimension : ( LBRACK INTLIT RBRACK ) -> INTLIT ;
 	public final TigerParser.array_dimension_return array_dimension() throws RecognitionException {
 		TigerParser.array_dimension_return retval = new TigerParser.array_dimension_return();
 		retval.start = input.LT(1);
@@ -4726,11 +4726,11 @@ public class TigerParser extends Parser {
 		RewriteRuleTokenStream stream_INTLIT=new RewriteRuleTokenStream(adaptor,"token INTLIT");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:281:2: ( ( LBRACK INTLIT RBRACK ) -> INTLIT )
-			// /Users/twb/repos/Tiger/Tiger.g:281:4: ( LBRACK INTLIT RBRACK )
+			// grammar/Tiger.g:281:2: ( ( LBRACK INTLIT RBRACK ) -> INTLIT )
+			// grammar/Tiger.g:281:4: ( LBRACK INTLIT RBRACK )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:281:4: ( LBRACK INTLIT RBRACK )
-			// /Users/twb/repos/Tiger/Tiger.g:281:5: LBRACK INTLIT RBRACK
+			// grammar/Tiger.g:281:4: ( LBRACK INTLIT RBRACK )
+			// grammar/Tiger.g:281:5: LBRACK INTLIT RBRACK
 			{
 			LBRACK148=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_array_dimension1381);  
 			stream_LBRACK.add(LBRACK148);
@@ -4791,7 +4791,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "array_subscripts"
-	// /Users/twb/repos/Tiger/Tiger.g:284:1: array_subscripts : array_subscript ( array_subscript )? ;
+	// grammar/Tiger.g:284:1: array_subscripts : array_subscript ( array_subscript )? ;
 	public final TigerParser.array_subscripts_return array_subscripts() throws RecognitionException {
 		TigerParser.array_subscripts_return retval = new TigerParser.array_subscripts_return();
 		retval.start = input.LT(1);
@@ -4803,8 +4803,8 @@ public class TigerParser extends Parser {
 
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:285:2: ( array_subscript ( array_subscript )? )
-			// /Users/twb/repos/Tiger/Tiger.g:285:4: array_subscript ( array_subscript )?
+			// grammar/Tiger.g:285:2: ( array_subscript ( array_subscript )? )
+			// grammar/Tiger.g:285:4: array_subscript ( array_subscript )?
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -4815,7 +4815,7 @@ public class TigerParser extends Parser {
 
 			adaptor.addChild(root_0, array_subscript151.getTree());
 
-			// /Users/twb/repos/Tiger/Tiger.g:285:20: ( array_subscript )?
+			// grammar/Tiger.g:285:20: ( array_subscript )?
 			int alt26=2;
 			int LA26_0 = input.LA(1);
 			if ( (LA26_0==LBRACK) ) {
@@ -4823,7 +4823,7 @@ public class TigerParser extends Parser {
 			}
 			switch (alt26) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:285:20: array_subscript
+					// grammar/Tiger.g:285:20: array_subscript
 					{
 					pushFollow(FOLLOW_array_subscript_in_array_subscripts1403);
 					array_subscript152=array_subscript();
@@ -4865,7 +4865,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "array_subscript"
-	// /Users/twb/repos/Tiger/Tiger.g:288:1: array_subscript : ( LBRACK index_expr RBRACK ) -> index_expr ;
+	// grammar/Tiger.g:288:1: array_subscript : ( LBRACK index_expr RBRACK ) -> index_expr ;
 	public final TigerParser.array_subscript_return array_subscript() throws RecognitionException {
 		TigerParser.array_subscript_return retval = new TigerParser.array_subscript_return();
 		retval.start = input.LT(1);
@@ -4883,11 +4883,11 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:289:2: ( ( LBRACK index_expr RBRACK ) -> index_expr )
-			// /Users/twb/repos/Tiger/Tiger.g:289:4: ( LBRACK index_expr RBRACK )
+			// grammar/Tiger.g:289:2: ( ( LBRACK index_expr RBRACK ) -> index_expr )
+			// grammar/Tiger.g:289:4: ( LBRACK index_expr RBRACK )
 			{
-			// /Users/twb/repos/Tiger/Tiger.g:289:4: ( LBRACK index_expr RBRACK )
-			// /Users/twb/repos/Tiger/Tiger.g:289:5: LBRACK index_expr RBRACK
+			// grammar/Tiger.g:289:4: ( LBRACK index_expr RBRACK )
+			// grammar/Tiger.g:289:5: LBRACK index_expr RBRACK
 			{
 			LBRACK153=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_array_subscript1416);  
 			stream_LBRACK.add(LBRACK153);
@@ -4950,7 +4950,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr"
-	// /Users/twb/repos/Tiger/Tiger.g:292:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
+	// grammar/Tiger.g:292:1: index_expr : ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* ;
 	public final TigerParser.index_expr_return index_expr() throws RecognitionException {
 		TigerParser.index_expr_return retval = new TigerParser.index_expr_return();
 		retval.start = input.LT(1);
@@ -4964,8 +4964,8 @@ public class TigerParser extends Parser {
 		Object set156_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:293:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
-			// /Users/twb/repos/Tiger/Tiger.g:293:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
+			// grammar/Tiger.g:293:2: ( ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )* )
+			// grammar/Tiger.g:293:4: ( INTLIT | ID ) ( options {greedy=true; } : index_oper index_expr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
@@ -4980,7 +4980,7 @@ public class TigerParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			// /Users/twb/repos/Tiger/Tiger.g:293:18: ( options {greedy=true; } : index_oper index_expr )*
+			// grammar/Tiger.g:293:18: ( options {greedy=true; } : index_oper index_expr )*
 			loop27:
 			while (true) {
 				int alt27=2;
@@ -4991,7 +4991,7 @@ public class TigerParser extends Parser {
 
 				switch (alt27) {
 				case 1 :
-					// /Users/twb/repos/Tiger/Tiger.g:293:42: index_oper index_expr
+					// grammar/Tiger.g:293:42: index_oper index_expr
 					{
 					pushFollow(FOLLOW_index_oper_in_index_expr1453);
 					index_oper157=index_oper();
@@ -5042,7 +5042,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_oper"
-	// /Users/twb/repos/Tiger/Tiger.g:296:1: index_oper : ( PLUS | MINUS | MULT );
+	// grammar/Tiger.g:296:1: index_oper : ( PLUS | MINUS | MULT );
 	public final TigerParser.index_oper_return index_oper() throws RecognitionException {
 		TigerParser.index_oper_return retval = new TigerParser.index_oper_return();
 		retval.start = input.LT(1);
@@ -5054,8 +5054,8 @@ public class TigerParser extends Parser {
 		Object set159_tree=null;
 
 		try {
-			// /Users/twb/repos/Tiger/Tiger.g:297:2: ( PLUS | MINUS | MULT )
-			// /Users/twb/repos/Tiger/Tiger.g:
+			// grammar/Tiger.g:297:2: ( PLUS | MINUS | MULT )
+			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 

@@ -1,0 +1,12 @@
+We will be assigning the phase II of the project in next day or two. Here's what it involves:
+
+1. Generating a scoped symbol table to hold declared values and their attributes
+
+2. Doing semantic checking using #1 and semantic rules 
+
+3. Doing translation into Intermediate Representation (IR) given to you. 
+
+We will do this using treewalking in ANTLR or embedding action symbols in it (your choice)  Start digging into this part of ANTLR now... Those who are done, before going on break can get started to knock off a few things...at least do some planning. The due date will be end of this month...That will give us good bit of time to the most fun thing: optimized code generation! leaving almost a month for it...It is a tight ship here onwards so we cant extend any dates...
+
+
+santosh

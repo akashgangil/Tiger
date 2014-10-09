@@ -50,7 +50,7 @@ public class Tiger {
             CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
-            writeDotFile(file_tokens[0]+".dot", st.toString(), StandardCharsets.UTF_8);
+            writeDotFile(args[1], st.toString(), StandardCharsets.UTF_8);
     
             if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
                 System.out.println("***Successful Parse***");

@@ -2,4 +2,4 @@
 
 rm *.png
 rm *.dot
-rm -R classes
+rm -R build/*.class

@@ -1,25 +1,27 @@
-# Run:
-
-```sh
-$ ./run.sh {tiger program file}
-```
-
 # TODO:
 
-- Add checks to find syntactic errors in the program
-- Do Testing and output report
+- phase 2
 
-output/
-contains tigerLexer.java, tigerParser.java, Main.java which generates the AST which can be fed to http://graphviz-dev.appspot.com/ to generate the graph.
+# Usage
 
-test_program.tiger : sample test program contributed by us
+## Build
 
-tiger.g : tiger grammar
+```sh
+$ ./make
+```
 
+## Parse, Generate AST
 
-Now the Main.java generates a dot file which can then be fed to 'dot' tool to generate the graph
+```sh
+$ ./run.sh [tiger program] [output file name]
+```
 
-sudo apt-get install dot
+## Clean
 
-dot -Tpng input.dot -o test.png
+```sh
+$ ./clean
+```
 
+# Directory Structure
+
+- xxx
