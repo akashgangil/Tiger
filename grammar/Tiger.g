@@ -16,6 +16,7 @@ tokens {
 	BLOCK;
 	PARAMS;
 	PARAM;
+	EXPR;
 	EXPRS;
 	IDS;
 	INVOKE;
@@ -94,7 +95,7 @@ function_definition_void
 	;
 
 function_definition_body
-	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ID param_list block_list
+	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ID ^(PARAMS param_list?) block_list
 	;
 	
 function_definition_main
@@ -102,10 +103,6 @@ function_definition_main
 	;
 
 param_list
-	:	param_list_internal -> ^(PARAMS param_list_internal?)
-	;
-
-param_list_internal
 	:	param param_list_tail
 	|	
 	;
@@ -206,7 +203,7 @@ expr
 	;
 
 expr_tail
-	:	binary_operator expr
+	:	(binary_operator expr) -> ^(binary_operator expr)
 	|	
 	;
 
@@ -241,8 +238,8 @@ stat
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
 	|	ID 	(	
-			:	LPAREN expr_list RPAREN 		-> ^(INVOKE ID expr_list?)
-			|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN ID statement_assignment)
+			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID expr_list?)
+			|	optional_subscript ASSIGN statement_assignment 	-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) statement_assignment)
 			) SEMI
 	;
 
@@ -256,12 +253,12 @@ range
 	;
 
 statement_assignment
-	:	ID statement_assignment_id
-	|	expr_head_base expr_tail
+	:	(ID statement_assignment_id) -> ^(EXPR ID statement_assignment_id?)
+	|	(expr_head_base expr_tail) -> ^(EXPR expr_head_base expr_tail?)
 	;
 
 statement_assignment_id
-	:	LPAREN expr_list RPAREN 
+	:	(LPAREN expr_list RPAREN) -> expr_list?
 	|	optional_subscript expr_tail
 	;
 
@@ -311,7 +308,17 @@ array_subscript
 	;
 
 index_expr
-	:	(INTLIT | ID) (options{greedy=true;}: index_oper index_expr)*
+	:	index_expr_head index_expr_tail -> ^(EXPR index_expr_head index_expr_tail?)
+	;
+
+index_expr_head
+	:	INTLIT
+	|	ID
+	;
+
+index_expr_tail
+	:	(index_oper index_expr) -> ^(index_oper index_expr)
+	|
 	;
 
 index_oper
