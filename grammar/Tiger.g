@@ -183,9 +183,9 @@ optional_int
 	|	
 	;
 
-expr
-	:	(constant | value | LPAREN! expr RPAREN!) (options{greedy=true;}:binary_operator^ expr)*
-	;
+/////////////////////////////////////////////////////////////////////
+// Expressions
+/////////////////////////////////////////////////////////////////////
 
 expr_list
 	:	expr expr_list_tail -> ^(EXPRS expr expr_list_tail) 
@@ -196,6 +196,29 @@ expr_list_tail
 	:	COMMA expr expr_list_tail
 	|	
 	;
+
+expr
+	:	expr_head expr_tail
+	;
+
+expr_tail
+	:	binary_operator expr
+	|
+	;
+
+expr_head
+	:	expr_head_base
+	|	(ID	optional_subscript)	-> ^(REFERENCE ID optional_subscript?)
+	;
+
+expr_head_base
+	:	constant
+	|	(LPAREN expr RPAREN)	-> expr
+	;
+
+/////////////////////////////////////////////////////////////////////
+// Statements
+/////////////////////////////////////////////////////////////////////
 
 stat_seq
 	:	stat stat_tail -> ^(STATEMENTS stat stat_tail?)
@@ -214,15 +237,9 @@ stat
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
 	|	ID 	(	
-			:	LPAREN id_list RPAREN 		-> ^(INVOKE ID id_list)
+			:	LPAREN expr_list RPAREN 		-> ^(INVOKE ID expr_list)
 			|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN ID statement_assignment optional_subscript?)
 			) SEMI
-	;
-
-value
-	:	ID	(
-			:	optional_subscript		-> ^(REFERENCE ID optional_subscript?)
-			)
 	;
 
 optional_subscript
@@ -235,8 +252,11 @@ range
 	;
 
 statement_assignment
-	:	expr
-	|	IF LPAREN expr_list RPAREN -> expr_list
+	:	ID 	(
+			:	LPAREN expr_list RPAREN -> ^(INVOKE ID expr_list)
+			|	optional_subscript expr_tail
+			)
+	|	expr_head_base expr_tail
 	;
 
 if_stmt
@@ -246,11 +266,6 @@ if_stmt
 else_stmt
 	:	ELSE stat_seq -> stat_seq
 	|	
-	;
-
-opt_prefix
-	:	value ASSIGN
-	|	 
 	;
 
 constant
@@ -347,7 +362,7 @@ AND 		: '&';
 OR 			: '|';
 ASSIGN		: ':=';
 
-ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9')*;
+ID			: ('a'..'z' |'A'..'Z') ('a'..'z'| 'A'..'Z' | '0'..'9' | '_')*;
 COMMENT		: '/*' .* '*/' {skip();} ;
 WS			: (' ' | '\t' | '\r'| '\n') {skip();};
 INTLIT		: ('0'..'9') ('0'..'9')*;
