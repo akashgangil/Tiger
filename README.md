@@ -13,7 +13,7 @@ $ ./make
 ## Parse, Generate AST
 
 ```sh
-$ ./run.sh [tiger program] [output file name]
+$ ./tiger.sh [tiger program]
 ```
 
 ## Clean
