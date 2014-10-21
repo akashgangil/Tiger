@@ -102,7 +102,11 @@ function_definition_main
 	;
 
 param_list
-	:	param param_list_tail -> ^(PARAMS param param_list_tail)
+	:	param_list_internal -> ^(PARAMS param_list_internal?)
+	;
+
+param_list_internal
+	:	param param_list_tail
 	|	
 	;
 	
@@ -188,12 +192,12 @@ optional_int
 /////////////////////////////////////////////////////////////////////
 
 expr_list
-	:	expr expr_list_tail -> ^(EXPRS expr expr_list_tail) 
+	:	expr expr_list_tail -> ^(EXPRS expr expr_list_tail?) 
 	|	
 	;
 
 expr_list_tail
-	:	COMMA expr expr_list_tail
+	:	(COMMA expr expr_list_tail) -> expr expr_list_tail?
 	|	
 	;
 
@@ -203,7 +207,7 @@ expr
 
 expr_tail
 	:	binary_operator expr
-	|
+	|	
 	;
 
 expr_head
@@ -237,8 +241,8 @@ stat
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
 	|	ID 	(	
-			:	LPAREN expr_list RPAREN 		-> ^(INVOKE ID expr_list)
-			|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN ID statement_assignment optional_subscript?)
+			:	LPAREN expr_list RPAREN 		-> ^(INVOKE ID expr_list?)
+			|	optional_subscript ASSIGN statement_assignment -> ^(ASSIGN ID statement_assignment)
 			) SEMI
 	;
 
@@ -252,15 +256,17 @@ range
 	;
 
 statement_assignment
-	:	ID 	(
-			:	LPAREN expr_list RPAREN -> ^(INVOKE ID expr_list)
-			|	optional_subscript expr_tail
-			)
+	:	ID statement_assignment_id
 	|	expr_head_base expr_tail
 	;
 
+statement_assignment_id
+	:	LPAREN expr_list RPAREN 
+	|	optional_subscript expr_tail
+	;
+
 if_stmt
-	:	(IF expr THEN stat_seq else_stmt ENDIF SEMI) -> ^(IF expr stat_seq else_stmt)
+	:	(IF expr THEN stat_seq else_stmt ENDIF SEMI) -> ^(IF expr stat_seq else_stmt?)
 	;
 	
 else_stmt
