@@ -7,5 +7,5 @@ printf "Done\n"
 mkdir -p build
 
 printf "Compiling ... "
-javac -d ./build/ -classpath "lib/*:src" src/TigerParser.java src/TigerLexer.java src/Tiger.java
+javac -d ./build/ -classpath "lib/*:src" src/*.java
 printf "Done\n"

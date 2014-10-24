@@ -1,11 +1,13 @@
 grammar Tiger;
 
 options {
-  output = AST;
-  language = Java;
-  k = 1;
-  backtrack = no;
+	language = Java;
+	backtrack = no;
+	k = 1;
+	output = AST;
 }
+
+// AST Nodes
 
 tokens {
 	PROGRAM;
@@ -15,105 +17,55 @@ tokens {
 	MAIN;
 	BLOCK;
 	PARAMS;
-	PARAM;
 	EXPR;
 	EXPRS;
 	IDS;
 	INVOKE;
 	STATEMENTS;
 	REFERENCE;
-	VARIABLES;
+	VARS;
+	VAR;
 }
-
-//add new members to generated lexer
-@lexer::members {
-    private  java.util.List<String> errors = new java.util.LinkedList<String>();
-    public void displayRecognitionError(String[] tokenNames,
-                                        RecognitionException e) {
-        String hdr = getErrorHeader(e);
-        String msg = getErrorMessage(e, tokenNames);
-        errors.add(hdr + " " + msg +  "           Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
-    }
-    public  java.util.List<String> getErrors() {
-        return errors;
-    }
-}
-
-//add new members to generated parser
-@parser::members {
-    private  java.util.List<String> errors = new java.util.LinkedList<String>();
-    public   void displayRecognitionError(String[] tokenNames,
-                                        RecognitionException e) {
-        String hdr = getErrorHeader(e);
-        String msg = getErrorMessage(e, tokenNames);
-        errors.add(hdr + " " + msg + "            Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
-    }
-    public java.util.List<String> getErrors() {
-        return errors;
-    }
-}
-
 
 /////////////////////////////////////////////////////////////////////
 // Parser
 /////////////////////////////////////////////////////////////////////
 
 tiger_program
-	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM type_declaration_list? function_declaration_list)
+	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM ^(TYPES type_declaration_list?) ^(FUNCTIONS function_declaration_list))
 	;
+
+/////////////////////////////////////////////////////////////////////
+// Block Declaration Segments
+/////////////////////////////////////////////////////////////////////
 
 type_declaration_list
-	:	(type_declaration_tail) -> ^(TYPES type_declaration_tail?)
-	;
-
-type_declaration_tail
-	:	type_declaration type_declaration_tail
+	:	(TYPE ID EQ type SEMI type_declaration_list) -> ^(TYPE ID) type type_declaration_list
 	|
-	;
-
-type_declaration
-	:	(TYPE ID EQ type SEMI) -> ^(TYPE ID type)
 	;
 
 function_declaration_list
-	:	function_declaration_tail -> ^(FUNCTIONS function_declaration_tail?)
-	;
-
-function_declaration_tail
-	:	function_definition function_declaration_tail
+	:	(type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION type_id ID ^(PARAMS param_list?)) function_declaration_list?
 	|
 	;
 
-function_definition
-	:	(type_id function_definition_body) -> ^(FUNCTION type_id function_definition_body)
-	|	(VOID function_definition_void) -> ^(FUNCTION VOID function_definition_void)
+var_declaration_list
+	:	(VAR id_list COLON type_id optional_init SEMI var_declaration_list) -> ^(VAR ^(IDS id_list) type_id optional_init?) var_declaration_list?
+	|
 	;
 
-function_definition_void
-	:	function_definition_body
-	|	function_definition_main
-	;
-
-function_definition_body
-	:	(FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) -> ID ^(PARAMS param_list?) block_list
-	;
-	
-function_definition_main
-	:	(MAIN LPAREN RPAREN block_list) -> MAIN PARAMS block_list
-	;
+/////////////////////////////////////////////////////////////////////
+// Functions
+/////////////////////////////////////////////////////////////////////
 
 param_list
-	:	param param_list_tail
+	:	ID COLON type_id param_list_tail  -> ^(ID type_id) param_list_tail?
 	|	
 	;
 	
 param_list_tail
-	:	(COMMA param param_list_tail) -> param param_list_tail?
+	:	COMMA param_list -> param_list
 	|	
-	;
-	
-param	
-	:	ID COLON type_id -> ^(PARAM ID type_id)
 	;
 	
 block_list
@@ -126,20 +78,7 @@ block_tail
 	;
 
 block
-	:	(BEGIN declaration_segment stat_seq END SEMI) -> ^(BLOCK declaration_segment? stat_seq)
-	;
-
-declaration_segment
-	:	type_declaration_list var_declaration_list
-	;
-
-var_declaration_list
-	:	var_declaration_tail -> ^(VARIABLES var_declaration_tail?)
-	;
-
-var_declaration_tail
-	:	var_declaration var_declaration_tail
-	|
+	:	(BEGIN type_declaration_list var_declaration_list stat_seq END SEMI) -> ^(BLOCK ^(TYPES type_declaration_list?) ^(VARS var_declaration_list?) stat_seq)
 	;
 
 type
@@ -167,21 +106,12 @@ optional_init
 	;
 
 id_list
-	:	(id_list_head) -> ^(IDS id_list_head)
-	;
-
-id_list_head
-	:	(ID id_list_tail) -> ID id_list_tail?
+	:	ID id_list_tail
 	;
 
 id_list_tail
-	:	COMMA id_list_head -> id_list_head
+	:	COMMA ID id_list_tail -> ID id_list_tail?
 	|
-	;
-
-optional_int
-	:	ASSIGN constant -> constant
-	|	
 	;
 
 /////////////////////////////////////////////////////////////////////

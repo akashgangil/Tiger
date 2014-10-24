@@ -10,61 +10,95 @@ import java.nio.file.Files;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
 public class Tiger {
-    private static String readFile(String path, Charset encoding) throws Exception {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
+    private static String readFile(String path) throws Exception {
+        String contents = null;
+        try {
+            byte[] encoded = Files.readAllBytes(Paths.get(path));
+            contents = new String(encoded, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            System.out.println(e);
+            System.exit(1);
+        }
+        return contents;
     }
 
-    private static void writeDotFile(String fileName, String outputString, Charset encoding) throws Exception {
-        Path file = Paths.get(fileName);
+    private static void writeDotFile(TigerParser parser, TigerOptions options) {
+        CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
+        DOTTreeGenerator gen = new DOTTreeGenerator();
+        StringTemplate st = gen.toDOT(tree);
 
-        try (BufferedWriter writer = Files.newBufferedWriter(file, encoding)) {
+        Path file = Paths.get(options.dotFilename);
+
+        try (BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
             writer.write(outputString, 0, outputString.length());
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
+            System.exit(1);
         }
     }
 
+    private class TigerOptions {
+        boolean printTokens = false;
+        boolean printSymbolTable = false;
+        string inputFilename = null;
+        string dotFilename = null;
+    }
+
+    public static void usage(int status) {
+        System.out.println("usage: Tiger [options] <input file>");
+        System.out.println("\t--tokens\toutput tokens");
+        System.out.println("\t--symbol-table\toutput symbol table");
+        System.out.println("\t--help\tthis help message");
+
+        System.exit(status);
+    }
+
+    public static TigerOptions parseArgs(String[] args) {
+        TigerOptions options = new TigerOptions();
+
+        for (int idx = 0; idx < args.length; idx += 1) {
+            String arg = args[idx];
+
+            if (arg.equals("--tokens") {
+                options.printTokens = true;    
+            } else if (arg.equals("--symbol-table") {
+                options.printSymbolTable = true;
+            } else if (arg.equals("--dot") {
+                idx += 1;
+                options.dotFilename = args[idx];
+            } else if (args.equals("--help") {
+                usage(0);
+            } else {
+                options.inputFilename = arg;
+            }
+        }
+
+        if (inputFilename == null) {
+            usage(1);
+        } 
+
+        return options;
+    }
+ 
     public static void main(String[] args) {
+        TigerOptions options = parseArgs(args);
+
         try {
-            String[] file_tokens = args[0].split("\\.(?=[^\\.]+$)");
-            String src = readFile(args[0], StandardCharsets.UTF_8);
+            String src = readFile(options.inputFilename);
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(src));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
-            
-            /*To print lexer symbols of the program*/
-            TigerLexer lexer1 = new TigerLexer(new ANTLRStringStream(src));
-            CommonTokenStream cts = new CommonTokenStream(lexer1);
-            
-            int i = 1;
-            Token to = cts.LT(i);
-            while(to.getType() != -1){
-                System.out.print(TigerParser.tokenNames[to.getType()] + " ");
-                if(to.getType() == -1) break;
-                to = cts.LT(++i);
-            }
-            System.out.println();
 
-            CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
-            DOTTreeGenerator gen = new DOTTreeGenerator();
-            StringTemplate st = gen.toDOT(tree);
-            writeDotFile(args[1], st.toString(), StandardCharsets.UTF_8);
-    
-            if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
-                System.out.println("***Successful Parse***");
+            if (options.printTokens) {
+                                  
             }
-            else{
-                if(!parser.getErrors().isEmpty()){
-                    System.out.println("*** Parser Errors ***"); 
-                    for(String s : parser.getErrors()) System.out.println(s);
-                }
 
-                if(!lexer.getErrors().isEmpty()){
-                    System.out.println("*** Lexer Errors ***"); 
-                    for(String s : lexer.getErrors()) System.out.println(s);
-                }
+            if (options.dotFilename != null) {
+                
+            }
+
+            if (options.printSymbolTable) {
+                
             }
         } catch (Exception e) {
             System.out.println(e);
