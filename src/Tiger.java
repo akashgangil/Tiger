@@ -17,32 +17,51 @@ public class Tiger {
             byte[] encoded = Files.readAllBytes(Paths.get(path));
             contents = new String(encoded, StandardCharsets.UTF_8);
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
             System.exit(1);
         }
         return contents;
     }
 
-    private static void writeDotFile(TigerParser parser, TigerOptions options) {
+    private static void writeDotFile(TigerParser parser, TigerOptions options) throws RecognitionException {
         CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
         DOTTreeGenerator gen = new DOTTreeGenerator();
-        StringTemplate st = gen.toDOT(tree);
+        String output = gen.toDOT(tree).toString();
 
         Path file = Paths.get(options.dotFilename);
-
         try (BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
-            writer.write(outputString, 0, outputString.length());
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
+            writer.write(output);
+        } catch (IOException ioe) {
+            System.err.println(ioe);
             System.exit(1);
         }
     }
 
-    private class TigerOptions {
-        boolean printTokens = false;
-        boolean printSymbolTable = false;
-        string inputFilename = null;
-        string dotFilename = null;
+    public static class TigerOptions {
+        public boolean printTokens = false;
+        public boolean printSymbolTable = false;
+        public boolean help = false;
+        public String inputFilename = null;
+        public String dotFilename = null;
+
+        public TigerOptions(String[] args) {
+            for (int idx = 0; idx < args.length; idx += 1) {
+                String arg = args[idx];
+
+                if (arg.equals("--tokens")) {
+                    printTokens = true;    
+                } else if (arg.equals("--symbol-table")) {
+                    printSymbolTable = true;
+                } else if (arg.equals("--dot")) {
+                    idx += 1;
+                    dotFilename = args[idx];
+                } else if (args.equals("--help")) {
+                    help = true;
+                } else {
+                    inputFilename = arg;
+                }
+            }
+        }
     }
 
     public static void usage(int status) {
@@ -54,54 +73,36 @@ public class Tiger {
         System.exit(status);
     }
 
-    public static TigerOptions parseArgs(String[] args) {
-        TigerOptions options = new TigerOptions();
+    public static void main(String[] args) {
+        TigerOptions options = new TigerOptions(args);
 
-        for (int idx = 0; idx < args.length; idx += 1) {
-            String arg = args[idx];
-
-            if (arg.equals("--tokens") {
-                options.printTokens = true;    
-            } else if (arg.equals("--symbol-table") {
-                options.printSymbolTable = true;
-            } else if (arg.equals("--dot") {
-                idx += 1;
-                options.dotFilename = args[idx];
-            } else if (args.equals("--help") {
-                usage(0);
-            } else {
-                options.inputFilename = arg;
-            }
+        if (options.inputFilename == null) {
+            usage(1);
+        } else if (options.help) {
+            usage(0);
         }
 
-        if (inputFilename == null) {
-            usage(1);
-        } 
-
-        return options;
-    }
- 
-    public static void main(String[] args) {
-        TigerOptions options = parseArgs(args);
-
         try {
-            String src = readFile(options.inputFilename);
-            TigerLexer lexer = new TigerLexer(new ANTLRStringStream(src));
+            String source = readFile(options.inputFilename);
+            TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
 
             if (options.printTokens) {
-                                  
+
             }
 
             if (options.dotFilename != null) {
-                
+
             }
 
             if (options.printSymbolTable) {
-                
+
             }
+        } catch (RecognitionException re) {
+            System.err.println(re);
         } catch (Exception e) {
             System.out.println(e);
+            System.exit(1);
         }
     }
 }

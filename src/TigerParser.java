@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 grammar/Tiger.g 2014-10-24 19:27:59
+// $ANTLR 3.5.1 grammar/Tiger.g 2014-10-25 11:28:09
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -12,13 +12,13 @@ import org.antlr.runtime.tree.*;
 public class TigerParser extends Parser {
 	public static final String[] tokenNames = new String[] {
 		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ARRAY", "ASSIGN", "BEGIN", 
-		"BLOCK", "BREAK", "COLON", "COMMA", "COMMENT", "DIV", "DO", "ELSE", "END", 
-		"ENDDO", "ENDIF", "EQ", "EXPR", "EXPRS", "FIXEDPT", "FIXEDPTLIT", "FOR", 
-		"FUNCTION", "FUNCTIONS", "GEQ", "GREATER", "ID", "IDS", "IF", "INT", "INTLIT", 
-		"INVOKE", "LBRACK", "LEQ", "LESSER", "LPAREN", "MAIN", "MINUS", "MULT", 
-		"NEQ", "OF", "OR", "PARAMS", "PLUS", "PROGRAM", "RBRACK", "REFERENCE", 
-		"RETURN", "RPAREN", "SEMI", "STATEMENTS", "THEN", "TO", "TYPE", "TYPES", 
-		"VAR", "VARS", "VOID", "WHILE", "WS"
+		"BLOCK", "BREAK", "COLON", "COMMA", "COMMENT", "DIMENSION", "DIV", "DO", 
+		"ELSE", "END", "ENDDO", "ENDIF", "EQ", "EXPR", "EXPRS", "FIXEDPT", "FIXEDPTLIT", 
+		"FOR", "FUNCTION", "FUNCTIONS", "GEQ", "GREATER", "ID", "IDS", "IF", "IFFALSE", 
+		"IFTRUE", "INT", "INTLIT", "INVOKE", "LBRACK", "LEQ", "LESSER", "LPAREN", 
+		"MAIN", "MINUS", "MULT", "NEQ", "OF", "OR", "PARAMS", "PLUS", "PROGRAM", 
+		"RANGE", "RBRACK", "REFERENCE", "RETURN", "RPAREN", "SEMI", "STATEMENTS", 
+		"THEN", "TO", "TYPE", "TYPES", "VAR", "VARS", "VOID", "WHILE", "WS"
 	};
 	public static final int EOF=-1;
 	public static final int AND=4;
@@ -30,56 +30,60 @@ public class TigerParser extends Parser {
 	public static final int COLON=10;
 	public static final int COMMA=11;
 	public static final int COMMENT=12;
-	public static final int DIV=13;
-	public static final int DO=14;
-	public static final int ELSE=15;
-	public static final int END=16;
-	public static final int ENDDO=17;
-	public static final int ENDIF=18;
-	public static final int EQ=19;
-	public static final int EXPR=20;
-	public static final int EXPRS=21;
-	public static final int FIXEDPT=22;
-	public static final int FIXEDPTLIT=23;
-	public static final int FOR=24;
-	public static final int FUNCTION=25;
-	public static final int FUNCTIONS=26;
-	public static final int GEQ=27;
-	public static final int GREATER=28;
-	public static final int ID=29;
-	public static final int IDS=30;
-	public static final int IF=31;
-	public static final int INT=32;
-	public static final int INTLIT=33;
-	public static final int INVOKE=34;
-	public static final int LBRACK=35;
-	public static final int LEQ=36;
-	public static final int LESSER=37;
-	public static final int LPAREN=38;
-	public static final int MAIN=39;
-	public static final int MINUS=40;
-	public static final int MULT=41;
-	public static final int NEQ=42;
-	public static final int OF=43;
-	public static final int OR=44;
-	public static final int PARAMS=45;
-	public static final int PLUS=46;
-	public static final int PROGRAM=47;
-	public static final int RBRACK=48;
-	public static final int REFERENCE=49;
-	public static final int RETURN=50;
-	public static final int RPAREN=51;
-	public static final int SEMI=52;
-	public static final int STATEMENTS=53;
-	public static final int THEN=54;
-	public static final int TO=55;
-	public static final int TYPE=56;
-	public static final int TYPES=57;
-	public static final int VAR=58;
-	public static final int VARS=59;
-	public static final int VOID=60;
-	public static final int WHILE=61;
-	public static final int WS=62;
+	public static final int DIMENSION=13;
+	public static final int DIV=14;
+	public static final int DO=15;
+	public static final int ELSE=16;
+	public static final int END=17;
+	public static final int ENDDO=18;
+	public static final int ENDIF=19;
+	public static final int EQ=20;
+	public static final int EXPR=21;
+	public static final int EXPRS=22;
+	public static final int FIXEDPT=23;
+	public static final int FIXEDPTLIT=24;
+	public static final int FOR=25;
+	public static final int FUNCTION=26;
+	public static final int FUNCTIONS=27;
+	public static final int GEQ=28;
+	public static final int GREATER=29;
+	public static final int ID=30;
+	public static final int IDS=31;
+	public static final int IF=32;
+	public static final int IFFALSE=33;
+	public static final int IFTRUE=34;
+	public static final int INT=35;
+	public static final int INTLIT=36;
+	public static final int INVOKE=37;
+	public static final int LBRACK=38;
+	public static final int LEQ=39;
+	public static final int LESSER=40;
+	public static final int LPAREN=41;
+	public static final int MAIN=42;
+	public static final int MINUS=43;
+	public static final int MULT=44;
+	public static final int NEQ=45;
+	public static final int OF=46;
+	public static final int OR=47;
+	public static final int PARAMS=48;
+	public static final int PLUS=49;
+	public static final int PROGRAM=50;
+	public static final int RANGE=51;
+	public static final int RBRACK=52;
+	public static final int REFERENCE=53;
+	public static final int RETURN=54;
+	public static final int RPAREN=55;
+	public static final int SEMI=56;
+	public static final int STATEMENTS=57;
+	public static final int THEN=58;
+	public static final int TO=59;
+	public static final int TYPE=60;
+	public static final int TYPES=61;
+	public static final int VAR=62;
+	public static final int VARS=63;
+	public static final int VOID=64;
+	public static final int WHILE=65;
+	public static final int WS=66;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -116,7 +120,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "tiger_program"
-	// grammar/Tiger.g:34:1: tiger_program : ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) ) ;
+	// grammar/Tiger.g:38:1: tiger_program : ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) ) ;
 	public final TigerParser.tiger_program_return tiger_program() throws RecognitionException {
 		TigerParser.tiger_program_return retval = new TigerParser.tiger_program_return();
 		retval.start = input.LT(1);
@@ -133,23 +137,23 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
 
 		try {
-			// grammar/Tiger.g:35:2: ( ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) ) )
-			// grammar/Tiger.g:35:4: ( type_declaration_list function_declaration_list EOF )
+			// grammar/Tiger.g:39:2: ( ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) ) )
+			// grammar/Tiger.g:39:4: ( type_declaration_list function_declaration_list EOF )
 			{
-			// grammar/Tiger.g:35:4: ( type_declaration_list function_declaration_list EOF )
-			// grammar/Tiger.g:35:5: type_declaration_list function_declaration_list EOF
+			// grammar/Tiger.g:39:4: ( type_declaration_list function_declaration_list EOF )
+			// grammar/Tiger.g:39:5: type_declaration_list function_declaration_list EOF
 			{
-			pushFollow(FOLLOW_type_declaration_list_in_tiger_program120);
+			pushFollow(FOLLOW_type_declaration_list_in_tiger_program136);
 			type_declaration_list1=type_declaration_list();
 			state._fsp--;
 
 			stream_type_declaration_list.add(type_declaration_list1.getTree());
-			pushFollow(FOLLOW_function_declaration_list_in_tiger_program122);
+			pushFollow(FOLLOW_function_declaration_list_in_tiger_program138);
 			function_declaration_list2=function_declaration_list();
 			state._fsp--;
 
 			stream_function_declaration_list.add(function_declaration_list2.getTree());
-			EOF3=(Token)match(input,EOF,FOLLOW_EOF_in_tiger_program124);  
+			EOF3=(Token)match(input,EOF,FOLLOW_EOF_in_tiger_program140);  
 			stream_EOF.add(EOF3);
 
 			}
@@ -165,17 +169,17 @@ public class TigerParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (Object)adaptor.nil();
-			// 35:58: -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) )
+			// 39:58: -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) )
 			{
-				// grammar/Tiger.g:35:61: ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) )
+				// grammar/Tiger.g:39:61: ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCTIONS function_declaration_list ) )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PROGRAM, "PROGRAM"), root_1);
-				// grammar/Tiger.g:35:71: ^( TYPES ( type_declaration_list )? )
+				// grammar/Tiger.g:39:71: ^( TYPES ( type_declaration_list )? )
 				{
 				Object root_2 = (Object)adaptor.nil();
 				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(TYPES, "TYPES"), root_2);
-				// grammar/Tiger.g:35:79: ( type_declaration_list )?
+				// grammar/Tiger.g:39:79: ( type_declaration_list )?
 				if ( stream_type_declaration_list.hasNext() ) {
 					adaptor.addChild(root_2, stream_type_declaration_list.nextTree());
 				}
@@ -184,7 +188,7 @@ public class TigerParser extends Parser {
 				adaptor.addChild(root_1, root_2);
 				}
 
-				// grammar/Tiger.g:35:103: ^( FUNCTIONS function_declaration_list )
+				// grammar/Tiger.g:39:103: ^( FUNCTIONS function_declaration_list )
 				{
 				Object root_2 = (Object)adaptor.nil();
 				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTIONS, "FUNCTIONS"), root_2);
@@ -229,7 +233,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_declaration_list"
-	// grammar/Tiger.g:42:1: type_declaration_list : ( ( TYPE ID EQ type SEMI type_declaration_list ) -> ^( TYPE ID ) type type_declaration_list |);
+	// grammar/Tiger.g:46:1: type_declaration_list : ( ( TYPE ID EQ type SEMI type_declaration_list ) -> ^( TYPE ID ) type type_declaration_list |);
 	public final TigerParser.type_declaration_list_return type_declaration_list() throws RecognitionException {
 		TigerParser.type_declaration_list_return retval = new TigerParser.type_declaration_list_return();
 		retval.start = input.LT(1);
@@ -255,13 +259,13 @@ public class TigerParser extends Parser {
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
 
 		try {
-			// grammar/Tiger.g:43:2: ( ( TYPE ID EQ type SEMI type_declaration_list ) -> ^( TYPE ID ) type type_declaration_list |)
+			// grammar/Tiger.g:47:2: ( ( TYPE ID EQ type SEMI type_declaration_list ) -> ^( TYPE ID ) type type_declaration_list |)
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0==TYPE) ) {
 				alt1=1;
 			}
-			else if ( (LA1_0==EOF||LA1_0==BEGIN||LA1_0==BREAK||LA1_0==FIXEDPT||LA1_0==FOR||LA1_0==ID||(LA1_0 >= IF && LA1_0 <= INT)||LA1_0==RETURN||LA1_0==VAR||LA1_0==WHILE) ) {
+			else if ( (LA1_0==EOF||LA1_0==BEGIN||LA1_0==BREAK||LA1_0==FIXEDPT||LA1_0==FOR||LA1_0==ID||LA1_0==IF||LA1_0==INT||LA1_0==RETURN||LA1_0==VAR||(LA1_0 >= VOID && LA1_0 <= WHILE)) ) {
 				alt1=2;
 			}
 
@@ -273,29 +277,29 @@ public class TigerParser extends Parser {
 
 			switch (alt1) {
 				case 1 :
-					// grammar/Tiger.g:43:4: ( TYPE ID EQ type SEMI type_declaration_list )
+					// grammar/Tiger.g:47:4: ( TYPE ID EQ type SEMI type_declaration_list )
 					{
-					// grammar/Tiger.g:43:4: ( TYPE ID EQ type SEMI type_declaration_list )
-					// grammar/Tiger.g:43:5: TYPE ID EQ type SEMI type_declaration_list
+					// grammar/Tiger.g:47:4: ( TYPE ID EQ type SEMI type_declaration_list )
+					// grammar/Tiger.g:47:5: TYPE ID EQ type SEMI type_declaration_list
 					{
-					TYPE4=(Token)match(input,TYPE,FOLLOW_TYPE_in_type_declaration_list160);  
+					TYPE4=(Token)match(input,TYPE,FOLLOW_TYPE_in_type_declaration_list176);  
 					stream_TYPE.add(TYPE4);
 
-					ID5=(Token)match(input,ID,FOLLOW_ID_in_type_declaration_list162);  
+					ID5=(Token)match(input,ID,FOLLOW_ID_in_type_declaration_list178);  
 					stream_ID.add(ID5);
 
-					EQ6=(Token)match(input,EQ,FOLLOW_EQ_in_type_declaration_list164);  
+					EQ6=(Token)match(input,EQ,FOLLOW_EQ_in_type_declaration_list180);  
 					stream_EQ.add(EQ6);
 
-					pushFollow(FOLLOW_type_in_type_declaration_list166);
+					pushFollow(FOLLOW_type_in_type_declaration_list182);
 					type7=type();
 					state._fsp--;
 
 					stream_type.add(type7.getTree());
-					SEMI8=(Token)match(input,SEMI,FOLLOW_SEMI_in_type_declaration_list168);  
+					SEMI8=(Token)match(input,SEMI,FOLLOW_SEMI_in_type_declaration_list184);  
 					stream_SEMI.add(SEMI8);
 
-					pushFollow(FOLLOW_type_declaration_list_in_type_declaration_list170);
+					pushFollow(FOLLOW_type_declaration_list_in_type_declaration_list186);
 					type_declaration_list9=type_declaration_list();
 					state._fsp--;
 
@@ -313,9 +317,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 43:49: -> ^( TYPE ID ) type type_declaration_list
+					// 47:49: -> ^( TYPE ID ) type type_declaration_list
 					{
-						// grammar/Tiger.g:43:52: ^( TYPE ID )
+						// grammar/Tiger.g:47:52: ^( TYPE ID )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_TYPE.nextNode(), root_1);
@@ -333,7 +337,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:45:2: 
+					// grammar/Tiger.g:49:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -369,7 +373,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "function_declaration_list"
-	// grammar/Tiger.g:47:1: function_declaration_list : ( ( type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list -> ^( FUNCTION type_id ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )? |);
+	// grammar/Tiger.g:51:1: function_declaration_list : ( ( return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list -> ^( FUNCTION return_type ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )? |);
 	public final TigerParser.function_declaration_list_return function_declaration_list() throws RecognitionException {
 		TigerParser.function_declaration_list_return retval = new TigerParser.function_declaration_list_return();
 		retval.start = input.LT(1);
@@ -383,7 +387,7 @@ public class TigerParser extends Parser {
 		Token BEGIN16=null;
 		Token END18=null;
 		Token SEMI19=null;
-		ParserRuleReturnScope type_id10 =null;
+		ParserRuleReturnScope return_type10 =null;
 		ParserRuleReturnScope param_list14 =null;
 		ParserRuleReturnScope block_list17 =null;
 		ParserRuleReturnScope function_declaration_list20 =null;
@@ -402,16 +406,16 @@ public class TigerParser extends Parser {
 		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
 		RewriteRuleTokenStream stream_BEGIN=new RewriteRuleTokenStream(adaptor,"token BEGIN");
 		RewriteRuleTokenStream stream_FUNCTION=new RewriteRuleTokenStream(adaptor,"token FUNCTION");
+		RewriteRuleSubtreeStream stream_return_type=new RewriteRuleSubtreeStream(adaptor,"rule return_type");
 		RewriteRuleSubtreeStream stream_function_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule function_declaration_list");
-		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
 		RewriteRuleSubtreeStream stream_block_list=new RewriteRuleSubtreeStream(adaptor,"rule block_list");
 		RewriteRuleSubtreeStream stream_param_list=new RewriteRuleSubtreeStream(adaptor,"rule param_list");
 
 		try {
-			// grammar/Tiger.g:48:2: ( ( type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list -> ^( FUNCTION type_id ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )? |)
+			// grammar/Tiger.g:52:2: ( ( return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list -> ^( FUNCTION return_type ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )? |)
 			int alt2=2;
 			int LA2_0 = input.LA(1);
-			if ( (LA2_0==FIXEDPT||LA2_0==ID||LA2_0==INT) ) {
+			if ( (LA2_0==FIXEDPT||LA2_0==ID||LA2_0==INT||LA2_0==VOID) ) {
 				alt2=1;
 			}
 			else if ( (LA2_0==EOF) ) {
@@ -426,56 +430,56 @@ public class TigerParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
-					// grammar/Tiger.g:48:4: ( type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list
+					// grammar/Tiger.g:52:4: ( return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI ) function_declaration_list
 					{
-					// grammar/Tiger.g:48:4: ( type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
-					// grammar/Tiger.g:48:5: type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
+					// grammar/Tiger.g:52:4: ( return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI )
+					// grammar/Tiger.g:52:5: return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI
 					{
-					pushFollow(FOLLOW_type_id_in_function_declaration_list198);
-					type_id10=type_id();
+					pushFollow(FOLLOW_return_type_in_function_declaration_list214);
+					return_type10=return_type();
 					state._fsp--;
 
-					stream_type_id.add(type_id10.getTree());
-					FUNCTION11=(Token)match(input,FUNCTION,FOLLOW_FUNCTION_in_function_declaration_list200);  
+					stream_return_type.add(return_type10.getTree());
+					FUNCTION11=(Token)match(input,FUNCTION,FOLLOW_FUNCTION_in_function_declaration_list216);  
 					stream_FUNCTION.add(FUNCTION11);
 
-					ID12=(Token)match(input,ID,FOLLOW_ID_in_function_declaration_list202);  
+					ID12=(Token)match(input,ID,FOLLOW_ID_in_function_declaration_list218);  
 					stream_ID.add(ID12);
 
-					LPAREN13=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_function_declaration_list204);  
+					LPAREN13=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_function_declaration_list220);  
 					stream_LPAREN.add(LPAREN13);
 
-					pushFollow(FOLLOW_param_list_in_function_declaration_list206);
+					pushFollow(FOLLOW_param_list_in_function_declaration_list222);
 					param_list14=param_list();
 					state._fsp--;
 
 					stream_param_list.add(param_list14.getTree());
-					RPAREN15=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_function_declaration_list208);  
+					RPAREN15=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_function_declaration_list224);  
 					stream_RPAREN.add(RPAREN15);
 
-					BEGIN16=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_function_declaration_list210);  
+					BEGIN16=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_function_declaration_list226);  
 					stream_BEGIN.add(BEGIN16);
 
-					pushFollow(FOLLOW_block_list_in_function_declaration_list212);
+					pushFollow(FOLLOW_block_list_in_function_declaration_list228);
 					block_list17=block_list();
 					state._fsp--;
 
 					stream_block_list.add(block_list17.getTree());
-					END18=(Token)match(input,END,FOLLOW_END_in_function_declaration_list214);  
+					END18=(Token)match(input,END,FOLLOW_END_in_function_declaration_list230);  
 					stream_END.add(END18);
 
-					SEMI19=(Token)match(input,SEMI,FOLLOW_SEMI_in_function_declaration_list216);  
+					SEMI19=(Token)match(input,SEMI,FOLLOW_SEMI_in_function_declaration_list232);  
 					stream_SEMI.add(SEMI19);
 
 					}
 
-					pushFollow(FOLLOW_function_declaration_list_in_function_declaration_list219);
+					pushFollow(FOLLOW_function_declaration_list_in_function_declaration_list235);
 					function_declaration_list20=function_declaration_list();
 					state._fsp--;
 
 					stream_function_declaration_list.add(function_declaration_list20.getTree());
 					// AST REWRITE
-					// elements: type_id, FUNCTION, param_list, function_declaration_list, ID
+					// elements: return_type, FUNCTION, param_list, function_declaration_list, ID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -485,19 +489,19 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 48:103: -> ^( FUNCTION type_id ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )?
+					// 52:107: -> ^( FUNCTION return_type ID ^( PARAMS ( param_list )? ) ) ( function_declaration_list )?
 					{
-						// grammar/Tiger.g:48:106: ^( FUNCTION type_id ID ^( PARAMS ( param_list )? ) )
+						// grammar/Tiger.g:52:110: ^( FUNCTION return_type ID ^( PARAMS ( param_list )? ) )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_FUNCTION.nextNode(), root_1);
-						adaptor.addChild(root_1, stream_type_id.nextTree());
+						adaptor.addChild(root_1, stream_return_type.nextTree());
 						adaptor.addChild(root_1, stream_ID.nextNode());
-						// grammar/Tiger.g:48:128: ^( PARAMS ( param_list )? )
+						// grammar/Tiger.g:52:136: ^( PARAMS ( param_list )? )
 						{
 						Object root_2 = (Object)adaptor.nil();
 						root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(PARAMS, "PARAMS"), root_2);
-						// grammar/Tiger.g:48:137: ( param_list )?
+						// grammar/Tiger.g:52:145: ( param_list )?
 						if ( stream_param_list.hasNext() ) {
 							adaptor.addChild(root_2, stream_param_list.nextTree());
 						}
@@ -509,7 +513,7 @@ public class TigerParser extends Parser {
 						adaptor.addChild(root_0, root_1);
 						}
 
-						// grammar/Tiger.g:48:151: ( function_declaration_list )?
+						// grammar/Tiger.g:52:159: ( function_declaration_list )?
 						if ( stream_function_declaration_list.hasNext() ) {
 							adaptor.addChild(root_0, stream_function_declaration_list.nextTree());
 						}
@@ -523,7 +527,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:50:2: 
+					// grammar/Tiger.g:54:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -559,7 +563,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "var_declaration_list"
-	// grammar/Tiger.g:52:1: var_declaration_list : ( ( VAR id_list COLON type_id optional_init SEMI var_declaration_list ) -> ^( VAR ^( IDS id_list ) type_id ( optional_init )? ) ( var_declaration_list )? |);
+	// grammar/Tiger.g:56:1: var_declaration_list : ( ( VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list ) -> ^( VAR ^( IDS id_list ) type_id ( constant )? ) ( var_declaration_list )? |);
 	public final TigerParser.var_declaration_list_return var_declaration_list() throws RecognitionException {
 		TigerParser.var_declaration_list_return retval = new TigerParser.var_declaration_list_return();
 		retval.start = input.LT(1);
@@ -568,80 +572,101 @@ public class TigerParser extends Parser {
 
 		Token VAR21=null;
 		Token COLON23=null;
-		Token SEMI26=null;
+		Token ASSIGN25=null;
+		Token SEMI27=null;
 		ParserRuleReturnScope id_list22 =null;
 		ParserRuleReturnScope type_id24 =null;
-		ParserRuleReturnScope optional_init25 =null;
-		ParserRuleReturnScope var_declaration_list27 =null;
+		ParserRuleReturnScope constant26 =null;
+		ParserRuleReturnScope var_declaration_list28 =null;
 
 		Object VAR21_tree=null;
 		Object COLON23_tree=null;
-		Object SEMI26_tree=null;
+		Object ASSIGN25_tree=null;
+		Object SEMI27_tree=null;
 		RewriteRuleTokenStream stream_VAR=new RewriteRuleTokenStream(adaptor,"token VAR");
 		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
 		RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
+		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
 		RewriteRuleSubtreeStream stream_id_list=new RewriteRuleSubtreeStream(adaptor,"rule id_list");
+		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
 		RewriteRuleSubtreeStream stream_var_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_list");
 		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
-		RewriteRuleSubtreeStream stream_optional_init=new RewriteRuleSubtreeStream(adaptor,"rule optional_init");
 
 		try {
-			// grammar/Tiger.g:53:2: ( ( VAR id_list COLON type_id optional_init SEMI var_declaration_list ) -> ^( VAR ^( IDS id_list ) type_id ( optional_init )? ) ( var_declaration_list )? |)
-			int alt3=2;
-			int LA3_0 = input.LA(1);
-			if ( (LA3_0==VAR) ) {
-				alt3=1;
+			// grammar/Tiger.g:57:2: ( ( VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list ) -> ^( VAR ^( IDS id_list ) type_id ( constant )? ) ( var_declaration_list )? |)
+			int alt4=2;
+			int LA4_0 = input.LA(1);
+			if ( (LA4_0==VAR) ) {
+				alt4=1;
 			}
-			else if ( (LA3_0==BEGIN||LA3_0==BREAK||LA3_0==FOR||LA3_0==ID||LA3_0==IF||LA3_0==RETURN||LA3_0==WHILE) ) {
-				alt3=2;
+			else if ( (LA4_0==BEGIN||LA4_0==BREAK||LA4_0==FOR||LA4_0==ID||LA4_0==IF||LA4_0==RETURN||LA4_0==WHILE) ) {
+				alt4=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 3, 0, input);
+					new NoViableAltException("", 4, 0, input);
 				throw nvae;
 			}
 
-			switch (alt3) {
+			switch (alt4) {
 				case 1 :
-					// grammar/Tiger.g:53:4: ( VAR id_list COLON type_id optional_init SEMI var_declaration_list )
+					// grammar/Tiger.g:57:4: ( VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list )
 					{
-					// grammar/Tiger.g:53:4: ( VAR id_list COLON type_id optional_init SEMI var_declaration_list )
-					// grammar/Tiger.g:53:5: VAR id_list COLON type_id optional_init SEMI var_declaration_list
+					// grammar/Tiger.g:57:4: ( VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list )
+					// grammar/Tiger.g:57:5: VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list
 					{
-					VAR21=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration_list254);  
+					VAR21=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration_list270);  
 					stream_VAR.add(VAR21);
 
-					pushFollow(FOLLOW_id_list_in_var_declaration_list256);
+					pushFollow(FOLLOW_id_list_in_var_declaration_list272);
 					id_list22=id_list();
 					state._fsp--;
 
 					stream_id_list.add(id_list22.getTree());
-					COLON23=(Token)match(input,COLON,FOLLOW_COLON_in_var_declaration_list258);  
+					COLON23=(Token)match(input,COLON,FOLLOW_COLON_in_var_declaration_list274);  
 					stream_COLON.add(COLON23);
 
-					pushFollow(FOLLOW_type_id_in_var_declaration_list260);
+					pushFollow(FOLLOW_type_id_in_var_declaration_list276);
 					type_id24=type_id();
 					state._fsp--;
 
 					stream_type_id.add(type_id24.getTree());
-					pushFollow(FOLLOW_optional_init_in_var_declaration_list262);
-					optional_init25=optional_init();
+					// grammar/Tiger.g:57:31: ( ASSIGN constant )?
+					int alt3=2;
+					int LA3_0 = input.LA(1);
+					if ( (LA3_0==ASSIGN) ) {
+						alt3=1;
+					}
+					switch (alt3) {
+						case 1 :
+							// grammar/Tiger.g:57:32: ASSIGN constant
+							{
+							ASSIGN25=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_var_declaration_list279);  
+							stream_ASSIGN.add(ASSIGN25);
+
+							pushFollow(FOLLOW_constant_in_var_declaration_list281);
+							constant26=constant();
+							state._fsp--;
+
+							stream_constant.add(constant26.getTree());
+							}
+							break;
+
+					}
+
+					SEMI27=(Token)match(input,SEMI,FOLLOW_SEMI_in_var_declaration_list285);  
+					stream_SEMI.add(SEMI27);
+
+					pushFollow(FOLLOW_var_declaration_list_in_var_declaration_list287);
+					var_declaration_list28=var_declaration_list();
 					state._fsp--;
 
-					stream_optional_init.add(optional_init25.getTree());
-					SEMI26=(Token)match(input,SEMI,FOLLOW_SEMI_in_var_declaration_list264);  
-					stream_SEMI.add(SEMI26);
-
-					pushFollow(FOLLOW_var_declaration_list_in_var_declaration_list266);
-					var_declaration_list27=var_declaration_list();
-					state._fsp--;
-
-					stream_var_declaration_list.add(var_declaration_list27.getTree());
+					stream_var_declaration_list.add(var_declaration_list28.getTree());
 					}
 
 					// AST REWRITE
-					// elements: VAR, type_id, optional_init, id_list, var_declaration_list
+					// elements: id_list, var_declaration_list, type_id, VAR, constant
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -651,13 +676,13 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 53:72: -> ^( VAR ^( IDS id_list ) type_id ( optional_init )? ) ( var_declaration_list )?
+					// 57:77: -> ^( VAR ^( IDS id_list ) type_id ( constant )? ) ( var_declaration_list )?
 					{
-						// grammar/Tiger.g:53:75: ^( VAR ^( IDS id_list ) type_id ( optional_init )? )
+						// grammar/Tiger.g:57:80: ^( VAR ^( IDS id_list ) type_id ( constant )? )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_VAR.nextNode(), root_1);
-						// grammar/Tiger.g:53:81: ^( IDS id_list )
+						// grammar/Tiger.g:57:86: ^( IDS id_list )
 						{
 						Object root_2 = (Object)adaptor.nil();
 						root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(IDS, "IDS"), root_2);
@@ -666,16 +691,16 @@ public class TigerParser extends Parser {
 						}
 
 						adaptor.addChild(root_1, stream_type_id.nextTree());
-						// grammar/Tiger.g:53:104: ( optional_init )?
-						if ( stream_optional_init.hasNext() ) {
-							adaptor.addChild(root_1, stream_optional_init.nextTree());
+						// grammar/Tiger.g:57:109: ( constant )?
+						if ( stream_constant.hasNext() ) {
+							adaptor.addChild(root_1, stream_constant.nextTree());
 						}
-						stream_optional_init.reset();
+						stream_constant.reset();
 
 						adaptor.addChild(root_0, root_1);
 						}
 
-						// grammar/Tiger.g:53:120: ( var_declaration_list )?
+						// grammar/Tiger.g:57:120: ( var_declaration_list )?
 						if ( stream_var_declaration_list.hasNext() ) {
 							adaptor.addChild(root_0, stream_var_declaration_list.nextTree());
 						}
@@ -689,7 +714,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:55:2: 
+					// grammar/Tiger.g:59:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -725,64 +750,64 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "param_list"
-	// grammar/Tiger.g:61:1: param_list : ( ID COLON type_id param_list_tail -> ^( ID type_id ) ( param_list_tail )? |);
+	// grammar/Tiger.g:65:1: param_list : ( ID COLON type_id param_list_tail -> ^( ID type_id ) ( param_list_tail )? |);
 	public final TigerParser.param_list_return param_list() throws RecognitionException {
 		TigerParser.param_list_return retval = new TigerParser.param_list_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID28=null;
-		Token COLON29=null;
-		ParserRuleReturnScope type_id30 =null;
-		ParserRuleReturnScope param_list_tail31 =null;
+		Token ID29=null;
+		Token COLON30=null;
+		ParserRuleReturnScope type_id31 =null;
+		ParserRuleReturnScope param_list_tail32 =null;
 
-		Object ID28_tree=null;
-		Object COLON29_tree=null;
+		Object ID29_tree=null;
+		Object COLON30_tree=null;
 		RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 		RewriteRuleSubtreeStream stream_param_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule param_list_tail");
 		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
 
 		try {
-			// grammar/Tiger.g:62:2: ( ID COLON type_id param_list_tail -> ^( ID type_id ) ( param_list_tail )? |)
-			int alt4=2;
-			int LA4_0 = input.LA(1);
-			if ( (LA4_0==ID) ) {
-				alt4=1;
+			// grammar/Tiger.g:66:2: ( ID COLON type_id param_list_tail -> ^( ID type_id ) ( param_list_tail )? |)
+			int alt5=2;
+			int LA5_0 = input.LA(1);
+			if ( (LA5_0==ID) ) {
+				alt5=1;
 			}
-			else if ( (LA4_0==RPAREN) ) {
-				alt4=2;
+			else if ( (LA5_0==RPAREN) ) {
+				alt5=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 4, 0, input);
+					new NoViableAltException("", 5, 0, input);
 				throw nvae;
 			}
 
-			switch (alt4) {
+			switch (alt5) {
 				case 1 :
-					// grammar/Tiger.g:62:4: ID COLON type_id param_list_tail
+					// grammar/Tiger.g:66:4: ID COLON type_id param_list_tail
 					{
-					ID28=(Token)match(input,ID,FOLLOW_ID_in_param_list305);  
-					stream_ID.add(ID28);
+					ID29=(Token)match(input,ID,FOLLOW_ID_in_param_list326);  
+					stream_ID.add(ID29);
 
-					COLON29=(Token)match(input,COLON,FOLLOW_COLON_in_param_list307);  
-					stream_COLON.add(COLON29);
+					COLON30=(Token)match(input,COLON,FOLLOW_COLON_in_param_list328);  
+					stream_COLON.add(COLON30);
 
-					pushFollow(FOLLOW_type_id_in_param_list309);
-					type_id30=type_id();
+					pushFollow(FOLLOW_type_id_in_param_list330);
+					type_id31=type_id();
 					state._fsp--;
 
-					stream_type_id.add(type_id30.getTree());
-					pushFollow(FOLLOW_param_list_tail_in_param_list311);
-					param_list_tail31=param_list_tail();
+					stream_type_id.add(type_id31.getTree());
+					pushFollow(FOLLOW_param_list_tail_in_param_list332);
+					param_list_tail32=param_list_tail();
 					state._fsp--;
 
-					stream_param_list_tail.add(param_list_tail31.getTree());
+					stream_param_list_tail.add(param_list_tail32.getTree());
 					// AST REWRITE
-					// elements: type_id, ID, param_list_tail
+					// elements: ID, param_list_tail, type_id
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -792,9 +817,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 62:38: -> ^( ID type_id ) ( param_list_tail )?
+					// 66:38: -> ^( ID type_id ) ( param_list_tail )?
 					{
-						// grammar/Tiger.g:62:41: ^( ID type_id )
+						// grammar/Tiger.g:66:41: ^( ID type_id )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_ID.nextNode(), root_1);
@@ -802,7 +827,7 @@ public class TigerParser extends Parser {
 						adaptor.addChild(root_0, root_1);
 						}
 
-						// grammar/Tiger.g:62:55: ( param_list_tail )?
+						// grammar/Tiger.g:66:55: ( param_list_tail )?
 						if ( stream_param_list_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_param_list_tail.nextTree());
 						}
@@ -816,7 +841,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:64:2: 
+					// grammar/Tiger.g:68:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -852,49 +877,49 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "param_list_tail"
-	// grammar/Tiger.g:66:1: param_list_tail : ( COMMA param_list -> param_list |);
+	// grammar/Tiger.g:70:1: param_list_tail : ( COMMA param_list -> param_list |);
 	public final TigerParser.param_list_tail_return param_list_tail() throws RecognitionException {
 		TigerParser.param_list_tail_return retval = new TigerParser.param_list_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token COMMA32=null;
-		ParserRuleReturnScope param_list33 =null;
+		Token COMMA33=null;
+		ParserRuleReturnScope param_list34 =null;
 
-		Object COMMA32_tree=null;
+		Object COMMA33_tree=null;
 		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_param_list=new RewriteRuleSubtreeStream(adaptor,"rule param_list");
 
 		try {
-			// grammar/Tiger.g:67:2: ( COMMA param_list -> param_list |)
-			int alt5=2;
-			int LA5_0 = input.LA(1);
-			if ( (LA5_0==COMMA) ) {
-				alt5=1;
+			// grammar/Tiger.g:71:2: ( COMMA param_list -> param_list |)
+			int alt6=2;
+			int LA6_0 = input.LA(1);
+			if ( (LA6_0==COMMA) ) {
+				alt6=1;
 			}
-			else if ( (LA5_0==RPAREN) ) {
-				alt5=2;
+			else if ( (LA6_0==RPAREN) ) {
+				alt6=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 5, 0, input);
+					new NoViableAltException("", 6, 0, input);
 				throw nvae;
 			}
 
-			switch (alt5) {
+			switch (alt6) {
 				case 1 :
-					// grammar/Tiger.g:67:4: COMMA param_list
+					// grammar/Tiger.g:71:4: COMMA param_list
 					{
-					COMMA32=(Token)match(input,COMMA,FOLLOW_COMMA_in_param_list_tail339);  
-					stream_COMMA.add(COMMA32);
+					COMMA33=(Token)match(input,COMMA,FOLLOW_COMMA_in_param_list_tail360);  
+					stream_COMMA.add(COMMA33);
 
-					pushFollow(FOLLOW_param_list_in_param_list_tail341);
-					param_list33=param_list();
+					pushFollow(FOLLOW_param_list_in_param_list_tail362);
+					param_list34=param_list();
 					state._fsp--;
 
-					stream_param_list.add(param_list33.getTree());
+					stream_param_list.add(param_list34.getTree());
 					// AST REWRITE
 					// elements: param_list
 					// token labels: 
@@ -906,7 +931,7 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 67:21: -> param_list
+					// 71:21: -> param_list
 					{
 						adaptor.addChild(root_0, stream_param_list.nextTree());
 					}
@@ -917,7 +942,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:69:2: 
+					// grammar/Tiger.g:73:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -953,35 +978,35 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block_list"
-	// grammar/Tiger.g:71:1: block_list : block block_tail ;
+	// grammar/Tiger.g:79:1: block_list : block block_tail ;
 	public final TigerParser.block_list_return block_list() throws RecognitionException {
 		TigerParser.block_list_return retval = new TigerParser.block_list_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope block34 =null;
-		ParserRuleReturnScope block_tail35 =null;
+		ParserRuleReturnScope block35 =null;
+		ParserRuleReturnScope block_tail36 =null;
 
 
 		try {
-			// grammar/Tiger.g:72:2: ( block block_tail )
-			// grammar/Tiger.g:72:4: block block_tail
+			// grammar/Tiger.g:80:2: ( block block_tail )
+			// grammar/Tiger.g:80:4: block block_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			pushFollow(FOLLOW_block_in_block_list361);
-			block34=block();
+			pushFollow(FOLLOW_block_in_block_list385);
+			block35=block();
 			state._fsp--;
 
-			adaptor.addChild(root_0, block34.getTree());
+			adaptor.addChild(root_0, block35.getTree());
 
-			pushFollow(FOLLOW_block_tail_in_block_list363);
-			block_tail35=block_tail();
+			pushFollow(FOLLOW_block_tail_in_block_list387);
+			block_tail36=block_tail();
 			state._fsp--;
 
-			adaptor.addChild(root_0, block_tail35.getTree());
+			adaptor.addChild(root_0, block_tail36.getTree());
 
 			}
 
@@ -1012,57 +1037,57 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block_tail"
-	// grammar/Tiger.g:75:1: block_tail : ( block block_tail |);
+	// grammar/Tiger.g:83:1: block_tail : ( block block_tail |);
 	public final TigerParser.block_tail_return block_tail() throws RecognitionException {
 		TigerParser.block_tail_return retval = new TigerParser.block_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope block36 =null;
-		ParserRuleReturnScope block_tail37 =null;
+		ParserRuleReturnScope block37 =null;
+		ParserRuleReturnScope block_tail38 =null;
 
 
 		try {
-			// grammar/Tiger.g:76:2: ( block block_tail |)
-			int alt6=2;
-			int LA6_0 = input.LA(1);
-			if ( (LA6_0==BEGIN) ) {
-				alt6=1;
+			// grammar/Tiger.g:84:2: ( block block_tail |)
+			int alt7=2;
+			int LA7_0 = input.LA(1);
+			if ( (LA7_0==BEGIN) ) {
+				alt7=1;
 			}
-			else if ( (LA6_0==END) ) {
-				alt6=2;
+			else if ( (LA7_0==END) ) {
+				alt7=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 6, 0, input);
+					new NoViableAltException("", 7, 0, input);
 				throw nvae;
 			}
 
-			switch (alt6) {
+			switch (alt7) {
 				case 1 :
-					// grammar/Tiger.g:76:4: block block_tail
+					// grammar/Tiger.g:84:4: block block_tail
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_block_in_block_tail374);
-					block36=block();
+					pushFollow(FOLLOW_block_in_block_tail398);
+					block37=block();
 					state._fsp--;
 
-					adaptor.addChild(root_0, block36.getTree());
+					adaptor.addChild(root_0, block37.getTree());
 
-					pushFollow(FOLLOW_block_tail_in_block_tail376);
-					block_tail37=block_tail();
+					pushFollow(FOLLOW_block_tail_in_block_tail400);
+					block_tail38=block_tail();
 					state._fsp--;
 
-					adaptor.addChild(root_0, block_tail37.getTree());
+					adaptor.addChild(root_0, block_tail38.getTree());
 
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:78:2: 
+					// grammar/Tiger.g:86:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1098,65 +1123,65 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "block"
-	// grammar/Tiger.g:80:1: block : ( BEGIN type_declaration_list var_declaration_list stat_seq END SEMI ) -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_seq ) ;
+	// grammar/Tiger.g:88:1: block : ( BEGIN type_declaration_list var_declaration_list stat_list END SEMI ) -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_list ) ;
 	public final TigerParser.block_return block() throws RecognitionException {
 		TigerParser.block_return retval = new TigerParser.block_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token BEGIN38=null;
-		Token END42=null;
-		Token SEMI43=null;
-		ParserRuleReturnScope type_declaration_list39 =null;
-		ParserRuleReturnScope var_declaration_list40 =null;
-		ParserRuleReturnScope stat_seq41 =null;
+		Token BEGIN39=null;
+		Token END43=null;
+		Token SEMI44=null;
+		ParserRuleReturnScope type_declaration_list40 =null;
+		ParserRuleReturnScope var_declaration_list41 =null;
+		ParserRuleReturnScope stat_list42 =null;
 
-		Object BEGIN38_tree=null;
-		Object END42_tree=null;
-		Object SEMI43_tree=null;
+		Object BEGIN39_tree=null;
+		Object END43_tree=null;
+		Object SEMI44_tree=null;
 		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
 		RewriteRuleTokenStream stream_END=new RewriteRuleTokenStream(adaptor,"token END");
 		RewriteRuleTokenStream stream_BEGIN=new RewriteRuleTokenStream(adaptor,"token BEGIN");
 		RewriteRuleSubtreeStream stream_var_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_list");
-		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
+		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
 
 		try {
-			// grammar/Tiger.g:81:2: ( ( BEGIN type_declaration_list var_declaration_list stat_seq END SEMI ) -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_seq ) )
-			// grammar/Tiger.g:81:4: ( BEGIN type_declaration_list var_declaration_list stat_seq END SEMI )
+			// grammar/Tiger.g:89:2: ( ( BEGIN type_declaration_list var_declaration_list stat_list END SEMI ) -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_list ) )
+			// grammar/Tiger.g:89:4: ( BEGIN type_declaration_list var_declaration_list stat_list END SEMI )
 			{
-			// grammar/Tiger.g:81:4: ( BEGIN type_declaration_list var_declaration_list stat_seq END SEMI )
-			// grammar/Tiger.g:81:5: BEGIN type_declaration_list var_declaration_list stat_seq END SEMI
+			// grammar/Tiger.g:89:4: ( BEGIN type_declaration_list var_declaration_list stat_list END SEMI )
+			// grammar/Tiger.g:89:5: BEGIN type_declaration_list var_declaration_list stat_list END SEMI
 			{
-			BEGIN38=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_block392);  
-			stream_BEGIN.add(BEGIN38);
+			BEGIN39=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_block416);  
+			stream_BEGIN.add(BEGIN39);
 
-			pushFollow(FOLLOW_type_declaration_list_in_block394);
-			type_declaration_list39=type_declaration_list();
+			pushFollow(FOLLOW_type_declaration_list_in_block418);
+			type_declaration_list40=type_declaration_list();
 			state._fsp--;
 
-			stream_type_declaration_list.add(type_declaration_list39.getTree());
-			pushFollow(FOLLOW_var_declaration_list_in_block396);
-			var_declaration_list40=var_declaration_list();
+			stream_type_declaration_list.add(type_declaration_list40.getTree());
+			pushFollow(FOLLOW_var_declaration_list_in_block420);
+			var_declaration_list41=var_declaration_list();
 			state._fsp--;
 
-			stream_var_declaration_list.add(var_declaration_list40.getTree());
-			pushFollow(FOLLOW_stat_seq_in_block398);
-			stat_seq41=stat_seq();
+			stream_var_declaration_list.add(var_declaration_list41.getTree());
+			pushFollow(FOLLOW_stat_list_in_block422);
+			stat_list42=stat_list();
 			state._fsp--;
 
-			stream_stat_seq.add(stat_seq41.getTree());
-			END42=(Token)match(input,END,FOLLOW_END_in_block400);  
-			stream_END.add(END42);
+			stream_stat_list.add(stat_list42.getTree());
+			END43=(Token)match(input,END,FOLLOW_END_in_block424);  
+			stream_END.add(END43);
 
-			SEMI43=(Token)match(input,SEMI,FOLLOW_SEMI_in_block402);  
-			stream_SEMI.add(SEMI43);
+			SEMI44=(Token)match(input,SEMI,FOLLOW_SEMI_in_block426);  
+			stream_SEMI.add(SEMI44);
 
 			}
 
 			// AST REWRITE
-			// elements: stat_seq, type_declaration_list, var_declaration_list
+			// elements: var_declaration_list, stat_list, type_declaration_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1166,17 +1191,17 @@ public class TigerParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (Object)adaptor.nil();
-			// 81:73: -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_seq )
+			// 89:74: -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_list )
 			{
-				// grammar/Tiger.g:81:76: ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_seq )
+				// grammar/Tiger.g:89:77: ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) stat_list )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BLOCK, "BLOCK"), root_1);
-				// grammar/Tiger.g:81:84: ^( TYPES ( type_declaration_list )? )
+				// grammar/Tiger.g:89:85: ^( TYPES ( type_declaration_list )? )
 				{
 				Object root_2 = (Object)adaptor.nil();
 				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(TYPES, "TYPES"), root_2);
-				// grammar/Tiger.g:81:92: ( type_declaration_list )?
+				// grammar/Tiger.g:89:93: ( type_declaration_list )?
 				if ( stream_type_declaration_list.hasNext() ) {
 					adaptor.addChild(root_2, stream_type_declaration_list.nextTree());
 				}
@@ -1185,11 +1210,11 @@ public class TigerParser extends Parser {
 				adaptor.addChild(root_1, root_2);
 				}
 
-				// grammar/Tiger.g:81:116: ^( VARS ( var_declaration_list )? )
+				// grammar/Tiger.g:89:117: ^( VARS ( var_declaration_list )? )
 				{
 				Object root_2 = (Object)adaptor.nil();
 				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARS, "VARS"), root_2);
-				// grammar/Tiger.g:81:123: ( var_declaration_list )?
+				// grammar/Tiger.g:89:124: ( var_declaration_list )?
 				if ( stream_var_declaration_list.hasNext() ) {
 					adaptor.addChild(root_2, stream_var_declaration_list.nextTree());
 				}
@@ -1198,7 +1223,7 @@ public class TigerParser extends Parser {
 				adaptor.addChild(root_1, root_2);
 				}
 
-				adaptor.addChild(root_1, stream_stat_seq.nextTree());
+				adaptor.addChild(root_1, stream_stat_list.nextTree());
 				adaptor.addChild(root_0, root_1);
 				}
 
@@ -1236,100 +1261,146 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type"
-	// grammar/Tiger.g:84:1: type : ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) );
+	// grammar/Tiger.g:96:1: type : ( base_type | ARRAY LBRACK rows= INTLIT RBRACK ( LBRACK columns= INTLIT RBRACK )? OF base_type -> ^( ARRAY ^( DIMENSION $rows $columns) base_type ) );
 	public final TigerParser.type_return type() throws RecognitionException {
 		TigerParser.type_return retval = new TigerParser.type_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ARRAY45=null;
-		Token OF47=null;
-		ParserRuleReturnScope base_type44 =null;
-		ParserRuleReturnScope array_dimensions46 =null;
-		ParserRuleReturnScope base_type48 =null;
+		Token rows=null;
+		Token columns=null;
+		Token ARRAY46=null;
+		Token LBRACK47=null;
+		Token RBRACK48=null;
+		Token LBRACK49=null;
+		Token RBRACK50=null;
+		Token OF51=null;
+		ParserRuleReturnScope base_type45 =null;
+		ParserRuleReturnScope base_type52 =null;
 
-		Object ARRAY45_tree=null;
-		Object OF47_tree=null;
+		Object rows_tree=null;
+		Object columns_tree=null;
+		Object ARRAY46_tree=null;
+		Object LBRACK47_tree=null;
+		Object RBRACK48_tree=null;
+		Object LBRACK49_tree=null;
+		Object RBRACK50_tree=null;
+		Object OF51_tree=null;
+		RewriteRuleTokenStream stream_RBRACK=new RewriteRuleTokenStream(adaptor,"token RBRACK");
 		RewriteRuleTokenStream stream_ARRAY=new RewriteRuleTokenStream(adaptor,"token ARRAY");
+		RewriteRuleTokenStream stream_LBRACK=new RewriteRuleTokenStream(adaptor,"token LBRACK");
 		RewriteRuleTokenStream stream_OF=new RewriteRuleTokenStream(adaptor,"token OF");
+		RewriteRuleTokenStream stream_INTLIT=new RewriteRuleTokenStream(adaptor,"token INTLIT");
 		RewriteRuleSubtreeStream stream_base_type=new RewriteRuleSubtreeStream(adaptor,"rule base_type");
-		RewriteRuleSubtreeStream stream_array_dimensions=new RewriteRuleSubtreeStream(adaptor,"rule array_dimensions");
 
 		try {
-			// grammar/Tiger.g:85:2: ( base_type | ( ARRAY array_dimensions OF base_type ) -> ^( ARRAY array_dimensions base_type ) )
-			int alt7=2;
-			int LA7_0 = input.LA(1);
-			if ( (LA7_0==FIXEDPT||LA7_0==INT) ) {
-				alt7=1;
+			// grammar/Tiger.g:97:2: ( base_type | ARRAY LBRACK rows= INTLIT RBRACK ( LBRACK columns= INTLIT RBRACK )? OF base_type -> ^( ARRAY ^( DIMENSION $rows $columns) base_type ) )
+			int alt9=2;
+			int LA9_0 = input.LA(1);
+			if ( (LA9_0==FIXEDPT||LA9_0==INT) ) {
+				alt9=1;
 			}
-			else if ( (LA7_0==ARRAY) ) {
-				alt7=2;
+			else if ( (LA9_0==ARRAY) ) {
+				alt9=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 7, 0, input);
+					new NoViableAltException("", 9, 0, input);
 				throw nvae;
 			}
 
-			switch (alt7) {
+			switch (alt9) {
 				case 1 :
-					// grammar/Tiger.g:85:4: base_type
+					// grammar/Tiger.g:97:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_base_type_in_type436);
-					base_type44=base_type();
+					pushFollow(FOLLOW_base_type_in_type464);
+					base_type45=base_type();
 					state._fsp--;
 
-					adaptor.addChild(root_0, base_type44.getTree());
+					adaptor.addChild(root_0, base_type45.getTree());
 
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:86:4: ( ARRAY array_dimensions OF base_type )
+					// grammar/Tiger.g:98:4: ARRAY LBRACK rows= INTLIT RBRACK ( LBRACK columns= INTLIT RBRACK )? OF base_type
 					{
-					// grammar/Tiger.g:86:4: ( ARRAY array_dimensions OF base_type )
-					// grammar/Tiger.g:86:5: ARRAY array_dimensions OF base_type
-					{
-					ARRAY45=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type442);  
-					stream_ARRAY.add(ARRAY45);
+					ARRAY46=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_type469);  
+					stream_ARRAY.add(ARRAY46);
 
-					pushFollow(FOLLOW_array_dimensions_in_type444);
-					array_dimensions46=array_dimensions();
-					state._fsp--;
+					LBRACK47=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type471);  
+					stream_LBRACK.add(LBRACK47);
 
-					stream_array_dimensions.add(array_dimensions46.getTree());
-					OF47=(Token)match(input,OF,FOLLOW_OF_in_type446);  
-					stream_OF.add(OF47);
+					rows=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type475);  
+					stream_INTLIT.add(rows);
 
-					pushFollow(FOLLOW_base_type_in_type448);
-					base_type48=base_type();
-					state._fsp--;
+					RBRACK48=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type477);  
+					stream_RBRACK.add(RBRACK48);
 
-					stream_base_type.add(base_type48.getTree());
+					// grammar/Tiger.g:98:36: ( LBRACK columns= INTLIT RBRACK )?
+					int alt8=2;
+					int LA8_0 = input.LA(1);
+					if ( (LA8_0==LBRACK) ) {
+						alt8=1;
+					}
+					switch (alt8) {
+						case 1 :
+							// grammar/Tiger.g:98:37: LBRACK columns= INTLIT RBRACK
+							{
+							LBRACK49=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type480);  
+							stream_LBRACK.add(LBRACK49);
+
+							columns=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_type484);  
+							stream_INTLIT.add(columns);
+
+							RBRACK50=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type486);  
+							stream_RBRACK.add(RBRACK50);
+
+							}
+							break;
+
 					}
 
+					OF51=(Token)match(input,OF,FOLLOW_OF_in_type490);  
+					stream_OF.add(OF51);
+
+					pushFollow(FOLLOW_base_type_in_type492);
+					base_type52=base_type();
+					state._fsp--;
+
+					stream_base_type.add(base_type52.getTree());
 					// AST REWRITE
-					// elements: base_type, ARRAY, array_dimensions
-					// token labels: 
+					// elements: base_type, ARRAY, columns, rows
+					// token labels: columns, rows
 					// rule labels: retval
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
+					RewriteRuleTokenStream stream_columns=new RewriteRuleTokenStream(adaptor,"token columns",columns);
+					RewriteRuleTokenStream stream_rows=new RewriteRuleTokenStream(adaptor,"token rows",rows);
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 86:42: -> ^( ARRAY array_dimensions base_type )
+					// 98:81: -> ^( ARRAY ^( DIMENSION $rows $columns) base_type )
 					{
-						// grammar/Tiger.g:86:45: ^( ARRAY array_dimensions base_type )
+						// grammar/Tiger.g:98:84: ^( ARRAY ^( DIMENSION $rows $columns) base_type )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_ARRAY.nextNode(), root_1);
-						adaptor.addChild(root_1, stream_array_dimensions.nextTree());
+						// grammar/Tiger.g:98:92: ^( DIMENSION $rows $columns)
+						{
+						Object root_2 = (Object)adaptor.nil();
+						root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(DIMENSION, "DIMENSION"), root_2);
+						adaptor.addChild(root_2, stream_rows.nextNode());
+						adaptor.addChild(root_2, stream_columns.nextNode());
+						adaptor.addChild(root_1, root_2);
+						}
+
 						adaptor.addChild(root_1, stream_base_type.nextTree());
 						adaptor.addChild(root_0, root_1);
 						}
@@ -1362,6 +1433,91 @@ public class TigerParser extends Parser {
 	// $ANTLR end "type"
 
 
+	public static class return_type_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "return_type"
+	// grammar/Tiger.g:101:1: return_type : ( type_id | VOID );
+	public final TigerParser.return_type_return return_type() throws RecognitionException {
+		TigerParser.return_type_return retval = new TigerParser.return_type_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token VOID54=null;
+		ParserRuleReturnScope type_id53 =null;
+
+		Object VOID54_tree=null;
+
+		try {
+			// grammar/Tiger.g:102:2: ( type_id | VOID )
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0==FIXEDPT||LA10_0==ID||LA10_0==INT) ) {
+				alt10=1;
+			}
+			else if ( (LA10_0==VOID) ) {
+				alt10=2;
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 10, 0, input);
+				throw nvae;
+			}
+
+			switch (alt10) {
+				case 1 :
+					// grammar/Tiger.g:102:4: type_id
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					pushFollow(FOLLOW_type_id_in_return_type521);
+					type_id53=type_id();
+					state._fsp--;
+
+					adaptor.addChild(root_0, type_id53.getTree());
+
+					}
+					break;
+				case 2 :
+					// grammar/Tiger.g:103:4: VOID
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					VOID54=(Token)match(input,VOID,FOLLOW_VOID_in_return_type526); 
+					VOID54_tree = (Object)adaptor.create(VOID54);
+					adaptor.addChild(root_0, VOID54_tree);
+
+					}
+					break;
+
+			}
+			retval.stop = input.LT(-1);
+
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "return_type"
+
+
 	public static class type_id_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
@@ -1370,59 +1526,59 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "type_id"
-	// grammar/Tiger.g:89:1: type_id : ( base_type | ID );
+	// grammar/Tiger.g:106:1: type_id : ( base_type | ID );
 	public final TigerParser.type_id_return type_id() throws RecognitionException {
 		TigerParser.type_id_return retval = new TigerParser.type_id_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID50=null;
-		ParserRuleReturnScope base_type49 =null;
+		Token ID56=null;
+		ParserRuleReturnScope base_type55 =null;
 
-		Object ID50_tree=null;
+		Object ID56_tree=null;
 
 		try {
-			// grammar/Tiger.g:90:2: ( base_type | ID )
-			int alt8=2;
-			int LA8_0 = input.LA(1);
-			if ( (LA8_0==FIXEDPT||LA8_0==INT) ) {
-				alt8=1;
+			// grammar/Tiger.g:107:2: ( base_type | ID )
+			int alt11=2;
+			int LA11_0 = input.LA(1);
+			if ( (LA11_0==FIXEDPT||LA11_0==INT) ) {
+				alt11=1;
 			}
-			else if ( (LA8_0==ID) ) {
-				alt8=2;
+			else if ( (LA11_0==ID) ) {
+				alt11=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 8, 0, input);
+					new NoViableAltException("", 11, 0, input);
 				throw nvae;
 			}
 
-			switch (alt8) {
+			switch (alt11) {
 				case 1 :
-					// grammar/Tiger.g:90:4: base_type
+					// grammar/Tiger.g:107:4: base_type
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_base_type_in_type_id470);
-					base_type49=base_type();
+					pushFollow(FOLLOW_base_type_in_type_id537);
+					base_type55=base_type();
 					state._fsp--;
 
-					adaptor.addChild(root_0, base_type49.getTree());
+					adaptor.addChild(root_0, base_type55.getTree());
 
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:91:4: ID
+					// grammar/Tiger.g:108:4: ID
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					ID50=(Token)match(input,ID,FOLLOW_ID_in_type_id475); 
-					ID50_tree = (Object)adaptor.create(ID50);
-					adaptor.addChild(root_0, ID50_tree);
+					ID56=(Token)match(input,ID,FOLLOW_ID_in_type_id542); 
+					ID56_tree = (Object)adaptor.create(ID56);
+					adaptor.addChild(root_0, ID56_tree);
 
 					}
 					break;
@@ -1455,28 +1611,28 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "base_type"
-	// grammar/Tiger.g:94:1: base_type : ( INT | FIXEDPT );
+	// grammar/Tiger.g:111:1: base_type : ( INT | FIXEDPT );
 	public final TigerParser.base_type_return base_type() throws RecognitionException {
 		TigerParser.base_type_return retval = new TigerParser.base_type_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token set51=null;
+		Token set57=null;
 
-		Object set51_tree=null;
+		Object set57_tree=null;
 
 		try {
-			// grammar/Tiger.g:95:2: ( INT | FIXEDPT )
+			// grammar/Tiger.g:112:2: ( INT | FIXEDPT )
 			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			set51=input.LT(1);
+			set57=input.LT(1);
 			if ( input.LA(1)==FIXEDPT||input.LA(1)==INT ) {
 				input.consume();
-				adaptor.addChild(root_0, (Object)adaptor.create(set51));
+				adaptor.addChild(root_0, (Object)adaptor.create(set57));
 				state.errorRecovery=false;
 			}
 			else {
@@ -1504,226 +1660,6 @@ public class TigerParser extends Parser {
 	// $ANTLR end "base_type"
 
 
-	public static class var_declaration_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "var_declaration"
-	// grammar/Tiger.g:99:1: var_declaration : ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) ;
-	public final TigerParser.var_declaration_return var_declaration() throws RecognitionException {
-		TigerParser.var_declaration_return retval = new TigerParser.var_declaration_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token VAR52=null;
-		Token COLON54=null;
-		Token SEMI57=null;
-		ParserRuleReturnScope id_list53 =null;
-		ParserRuleReturnScope type_id55 =null;
-		ParserRuleReturnScope optional_init56 =null;
-
-		Object VAR52_tree=null;
-		Object COLON54_tree=null;
-		Object SEMI57_tree=null;
-		RewriteRuleTokenStream stream_VAR=new RewriteRuleTokenStream(adaptor,"token VAR");
-		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
-		RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
-		RewriteRuleSubtreeStream stream_id_list=new RewriteRuleSubtreeStream(adaptor,"rule id_list");
-		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
-		RewriteRuleSubtreeStream stream_optional_init=new RewriteRuleSubtreeStream(adaptor,"rule optional_init");
-
-		try {
-			// grammar/Tiger.g:100:2: ( ( VAR id_list COLON type_id optional_init SEMI ) -> ^( VAR id_list type_id ( optional_init )? ) )
-			// grammar/Tiger.g:100:4: ( VAR id_list COLON type_id optional_init SEMI )
-			{
-			// grammar/Tiger.g:100:4: ( VAR id_list COLON type_id optional_init SEMI )
-			// grammar/Tiger.g:100:5: VAR id_list COLON type_id optional_init SEMI
-			{
-			VAR52=(Token)match(input,VAR,FOLLOW_VAR_in_var_declaration503);  
-			stream_VAR.add(VAR52);
-
-			pushFollow(FOLLOW_id_list_in_var_declaration505);
-			id_list53=id_list();
-			state._fsp--;
-
-			stream_id_list.add(id_list53.getTree());
-			COLON54=(Token)match(input,COLON,FOLLOW_COLON_in_var_declaration507);  
-			stream_COLON.add(COLON54);
-
-			pushFollow(FOLLOW_type_id_in_var_declaration509);
-			type_id55=type_id();
-			state._fsp--;
-
-			stream_type_id.add(type_id55.getTree());
-			pushFollow(FOLLOW_optional_init_in_var_declaration511);
-			optional_init56=optional_init();
-			state._fsp--;
-
-			stream_optional_init.add(optional_init56.getTree());
-			SEMI57=(Token)match(input,SEMI,FOLLOW_SEMI_in_var_declaration513);  
-			stream_SEMI.add(SEMI57);
-
-			}
-
-			// AST REWRITE
-			// elements: VAR, optional_init, type_id, id_list
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (Object)adaptor.nil();
-			// 100:51: -> ^( VAR id_list type_id ( optional_init )? )
-			{
-				// grammar/Tiger.g:100:54: ^( VAR id_list type_id ( optional_init )? )
-				{
-				Object root_1 = (Object)adaptor.nil();
-				root_1 = (Object)adaptor.becomeRoot(stream_VAR.nextNode(), root_1);
-				adaptor.addChild(root_1, stream_id_list.nextTree());
-				adaptor.addChild(root_1, stream_type_id.nextTree());
-				// grammar/Tiger.g:100:76: ( optional_init )?
-				if ( stream_optional_init.hasNext() ) {
-					adaptor.addChild(root_1, stream_optional_init.nextTree());
-				}
-				stream_optional_init.reset();
-
-				adaptor.addChild(root_0, root_1);
-				}
-
-			}
-
-
-			retval.tree = root_0;
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "var_declaration"
-
-
-	public static class optional_init_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "optional_init"
-	// grammar/Tiger.g:103:1: optional_init : ( ASSIGN constant -> constant |);
-	public final TigerParser.optional_init_return optional_init() throws RecognitionException {
-		TigerParser.optional_init_return retval = new TigerParser.optional_init_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token ASSIGN58=null;
-		ParserRuleReturnScope constant59 =null;
-
-		Object ASSIGN58_tree=null;
-		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
-		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
-
-		try {
-			// grammar/Tiger.g:104:2: ( ASSIGN constant -> constant |)
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0==ASSIGN) ) {
-				alt9=1;
-			}
-			else if ( (LA9_0==SEMI) ) {
-				alt9=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
-				throw nvae;
-			}
-
-			switch (alt9) {
-				case 1 :
-					// grammar/Tiger.g:104:4: ASSIGN constant
-					{
-					ASSIGN58=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_optional_init538);  
-					stream_ASSIGN.add(ASSIGN58);
-
-					pushFollow(FOLLOW_constant_in_optional_init540);
-					constant59=constant();
-					state._fsp--;
-
-					stream_constant.add(constant59.getTree());
-					// AST REWRITE
-					// elements: constant
-					// token labels: 
-					// rule labels: retval
-					// token list labels: 
-					// rule list labels: 
-					// wildcard labels: 
-					retval.tree = root_0;
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-					root_0 = (Object)adaptor.nil();
-					// 104:20: -> constant
-					{
-						adaptor.addChild(root_0, stream_constant.nextTree());
-					}
-
-
-					retval.tree = root_0;
-
-					}
-					break;
-				case 2 :
-					// grammar/Tiger.g:106:2: 
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					}
-					break;
-
-			}
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "optional_init"
-
-
 	public static class id_list_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
@@ -1732,34 +1668,34 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "id_list"
-	// grammar/Tiger.g:108:1: id_list : ID id_list_tail ;
+	// grammar/Tiger.g:120:1: id_list : ID id_list_tail ;
 	public final TigerParser.id_list_return id_list() throws RecognitionException {
 		TigerParser.id_list_return retval = new TigerParser.id_list_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID60=null;
-		ParserRuleReturnScope id_list_tail61 =null;
+		Token ID58=null;
+		ParserRuleReturnScope id_list_tail59 =null;
 
-		Object ID60_tree=null;
+		Object ID58_tree=null;
 
 		try {
-			// grammar/Tiger.g:109:2: ( ID id_list_tail )
-			// grammar/Tiger.g:109:4: ID id_list_tail
+			// grammar/Tiger.g:121:2: ( ID id_list_tail )
+			// grammar/Tiger.g:121:4: ID id_list_tail
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			ID60=(Token)match(input,ID,FOLLOW_ID_in_id_list559); 
-			ID60_tree = (Object)adaptor.create(ID60);
-			adaptor.addChild(root_0, ID60_tree);
+			ID58=(Token)match(input,ID,FOLLOW_ID_in_id_list573); 
+			ID58_tree = (Object)adaptor.create(ID58);
+			adaptor.addChild(root_0, ID58_tree);
 
-			pushFollow(FOLLOW_id_list_tail_in_id_list561);
-			id_list_tail61=id_list_tail();
+			pushFollow(FOLLOW_id_list_tail_in_id_list575);
+			id_list_tail59=id_list_tail();
 			state._fsp--;
 
-			adaptor.addChild(root_0, id_list_tail61.getTree());
+			adaptor.addChild(root_0, id_list_tail59.getTree());
 
 			}
 
@@ -1790,57 +1726,57 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "id_list_tail"
-	// grammar/Tiger.g:112:1: id_list_tail : ( COMMA ID id_list_tail -> ID ( id_list_tail )? |);
+	// grammar/Tiger.g:124:1: id_list_tail : ( COMMA ID id_list_tail -> ID ( id_list_tail )? |);
 	public final TigerParser.id_list_tail_return id_list_tail() throws RecognitionException {
 		TigerParser.id_list_tail_return retval = new TigerParser.id_list_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token COMMA62=null;
-		Token ID63=null;
-		ParserRuleReturnScope id_list_tail64 =null;
+		Token COMMA60=null;
+		Token ID61=null;
+		ParserRuleReturnScope id_list_tail62 =null;
 
-		Object COMMA62_tree=null;
-		Object ID63_tree=null;
+		Object COMMA60_tree=null;
+		Object ID61_tree=null;
 		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 		RewriteRuleSubtreeStream stream_id_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule id_list_tail");
 
 		try {
-			// grammar/Tiger.g:113:2: ( COMMA ID id_list_tail -> ID ( id_list_tail )? |)
-			int alt10=2;
-			int LA10_0 = input.LA(1);
-			if ( (LA10_0==COMMA) ) {
-				alt10=1;
+			// grammar/Tiger.g:125:2: ( COMMA ID id_list_tail -> ID ( id_list_tail )? |)
+			int alt12=2;
+			int LA12_0 = input.LA(1);
+			if ( (LA12_0==COMMA) ) {
+				alt12=1;
 			}
-			else if ( (LA10_0==COLON) ) {
-				alt10=2;
+			else if ( (LA12_0==COLON) ) {
+				alt12=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 10, 0, input);
+					new NoViableAltException("", 12, 0, input);
 				throw nvae;
 			}
 
-			switch (alt10) {
+			switch (alt12) {
 				case 1 :
-					// grammar/Tiger.g:113:4: COMMA ID id_list_tail
+					// grammar/Tiger.g:125:4: COMMA ID id_list_tail
 					{
-					COMMA62=(Token)match(input,COMMA,FOLLOW_COMMA_in_id_list_tail572);  
-					stream_COMMA.add(COMMA62);
+					COMMA60=(Token)match(input,COMMA,FOLLOW_COMMA_in_id_list_tail586);  
+					stream_COMMA.add(COMMA60);
 
-					ID63=(Token)match(input,ID,FOLLOW_ID_in_id_list_tail574);  
-					stream_ID.add(ID63);
+					ID61=(Token)match(input,ID,FOLLOW_ID_in_id_list_tail588);  
+					stream_ID.add(ID61);
 
-					pushFollow(FOLLOW_id_list_tail_in_id_list_tail576);
-					id_list_tail64=id_list_tail();
+					pushFollow(FOLLOW_id_list_tail_in_id_list_tail590);
+					id_list_tail62=id_list_tail();
 					state._fsp--;
 
-					stream_id_list_tail.add(id_list_tail64.getTree());
+					stream_id_list_tail.add(id_list_tail62.getTree());
 					// AST REWRITE
-					// elements: ID, id_list_tail
+					// elements: id_list_tail, ID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1850,10 +1786,10 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 113:26: -> ID ( id_list_tail )?
+					// 125:26: -> ID ( id_list_tail )?
 					{
 						adaptor.addChild(root_0, stream_ID.nextNode());
-						// grammar/Tiger.g:113:32: ( id_list_tail )?
+						// grammar/Tiger.g:125:32: ( id_list_tail )?
 						if ( stream_id_list_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_id_list_tail.nextTree());
 						}
@@ -1867,7 +1803,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:115:2: 
+					// grammar/Tiger.g:127:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -1903,86 +1839,57 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list"
-	// grammar/Tiger.g:121:1: expr_list : ( expr expr_list_tail -> ^( EXPRS expr ( expr_list_tail )? ) |);
+	// grammar/Tiger.g:133:1: expr_list : ( expr expr_list_tail |);
 	public final TigerParser.expr_list_return expr_list() throws RecognitionException {
 		TigerParser.expr_list_return retval = new TigerParser.expr_list_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope expr65 =null;
-		ParserRuleReturnScope expr_list_tail66 =null;
+		ParserRuleReturnScope expr63 =null;
+		ParserRuleReturnScope expr_list_tail64 =null;
 
-		RewriteRuleSubtreeStream stream_expr_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule expr_list_tail");
-		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
 
 		try {
-			// grammar/Tiger.g:122:2: ( expr expr_list_tail -> ^( EXPRS expr ( expr_list_tail )? ) |)
-			int alt11=2;
-			int LA11_0 = input.LA(1);
-			if ( (LA11_0==FIXEDPTLIT||LA11_0==ID||LA11_0==INTLIT||LA11_0==LPAREN) ) {
-				alt11=1;
+			// grammar/Tiger.g:134:2: ( expr expr_list_tail |)
+			int alt13=2;
+			int LA13_0 = input.LA(1);
+			if ( (LA13_0==FIXEDPTLIT||LA13_0==ID||LA13_0==INTLIT||LA13_0==LPAREN) ) {
+				alt13=1;
 			}
-			else if ( (LA11_0==RPAREN) ) {
-				alt11=2;
+			else if ( (LA13_0==RPAREN) ) {
+				alt13=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 11, 0, input);
+					new NoViableAltException("", 13, 0, input);
 				throw nvae;
 			}
 
-			switch (alt11) {
+			switch (alt13) {
 				case 1 :
-					// grammar/Tiger.g:122:4: expr expr_list_tail
+					// grammar/Tiger.g:134:4: expr expr_list_tail
 					{
-					pushFollow(FOLLOW_expr_in_expr_list601);
-					expr65=expr();
-					state._fsp--;
-
-					stream_expr.add(expr65.getTree());
-					pushFollow(FOLLOW_expr_list_tail_in_expr_list603);
-					expr_list_tail66=expr_list_tail();
-					state._fsp--;
-
-					stream_expr_list_tail.add(expr_list_tail66.getTree());
-					// AST REWRITE
-					// elements: expr, expr_list_tail
-					// token labels: 
-					// rule labels: retval
-					// token list labels: 
-					// rule list labels: 
-					// wildcard labels: 
-					retval.tree = root_0;
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
 					root_0 = (Object)adaptor.nil();
-					// 122:24: -> ^( EXPRS expr ( expr_list_tail )? )
-					{
-						// grammar/Tiger.g:122:27: ^( EXPRS expr ( expr_list_tail )? )
-						{
-						Object root_1 = (Object)adaptor.nil();
-						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPRS, "EXPRS"), root_1);
-						adaptor.addChild(root_1, stream_expr.nextTree());
-						// grammar/Tiger.g:122:40: ( expr_list_tail )?
-						if ( stream_expr_list_tail.hasNext() ) {
-							adaptor.addChild(root_1, stream_expr_list_tail.nextTree());
-						}
-						stream_expr_list_tail.reset();
-
-						adaptor.addChild(root_0, root_1);
-						}
-
-					}
 
 
-					retval.tree = root_0;
+					pushFollow(FOLLOW_expr_in_expr_list615);
+					expr63=expr();
+					state._fsp--;
+
+					adaptor.addChild(root_0, expr63.getTree());
+
+					pushFollow(FOLLOW_expr_list_tail_in_expr_list617);
+					expr_list_tail64=expr_list_tail();
+					state._fsp--;
+
+					adaptor.addChild(root_0, expr_list_tail64.getTree());
 
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:124:2: 
+					// grammar/Tiger.g:136:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2018,61 +1925,56 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr_list_tail"
-	// grammar/Tiger.g:126:1: expr_list_tail : ( ( COMMA expr expr_list_tail ) -> expr ( expr_list_tail )? |);
+	// grammar/Tiger.g:138:1: expr_list_tail : ( COMMA expr expr_list_tail -> expr ( expr_list_tail )? |);
 	public final TigerParser.expr_list_tail_return expr_list_tail() throws RecognitionException {
 		TigerParser.expr_list_tail_return retval = new TigerParser.expr_list_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token COMMA67=null;
-		ParserRuleReturnScope expr68 =null;
-		ParserRuleReturnScope expr_list_tail69 =null;
+		Token COMMA65=null;
+		ParserRuleReturnScope expr66 =null;
+		ParserRuleReturnScope expr_list_tail67 =null;
 
-		Object COMMA67_tree=null;
+		Object COMMA65_tree=null;
 		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_expr_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule expr_list_tail");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
 
 		try {
-			// grammar/Tiger.g:127:2: ( ( COMMA expr expr_list_tail ) -> expr ( expr_list_tail )? |)
-			int alt12=2;
-			int LA12_0 = input.LA(1);
-			if ( (LA12_0==COMMA) ) {
-				alt12=1;
+			// grammar/Tiger.g:139:2: ( COMMA expr expr_list_tail -> expr ( expr_list_tail )? |)
+			int alt14=2;
+			int LA14_0 = input.LA(1);
+			if ( (LA14_0==COMMA) ) {
+				alt14=1;
 			}
-			else if ( (LA12_0==RPAREN) ) {
-				alt12=2;
+			else if ( (LA14_0==RPAREN) ) {
+				alt14=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 12, 0, input);
+					new NoViableAltException("", 14, 0, input);
 				throw nvae;
 			}
 
-			switch (alt12) {
+			switch (alt14) {
 				case 1 :
-					// grammar/Tiger.g:127:4: ( COMMA expr expr_list_tail )
+					// grammar/Tiger.g:139:4: COMMA expr expr_list_tail
 					{
-					// grammar/Tiger.g:127:4: ( COMMA expr expr_list_tail )
-					// grammar/Tiger.g:127:5: COMMA expr expr_list_tail
-					{
-					COMMA67=(Token)match(input,COMMA,FOLLOW_COMMA_in_expr_list_tail631);  
-					stream_COMMA.add(COMMA67);
+					COMMA65=(Token)match(input,COMMA,FOLLOW_COMMA_in_expr_list_tail632);  
+					stream_COMMA.add(COMMA65);
 
-					pushFollow(FOLLOW_expr_in_expr_list_tail633);
-					expr68=expr();
+					pushFollow(FOLLOW_expr_in_expr_list_tail634);
+					expr66=expr();
 					state._fsp--;
 
-					stream_expr.add(expr68.getTree());
-					pushFollow(FOLLOW_expr_list_tail_in_expr_list_tail635);
-					expr_list_tail69=expr_list_tail();
+					stream_expr.add(expr66.getTree());
+					pushFollow(FOLLOW_expr_list_tail_in_expr_list_tail636);
+					expr_list_tail67=expr_list_tail();
 					state._fsp--;
 
-					stream_expr_list_tail.add(expr_list_tail69.getTree());
-					}
-
+					stream_expr_list_tail.add(expr_list_tail67.getTree());
 					// AST REWRITE
 					// elements: expr_list_tail, expr
 					// token labels: 
@@ -2084,10 +1986,10 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 127:32: -> expr ( expr_list_tail )?
+					// 139:30: -> expr ( expr_list_tail )?
 					{
 						adaptor.addChild(root_0, stream_expr.nextTree());
-						// grammar/Tiger.g:127:40: ( expr_list_tail )?
+						// grammar/Tiger.g:139:38: ( expr_list_tail )?
 						if ( stream_expr_list_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_expr_list_tail.nextTree());
 						}
@@ -2101,7 +2003,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:129:2: 
+					// grammar/Tiger.g:141:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2137,35 +2039,121 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "expr"
-	// grammar/Tiger.g:131:1: expr : expr_head expr_tail ;
+	// grammar/Tiger.g:143:1: expr : expr_isolate ( binary_operator expr -> ^( binary_operator expr_isolate expr ) | -> ^( expr_isolate ) ) ;
 	public final TigerParser.expr_return expr() throws RecognitionException {
 		TigerParser.expr_return retval = new TigerParser.expr_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope expr_head70 =null;
-		ParserRuleReturnScope expr_tail71 =null;
+		ParserRuleReturnScope expr_isolate68 =null;
+		ParserRuleReturnScope binary_operator69 =null;
+		ParserRuleReturnScope expr70 =null;
 
+		RewriteRuleSubtreeStream stream_binary_operator=new RewriteRuleSubtreeStream(adaptor,"rule binary_operator");
+		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+		RewriteRuleSubtreeStream stream_expr_isolate=new RewriteRuleSubtreeStream(adaptor,"rule expr_isolate");
 
 		try {
-			// grammar/Tiger.g:132:2: ( expr_head expr_tail )
-			// grammar/Tiger.g:132:4: expr_head expr_tail
+			// grammar/Tiger.g:144:2: ( expr_isolate ( binary_operator expr -> ^( binary_operator expr_isolate expr ) | -> ^( expr_isolate ) ) )
+			// grammar/Tiger.g:144:4: expr_isolate ( binary_operator expr -> ^( binary_operator expr_isolate expr ) | -> ^( expr_isolate ) )
 			{
-			root_0 = (Object)adaptor.nil();
-
-
-			pushFollow(FOLLOW_expr_head_in_expr658);
-			expr_head70=expr_head();
+			pushFollow(FOLLOW_expr_isolate_in_expr658);
+			expr_isolate68=expr_isolate();
 			state._fsp--;
 
-			adaptor.addChild(root_0, expr_head70.getTree());
+			stream_expr_isolate.add(expr_isolate68.getTree());
+			// grammar/Tiger.g:144:17: ( binary_operator expr -> ^( binary_operator expr_isolate expr ) | -> ^( expr_isolate ) )
+			int alt15=2;
+			int LA15_0 = input.LA(1);
+			if ( (LA15_0==AND||LA15_0==DIV||LA15_0==EQ||(LA15_0 >= GEQ && LA15_0 <= GREATER)||(LA15_0 >= LEQ && LA15_0 <= LESSER)||(LA15_0 >= MINUS && LA15_0 <= NEQ)||LA15_0==OR||LA15_0==PLUS) ) {
+				alt15=1;
+			}
+			else if ( (LA15_0==COMMA||LA15_0==DO||(LA15_0 >= RPAREN && LA15_0 <= SEMI)||LA15_0==THEN) ) {
+				alt15=2;
+			}
 
-			pushFollow(FOLLOW_expr_tail_in_expr660);
-			expr_tail71=expr_tail();
-			state._fsp--;
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 15, 0, input);
+				throw nvae;
+			}
 
-			adaptor.addChild(root_0, expr_tail71.getTree());
+			switch (alt15) {
+				case 1 :
+					// grammar/Tiger.g:145:9: binary_operator expr
+					{
+					pushFollow(FOLLOW_binary_operator_in_expr670);
+					binary_operator69=binary_operator();
+					state._fsp--;
+
+					stream_binary_operator.add(binary_operator69.getTree());
+					pushFollow(FOLLOW_expr_in_expr672);
+					expr70=expr();
+					state._fsp--;
+
+					stream_expr.add(expr70.getTree());
+					// AST REWRITE
+					// elements: expr, binary_operator, expr_isolate
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (Object)adaptor.nil();
+					// 145:30: -> ^( binary_operator expr_isolate expr )
+					{
+						// grammar/Tiger.g:145:33: ^( binary_operator expr_isolate expr )
+						{
+						Object root_1 = (Object)adaptor.nil();
+						root_1 = (Object)adaptor.becomeRoot(stream_binary_operator.nextNode(), root_1);
+						adaptor.addChild(root_1, stream_expr_isolate.nextTree());
+						adaptor.addChild(root_1, stream_expr.nextTree());
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+
+					}
+					break;
+				case 2 :
+					// grammar/Tiger.g:146:15: 
+					{
+					// AST REWRITE
+					// elements: expr_isolate
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (Object)adaptor.nil();
+					// 146:15: -> ^( expr_isolate )
+					{
+						// grammar/Tiger.g:146:18: ^( expr_isolate )
+						{
+						Object root_1 = (Object)adaptor.nil();
+						root_1 = (Object)adaptor.becomeRoot(stream_expr_isolate.nextNode(), root_1);
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+
+					}
+					break;
+
+			}
 
 			}
 
@@ -2188,65 +2176,93 @@ public class TigerParser extends Parser {
 	// $ANTLR end "expr"
 
 
-	public static class expr_tail_return extends ParserRuleReturnScope {
+	public static class expr_isolate_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "expr_tail"
-	// grammar/Tiger.g:135:1: expr_tail : ( ( binary_operator expr ) -> ^( binary_operator expr ) |);
-	public final TigerParser.expr_tail_return expr_tail() throws RecognitionException {
-		TigerParser.expr_tail_return retval = new TigerParser.expr_tail_return();
+	// $ANTLR start "expr_isolate"
+	// grammar/Tiger.g:150:1: expr_isolate : ( constant | LPAREN expr RPAREN -> expr | ID optional_subscript -> ^( ID ( optional_subscript )? ) );
+	public final TigerParser.expr_isolate_return expr_isolate() throws RecognitionException {
+		TigerParser.expr_isolate_return retval = new TigerParser.expr_isolate_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope binary_operator72 =null;
+		Token LPAREN72=null;
+		Token RPAREN74=null;
+		Token ID75=null;
+		ParserRuleReturnScope constant71 =null;
 		ParserRuleReturnScope expr73 =null;
+		ParserRuleReturnScope optional_subscript76 =null;
 
-		RewriteRuleSubtreeStream stream_binary_operator=new RewriteRuleSubtreeStream(adaptor,"rule binary_operator");
+		Object LPAREN72_tree=null;
+		Object RPAREN74_tree=null;
+		Object ID75_tree=null;
+		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
+		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
+		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
 
 		try {
-			// grammar/Tiger.g:136:2: ( ( binary_operator expr ) -> ^( binary_operator expr ) |)
-			int alt13=2;
-			int LA13_0 = input.LA(1);
-			if ( (LA13_0==AND||LA13_0==DIV||LA13_0==EQ||(LA13_0 >= GEQ && LA13_0 <= GREATER)||(LA13_0 >= LEQ && LA13_0 <= LESSER)||(LA13_0 >= MINUS && LA13_0 <= NEQ)||LA13_0==OR||LA13_0==PLUS) ) {
-				alt13=1;
-			}
-			else if ( (LA13_0==COMMA||LA13_0==DO||(LA13_0 >= RPAREN && LA13_0 <= SEMI)||LA13_0==THEN) ) {
-				alt13=2;
-			}
-
-			else {
+			// grammar/Tiger.g:151:2: ( constant | LPAREN expr RPAREN -> expr | ID optional_subscript -> ^( ID ( optional_subscript )? ) )
+			int alt16=3;
+			switch ( input.LA(1) ) {
+			case FIXEDPTLIT:
+			case INTLIT:
+				{
+				alt16=1;
+				}
+				break;
+			case LPAREN:
+				{
+				alt16=2;
+				}
+				break;
+			case ID:
+				{
+				alt16=3;
+				}
+				break;
+			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 13, 0, input);
+					new NoViableAltException("", 16, 0, input);
 				throw nvae;
 			}
-
-			switch (alt13) {
+			switch (alt16) {
 				case 1 :
-					// grammar/Tiger.g:136:4: ( binary_operator expr )
+					// grammar/Tiger.g:151:4: constant
 					{
-					// grammar/Tiger.g:136:4: ( binary_operator expr )
-					// grammar/Tiger.g:136:5: binary_operator expr
-					{
-					pushFollow(FOLLOW_binary_operator_in_expr_tail672);
-					binary_operator72=binary_operator();
+					root_0 = (Object)adaptor.nil();
+
+
+					pushFollow(FOLLOW_constant_in_expr_isolate721);
+					constant71=constant();
 					state._fsp--;
 
-					stream_binary_operator.add(binary_operator72.getTree());
-					pushFollow(FOLLOW_expr_in_expr_tail674);
+					adaptor.addChild(root_0, constant71.getTree());
+
+					}
+					break;
+				case 2 :
+					// grammar/Tiger.g:152:4: LPAREN expr RPAREN
+					{
+					LPAREN72=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr_isolate726);  
+					stream_LPAREN.add(LPAREN72);
+
+					pushFollow(FOLLOW_expr_in_expr_isolate728);
 					expr73=expr();
 					state._fsp--;
 
 					stream_expr.add(expr73.getTree());
-					}
+					RPAREN74=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_expr_isolate730);  
+					stream_RPAREN.add(RPAREN74);
 
 					// AST REWRITE
-					// elements: binary_operator, expr
+					// elements: expr
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2256,16 +2272,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 136:27: -> ^( binary_operator expr )
+					// 152:25: -> expr
 					{
-						// grammar/Tiger.g:136:30: ^( binary_operator expr )
-						{
-						Object root_1 = (Object)adaptor.nil();
-						root_1 = (Object)adaptor.becomeRoot(stream_binary_operator.nextNode(), root_1);
-						adaptor.addChild(root_1, stream_expr.nextTree());
-						adaptor.addChild(root_0, root_1);
-						}
-
+						adaptor.addChild(root_0, stream_expr.nextTree());
 					}
 
 
@@ -2273,108 +2282,19 @@ public class TigerParser extends Parser {
 
 					}
 					break;
-				case 2 :
-					// grammar/Tiger.g:138:2: 
+				case 3 :
+					// grammar/Tiger.g:153:4: ID optional_subscript
 					{
-					root_0 = (Object)adaptor.nil();
-
-
-					}
-					break;
-
-			}
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "expr_tail"
-
-
-	public static class expr_head_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "expr_head"
-	// grammar/Tiger.g:140:1: expr_head : ( expr_head_base | ( ID optional_subscript ) -> ^( REFERENCE ID ( optional_subscript )? ) );
-	public final TigerParser.expr_head_return expr_head() throws RecognitionException {
-		TigerParser.expr_head_return retval = new TigerParser.expr_head_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token ID75=null;
-		ParserRuleReturnScope expr_head_base74 =null;
-		ParserRuleReturnScope optional_subscript76 =null;
-
-		Object ID75_tree=null;
-		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
-		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
-
-		try {
-			// grammar/Tiger.g:141:2: ( expr_head_base | ( ID optional_subscript ) -> ^( REFERENCE ID ( optional_subscript )? ) )
-			int alt14=2;
-			int LA14_0 = input.LA(1);
-			if ( (LA14_0==FIXEDPTLIT||LA14_0==INTLIT||LA14_0==LPAREN) ) {
-				alt14=1;
-			}
-			else if ( (LA14_0==ID) ) {
-				alt14=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 14, 0, input);
-				throw nvae;
-			}
-
-			switch (alt14) {
-				case 1 :
-					// grammar/Tiger.g:141:4: expr_head_base
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					pushFollow(FOLLOW_expr_head_base_in_expr_head698);
-					expr_head_base74=expr_head_base();
-					state._fsp--;
-
-					adaptor.addChild(root_0, expr_head_base74.getTree());
-
-					}
-					break;
-				case 2 :
-					// grammar/Tiger.g:142:4: ( ID optional_subscript )
-					{
-					// grammar/Tiger.g:142:4: ( ID optional_subscript )
-					// grammar/Tiger.g:142:5: ID optional_subscript
-					{
-					ID75=(Token)match(input,ID,FOLLOW_ID_in_expr_head704);  
+					ID75=(Token)match(input,ID,FOLLOW_ID_in_expr_isolate741);  
 					stream_ID.add(ID75);
 
-					pushFollow(FOLLOW_optional_subscript_in_expr_head706);
+					pushFollow(FOLLOW_optional_subscript_in_expr_isolate743);
 					optional_subscript76=optional_subscript();
 					state._fsp--;
 
 					stream_optional_subscript.add(optional_subscript76.getTree());
-					}
-
 					// AST REWRITE
-					// elements: ID, optional_subscript
+					// elements: optional_subscript, ID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2384,14 +2304,13 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 142:28: -> ^( REFERENCE ID ( optional_subscript )? )
+					// 153:26: -> ^( ID ( optional_subscript )? )
 					{
-						// grammar/Tiger.g:142:31: ^( REFERENCE ID ( optional_subscript )? )
+						// grammar/Tiger.g:153:29: ^( ID ( optional_subscript )? )
 						{
 						Object root_1 = (Object)adaptor.nil();
-						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(REFERENCE, "REFERENCE"), root_1);
-						adaptor.addChild(root_1, stream_ID.nextNode());
-						// grammar/Tiger.g:142:46: ( optional_subscript )?
+						root_1 = (Object)adaptor.becomeRoot(stream_ID.nextNode(), root_1);
+						// grammar/Tiger.g:153:34: ( optional_subscript )?
 						if ( stream_optional_subscript.hasNext() ) {
 							adaptor.addChild(root_1, stream_optional_subscript.nextTree());
 						}
@@ -2425,165 +2344,46 @@ public class TigerParser extends Parser {
 		}
 		return retval;
 	}
-	// $ANTLR end "expr_head"
+	// $ANTLR end "expr_isolate"
 
 
-	public static class expr_head_base_return extends ParserRuleReturnScope {
+	public static class stat_list_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "expr_head_base"
-	// grammar/Tiger.g:145:1: expr_head_base : ( constant | ( LPAREN expr RPAREN ) -> expr );
-	public final TigerParser.expr_head_base_return expr_head_base() throws RecognitionException {
-		TigerParser.expr_head_base_return retval = new TigerParser.expr_head_base_return();
+	// $ANTLR start "stat_list"
+	// grammar/Tiger.g:160:1: stat_list : statement stat_tail -> ^( STATEMENTS statement ( stat_tail )? ) ;
+	public final TigerParser.stat_list_return stat_list() throws RecognitionException {
+		TigerParser.stat_list_return retval = new TigerParser.stat_list_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token LPAREN78=null;
-		Token RPAREN80=null;
-		ParserRuleReturnScope constant77 =null;
-		ParserRuleReturnScope expr79 =null;
+		ParserRuleReturnScope statement77 =null;
+		ParserRuleReturnScope stat_tail78 =null;
 
-		Object LPAREN78_tree=null;
-		Object RPAREN80_tree=null;
-		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
-		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
-		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
-
-		try {
-			// grammar/Tiger.g:146:2: ( constant | ( LPAREN expr RPAREN ) -> expr )
-			int alt15=2;
-			int LA15_0 = input.LA(1);
-			if ( (LA15_0==FIXEDPTLIT||LA15_0==INTLIT) ) {
-				alt15=1;
-			}
-			else if ( (LA15_0==LPAREN) ) {
-				alt15=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 15, 0, input);
-				throw nvae;
-			}
-
-			switch (alt15) {
-				case 1 :
-					// grammar/Tiger.g:146:4: constant
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					pushFollow(FOLLOW_constant_in_expr_head_base729);
-					constant77=constant();
-					state._fsp--;
-
-					adaptor.addChild(root_0, constant77.getTree());
-
-					}
-					break;
-				case 2 :
-					// grammar/Tiger.g:147:4: ( LPAREN expr RPAREN )
-					{
-					// grammar/Tiger.g:147:4: ( LPAREN expr RPAREN )
-					// grammar/Tiger.g:147:5: LPAREN expr RPAREN
-					{
-					LPAREN78=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr_head_base735);  
-					stream_LPAREN.add(LPAREN78);
-
-					pushFollow(FOLLOW_expr_in_expr_head_base737);
-					expr79=expr();
-					state._fsp--;
-
-					stream_expr.add(expr79.getTree());
-					RPAREN80=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_expr_head_base739);  
-					stream_RPAREN.add(RPAREN80);
-
-					}
-
-					// AST REWRITE
-					// elements: expr
-					// token labels: 
-					// rule labels: retval
-					// token list labels: 
-					// rule list labels: 
-					// wildcard labels: 
-					retval.tree = root_0;
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-					root_0 = (Object)adaptor.nil();
-					// 147:25: -> expr
-					{
-						adaptor.addChild(root_0, stream_expr.nextTree());
-					}
-
-
-					retval.tree = root_0;
-
-					}
-					break;
-
-			}
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "expr_head_base"
-
-
-	public static class stat_seq_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "stat_seq"
-	// grammar/Tiger.g:154:1: stat_seq : stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) ;
-	public final TigerParser.stat_seq_return stat_seq() throws RecognitionException {
-		TigerParser.stat_seq_return retval = new TigerParser.stat_seq_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		ParserRuleReturnScope stat81 =null;
-		ParserRuleReturnScope stat_tail82 =null;
-
-		RewriteRuleSubtreeStream stream_stat=new RewriteRuleSubtreeStream(adaptor,"rule stat");
+		RewriteRuleSubtreeStream stream_statement=new RewriteRuleSubtreeStream(adaptor,"rule statement");
 		RewriteRuleSubtreeStream stream_stat_tail=new RewriteRuleSubtreeStream(adaptor,"rule stat_tail");
 
 		try {
-			// grammar/Tiger.g:155:2: ( stat stat_tail -> ^( STATEMENTS stat ( stat_tail )? ) )
-			// grammar/Tiger.g:155:4: stat stat_tail
+			// grammar/Tiger.g:161:2: ( statement stat_tail -> ^( STATEMENTS statement ( stat_tail )? ) )
+			// grammar/Tiger.g:161:4: statement stat_tail
 			{
-			pushFollow(FOLLOW_stat_in_stat_seq759);
-			stat81=stat();
+			pushFollow(FOLLOW_statement_in_stat_list767);
+			statement77=statement();
 			state._fsp--;
 
-			stream_stat.add(stat81.getTree());
-			pushFollow(FOLLOW_stat_tail_in_stat_seq761);
-			stat_tail82=stat_tail();
+			stream_statement.add(statement77.getTree());
+			pushFollow(FOLLOW_stat_tail_in_stat_list769);
+			stat_tail78=stat_tail();
 			state._fsp--;
 
-			stream_stat_tail.add(stat_tail82.getTree());
+			stream_stat_tail.add(stat_tail78.getTree());
 			// AST REWRITE
-			// elements: stat_tail, stat
+			// elements: statement, stat_tail
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2593,14 +2393,14 @@ public class TigerParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (Object)adaptor.nil();
-			// 155:19: -> ^( STATEMENTS stat ( stat_tail )? )
+			// 161:24: -> ^( STATEMENTS statement ( stat_tail )? )
 			{
-				// grammar/Tiger.g:155:22: ^( STATEMENTS stat ( stat_tail )? )
+				// grammar/Tiger.g:161:27: ^( STATEMENTS statement ( stat_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(STATEMENTS, "STATEMENTS"), root_1);
-				adaptor.addChild(root_1, stream_stat.nextTree());
-				// grammar/Tiger.g:155:40: ( stat_tail )?
+				adaptor.addChild(root_1, stream_statement.nextTree());
+				// grammar/Tiger.g:161:50: ( stat_tail )?
 				if ( stream_stat_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_stat_tail.nextTree());
 				}
@@ -2632,7 +2432,7 @@ public class TigerParser extends Parser {
 		}
 		return retval;
 	}
-	// $ANTLR end "stat_seq"
+	// $ANTLR end "stat_list"
 
 
 	public static class stat_tail_return extends ParserRuleReturnScope {
@@ -2643,52 +2443,52 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "stat_tail"
-	// grammar/Tiger.g:158:1: stat_tail : ( stat stat_tail -> stat ( stat_tail )? |);
+	// grammar/Tiger.g:164:1: stat_tail : ( statement stat_tail -> statement ( stat_tail )? |);
 	public final TigerParser.stat_tail_return stat_tail() throws RecognitionException {
 		TigerParser.stat_tail_return retval = new TigerParser.stat_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope stat83 =null;
-		ParserRuleReturnScope stat_tail84 =null;
+		ParserRuleReturnScope statement79 =null;
+		ParserRuleReturnScope stat_tail80 =null;
 
-		RewriteRuleSubtreeStream stream_stat=new RewriteRuleSubtreeStream(adaptor,"rule stat");
+		RewriteRuleSubtreeStream stream_statement=new RewriteRuleSubtreeStream(adaptor,"rule statement");
 		RewriteRuleSubtreeStream stream_stat_tail=new RewriteRuleSubtreeStream(adaptor,"rule stat_tail");
 
 		try {
-			// grammar/Tiger.g:159:2: ( stat stat_tail -> stat ( stat_tail )? |)
-			int alt16=2;
-			int LA16_0 = input.LA(1);
-			if ( (LA16_0==BEGIN||LA16_0==BREAK||LA16_0==FOR||LA16_0==ID||LA16_0==IF||LA16_0==RETURN||LA16_0==WHILE) ) {
-				alt16=1;
+			// grammar/Tiger.g:165:2: ( statement stat_tail -> statement ( stat_tail )? |)
+			int alt17=2;
+			int LA17_0 = input.LA(1);
+			if ( (LA17_0==BEGIN||LA17_0==BREAK||LA17_0==FOR||LA17_0==ID||LA17_0==IF||LA17_0==RETURN||LA17_0==WHILE) ) {
+				alt17=1;
 			}
-			else if ( ((LA16_0 >= ELSE && LA16_0 <= ENDIF)) ) {
-				alt16=2;
+			else if ( ((LA17_0 >= ELSE && LA17_0 <= ENDIF)) ) {
+				alt17=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 16, 0, input);
+					new NoViableAltException("", 17, 0, input);
 				throw nvae;
 			}
 
-			switch (alt16) {
+			switch (alt17) {
 				case 1 :
-					// grammar/Tiger.g:159:4: stat stat_tail
+					// grammar/Tiger.g:165:4: statement stat_tail
 					{
-					pushFollow(FOLLOW_stat_in_stat_tail783);
-					stat83=stat();
+					pushFollow(FOLLOW_statement_in_stat_tail791);
+					statement79=statement();
 					state._fsp--;
 
-					stream_stat.add(stat83.getTree());
-					pushFollow(FOLLOW_stat_tail_in_stat_tail785);
-					stat_tail84=stat_tail();
+					stream_statement.add(statement79.getTree());
+					pushFollow(FOLLOW_stat_tail_in_stat_tail793);
+					stat_tail80=stat_tail();
 					state._fsp--;
 
-					stream_stat_tail.add(stat_tail84.getTree());
+					stream_stat_tail.add(stat_tail80.getTree());
 					// AST REWRITE
-					// elements: stat_tail, stat
+					// elements: stat_tail, statement
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2698,10 +2498,10 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 159:19: -> stat ( stat_tail )?
+					// 165:24: -> statement ( stat_tail )?
 					{
-						adaptor.addChild(root_0, stream_stat.nextTree());
-						// grammar/Tiger.g:159:27: ( stat_tail )?
+						adaptor.addChild(root_0, stream_statement.nextTree());
+						// grammar/Tiger.g:165:37: ( stat_tail )?
 						if ( stream_stat_tail.hasNext() ) {
 							adaptor.addChild(root_0, stream_stat_tail.nextTree());
 						}
@@ -2715,7 +2515,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:161:2: 
+					// grammar/Tiger.g:167:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -2743,70 +2543,73 @@ public class TigerParser extends Parser {
 	// $ANTLR end "stat_tail"
 
 
-	public static class stat_return extends ParserRuleReturnScope {
+	public static class statement_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "stat"
-	// grammar/Tiger.g:163:1: stat : ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI );
-	public final TigerParser.stat_return stat() throws RecognitionException {
-		TigerParser.stat_return retval = new TigerParser.stat_return();
+	// $ANTLR start "statement"
+	// grammar/Tiger.g:169:1: statement : ( if_stmt | WHILE expr DO stat_list ENDDO SEMI -> ^( WHILE expr stat_list ) | FOR ID ASSIGN (start= index_expr TO stop= index_expr ) DO stat_list ENDDO SEMI -> ^( FOR ^( RANGE $start $stop) stat_list ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI );
+	public final TigerParser.statement_return statement() throws RecognitionException {
+		TigerParser.statement_return retval = new TigerParser.statement_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token WHILE86=null;
-		Token DO88=null;
-		Token ENDDO90=null;
-		Token SEMI91=null;
-		Token FOR92=null;
-		Token ID93=null;
-		Token ASSIGN94=null;
-		Token DO96=null;
-		Token ENDDO98=null;
-		Token SEMI99=null;
-		Token BREAK100=null;
-		Token SEMI101=null;
-		Token RETURN102=null;
-		Token SEMI104=null;
-		Token ID106=null;
-		Token LPAREN107=null;
-		Token RPAREN109=null;
-		Token ASSIGN111=null;
-		Token SEMI113=null;
-		ParserRuleReturnScope if_stmt85 =null;
-		ParserRuleReturnScope expr87 =null;
-		ParserRuleReturnScope stat_seq89 =null;
-		ParserRuleReturnScope range95 =null;
-		ParserRuleReturnScope stat_seq97 =null;
-		ParserRuleReturnScope expr103 =null;
-		ParserRuleReturnScope block105 =null;
-		ParserRuleReturnScope expr_list108 =null;
-		ParserRuleReturnScope optional_subscript110 =null;
-		ParserRuleReturnScope statement_assignment112 =null;
+		Token WHILE82=null;
+		Token DO84=null;
+		Token ENDDO86=null;
+		Token SEMI87=null;
+		Token FOR88=null;
+		Token ID89=null;
+		Token ASSIGN90=null;
+		Token TO91=null;
+		Token DO92=null;
+		Token ENDDO94=null;
+		Token SEMI95=null;
+		Token BREAK96=null;
+		Token SEMI97=null;
+		Token RETURN98=null;
+		Token SEMI100=null;
+		Token ID102=null;
+		Token LPAREN103=null;
+		Token RPAREN105=null;
+		Token ASSIGN107=null;
+		Token SEMI109=null;
+		ParserRuleReturnScope start =null;
+		ParserRuleReturnScope stop =null;
+		ParserRuleReturnScope if_stmt81 =null;
+		ParserRuleReturnScope expr83 =null;
+		ParserRuleReturnScope stat_list85 =null;
+		ParserRuleReturnScope stat_list93 =null;
+		ParserRuleReturnScope expr99 =null;
+		ParserRuleReturnScope block101 =null;
+		ParserRuleReturnScope expr_list104 =null;
+		ParserRuleReturnScope optional_subscript106 =null;
+		ParserRuleReturnScope statement_assignment108 =null;
 
-		Object WHILE86_tree=null;
-		Object DO88_tree=null;
-		Object ENDDO90_tree=null;
-		Object SEMI91_tree=null;
-		Object FOR92_tree=null;
-		Object ID93_tree=null;
-		Object ASSIGN94_tree=null;
-		Object DO96_tree=null;
-		Object ENDDO98_tree=null;
-		Object SEMI99_tree=null;
-		Object BREAK100_tree=null;
-		Object SEMI101_tree=null;
-		Object RETURN102_tree=null;
-		Object SEMI104_tree=null;
-		Object ID106_tree=null;
-		Object LPAREN107_tree=null;
-		Object RPAREN109_tree=null;
-		Object ASSIGN111_tree=null;
-		Object SEMI113_tree=null;
+		Object WHILE82_tree=null;
+		Object DO84_tree=null;
+		Object ENDDO86_tree=null;
+		Object SEMI87_tree=null;
+		Object FOR88_tree=null;
+		Object ID89_tree=null;
+		Object ASSIGN90_tree=null;
+		Object TO91_tree=null;
+		Object DO92_tree=null;
+		Object ENDDO94_tree=null;
+		Object SEMI95_tree=null;
+		Object BREAK96_tree=null;
+		Object SEMI97_tree=null;
+		Object RETURN98_tree=null;
+		Object SEMI100_tree=null;
+		Object ID102_tree=null;
+		Object LPAREN103_tree=null;
+		Object RPAREN105_tree=null;
+		Object ASSIGN107_tree=null;
+		Object SEMI109_tree=null;
 		RewriteRuleTokenStream stream_RETURN=new RewriteRuleTokenStream(adaptor,"token RETURN");
 		RewriteRuleTokenStream stream_ENDDO=new RewriteRuleTokenStream(adaptor,"token ENDDO");
 		RewriteRuleTokenStream stream_BREAK=new RewriteRuleTokenStream(adaptor,"token BREAK");
@@ -2816,106 +2619,102 @@ public class TigerParser extends Parser {
 		RewriteRuleTokenStream stream_WHILE=new RewriteRuleTokenStream(adaptor,"token WHILE");
 		RewriteRuleTokenStream stream_DO=new RewriteRuleTokenStream(adaptor,"token DO");
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleTokenStream stream_TO=new RewriteRuleTokenStream(adaptor,"token TO");
 		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
 		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
 		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
+		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
 		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
 		RewriteRuleSubtreeStream stream_statement_assignment=new RewriteRuleSubtreeStream(adaptor,"rule statement_assignment");
-		RewriteRuleSubtreeStream stream_range=new RewriteRuleSubtreeStream(adaptor,"rule range");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
-		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
+		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
 
 		try {
-			// grammar/Tiger.g:164:2: ( if_stmt | ( WHILE expr DO stat_seq ENDDO SEMI ) -> ^( WHILE expr stat_seq ) | ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI ) -> ^( FOR range stat_seq ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI )
-			int alt18=7;
+			// grammar/Tiger.g:170:2: ( if_stmt | WHILE expr DO stat_list ENDDO SEMI -> ^( WHILE expr stat_list ) | FOR ID ASSIGN (start= index_expr TO stop= index_expr ) DO stat_list ENDDO SEMI -> ^( FOR ^( RANGE $start $stop) stat_list ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI )
+			int alt19=7;
 			switch ( input.LA(1) ) {
 			case IF:
 				{
-				alt18=1;
+				alt19=1;
 				}
 				break;
 			case WHILE:
 				{
-				alt18=2;
+				alt19=2;
 				}
 				break;
 			case FOR:
 				{
-				alt18=3;
+				alt19=3;
 				}
 				break;
 			case BREAK:
 				{
-				alt18=4;
+				alt19=4;
 				}
 				break;
 			case RETURN:
 				{
-				alt18=5;
+				alt19=5;
 				}
 				break;
 			case BEGIN:
 				{
-				alt18=6;
+				alt19=6;
 				}
 				break;
 			case ID:
 				{
-				alt18=7;
+				alt19=7;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 18, 0, input);
+					new NoViableAltException("", 19, 0, input);
 				throw nvae;
 			}
-			switch (alt18) {
+			switch (alt19) {
 				case 1 :
-					// grammar/Tiger.g:164:4: if_stmt
+					// grammar/Tiger.g:170:4: if_stmt
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_if_stmt_in_stat806);
-					if_stmt85=if_stmt();
+					pushFollow(FOLLOW_if_stmt_in_statement814);
+					if_stmt81=if_stmt();
 					state._fsp--;
 
-					adaptor.addChild(root_0, if_stmt85.getTree());
+					adaptor.addChild(root_0, if_stmt81.getTree());
 
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:165:4: ( WHILE expr DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:171:4: WHILE expr DO stat_list ENDDO SEMI
 					{
-					// grammar/Tiger.g:165:4: ( WHILE expr DO stat_seq ENDDO SEMI )
-					// grammar/Tiger.g:165:5: WHILE expr DO stat_seq ENDDO SEMI
-					{
-					WHILE86=(Token)match(input,WHILE,FOLLOW_WHILE_in_stat812);  
-					stream_WHILE.add(WHILE86);
+					WHILE82=(Token)match(input,WHILE,FOLLOW_WHILE_in_statement819);  
+					stream_WHILE.add(WHILE82);
 
-					pushFollow(FOLLOW_expr_in_stat814);
-					expr87=expr();
+					pushFollow(FOLLOW_expr_in_statement821);
+					expr83=expr();
 					state._fsp--;
 
-					stream_expr.add(expr87.getTree());
-					DO88=(Token)match(input,DO,FOLLOW_DO_in_stat816);  
-					stream_DO.add(DO88);
+					stream_expr.add(expr83.getTree());
+					DO84=(Token)match(input,DO,FOLLOW_DO_in_statement823);  
+					stream_DO.add(DO84);
 
-					pushFollow(FOLLOW_stat_seq_in_stat818);
-					stat_seq89=stat_seq();
+					pushFollow(FOLLOW_stat_list_in_statement825);
+					stat_list85=stat_list();
 					state._fsp--;
 
-					stream_stat_seq.add(stat_seq89.getTree());
-					ENDDO90=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat820);  
-					stream_ENDDO.add(ENDDO90);
+					stream_stat_list.add(stat_list85.getTree());
+					ENDDO86=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_statement827);  
+					stream_ENDDO.add(ENDDO86);
 
-					SEMI91=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat822);  
-					stream_SEMI.add(SEMI91);
-
-					}
+					SEMI87=(Token)match(input,SEMI,FOLLOW_SEMI_in_statement829);  
+					stream_SEMI.add(SEMI87);
 
 					// AST REWRITE
-					// elements: stat_seq, expr, WHILE
+					// elements: expr, WHILE, stat_list
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -2925,14 +2724,14 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 165:40: -> ^( WHILE expr stat_seq )
+					// 171:39: -> ^( WHILE expr stat_list )
 					{
-						// grammar/Tiger.g:165:43: ^( WHILE expr stat_seq )
+						// grammar/Tiger.g:171:42: ^( WHILE expr stat_list )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_WHILE.nextNode(), root_1);
 						adaptor.addChild(root_1, stream_expr.nextTree());
-						adaptor.addChild(root_1, stream_stat_seq.nextTree());
+						adaptor.addChild(root_1, stream_stat_list.nextTree());
 						adaptor.addChild(root_0, root_1);
 						}
 
@@ -2944,60 +2743,78 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// grammar/Tiger.g:166:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
+					// grammar/Tiger.g:172:4: FOR ID ASSIGN (start= index_expr TO stop= index_expr ) DO stat_list ENDDO SEMI
 					{
-					// grammar/Tiger.g:166:4: ( FOR ID ASSIGN range DO stat_seq ENDDO SEMI )
-					// grammar/Tiger.g:166:5: FOR ID ASSIGN range DO stat_seq ENDDO SEMI
+					FOR88=(Token)match(input,FOR,FOLLOW_FOR_in_statement844);  
+					stream_FOR.add(FOR88);
+
+					ID89=(Token)match(input,ID,FOLLOW_ID_in_statement846);  
+					stream_ID.add(ID89);
+
+					ASSIGN90=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_statement848);  
+					stream_ASSIGN.add(ASSIGN90);
+
+					// grammar/Tiger.g:172:18: (start= index_expr TO stop= index_expr )
+					// grammar/Tiger.g:172:19: start= index_expr TO stop= index_expr
 					{
-					FOR92=(Token)match(input,FOR,FOLLOW_FOR_in_stat839);  
-					stream_FOR.add(FOR92);
-
-					ID93=(Token)match(input,ID,FOLLOW_ID_in_stat841);  
-					stream_ID.add(ID93);
-
-					ASSIGN94=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat843);  
-					stream_ASSIGN.add(ASSIGN94);
-
-					pushFollow(FOLLOW_range_in_stat845);
-					range95=range();
+					pushFollow(FOLLOW_index_expr_in_statement853);
+					start=index_expr();
 					state._fsp--;
 
-					stream_range.add(range95.getTree());
-					DO96=(Token)match(input,DO,FOLLOW_DO_in_stat847);  
-					stream_DO.add(DO96);
+					stream_index_expr.add(start.getTree());
+					TO91=(Token)match(input,TO,FOLLOW_TO_in_statement855);  
+					stream_TO.add(TO91);
 
-					pushFollow(FOLLOW_stat_seq_in_stat849);
-					stat_seq97=stat_seq();
+					pushFollow(FOLLOW_index_expr_in_statement859);
+					stop=index_expr();
 					state._fsp--;
 
-					stream_stat_seq.add(stat_seq97.getTree());
-					ENDDO98=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_stat851);  
-					stream_ENDDO.add(ENDDO98);
-
-					SEMI99=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat853);  
-					stream_SEMI.add(SEMI99);
-
+					stream_index_expr.add(stop.getTree());
 					}
 
+					DO92=(Token)match(input,DO,FOLLOW_DO_in_statement862);  
+					stream_DO.add(DO92);
+
+					pushFollow(FOLLOW_stat_list_in_statement864);
+					stat_list93=stat_list();
+					state._fsp--;
+
+					stream_stat_list.add(stat_list93.getTree());
+					ENDDO94=(Token)match(input,ENDDO,FOLLOW_ENDDO_in_statement866);  
+					stream_ENDDO.add(ENDDO94);
+
+					SEMI95=(Token)match(input,SEMI,FOLLOW_SEMI_in_statement868);  
+					stream_SEMI.add(SEMI95);
+
 					// AST REWRITE
-					// elements: FOR, range, stat_seq
+					// elements: stop, stat_list, FOR, start
 					// token labels: 
-					// rule labels: retval
+					// rule labels: stop, start, retval
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_stop=new RewriteRuleSubtreeStream(adaptor,"rule stop",stop!=null?stop.getTree():null);
+					RewriteRuleSubtreeStream stream_start=new RewriteRuleSubtreeStream(adaptor,"rule start",start!=null?start.getTree():null);
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 166:49: -> ^( FOR range stat_seq )
+					// 172:80: -> ^( FOR ^( RANGE $start $stop) stat_list )
 					{
-						// grammar/Tiger.g:166:52: ^( FOR range stat_seq )
+						// grammar/Tiger.g:172:83: ^( FOR ^( RANGE $start $stop) stat_list )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_FOR.nextNode(), root_1);
-						adaptor.addChild(root_1, stream_range.nextTree());
-						adaptor.addChild(root_1, stream_stat_seq.nextTree());
+						// grammar/Tiger.g:172:89: ^( RANGE $start $stop)
+						{
+						Object root_2 = (Object)adaptor.nil();
+						root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(RANGE, "RANGE"), root_2);
+						adaptor.addChild(root_2, stream_start.nextTree());
+						adaptor.addChild(root_2, stream_stop.nextTree());
+						adaptor.addChild(root_1, root_2);
+						}
+
+						adaptor.addChild(root_1, stream_stat_list.nextTree());
 						adaptor.addChild(root_0, root_1);
 						}
 
@@ -3009,13 +2826,13 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 4 :
-					// grammar/Tiger.g:167:4: BREAK SEMI
+					// grammar/Tiger.g:173:4: BREAK SEMI
 					{
-					BREAK100=(Token)match(input,BREAK,FOLLOW_BREAK_in_stat869);  
-					stream_BREAK.add(BREAK100);
+					BREAK96=(Token)match(input,BREAK,FOLLOW_BREAK_in_statement891);  
+					stream_BREAK.add(BREAK96);
 
-					SEMI101=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat871);  
-					stream_SEMI.add(SEMI101);
+					SEMI97=(Token)match(input,SEMI,FOLLOW_SEMI_in_statement893);  
+					stream_SEMI.add(SEMI97);
 
 					// AST REWRITE
 					// elements: BREAK
@@ -3028,7 +2845,7 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 167:15: -> BREAK
+					// 173:15: -> BREAK
 					{
 						adaptor.addChild(root_0, stream_BREAK.nextNode());
 					}
@@ -3039,21 +2856,21 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 5 :
-					// grammar/Tiger.g:168:4: RETURN expr SEMI
+					// grammar/Tiger.g:174:4: RETURN expr SEMI
 					{
-					RETURN102=(Token)match(input,RETURN,FOLLOW_RETURN_in_stat880);  
-					stream_RETURN.add(RETURN102);
+					RETURN98=(Token)match(input,RETURN,FOLLOW_RETURN_in_statement902);  
+					stream_RETURN.add(RETURN98);
 
-					pushFollow(FOLLOW_expr_in_stat882);
-					expr103=expr();
+					pushFollow(FOLLOW_expr_in_statement904);
+					expr99=expr();
 					state._fsp--;
 
-					stream_expr.add(expr103.getTree());
-					SEMI104=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat884);  
-					stream_SEMI.add(SEMI104);
+					stream_expr.add(expr99.getTree());
+					SEMI100=(Token)match(input,SEMI,FOLLOW_SEMI_in_statement906);  
+					stream_SEMI.add(SEMI100);
 
 					// AST REWRITE
-					// elements: RETURN, expr
+					// elements: expr, RETURN
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3063,9 +2880,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 168:21: -> ^( RETURN expr )
+					// 174:21: -> ^( RETURN expr )
 					{
-						// grammar/Tiger.g:168:24: ^( RETURN expr )
+						// grammar/Tiger.g:174:24: ^( RETURN expr )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_RETURN.nextNode(), root_1);
@@ -3081,55 +2898,55 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 6 :
-					// grammar/Tiger.g:169:4: block
+					// grammar/Tiger.g:175:4: block
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_block_in_stat897);
-					block105=block();
+					pushFollow(FOLLOW_block_in_statement919);
+					block101=block();
 					state._fsp--;
 
-					adaptor.addChild(root_0, block105.getTree());
+					adaptor.addChild(root_0, block101.getTree());
 
 					}
 					break;
 				case 7 :
-					// grammar/Tiger.g:170:4: ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI
+					// grammar/Tiger.g:176:4: ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) ) SEMI
 					{
-					ID106=(Token)match(input,ID,FOLLOW_ID_in_stat902);  
-					stream_ID.add(ID106);
+					ID102=(Token)match(input,ID,FOLLOW_ID_in_statement924);  
+					stream_ID.add(ID102);
 
-					// grammar/Tiger.g:170:8: ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) )
-					int alt17=2;
-					int LA17_0 = input.LA(1);
-					if ( (LA17_0==LPAREN) ) {
-						alt17=1;
+					// grammar/Tiger.g:176:8: ( LPAREN expr_list RPAREN -> ^( INVOKE ID ( expr_list )? ) | optional_subscript ASSIGN statement_assignment -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment ) )
+					int alt18=2;
+					int LA18_0 = input.LA(1);
+					if ( (LA18_0==LPAREN) ) {
+						alt18=1;
 					}
-					else if ( (LA17_0==AND||LA17_0==ASSIGN||LA17_0==COMMA||(LA17_0 >= DIV && LA17_0 <= DO)||LA17_0==EQ||(LA17_0 >= GEQ && LA17_0 <= GREATER)||(LA17_0 >= LBRACK && LA17_0 <= LESSER)||(LA17_0 >= MINUS && LA17_0 <= NEQ)||LA17_0==OR||LA17_0==PLUS||(LA17_0 >= RPAREN && LA17_0 <= SEMI)||LA17_0==THEN) ) {
-						alt17=2;
+					else if ( (LA18_0==AND||LA18_0==ASSIGN||LA18_0==COMMA||(LA18_0 >= DIV && LA18_0 <= DO)||LA18_0==EQ||(LA18_0 >= GEQ && LA18_0 <= GREATER)||(LA18_0 >= LBRACK && LA18_0 <= LESSER)||(LA18_0 >= MINUS && LA18_0 <= NEQ)||LA18_0==OR||LA18_0==PLUS||(LA18_0 >= RPAREN && LA18_0 <= SEMI)||LA18_0==THEN) ) {
+						alt18=2;
 					}
 
 					else {
 						NoViableAltException nvae =
-							new NoViableAltException("", 17, 0, input);
+							new NoViableAltException("", 18, 0, input);
 						throw nvae;
 					}
 
-					switch (alt17) {
+					switch (alt18) {
 						case 1 :
-							// grammar/Tiger.g:171:6: LPAREN expr_list RPAREN
+							// grammar/Tiger.g:177:6: LPAREN expr_list RPAREN
 							{
-							LPAREN107=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_stat913);  
-							stream_LPAREN.add(LPAREN107);
+							LPAREN103=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement935);  
+							stream_LPAREN.add(LPAREN103);
 
-							pushFollow(FOLLOW_expr_list_in_stat915);
-							expr_list108=expr_list();
+							pushFollow(FOLLOW_expr_list_in_statement937);
+							expr_list104=expr_list();
 							state._fsp--;
 
-							stream_expr_list.add(expr_list108.getTree());
-							RPAREN109=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_stat917);  
-							stream_RPAREN.add(RPAREN109);
+							stream_expr_list.add(expr_list104.getTree());
+							RPAREN105=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement939);  
+							stream_RPAREN.add(RPAREN105);
 
 							// AST REWRITE
 							// elements: expr_list, ID
@@ -3142,14 +2959,14 @@ public class TigerParser extends Parser {
 							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 							root_0 = (Object)adaptor.nil();
-							// 171:36: -> ^( INVOKE ID ( expr_list )? )
+							// 177:36: -> ^( INVOKE ID ( expr_list )? )
 							{
-								// grammar/Tiger.g:171:39: ^( INVOKE ID ( expr_list )? )
+								// grammar/Tiger.g:177:39: ^( INVOKE ID ( expr_list )? )
 								{
 								Object root_1 = (Object)adaptor.nil();
 								root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INVOKE, "INVOKE"), root_1);
 								adaptor.addChild(root_1, stream_ID.nextNode());
-								// grammar/Tiger.g:171:51: ( expr_list )?
+								// grammar/Tiger.g:177:51: ( expr_list )?
 								if ( stream_expr_list.hasNext() ) {
 									adaptor.addChild(root_1, stream_expr_list.nextTree());
 								}
@@ -3166,23 +2983,23 @@ public class TigerParser extends Parser {
 							}
 							break;
 						case 2 :
-							// grammar/Tiger.g:172:6: optional_subscript ASSIGN statement_assignment
+							// grammar/Tiger.g:178:6: optional_subscript ASSIGN statement_assignment
 							{
-							pushFollow(FOLLOW_optional_subscript_in_stat941);
-							optional_subscript110=optional_subscript();
+							pushFollow(FOLLOW_optional_subscript_in_statement963);
+							optional_subscript106=optional_subscript();
 							state._fsp--;
 
-							stream_optional_subscript.add(optional_subscript110.getTree());
-							ASSIGN111=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stat943);  
-							stream_ASSIGN.add(ASSIGN111);
+							stream_optional_subscript.add(optional_subscript106.getTree());
+							ASSIGN107=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_statement965);  
+							stream_ASSIGN.add(ASSIGN107);
 
-							pushFollow(FOLLOW_statement_assignment_in_stat945);
-							statement_assignment112=statement_assignment();
+							pushFollow(FOLLOW_statement_assignment_in_statement967);
+							statement_assignment108=statement_assignment();
 							state._fsp--;
 
-							stream_statement_assignment.add(statement_assignment112.getTree());
+							stream_statement_assignment.add(statement_assignment108.getTree());
 							// AST REWRITE
-							// elements: ASSIGN, optional_subscript, statement_assignment, ID
+							// elements: ASSIGN, ID, statement_assignment, optional_subscript
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3192,18 +3009,18 @@ public class TigerParser extends Parser {
 							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 							root_0 = (Object)adaptor.nil();
-							// 172:54: -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment )
+							// 178:54: -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment )
 							{
-								// grammar/Tiger.g:172:57: ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment )
+								// grammar/Tiger.g:178:57: ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) statement_assignment )
 								{
 								Object root_1 = (Object)adaptor.nil();
 								root_1 = (Object)adaptor.becomeRoot(stream_ASSIGN.nextNode(), root_1);
-								// grammar/Tiger.g:172:66: ^( REFERENCE ID ( optional_subscript )? )
+								// grammar/Tiger.g:178:66: ^( REFERENCE ID ( optional_subscript )? )
 								{
 								Object root_2 = (Object)adaptor.nil();
 								root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(REFERENCE, "REFERENCE"), root_2);
 								adaptor.addChild(root_2, stream_ID.nextNode());
-								// grammar/Tiger.g:172:81: ( optional_subscript )?
+								// grammar/Tiger.g:178:81: ( optional_subscript )?
 								if ( stream_optional_subscript.hasNext() ) {
 									adaptor.addChild(root_2, stream_optional_subscript.nextTree());
 								}
@@ -3226,8 +3043,8 @@ public class TigerParser extends Parser {
 
 					}
 
-					SEMI113=(Token)match(input,SEMI,FOLLOW_SEMI_in_stat970);  
-					stream_SEMI.add(SEMI113);
+					SEMI109=(Token)match(input,SEMI,FOLLOW_SEMI_in_statement992);  
+					stream_SEMI.add(SEMI109);
 
 					}
 					break;
@@ -3249,174 +3066,7 @@ public class TigerParser extends Parser {
 		}
 		return retval;
 	}
-	// $ANTLR end "stat"
-
-
-	public static class optional_subscript_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "optional_subscript"
-	// grammar/Tiger.g:176:1: optional_subscript : ( array_subscripts |);
-	public final TigerParser.optional_subscript_return optional_subscript() throws RecognitionException {
-		TigerParser.optional_subscript_return retval = new TigerParser.optional_subscript_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		ParserRuleReturnScope array_subscripts114 =null;
-
-
-		try {
-			// grammar/Tiger.g:177:2: ( array_subscripts |)
-			int alt19=2;
-			int LA19_0 = input.LA(1);
-			if ( (LA19_0==LBRACK) ) {
-				alt19=1;
-			}
-			else if ( (LA19_0==AND||LA19_0==ASSIGN||LA19_0==COMMA||(LA19_0 >= DIV && LA19_0 <= DO)||LA19_0==EQ||(LA19_0 >= GEQ && LA19_0 <= GREATER)||(LA19_0 >= LEQ && LA19_0 <= LESSER)||(LA19_0 >= MINUS && LA19_0 <= NEQ)||LA19_0==OR||LA19_0==PLUS||(LA19_0 >= RPAREN && LA19_0 <= SEMI)||LA19_0==THEN) ) {
-				alt19=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 19, 0, input);
-				throw nvae;
-			}
-
-			switch (alt19) {
-				case 1 :
-					// grammar/Tiger.g:177:4: array_subscripts
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					pushFollow(FOLLOW_array_subscripts_in_optional_subscript981);
-					array_subscripts114=array_subscripts();
-					state._fsp--;
-
-					adaptor.addChild(root_0, array_subscripts114.getTree());
-
-					}
-					break;
-				case 2 :
-					// grammar/Tiger.g:179:2: 
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					}
-					break;
-
-			}
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "optional_subscript"
-
-
-	public static class range_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "range"
-	// grammar/Tiger.g:181:1: range : (start= index_expr TO stop= index_expr ) -> $start $stop;
-	public final TigerParser.range_return range() throws RecognitionException {
-		TigerParser.range_return retval = new TigerParser.range_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token TO115=null;
-		ParserRuleReturnScope start =null;
-		ParserRuleReturnScope stop =null;
-
-		Object TO115_tree=null;
-		RewriteRuleTokenStream stream_TO=new RewriteRuleTokenStream(adaptor,"token TO");
-		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
-
-		try {
-			// grammar/Tiger.g:182:2: ( (start= index_expr TO stop= index_expr ) -> $start $stop)
-			// grammar/Tiger.g:182:4: (start= index_expr TO stop= index_expr )
-			{
-			// grammar/Tiger.g:182:4: (start= index_expr TO stop= index_expr )
-			// grammar/Tiger.g:182:5: start= index_expr TO stop= index_expr
-			{
-			pushFollow(FOLLOW_index_expr_in_range999);
-			start=index_expr();
-			state._fsp--;
-
-			stream_index_expr.add(start.getTree());
-			TO115=(Token)match(input,TO,FOLLOW_TO_in_range1001);  
-			stream_TO.add(TO115);
-
-			pushFollow(FOLLOW_index_expr_in_range1005);
-			stop=index_expr();
-			state._fsp--;
-
-			stream_index_expr.add(stop.getTree());
-			}
-
-			// AST REWRITE
-			// elements: start, stop
-			// token labels: 
-			// rule labels: stop, start, retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_stop=new RewriteRuleSubtreeStream(adaptor,"rule stop",stop!=null?stop.getTree():null);
-			RewriteRuleSubtreeStream stream_start=new RewriteRuleSubtreeStream(adaptor,"rule start",start!=null?start.getTree():null);
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (Object)adaptor.nil();
-			// 182:42: -> $start $stop
-			{
-				adaptor.addChild(root_0, stream_start.nextTree());
-				adaptor.addChild(root_0, stream_stop.nextTree());
-			}
-
-
-			retval.tree = root_0;
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "range"
+	// $ANTLR end "statement"
 
 
 	public static class statement_assignment_return extends ParserRuleReturnScope {
@@ -3427,60 +3077,57 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "statement_assignment"
-	// grammar/Tiger.g:185:1: statement_assignment : ( ( ID statement_assignment_id ) -> ^( EXPR ID ( statement_assignment_id )? ) | ( expr_head_base expr_tail ) -> ^( EXPR expr_head_base ( expr_tail )? ) );
+	// grammar/Tiger.g:182:1: statement_assignment : ( ID statement_assignment_id -> ^( EXPR ID ( statement_assignment_id )? ) | statement_assignment_expr_isolate ( binary_operator expr -> ^( binary_operator statement_assignment_expr_isolate expr ) | -> ^( statement_assignment_expr_isolate ) ) );
 	public final TigerParser.statement_assignment_return statement_assignment() throws RecognitionException {
 		TigerParser.statement_assignment_return retval = new TigerParser.statement_assignment_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID116=null;
-		ParserRuleReturnScope statement_assignment_id117 =null;
-		ParserRuleReturnScope expr_head_base118 =null;
-		ParserRuleReturnScope expr_tail119 =null;
+		Token ID110=null;
+		ParserRuleReturnScope statement_assignment_id111 =null;
+		ParserRuleReturnScope statement_assignment_expr_isolate112 =null;
+		ParserRuleReturnScope binary_operator113 =null;
+		ParserRuleReturnScope expr114 =null;
 
-		Object ID116_tree=null;
+		Object ID110_tree=null;
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleSubtreeStream stream_binary_operator=new RewriteRuleSubtreeStream(adaptor,"rule binary_operator");
 		RewriteRuleSubtreeStream stream_statement_assignment_id=new RewriteRuleSubtreeStream(adaptor,"rule statement_assignment_id");
-		RewriteRuleSubtreeStream stream_expr_tail=new RewriteRuleSubtreeStream(adaptor,"rule expr_tail");
-		RewriteRuleSubtreeStream stream_expr_head_base=new RewriteRuleSubtreeStream(adaptor,"rule expr_head_base");
+		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+		RewriteRuleSubtreeStream stream_statement_assignment_expr_isolate=new RewriteRuleSubtreeStream(adaptor,"rule statement_assignment_expr_isolate");
 
 		try {
-			// grammar/Tiger.g:186:2: ( ( ID statement_assignment_id ) -> ^( EXPR ID ( statement_assignment_id )? ) | ( expr_head_base expr_tail ) -> ^( EXPR expr_head_base ( expr_tail )? ) )
-			int alt20=2;
-			int LA20_0 = input.LA(1);
-			if ( (LA20_0==ID) ) {
-				alt20=1;
+			// grammar/Tiger.g:183:2: ( ID statement_assignment_id -> ^( EXPR ID ( statement_assignment_id )? ) | statement_assignment_expr_isolate ( binary_operator expr -> ^( binary_operator statement_assignment_expr_isolate expr ) | -> ^( statement_assignment_expr_isolate ) ) )
+			int alt21=2;
+			int LA21_0 = input.LA(1);
+			if ( (LA21_0==ID) ) {
+				alt21=1;
 			}
-			else if ( (LA20_0==FIXEDPTLIT||LA20_0==INTLIT||LA20_0==LPAREN) ) {
-				alt20=2;
+			else if ( (LA21_0==FIXEDPTLIT||LA21_0==INTLIT||LA21_0==LPAREN) ) {
+				alt21=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 20, 0, input);
+					new NoViableAltException("", 21, 0, input);
 				throw nvae;
 			}
 
-			switch (alt20) {
+			switch (alt21) {
 				case 1 :
-					// grammar/Tiger.g:186:4: ( ID statement_assignment_id )
+					// grammar/Tiger.g:183:4: ID statement_assignment_id
 					{
-					// grammar/Tiger.g:186:4: ( ID statement_assignment_id )
-					// grammar/Tiger.g:186:5: ID statement_assignment_id
-					{
-					ID116=(Token)match(input,ID,FOLLOW_ID_in_statement_assignment1026);  
-					stream_ID.add(ID116);
+					ID110=(Token)match(input,ID,FOLLOW_ID_in_statement_assignment1003);  
+					stream_ID.add(ID110);
 
-					pushFollow(FOLLOW_statement_assignment_id_in_statement_assignment1028);
-					statement_assignment_id117=statement_assignment_id();
+					pushFollow(FOLLOW_statement_assignment_id_in_statement_assignment1005);
+					statement_assignment_id111=statement_assignment_id();
 					state._fsp--;
 
-					stream_statement_assignment_id.add(statement_assignment_id117.getTree());
-					}
-
+					stream_statement_assignment_id.add(statement_assignment_id111.getTree());
 					// AST REWRITE
-					// elements: statement_assignment_id, ID
+					// elements: ID, statement_assignment_id
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3490,14 +3137,14 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 186:33: -> ^( EXPR ID ( statement_assignment_id )? )
+					// 183:31: -> ^( EXPR ID ( statement_assignment_id )? )
 					{
-						// grammar/Tiger.g:186:36: ^( EXPR ID ( statement_assignment_id )? )
+						// grammar/Tiger.g:183:34: ^( EXPR ID ( statement_assignment_id )? )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPR, "EXPR"), root_1);
 						adaptor.addChild(root_1, stream_ID.nextNode());
-						// grammar/Tiger.g:186:46: ( statement_assignment_id )?
+						// grammar/Tiger.g:183:44: ( statement_assignment_id )?
 						if ( stream_statement_assignment_id.hasNext() ) {
 							adaptor.addChild(root_1, stream_statement_assignment_id.nextTree());
 						}
@@ -3514,54 +3161,104 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:187:4: ( expr_head_base expr_tail )
+					// grammar/Tiger.g:184:4: statement_assignment_expr_isolate ( binary_operator expr -> ^( binary_operator statement_assignment_expr_isolate expr ) | -> ^( statement_assignment_expr_isolate ) )
 					{
-					// grammar/Tiger.g:187:4: ( expr_head_base expr_tail )
-					// grammar/Tiger.g:187:5: expr_head_base expr_tail
-					{
-					pushFollow(FOLLOW_expr_head_base_in_statement_assignment1046);
-					expr_head_base118=expr_head_base();
+					pushFollow(FOLLOW_statement_assignment_expr_isolate_in_statement_assignment1021);
+					statement_assignment_expr_isolate112=statement_assignment_expr_isolate();
 					state._fsp--;
 
-					stream_expr_head_base.add(expr_head_base118.getTree());
-					pushFollow(FOLLOW_expr_tail_in_statement_assignment1048);
-					expr_tail119=expr_tail();
-					state._fsp--;
-
-					stream_expr_tail.add(expr_tail119.getTree());
+					stream_statement_assignment_expr_isolate.add(statement_assignment_expr_isolate112.getTree());
+					// grammar/Tiger.g:184:38: ( binary_operator expr -> ^( binary_operator statement_assignment_expr_isolate expr ) | -> ^( statement_assignment_expr_isolate ) )
+					int alt20=2;
+					int LA20_0 = input.LA(1);
+					if ( (LA20_0==AND||LA20_0==DIV||LA20_0==EQ||(LA20_0 >= GEQ && LA20_0 <= GREATER)||(LA20_0 >= LEQ && LA20_0 <= LESSER)||(LA20_0 >= MINUS && LA20_0 <= NEQ)||LA20_0==OR||LA20_0==PLUS) ) {
+						alt20=1;
+					}
+					else if ( (LA20_0==SEMI) ) {
+						alt20=2;
 					}
 
-					// AST REWRITE
-					// elements: expr_head_base, expr_tail
-					// token labels: 
-					// rule labels: retval
-					// token list labels: 
-					// rule list labels: 
-					// wildcard labels: 
-					retval.tree = root_0;
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-					root_0 = (Object)adaptor.nil();
-					// 187:31: -> ^( EXPR expr_head_base ( expr_tail )? )
-					{
-						// grammar/Tiger.g:187:34: ^( EXPR expr_head_base ( expr_tail )? )
-						{
-						Object root_1 = (Object)adaptor.nil();
-						root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPR, "EXPR"), root_1);
-						adaptor.addChild(root_1, stream_expr_head_base.nextTree());
-						// grammar/Tiger.g:187:56: ( expr_tail )?
-						if ( stream_expr_tail.hasNext() ) {
-							adaptor.addChild(root_1, stream_expr_tail.nextTree());
-						}
-						stream_expr_tail.reset();
-
-						adaptor.addChild(root_0, root_1);
-						}
-
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 20, 0, input);
+						throw nvae;
 					}
 
+					switch (alt20) {
+						case 1 :
+							// grammar/Tiger.g:185:14: binary_operator expr
+							{
+							pushFollow(FOLLOW_binary_operator_in_statement_assignment1038);
+							binary_operator113=binary_operator();
+							state._fsp--;
 
-					retval.tree = root_0;
+							stream_binary_operator.add(binary_operator113.getTree());
+							pushFollow(FOLLOW_expr_in_statement_assignment1040);
+							expr114=expr();
+							state._fsp--;
+
+							stream_expr.add(expr114.getTree());
+							// AST REWRITE
+							// elements: binary_operator, statement_assignment_expr_isolate, expr
+							// token labels: 
+							// rule labels: retval
+							// token list labels: 
+							// rule list labels: 
+							// wildcard labels: 
+							retval.tree = root_0;
+							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+							root_0 = (Object)adaptor.nil();
+							// 185:35: -> ^( binary_operator statement_assignment_expr_isolate expr )
+							{
+								// grammar/Tiger.g:185:38: ^( binary_operator statement_assignment_expr_isolate expr )
+								{
+								Object root_1 = (Object)adaptor.nil();
+								root_1 = (Object)adaptor.becomeRoot(stream_binary_operator.nextNode(), root_1);
+								adaptor.addChild(root_1, stream_statement_assignment_expr_isolate.nextTree());
+								adaptor.addChild(root_1, stream_expr.nextTree());
+								adaptor.addChild(root_0, root_1);
+								}
+
+							}
+
+
+							retval.tree = root_0;
+
+							}
+							break;
+						case 2 :
+							// grammar/Tiger.g:186:20: 
+							{
+							// AST REWRITE
+							// elements: statement_assignment_expr_isolate
+							// token labels: 
+							// rule labels: retval
+							// token list labels: 
+							// rule list labels: 
+							// wildcard labels: 
+							retval.tree = root_0;
+							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+							root_0 = (Object)adaptor.nil();
+							// 186:20: -> ^( statement_assignment_expr_isolate )
+							{
+								// grammar/Tiger.g:186:23: ^( statement_assignment_expr_isolate )
+								{
+								Object root_1 = (Object)adaptor.nil();
+								root_1 = (Object)adaptor.becomeRoot(stream_statement_assignment_expr_isolate.nextNode(), root_1);
+								adaptor.addChild(root_0, root_1);
+								}
+
+							}
+
+
+							retval.tree = root_0;
+
+							}
+							break;
+
+					}
 
 					}
 					break;
@@ -3586,6 +3283,120 @@ public class TigerParser extends Parser {
 	// $ANTLR end "statement_assignment"
 
 
+	public static class statement_assignment_expr_isolate_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "statement_assignment_expr_isolate"
+	// grammar/Tiger.g:191:1: statement_assignment_expr_isolate : ( constant | LPAREN expr RPAREN -> expr );
+	public final TigerParser.statement_assignment_expr_isolate_return statement_assignment_expr_isolate() throws RecognitionException {
+		TigerParser.statement_assignment_expr_isolate_return retval = new TigerParser.statement_assignment_expr_isolate_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token LPAREN116=null;
+		Token RPAREN118=null;
+		ParserRuleReturnScope constant115 =null;
+		ParserRuleReturnScope expr117 =null;
+
+		Object LPAREN116_tree=null;
+		Object RPAREN118_tree=null;
+		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
+		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
+		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+
+		try {
+			// grammar/Tiger.g:192:2: ( constant | LPAREN expr RPAREN -> expr )
+			int alt22=2;
+			int LA22_0 = input.LA(1);
+			if ( (LA22_0==FIXEDPTLIT||LA22_0==INTLIT) ) {
+				alt22=1;
+			}
+			else if ( (LA22_0==LPAREN) ) {
+				alt22=2;
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 22, 0, input);
+				throw nvae;
+			}
+
+			switch (alt22) {
+				case 1 :
+					// grammar/Tiger.g:192:4: constant
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					pushFollow(FOLLOW_constant_in_statement_assignment_expr_isolate1100);
+					constant115=constant();
+					state._fsp--;
+
+					adaptor.addChild(root_0, constant115.getTree());
+
+					}
+					break;
+				case 2 :
+					// grammar/Tiger.g:193:4: LPAREN expr RPAREN
+					{
+					LPAREN116=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement_assignment_expr_isolate1105);  
+					stream_LPAREN.add(LPAREN116);
+
+					pushFollow(FOLLOW_expr_in_statement_assignment_expr_isolate1107);
+					expr117=expr();
+					state._fsp--;
+
+					stream_expr.add(expr117.getTree());
+					RPAREN118=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement_assignment_expr_isolate1109);  
+					stream_RPAREN.add(RPAREN118);
+
+					// AST REWRITE
+					// elements: expr
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (Object)adaptor.nil();
+					// 193:25: -> expr
+					{
+						adaptor.addChild(root_0, stream_expr.nextTree());
+					}
+
+
+					retval.tree = root_0;
+
+					}
+					break;
+
+			}
+			retval.stop = input.LT(-1);
+
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "statement_assignment_expr_isolate"
+
+
 	public static class statement_assignment_id_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
@@ -3594,61 +3405,57 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "statement_assignment_id"
-	// grammar/Tiger.g:190:1: statement_assignment_id : ( ( LPAREN expr_list RPAREN ) -> ( expr_list )? | optional_subscript expr_tail );
+	// grammar/Tiger.g:196:1: statement_assignment_id : ( LPAREN expr_list RPAREN -> ( expr_list )? | optional_subscript ( binary_operator expr |) );
 	public final TigerParser.statement_assignment_id_return statement_assignment_id() throws RecognitionException {
 		TigerParser.statement_assignment_id_return retval = new TigerParser.statement_assignment_id_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token LPAREN120=null;
-		Token RPAREN122=null;
-		ParserRuleReturnScope expr_list121 =null;
-		ParserRuleReturnScope optional_subscript123 =null;
-		ParserRuleReturnScope expr_tail124 =null;
+		Token LPAREN119=null;
+		Token RPAREN121=null;
+		ParserRuleReturnScope expr_list120 =null;
+		ParserRuleReturnScope optional_subscript122 =null;
+		ParserRuleReturnScope binary_operator123 =null;
+		ParserRuleReturnScope expr124 =null;
 
-		Object LPAREN120_tree=null;
-		Object RPAREN122_tree=null;
+		Object LPAREN119_tree=null;
+		Object RPAREN121_tree=null;
 		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
 		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
 		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
 
 		try {
-			// grammar/Tiger.g:191:2: ( ( LPAREN expr_list RPAREN ) -> ( expr_list )? | optional_subscript expr_tail )
-			int alt21=2;
-			int LA21_0 = input.LA(1);
-			if ( (LA21_0==LPAREN) ) {
-				alt21=1;
+			// grammar/Tiger.g:197:2: ( LPAREN expr_list RPAREN -> ( expr_list )? | optional_subscript ( binary_operator expr |) )
+			int alt24=2;
+			int LA24_0 = input.LA(1);
+			if ( (LA24_0==LPAREN) ) {
+				alt24=1;
 			}
-			else if ( (LA21_0==AND||LA21_0==ASSIGN||LA21_0==COMMA||(LA21_0 >= DIV && LA21_0 <= DO)||LA21_0==EQ||(LA21_0 >= GEQ && LA21_0 <= GREATER)||(LA21_0 >= LBRACK && LA21_0 <= LESSER)||(LA21_0 >= MINUS && LA21_0 <= NEQ)||LA21_0==OR||LA21_0==PLUS||(LA21_0 >= RPAREN && LA21_0 <= SEMI)||LA21_0==THEN) ) {
-				alt21=2;
+			else if ( (LA24_0==AND||LA24_0==ASSIGN||LA24_0==COMMA||(LA24_0 >= DIV && LA24_0 <= DO)||LA24_0==EQ||(LA24_0 >= GEQ && LA24_0 <= GREATER)||(LA24_0 >= LBRACK && LA24_0 <= LESSER)||(LA24_0 >= MINUS && LA24_0 <= NEQ)||LA24_0==OR||LA24_0==PLUS||(LA24_0 >= RPAREN && LA24_0 <= SEMI)||LA24_0==THEN) ) {
+				alt24=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 21, 0, input);
+					new NoViableAltException("", 24, 0, input);
 				throw nvae;
 			}
 
-			switch (alt21) {
+			switch (alt24) {
 				case 1 :
-					// grammar/Tiger.g:191:4: ( LPAREN expr_list RPAREN )
+					// grammar/Tiger.g:197:4: LPAREN expr_list RPAREN
 					{
-					// grammar/Tiger.g:191:4: ( LPAREN expr_list RPAREN )
-					// grammar/Tiger.g:191:5: LPAREN expr_list RPAREN
-					{
-					LPAREN120=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement_assignment_id1072);  
-					stream_LPAREN.add(LPAREN120);
+					LPAREN119=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement_assignment_id1126);  
+					stream_LPAREN.add(LPAREN119);
 
-					pushFollow(FOLLOW_expr_list_in_statement_assignment_id1074);
-					expr_list121=expr_list();
+					pushFollow(FOLLOW_expr_list_in_statement_assignment_id1128);
+					expr_list120=expr_list();
 					state._fsp--;
 
-					stream_expr_list.add(expr_list121.getTree());
-					RPAREN122=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement_assignment_id1076);  
-					stream_RPAREN.add(RPAREN122);
-
-					}
+					stream_expr_list.add(expr_list120.getTree());
+					RPAREN121=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement_assignment_id1130);  
+					stream_RPAREN.add(RPAREN121);
 
 					// AST REWRITE
 					// elements: expr_list
@@ -3661,9 +3468,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 191:30: -> ( expr_list )?
+					// 197:28: -> ( expr_list )?
 					{
-						// grammar/Tiger.g:191:33: ( expr_list )?
+						// grammar/Tiger.g:197:31: ( expr_list )?
 						if ( stream_expr_list.hasNext() ) {
 							adaptor.addChild(root_0, stream_expr_list.nextTree());
 						}
@@ -3677,22 +3484,58 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:192:4: optional_subscript expr_tail
+					// grammar/Tiger.g:198:4: optional_subscript ( binary_operator expr |)
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					pushFollow(FOLLOW_optional_subscript_in_statement_assignment_id1087);
-					optional_subscript123=optional_subscript();
+					pushFollow(FOLLOW_optional_subscript_in_statement_assignment_id1140);
+					optional_subscript122=optional_subscript();
 					state._fsp--;
 
-					adaptor.addChild(root_0, optional_subscript123.getTree());
+					adaptor.addChild(root_0, optional_subscript122.getTree());
 
-					pushFollow(FOLLOW_expr_tail_in_statement_assignment_id1089);
-					expr_tail124=expr_tail();
-					state._fsp--;
+					// grammar/Tiger.g:198:23: ( binary_operator expr |)
+					int alt23=2;
+					int LA23_0 = input.LA(1);
+					if ( (LA23_0==AND||LA23_0==DIV||LA23_0==EQ||(LA23_0 >= GEQ && LA23_0 <= GREATER)||(LA23_0 >= LEQ && LA23_0 <= LESSER)||(LA23_0 >= MINUS && LA23_0 <= NEQ)||LA23_0==OR||LA23_0==PLUS) ) {
+						alt23=1;
+					}
+					else if ( (LA23_0==SEMI) ) {
+						alt23=2;
+					}
 
-					adaptor.addChild(root_0, expr_tail124.getTree());
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 23, 0, input);
+						throw nvae;
+					}
+
+					switch (alt23) {
+						case 1 :
+							// grammar/Tiger.g:199:10: binary_operator expr
+							{
+							pushFollow(FOLLOW_binary_operator_in_statement_assignment_id1153);
+							binary_operator123=binary_operator();
+							state._fsp--;
+
+							adaptor.addChild(root_0, binary_operator123.getTree());
+
+							pushFollow(FOLLOW_expr_in_statement_assignment_id1155);
+							expr124=expr();
+							state._fsp--;
+
+							adaptor.addChild(root_0, expr124.getTree());
+
+							}
+							break;
+						case 2 :
+							// grammar/Tiger.g:201:8: 
+							{
+							}
+							break;
+
+					}
 
 					}
 					break;
@@ -3725,7 +3568,7 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "if_stmt"
-	// grammar/Tiger.g:195:1: if_stmt : ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq ( else_stmt )? ) ;
+	// grammar/Tiger.g:204:1: if_stmt : ( IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI ) -> ^( IF expr ^( IFTRUE $iftrue) ^( IFFALSE ( $iffalse)? ) ) ;
 	public final TigerParser.if_stmt_return if_stmt() throws RecognitionException {
 		TigerParser.if_stmt_return retval = new TigerParser.if_stmt_return();
 		retval.start = input.LT(1);
@@ -3734,84 +3577,120 @@ public class TigerParser extends Parser {
 
 		Token IF125=null;
 		Token THEN127=null;
-		Token ENDIF130=null;
-		Token SEMI131=null;
+		Token ELSE128=null;
+		Token ENDIF129=null;
+		Token SEMI130=null;
+		ParserRuleReturnScope iftrue =null;
+		ParserRuleReturnScope iffalse =null;
 		ParserRuleReturnScope expr126 =null;
-		ParserRuleReturnScope stat_seq128 =null;
-		ParserRuleReturnScope else_stmt129 =null;
 
 		Object IF125_tree=null;
 		Object THEN127_tree=null;
-		Object ENDIF130_tree=null;
-		Object SEMI131_tree=null;
+		Object ELSE128_tree=null;
+		Object ENDIF129_tree=null;
+		Object SEMI130_tree=null;
 		RewriteRuleTokenStream stream_ENDIF=new RewriteRuleTokenStream(adaptor,"token ENDIF");
 		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
+		RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
 		RewriteRuleTokenStream stream_THEN=new RewriteRuleTokenStream(adaptor,"token THEN");
 		RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
-		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
-		RewriteRuleSubtreeStream stream_else_stmt=new RewriteRuleSubtreeStream(adaptor,"rule else_stmt");
+		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
 
 		try {
-			// grammar/Tiger.g:196:2: ( ( IF expr THEN stat_seq else_stmt ENDIF SEMI ) -> ^( IF expr stat_seq ( else_stmt )? ) )
-			// grammar/Tiger.g:196:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
+			// grammar/Tiger.g:205:2: ( ( IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI ) -> ^( IF expr ^( IFTRUE $iftrue) ^( IFFALSE ( $iffalse)? ) ) )
+			// grammar/Tiger.g:205:4: ( IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI )
 			{
-			// grammar/Tiger.g:196:4: ( IF expr THEN stat_seq else_stmt ENDIF SEMI )
-			// grammar/Tiger.g:196:5: IF expr THEN stat_seq else_stmt ENDIF SEMI
+			// grammar/Tiger.g:205:4: ( IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI )
+			// grammar/Tiger.g:205:5: IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI
 			{
-			IF125=(Token)match(input,IF,FOLLOW_IF_in_if_stmt1101);  
+			IF125=(Token)match(input,IF,FOLLOW_IF_in_if_stmt1187);  
 			stream_IF.add(IF125);
 
-			pushFollow(FOLLOW_expr_in_if_stmt1103);
+			pushFollow(FOLLOW_expr_in_if_stmt1189);
 			expr126=expr();
 			state._fsp--;
 
 			stream_expr.add(expr126.getTree());
-			THEN127=(Token)match(input,THEN,FOLLOW_THEN_in_if_stmt1105);  
+			THEN127=(Token)match(input,THEN,FOLLOW_THEN_in_if_stmt1191);  
 			stream_THEN.add(THEN127);
 
-			pushFollow(FOLLOW_stat_seq_in_if_stmt1107);
-			stat_seq128=stat_seq();
+			pushFollow(FOLLOW_stat_list_in_if_stmt1195);
+			iftrue=stat_list();
 			state._fsp--;
 
-			stream_stat_seq.add(stat_seq128.getTree());
-			pushFollow(FOLLOW_else_stmt_in_if_stmt1109);
-			else_stmt129=else_stmt();
-			state._fsp--;
+			stream_stat_list.add(iftrue.getTree());
+			// grammar/Tiger.g:205:35: ( options {greedy=true; } : ELSE iffalse= stat_list )?
+			int alt25=2;
+			int LA25_0 = input.LA(1);
+			if ( (LA25_0==ELSE) ) {
+				alt25=1;
+			}
+			switch (alt25) {
+				case 1 :
+					// grammar/Tiger.g:205:60: ELSE iffalse= stat_list
+					{
+					ELSE128=(Token)match(input,ELSE,FOLLOW_ELSE_in_if_stmt1206);  
+					stream_ELSE.add(ELSE128);
 
-			stream_else_stmt.add(else_stmt129.getTree());
-			ENDIF130=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_stmt1111);  
-			stream_ENDIF.add(ENDIF130);
+					pushFollow(FOLLOW_stat_list_in_if_stmt1210);
+					iffalse=stat_list();
+					state._fsp--;
 
-			SEMI131=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_stmt1113);  
-			stream_SEMI.add(SEMI131);
+					stream_stat_list.add(iffalse.getTree());
+					}
+					break;
+
+			}
+
+			ENDIF129=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_if_stmt1214);  
+			stream_ENDIF.add(ENDIF129);
+
+			SEMI130=(Token)match(input,SEMI,FOLLOW_SEMI_in_if_stmt1216);  
+			stream_SEMI.add(SEMI130);
 
 			}
 
 			// AST REWRITE
-			// elements: stat_seq, IF, else_stmt, expr
+			// elements: expr, iftrue, iffalse, IF
 			// token labels: 
-			// rule labels: retval
+			// rule labels: iffalse, iftrue, retval
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
 			retval.tree = root_0;
+			RewriteRuleSubtreeStream stream_iffalse=new RewriteRuleSubtreeStream(adaptor,"rule iffalse",iffalse!=null?iffalse.getTree():null);
+			RewriteRuleSubtreeStream stream_iftrue=new RewriteRuleSubtreeStream(adaptor,"rule iftrue",iftrue!=null?iftrue.getTree():null);
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (Object)adaptor.nil();
-			// 196:49: -> ^( IF expr stat_seq ( else_stmt )? )
+			// 205:97: -> ^( IF expr ^( IFTRUE $iftrue) ^( IFFALSE ( $iffalse)? ) )
 			{
-				// grammar/Tiger.g:196:52: ^( IF expr stat_seq ( else_stmt )? )
+				// grammar/Tiger.g:205:100: ^( IF expr ^( IFTRUE $iftrue) ^( IFFALSE ( $iffalse)? ) )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot(stream_IF.nextNode(), root_1);
 				adaptor.addChild(root_1, stream_expr.nextTree());
-				adaptor.addChild(root_1, stream_stat_seq.nextTree());
-				// grammar/Tiger.g:196:71: ( else_stmt )?
-				if ( stream_else_stmt.hasNext() ) {
-					adaptor.addChild(root_1, stream_else_stmt.nextTree());
+				// grammar/Tiger.g:205:110: ^( IFTRUE $iftrue)
+				{
+				Object root_2 = (Object)adaptor.nil();
+				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(IFTRUE, "IFTRUE"), root_2);
+				adaptor.addChild(root_2, stream_iftrue.nextTree());
+				adaptor.addChild(root_1, root_2);
 				}
-				stream_else_stmt.reset();
+
+				// grammar/Tiger.g:205:128: ^( IFFALSE ( $iffalse)? )
+				{
+				Object root_2 = (Object)adaptor.nil();
+				root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(IFFALSE, "IFFALSE"), root_2);
+				// grammar/Tiger.g:205:139: ( $iffalse)?
+				if ( stream_iffalse.hasNext() ) {
+					adaptor.addChild(root_2, stream_iffalse.nextTree());
+				}
+				stream_iffalse.reset();
+
+				adaptor.addChild(root_1, root_2);
+				}
 
 				adaptor.addChild(root_0, root_1);
 				}
@@ -3842,71 +3721,111 @@ public class TigerParser extends Parser {
 	// $ANTLR end "if_stmt"
 
 
-	public static class else_stmt_return extends ParserRuleReturnScope {
+	public static class optional_subscript_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "else_stmt"
-	// grammar/Tiger.g:199:1: else_stmt : ( ELSE stat_seq -> stat_seq |);
-	public final TigerParser.else_stmt_return else_stmt() throws RecognitionException {
-		TigerParser.else_stmt_return retval = new TigerParser.else_stmt_return();
+	// $ANTLR start "optional_subscript"
+	// grammar/Tiger.g:212:1: optional_subscript : ( LBRACK row= index_expr RBRACK ( LBRACK width= index_expr RBRACK )? -> $row $width|);
+	public final TigerParser.optional_subscript_return optional_subscript() throws RecognitionException {
+		TigerParser.optional_subscript_return retval = new TigerParser.optional_subscript_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ELSE132=null;
-		ParserRuleReturnScope stat_seq133 =null;
+		Token LBRACK131=null;
+		Token RBRACK132=null;
+		Token LBRACK133=null;
+		Token RBRACK134=null;
+		ParserRuleReturnScope row =null;
+		ParserRuleReturnScope width =null;
 
-		Object ELSE132_tree=null;
-		RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
-		RewriteRuleSubtreeStream stream_stat_seq=new RewriteRuleSubtreeStream(adaptor,"rule stat_seq");
+		Object LBRACK131_tree=null;
+		Object RBRACK132_tree=null;
+		Object LBRACK133_tree=null;
+		Object RBRACK134_tree=null;
+		RewriteRuleTokenStream stream_RBRACK=new RewriteRuleTokenStream(adaptor,"token RBRACK");
+		RewriteRuleTokenStream stream_LBRACK=new RewriteRuleTokenStream(adaptor,"token LBRACK");
+		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
 
 		try {
-			// grammar/Tiger.g:200:2: ( ELSE stat_seq -> stat_seq |)
-			int alt22=2;
-			int LA22_0 = input.LA(1);
-			if ( (LA22_0==ELSE) ) {
-				alt22=1;
+			// grammar/Tiger.g:213:2: ( LBRACK row= index_expr RBRACK ( LBRACK width= index_expr RBRACK )? -> $row $width|)
+			int alt27=2;
+			int LA27_0 = input.LA(1);
+			if ( (LA27_0==LBRACK) ) {
+				alt27=1;
 			}
-			else if ( (LA22_0==ENDIF) ) {
-				alt22=2;
+			else if ( (LA27_0==AND||LA27_0==ASSIGN||LA27_0==COMMA||(LA27_0 >= DIV && LA27_0 <= DO)||LA27_0==EQ||(LA27_0 >= GEQ && LA27_0 <= GREATER)||(LA27_0 >= LEQ && LA27_0 <= LESSER)||(LA27_0 >= MINUS && LA27_0 <= NEQ)||LA27_0==OR||LA27_0==PLUS||(LA27_0 >= RPAREN && LA27_0 <= SEMI)||LA27_0==THEN) ) {
+				alt27=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 22, 0, input);
+					new NoViableAltException("", 27, 0, input);
 				throw nvae;
 			}
 
-			switch (alt22) {
+			switch (alt27) {
 				case 1 :
-					// grammar/Tiger.g:200:4: ELSE stat_seq
+					// grammar/Tiger.g:213:4: LBRACK row= index_expr RBRACK ( LBRACK width= index_expr RBRACK )?
 					{
-					ELSE132=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_stmt1139);  
-					stream_ELSE.add(ELSE132);
+					LBRACK131=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_optional_subscript1255);  
+					stream_LBRACK.add(LBRACK131);
 
-					pushFollow(FOLLOW_stat_seq_in_else_stmt1141);
-					stat_seq133=stat_seq();
+					pushFollow(FOLLOW_index_expr_in_optional_subscript1259);
+					row=index_expr();
 					state._fsp--;
 
-					stream_stat_seq.add(stat_seq133.getTree());
+					stream_index_expr.add(row.getTree());
+					RBRACK132=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_optional_subscript1261);  
+					stream_RBRACK.add(RBRACK132);
+
+					// grammar/Tiger.g:213:33: ( LBRACK width= index_expr RBRACK )?
+					int alt26=2;
+					int LA26_0 = input.LA(1);
+					if ( (LA26_0==LBRACK) ) {
+						alt26=1;
+					}
+					switch (alt26) {
+						case 1 :
+							// grammar/Tiger.g:213:34: LBRACK width= index_expr RBRACK
+							{
+							LBRACK133=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_optional_subscript1264);  
+							stream_LBRACK.add(LBRACK133);
+
+							pushFollow(FOLLOW_index_expr_in_optional_subscript1268);
+							width=index_expr();
+							state._fsp--;
+
+							stream_index_expr.add(width.getTree());
+							RBRACK134=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_optional_subscript1270);  
+							stream_RBRACK.add(RBRACK134);
+
+							}
+							break;
+
+					}
+
 					// AST REWRITE
-					// elements: stat_seq
+					// elements: width, row
 					// token labels: 
-					// rule labels: retval
+					// rule labels: width, row, retval
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_width=new RewriteRuleSubtreeStream(adaptor,"rule width",width!=null?width.getTree():null);
+					RewriteRuleSubtreeStream stream_row=new RewriteRuleSubtreeStream(adaptor,"rule row",row!=null?row.getTree():null);
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 200:18: -> stat_seq
+					// 213:67: -> $row $width
 					{
-						adaptor.addChild(root_0, stream_stat_seq.nextTree());
+						adaptor.addChild(root_0, stream_row.nextTree());
+						adaptor.addChild(root_0, stream_width.nextTree());
 					}
 
 
@@ -3915,7 +3834,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:202:2: 
+					// grammar/Tiger.g:215:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -3940,7 +3859,7 @@ public class TigerParser extends Parser {
 		}
 		return retval;
 	}
-	// $ANTLR end "else_stmt"
+	// $ANTLR end "optional_subscript"
 
 
 	public static class constant_return extends ParserRuleReturnScope {
@@ -3951,28 +3870,28 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "constant"
-	// grammar/Tiger.g:204:1: constant : ( INTLIT | FIXEDPTLIT );
+	// grammar/Tiger.g:217:1: constant : ( INTLIT | FIXEDPTLIT );
 	public final TigerParser.constant_return constant() throws RecognitionException {
 		TigerParser.constant_return retval = new TigerParser.constant_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token set134=null;
+		Token set135=null;
 
-		Object set134_tree=null;
+		Object set135_tree=null;
 
 		try {
-			// grammar/Tiger.g:205:2: ( INTLIT | FIXEDPTLIT )
+			// grammar/Tiger.g:218:2: ( INTLIT | FIXEDPTLIT )
 			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			set134=input.LT(1);
+			set135=input.LT(1);
 			if ( input.LA(1)==FIXEDPTLIT||input.LA(1)==INTLIT ) {
 				input.consume();
-				adaptor.addChild(root_0, (Object)adaptor.create(set134));
+				adaptor.addChild(root_0, (Object)adaptor.create(set135));
 				state.errorRecovery=false;
 			}
 			else {
@@ -4000,380 +3919,6 @@ public class TigerParser extends Parser {
 	// $ANTLR end "constant"
 
 
-	public static class binary_operator_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "binary_operator"
-	// grammar/Tiger.g:209:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR );
-	public final TigerParser.binary_operator_return binary_operator() throws RecognitionException {
-		TigerParser.binary_operator_return retval = new TigerParser.binary_operator_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token set135=null;
-
-		Object set135_tree=null;
-
-		try {
-			// grammar/Tiger.g:210:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR )
-			// grammar/Tiger.g:
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			set135=input.LT(1);
-			if ( input.LA(1)==AND||input.LA(1)==DIV||input.LA(1)==EQ||(input.LA(1) >= GEQ && input.LA(1) <= GREATER)||(input.LA(1) >= LEQ && input.LA(1) <= LESSER)||(input.LA(1) >= MINUS && input.LA(1) <= NEQ)||input.LA(1)==OR||input.LA(1)==PLUS ) {
-				input.consume();
-				adaptor.addChild(root_0, (Object)adaptor.create(set135));
-				state.errorRecovery=false;
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				throw mse;
-			}
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "binary_operator"
-
-
-	public static class array_dimensions_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "array_dimensions"
-	// grammar/Tiger.g:224:1: array_dimensions : array_dimension ( array_dimension )? ;
-	public final TigerParser.array_dimensions_return array_dimensions() throws RecognitionException {
-		TigerParser.array_dimensions_return retval = new TigerParser.array_dimensions_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		ParserRuleReturnScope array_dimension136 =null;
-		ParserRuleReturnScope array_dimension137 =null;
-
-
-		try {
-			// grammar/Tiger.g:225:2: ( array_dimension ( array_dimension )? )
-			// grammar/Tiger.g:225:4: array_dimension ( array_dimension )?
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			pushFollow(FOLLOW_array_dimension_in_array_dimensions1243);
-			array_dimension136=array_dimension();
-			state._fsp--;
-
-			adaptor.addChild(root_0, array_dimension136.getTree());
-
-			// grammar/Tiger.g:225:20: ( array_dimension )?
-			int alt23=2;
-			int LA23_0 = input.LA(1);
-			if ( (LA23_0==LBRACK) ) {
-				alt23=1;
-			}
-			switch (alt23) {
-				case 1 :
-					// grammar/Tiger.g:225:20: array_dimension
-					{
-					pushFollow(FOLLOW_array_dimension_in_array_dimensions1245);
-					array_dimension137=array_dimension();
-					state._fsp--;
-
-					adaptor.addChild(root_0, array_dimension137.getTree());
-
-					}
-					break;
-
-			}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "array_dimensions"
-
-
-	public static class array_dimension_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "array_dimension"
-	// grammar/Tiger.g:228:1: array_dimension : ( LBRACK INTLIT RBRACK ) -> INTLIT ;
-	public final TigerParser.array_dimension_return array_dimension() throws RecognitionException {
-		TigerParser.array_dimension_return retval = new TigerParser.array_dimension_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token LBRACK138=null;
-		Token INTLIT139=null;
-		Token RBRACK140=null;
-
-		Object LBRACK138_tree=null;
-		Object INTLIT139_tree=null;
-		Object RBRACK140_tree=null;
-		RewriteRuleTokenStream stream_RBRACK=new RewriteRuleTokenStream(adaptor,"token RBRACK");
-		RewriteRuleTokenStream stream_LBRACK=new RewriteRuleTokenStream(adaptor,"token LBRACK");
-		RewriteRuleTokenStream stream_INTLIT=new RewriteRuleTokenStream(adaptor,"token INTLIT");
-
-		try {
-			// grammar/Tiger.g:229:2: ( ( LBRACK INTLIT RBRACK ) -> INTLIT )
-			// grammar/Tiger.g:229:4: ( LBRACK INTLIT RBRACK )
-			{
-			// grammar/Tiger.g:229:4: ( LBRACK INTLIT RBRACK )
-			// grammar/Tiger.g:229:5: LBRACK INTLIT RBRACK
-			{
-			LBRACK138=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_array_dimension1258);  
-			stream_LBRACK.add(LBRACK138);
-
-			INTLIT139=(Token)match(input,INTLIT,FOLLOW_INTLIT_in_array_dimension1260);  
-			stream_INTLIT.add(INTLIT139);
-
-			RBRACK140=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_array_dimension1262);  
-			stream_RBRACK.add(RBRACK140);
-
-			}
-
-			// AST REWRITE
-			// elements: INTLIT
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (Object)adaptor.nil();
-			// 229:27: -> INTLIT
-			{
-				adaptor.addChild(root_0, stream_INTLIT.nextNode());
-			}
-
-
-			retval.tree = root_0;
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "array_dimension"
-
-
-	public static class array_subscripts_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "array_subscripts"
-	// grammar/Tiger.g:232:1: array_subscripts : array_subscript ( array_subscript )? ;
-	public final TigerParser.array_subscripts_return array_subscripts() throws RecognitionException {
-		TigerParser.array_subscripts_return retval = new TigerParser.array_subscripts_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		ParserRuleReturnScope array_subscript141 =null;
-		ParserRuleReturnScope array_subscript142 =null;
-
-
-		try {
-			// grammar/Tiger.g:233:2: ( array_subscript ( array_subscript )? )
-			// grammar/Tiger.g:233:4: array_subscript ( array_subscript )?
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			pushFollow(FOLLOW_array_subscript_in_array_subscripts1278);
-			array_subscript141=array_subscript();
-			state._fsp--;
-
-			adaptor.addChild(root_0, array_subscript141.getTree());
-
-			// grammar/Tiger.g:233:20: ( array_subscript )?
-			int alt24=2;
-			int LA24_0 = input.LA(1);
-			if ( (LA24_0==LBRACK) ) {
-				alt24=1;
-			}
-			switch (alt24) {
-				case 1 :
-					// grammar/Tiger.g:233:20: array_subscript
-					{
-					pushFollow(FOLLOW_array_subscript_in_array_subscripts1280);
-					array_subscript142=array_subscript();
-					state._fsp--;
-
-					adaptor.addChild(root_0, array_subscript142.getTree());
-
-					}
-					break;
-
-			}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "array_subscripts"
-
-
-	public static class array_subscript_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "array_subscript"
-	// grammar/Tiger.g:236:1: array_subscript : ( LBRACK index_expr RBRACK ) -> index_expr ;
-	public final TigerParser.array_subscript_return array_subscript() throws RecognitionException {
-		TigerParser.array_subscript_return retval = new TigerParser.array_subscript_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token LBRACK143=null;
-		Token RBRACK145=null;
-		ParserRuleReturnScope index_expr144 =null;
-
-		Object LBRACK143_tree=null;
-		Object RBRACK145_tree=null;
-		RewriteRuleTokenStream stream_RBRACK=new RewriteRuleTokenStream(adaptor,"token RBRACK");
-		RewriteRuleTokenStream stream_LBRACK=new RewriteRuleTokenStream(adaptor,"token LBRACK");
-		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
-
-		try {
-			// grammar/Tiger.g:237:2: ( ( LBRACK index_expr RBRACK ) -> index_expr )
-			// grammar/Tiger.g:237:4: ( LBRACK index_expr RBRACK )
-			{
-			// grammar/Tiger.g:237:4: ( LBRACK index_expr RBRACK )
-			// grammar/Tiger.g:237:5: LBRACK index_expr RBRACK
-			{
-			LBRACK143=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_array_subscript1293);  
-			stream_LBRACK.add(LBRACK143);
-
-			pushFollow(FOLLOW_index_expr_in_array_subscript1295);
-			index_expr144=index_expr();
-			state._fsp--;
-
-			stream_index_expr.add(index_expr144.getTree());
-			RBRACK145=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_array_subscript1297);  
-			stream_RBRACK.add(RBRACK145);
-
-			}
-
-			// AST REWRITE
-			// elements: index_expr
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (Object)adaptor.nil();
-			// 237:31: -> index_expr
-			{
-				adaptor.addChild(root_0, stream_index_expr.nextTree());
-			}
-
-
-			retval.tree = root_0;
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "array_subscript"
-
-
 	public static class index_expr_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
@@ -4382,33 +3927,33 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr"
-	// grammar/Tiger.g:240:1: index_expr : index_expr_head index_expr_tail -> ^( EXPR index_expr_head ( index_expr_tail )? ) ;
+	// grammar/Tiger.g:222:1: index_expr : index_expr_head index_expr_tail -> ^( EXPR index_expr_head ( index_expr_tail )? ) ;
 	public final TigerParser.index_expr_return index_expr() throws RecognitionException {
 		TigerParser.index_expr_return retval = new TigerParser.index_expr_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope index_expr_head146 =null;
-		ParserRuleReturnScope index_expr_tail147 =null;
+		ParserRuleReturnScope index_expr_head136 =null;
+		ParserRuleReturnScope index_expr_tail137 =null;
 
 		RewriteRuleSubtreeStream stream_index_expr_head=new RewriteRuleSubtreeStream(adaptor,"rule index_expr_head");
 		RewriteRuleSubtreeStream stream_index_expr_tail=new RewriteRuleSubtreeStream(adaptor,"rule index_expr_tail");
 
 		try {
-			// grammar/Tiger.g:241:2: ( index_expr_head index_expr_tail -> ^( EXPR index_expr_head ( index_expr_tail )? ) )
-			// grammar/Tiger.g:241:4: index_expr_head index_expr_tail
+			// grammar/Tiger.g:223:2: ( index_expr_head index_expr_tail -> ^( EXPR index_expr_head ( index_expr_tail )? ) )
+			// grammar/Tiger.g:223:4: index_expr_head index_expr_tail
 			{
-			pushFollow(FOLLOW_index_expr_head_in_index_expr1313);
-			index_expr_head146=index_expr_head();
+			pushFollow(FOLLOW_index_expr_head_in_index_expr1311);
+			index_expr_head136=index_expr_head();
 			state._fsp--;
 
-			stream_index_expr_head.add(index_expr_head146.getTree());
-			pushFollow(FOLLOW_index_expr_tail_in_index_expr1315);
-			index_expr_tail147=index_expr_tail();
+			stream_index_expr_head.add(index_expr_head136.getTree());
+			pushFollow(FOLLOW_index_expr_tail_in_index_expr1313);
+			index_expr_tail137=index_expr_tail();
 			state._fsp--;
 
-			stream_index_expr_tail.add(index_expr_tail147.getTree());
+			stream_index_expr_tail.add(index_expr_tail137.getTree());
 			// AST REWRITE
 			// elements: index_expr_tail, index_expr_head
 			// token labels: 
@@ -4420,14 +3965,14 @@ public class TigerParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (Object)adaptor.nil();
-			// 241:36: -> ^( EXPR index_expr_head ( index_expr_tail )? )
+			// 223:36: -> ^( EXPR index_expr_head ( index_expr_tail )? )
 			{
-				// grammar/Tiger.g:241:39: ^( EXPR index_expr_head ( index_expr_tail )? )
+				// grammar/Tiger.g:223:39: ^( EXPR index_expr_head ( index_expr_tail )? )
 				{
 				Object root_1 = (Object)adaptor.nil();
 				root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPR, "EXPR"), root_1);
 				adaptor.addChild(root_1, stream_index_expr_head.nextTree());
-				// grammar/Tiger.g:241:62: ( index_expr_tail )?
+				// grammar/Tiger.g:223:62: ( index_expr_tail )?
 				if ( stream_index_expr_tail.hasNext() ) {
 					adaptor.addChild(root_1, stream_index_expr_tail.nextTree());
 				}
@@ -4470,28 +4015,28 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr_head"
-	// grammar/Tiger.g:244:1: index_expr_head : ( INTLIT | ID );
+	// grammar/Tiger.g:226:1: index_expr_head : ( INTLIT | ID );
 	public final TigerParser.index_expr_head_return index_expr_head() throws RecognitionException {
 		TigerParser.index_expr_head_return retval = new TigerParser.index_expr_head_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token set148=null;
+		Token set138=null;
 
-		Object set148_tree=null;
+		Object set138_tree=null;
 
 		try {
-			// grammar/Tiger.g:245:2: ( INTLIT | ID )
+			// grammar/Tiger.g:227:2: ( INTLIT | ID )
 			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			set148=input.LT(1);
+			set138=input.LT(1);
 			if ( input.LA(1)==ID||input.LA(1)==INTLIT ) {
 				input.consume();
-				adaptor.addChild(root_0, (Object)adaptor.create(set148));
+				adaptor.addChild(root_0, (Object)adaptor.create(set138));
 				state.errorRecovery=false;
 			}
 			else {
@@ -4527,53 +4072,53 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_expr_tail"
-	// grammar/Tiger.g:249:1: index_expr_tail : ( ( index_oper index_expr ) -> ^( index_oper index_expr ) |);
+	// grammar/Tiger.g:231:1: index_expr_tail : ( ( index_oper index_expr ) -> ^( index_oper index_expr ) |);
 	public final TigerParser.index_expr_tail_return index_expr_tail() throws RecognitionException {
 		TigerParser.index_expr_tail_return retval = new TigerParser.index_expr_tail_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope index_oper149 =null;
-		ParserRuleReturnScope index_expr150 =null;
+		ParserRuleReturnScope index_oper139 =null;
+		ParserRuleReturnScope index_expr140 =null;
 
 		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
 		RewriteRuleSubtreeStream stream_index_oper=new RewriteRuleSubtreeStream(adaptor,"rule index_oper");
 
 		try {
-			// grammar/Tiger.g:250:2: ( ( index_oper index_expr ) -> ^( index_oper index_expr ) |)
-			int alt25=2;
-			int LA25_0 = input.LA(1);
-			if ( ((LA25_0 >= MINUS && LA25_0 <= MULT)||LA25_0==PLUS) ) {
-				alt25=1;
+			// grammar/Tiger.g:232:2: ( ( index_oper index_expr ) -> ^( index_oper index_expr ) |)
+			int alt28=2;
+			int LA28_0 = input.LA(1);
+			if ( ((LA28_0 >= MINUS && LA28_0 <= MULT)||LA28_0==PLUS) ) {
+				alt28=1;
 			}
-			else if ( (LA25_0==DO||LA25_0==RBRACK||LA25_0==TO) ) {
-				alt25=2;
+			else if ( (LA28_0==DO||LA28_0==RBRACK||LA28_0==TO) ) {
+				alt28=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 25, 0, input);
+					new NoViableAltException("", 28, 0, input);
 				throw nvae;
 			}
 
-			switch (alt25) {
+			switch (alt28) {
 				case 1 :
-					// grammar/Tiger.g:250:4: ( index_oper index_expr )
+					// grammar/Tiger.g:232:4: ( index_oper index_expr )
 					{
-					// grammar/Tiger.g:250:4: ( index_oper index_expr )
-					// grammar/Tiger.g:250:5: index_oper index_expr
+					// grammar/Tiger.g:232:4: ( index_oper index_expr )
+					// grammar/Tiger.g:232:5: index_oper index_expr
 					{
-					pushFollow(FOLLOW_index_oper_in_index_expr_tail1354);
-					index_oper149=index_oper();
+					pushFollow(FOLLOW_index_oper_in_index_expr_tail1352);
+					index_oper139=index_oper();
 					state._fsp--;
 
-					stream_index_oper.add(index_oper149.getTree());
-					pushFollow(FOLLOW_index_expr_in_index_expr_tail1356);
-					index_expr150=index_expr();
+					stream_index_oper.add(index_oper139.getTree());
+					pushFollow(FOLLOW_index_expr_in_index_expr_tail1354);
+					index_expr140=index_expr();
 					state._fsp--;
 
-					stream_index_expr.add(index_expr150.getTree());
+					stream_index_expr.add(index_expr140.getTree());
 					}
 
 					// AST REWRITE
@@ -4587,9 +4132,9 @@ public class TigerParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
-					// 250:28: -> ^( index_oper index_expr )
+					// 232:28: -> ^( index_oper index_expr )
 					{
-						// grammar/Tiger.g:250:31: ^( index_oper index_expr )
+						// grammar/Tiger.g:232:31: ^( index_oper index_expr )
 						{
 						Object root_1 = (Object)adaptor.nil();
 						root_1 = (Object)adaptor.becomeRoot(stream_index_oper.nextNode(), root_1);
@@ -4605,7 +4150,7 @@ public class TigerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// grammar/Tiger.g:252:2: 
+					// grammar/Tiger.g:234:2: 
 					{
 					root_0 = (Object)adaptor.nil();
 
@@ -4641,28 +4186,28 @@ public class TigerParser extends Parser {
 
 
 	// $ANTLR start "index_oper"
-	// grammar/Tiger.g:254:1: index_oper : ( PLUS | MINUS | MULT );
+	// grammar/Tiger.g:236:1: index_oper : ( PLUS | MINUS | MULT );
 	public final TigerParser.index_oper_return index_oper() throws RecognitionException {
 		TigerParser.index_oper_return retval = new TigerParser.index_oper_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token set151=null;
+		Token set141=null;
 
-		Object set151_tree=null;
+		Object set141_tree=null;
 
 		try {
-			// grammar/Tiger.g:255:2: ( PLUS | MINUS | MULT )
+			// grammar/Tiger.g:237:2: ( PLUS | MINUS | MULT )
 			// grammar/Tiger.g:
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			set151=input.LT(1);
+			set141=input.LT(1);
 			if ( (input.LA(1) >= MINUS && input.LA(1) <= MULT)||input.LA(1)==PLUS ) {
 				input.consume();
-				adaptor.addChild(root_0, (Object)adaptor.create(set151));
+				adaptor.addChild(root_0, (Object)adaptor.create(set141));
 				state.errorRecovery=false;
 			}
 			else {
@@ -4689,156 +4234,210 @@ public class TigerParser extends Parser {
 	}
 	// $ANTLR end "index_oper"
 
+
+	public static class binary_operator_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "binary_operator"
+	// grammar/Tiger.g:242:1: binary_operator : ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR );
+	public final TigerParser.binary_operator_return binary_operator() throws RecognitionException {
+		TigerParser.binary_operator_return retval = new TigerParser.binary_operator_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token set142=null;
+
+		Object set142_tree=null;
+
+		try {
+			// grammar/Tiger.g:243:2: ( PLUS | MINUS | MULT | DIV | EQ | NEQ | LESSER | GREATER | LEQ | GEQ | AND | OR )
+			// grammar/Tiger.g:
+			{
+			root_0 = (Object)adaptor.nil();
+
+
+			set142=input.LT(1);
+			if ( input.LA(1)==AND||input.LA(1)==DIV||input.LA(1)==EQ||(input.LA(1) >= GEQ && input.LA(1) <= GREATER)||(input.LA(1) >= LEQ && input.LA(1) <= LESSER)||(input.LA(1) >= MINUS && input.LA(1) <= NEQ)||input.LA(1)==OR||input.LA(1)==PLUS ) {
+				input.consume();
+				adaptor.addChild(root_0, (Object)adaptor.create(set142));
+				state.errorRecovery=false;
+			}
+			else {
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				throw mse;
+			}
+			}
+
+			retval.stop = input.LT(-1);
+
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "binary_operator"
+
 	// Delegated rules
 
 
 
-	public static final BitSet FOLLOW_type_declaration_list_in_tiger_program120 = new BitSet(new long[]{0x0000000120400000L});
-	public static final BitSet FOLLOW_function_declaration_list_in_tiger_program122 = new BitSet(new long[]{0x0000000000000000L});
-	public static final BitSet FOLLOW_EOF_in_tiger_program124 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TYPE_in_type_declaration_list160 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_ID_in_type_declaration_list162 = new BitSet(new long[]{0x0000000000080000L});
-	public static final BitSet FOLLOW_EQ_in_type_declaration_list164 = new BitSet(new long[]{0x0000000100400020L});
-	public static final BitSet FOLLOW_type_in_type_declaration_list166 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_type_declaration_list168 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_type_declaration_list_in_type_declaration_list170 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_type_id_in_function_declaration_list198 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_FUNCTION_in_function_declaration_list200 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_ID_in_function_declaration_list202 = new BitSet(new long[]{0x0000004000000000L});
-	public static final BitSet FOLLOW_LPAREN_in_function_declaration_list204 = new BitSet(new long[]{0x0008000020000000L});
-	public static final BitSet FOLLOW_param_list_in_function_declaration_list206 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_function_declaration_list208 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_BEGIN_in_function_declaration_list210 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_list_in_function_declaration_list212 = new BitSet(new long[]{0x0000000000010000L});
-	public static final BitSet FOLLOW_END_in_function_declaration_list214 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_function_declaration_list216 = new BitSet(new long[]{0x0000000120400000L});
-	public static final BitSet FOLLOW_function_declaration_list_in_function_declaration_list219 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VAR_in_var_declaration_list254 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_id_list_in_var_declaration_list256 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COLON_in_var_declaration_list258 = new BitSet(new long[]{0x0000000120400000L});
-	public static final BitSet FOLLOW_type_id_in_var_declaration_list260 = new BitSet(new long[]{0x0010000000000040L});
-	public static final BitSet FOLLOW_optional_init_in_var_declaration_list262 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_var_declaration_list264 = new BitSet(new long[]{0x0400000000000000L});
-	public static final BitSet FOLLOW_var_declaration_list_in_var_declaration_list266 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_param_list305 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COLON_in_param_list307 = new BitSet(new long[]{0x0000000120400000L});
-	public static final BitSet FOLLOW_type_id_in_param_list309 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_param_list_tail_in_param_list311 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_param_list_tail339 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_param_list_in_param_list_tail341 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_in_block_list361 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_tail_in_block_list363 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_in_block_tail374 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_tail_in_block_tail376 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BEGIN_in_block392 = new BitSet(new long[]{0x25040000A1000280L});
-	public static final BitSet FOLLOW_type_declaration_list_in_block394 = new BitSet(new long[]{0x24040000A1000280L});
-	public static final BitSet FOLLOW_var_declaration_list_in_block396 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_seq_in_block398 = new BitSet(new long[]{0x0000000000010000L});
-	public static final BitSet FOLLOW_END_in_block400 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_block402 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_type_in_type436 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARRAY_in_type442 = new BitSet(new long[]{0x0000000800000000L});
-	public static final BitSet FOLLOW_array_dimensions_in_type444 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_OF_in_type446 = new BitSet(new long[]{0x0000000100400000L});
-	public static final BitSet FOLLOW_base_type_in_type448 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_type_in_type_id470 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_type_id475 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VAR_in_var_declaration503 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_id_list_in_var_declaration505 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COLON_in_var_declaration507 = new BitSet(new long[]{0x0000000120400000L});
-	public static final BitSet FOLLOW_type_id_in_var_declaration509 = new BitSet(new long[]{0x0010000000000040L});
-	public static final BitSet FOLLOW_optional_init_in_var_declaration511 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_var_declaration513 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASSIGN_in_optional_init538 = new BitSet(new long[]{0x0000000200800000L});
-	public static final BitSet FOLLOW_constant_in_optional_init540 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_id_list559 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_id_list_tail_in_id_list561 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_id_list_tail572 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_ID_in_id_list_tail574 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_id_list_tail_in_id_list_tail576 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expr_in_expr_list601 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_expr_list_tail_in_expr_list603 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_expr_list_tail631 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_expr_list_tail633 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_expr_list_tail_in_expr_list_tail635 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expr_head_in_expr658 = new BitSet(new long[]{0x0000573018082010L});
-	public static final BitSet FOLLOW_expr_tail_in_expr660 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_binary_operator_in_expr_tail672 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_expr_tail674 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expr_head_base_in_expr_head698 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_expr_head704 = new BitSet(new long[]{0x0000000800000000L});
-	public static final BitSet FOLLOW_optional_subscript_in_expr_head706 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constant_in_expr_head_base729 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPAREN_in_expr_head_base735 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_expr_head_base737 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_expr_head_base739 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_stat_in_stat_seq759 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_tail_in_stat_seq761 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_stat_in_stat_tail783 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_tail_in_stat_tail785 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_if_stmt_in_stat806 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WHILE_in_stat812 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_stat814 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_DO_in_stat816 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_seq_in_stat818 = new BitSet(new long[]{0x0000000000020000L});
-	public static final BitSet FOLLOW_ENDDO_in_stat820 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat822 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FOR_in_stat839 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_ID_in_stat841 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ASSIGN_in_stat843 = new BitSet(new long[]{0x0000000220000000L});
-	public static final BitSet FOLLOW_range_in_stat845 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_DO_in_stat847 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_seq_in_stat849 = new BitSet(new long[]{0x0000000000020000L});
-	public static final BitSet FOLLOW_ENDDO_in_stat851 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat853 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BREAK_in_stat869 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat871 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_RETURN_in_stat880 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_stat882 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat884 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_in_stat897 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_stat902 = new BitSet(new long[]{0x0000004800000040L});
-	public static final BitSet FOLLOW_LPAREN_in_stat913 = new BitSet(new long[]{0x0008004220800000L});
-	public static final BitSet FOLLOW_expr_list_in_stat915 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_stat917 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_optional_subscript_in_stat941 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_ASSIGN_in_stat943 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_statement_assignment_in_stat945 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_stat970 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_array_subscripts_in_optional_subscript981 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_index_expr_in_range999 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_TO_in_range1001 = new BitSet(new long[]{0x0000000220000000L});
-	public static final BitSet FOLLOW_index_expr_in_range1005 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_statement_assignment1026 = new BitSet(new long[]{0x0000577818082010L});
-	public static final BitSet FOLLOW_statement_assignment_id_in_statement_assignment1028 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expr_head_base_in_statement_assignment1046 = new BitSet(new long[]{0x0000573018082010L});
-	public static final BitSet FOLLOW_expr_tail_in_statement_assignment1048 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPAREN_in_statement_assignment_id1072 = new BitSet(new long[]{0x0008004220800000L});
-	public static final BitSet FOLLOW_expr_list_in_statement_assignment_id1074 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_statement_assignment_id1076 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_optional_subscript_in_statement_assignment_id1087 = new BitSet(new long[]{0x0000573018082010L});
-	public static final BitSet FOLLOW_expr_tail_in_statement_assignment_id1089 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_if_stmt1101 = new BitSet(new long[]{0x0000004220800000L});
-	public static final BitSet FOLLOW_expr_in_if_stmt1103 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_THEN_in_if_stmt1105 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_seq_in_if_stmt1107 = new BitSet(new long[]{0x0000000000048000L});
-	public static final BitSet FOLLOW_else_stmt_in_if_stmt1109 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_ENDIF_in_if_stmt1111 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_SEMI_in_if_stmt1113 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ELSE_in_else_stmt1139 = new BitSet(new long[]{0x20040000A1000280L});
-	public static final BitSet FOLLOW_stat_seq_in_else_stmt1141 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_array_dimension_in_array_dimensions1243 = new BitSet(new long[]{0x0000000800000002L});
-	public static final BitSet FOLLOW_array_dimension_in_array_dimensions1245 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LBRACK_in_array_dimension1258 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_INTLIT_in_array_dimension1260 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_array_dimension1262 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_array_subscript_in_array_subscripts1278 = new BitSet(new long[]{0x0000000800000002L});
-	public static final BitSet FOLLOW_array_subscript_in_array_subscripts1280 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LBRACK_in_array_subscript1293 = new BitSet(new long[]{0x0000000220000000L});
-	public static final BitSet FOLLOW_index_expr_in_array_subscript1295 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_RBRACK_in_array_subscript1297 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_index_expr_head_in_index_expr1313 = new BitSet(new long[]{0x0000430000000000L});
-	public static final BitSet FOLLOW_index_expr_tail_in_index_expr1315 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_index_oper_in_index_expr_tail1354 = new BitSet(new long[]{0x0000000220000000L});
-	public static final BitSet FOLLOW_index_expr_in_index_expr_tail1356 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_type_declaration_list_in_tiger_program136 = new BitSet(new long[]{0x0000000840800000L,0x0000000000000001L});
+	public static final BitSet FOLLOW_function_declaration_list_in_tiger_program138 = new BitSet(new long[]{0x0000000000000000L});
+	public static final BitSet FOLLOW_EOF_in_tiger_program140 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TYPE_in_type_declaration_list176 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_ID_in_type_declaration_list178 = new BitSet(new long[]{0x0000000000100000L});
+	public static final BitSet FOLLOW_EQ_in_type_declaration_list180 = new BitSet(new long[]{0x0000000800800020L});
+	public static final BitSet FOLLOW_type_in_type_declaration_list182 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_type_declaration_list184 = new BitSet(new long[]{0x1000000000000000L});
+	public static final BitSet FOLLOW_type_declaration_list_in_type_declaration_list186 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_return_type_in_function_declaration_list214 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_FUNCTION_in_function_declaration_list216 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_ID_in_function_declaration_list218 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_LPAREN_in_function_declaration_list220 = new BitSet(new long[]{0x0080000040000000L});
+	public static final BitSet FOLLOW_param_list_in_function_declaration_list222 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_function_declaration_list224 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_BEGIN_in_function_declaration_list226 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_list_in_function_declaration_list228 = new BitSet(new long[]{0x0000000000020000L});
+	public static final BitSet FOLLOW_END_in_function_declaration_list230 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_function_declaration_list232 = new BitSet(new long[]{0x0000000840800000L,0x0000000000000001L});
+	public static final BitSet FOLLOW_function_declaration_list_in_function_declaration_list235 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VAR_in_var_declaration_list270 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_id_list_in_var_declaration_list272 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COLON_in_var_declaration_list274 = new BitSet(new long[]{0x0000000840800000L});
+	public static final BitSet FOLLOW_type_id_in_var_declaration_list276 = new BitSet(new long[]{0x0100000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_var_declaration_list279 = new BitSet(new long[]{0x0000001001000000L});
+	public static final BitSet FOLLOW_constant_in_var_declaration_list281 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_var_declaration_list285 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_var_declaration_list_in_var_declaration_list287 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_param_list326 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COLON_in_param_list328 = new BitSet(new long[]{0x0000000840800000L});
+	public static final BitSet FOLLOW_type_id_in_param_list330 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_param_list_tail_in_param_list332 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_param_list_tail360 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_param_list_in_param_list_tail362 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_block_list385 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_tail_in_block_list387 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_block_tail398 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_tail_in_block_tail400 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BEGIN_in_block416 = new BitSet(new long[]{0x5040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_type_declaration_list_in_block418 = new BitSet(new long[]{0x4040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_var_declaration_list_in_block420 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_list_in_block422 = new BitSet(new long[]{0x0000000000020000L});
+	public static final BitSet FOLLOW_END_in_block424 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_block426 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_base_type_in_type464 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARRAY_in_type469 = new BitSet(new long[]{0x0000004000000000L});
+	public static final BitSet FOLLOW_LBRACK_in_type471 = new BitSet(new long[]{0x0000001000000000L});
+	public static final BitSet FOLLOW_INTLIT_in_type475 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_type477 = new BitSet(new long[]{0x0000404000000000L});
+	public static final BitSet FOLLOW_LBRACK_in_type480 = new BitSet(new long[]{0x0000001000000000L});
+	public static final BitSet FOLLOW_INTLIT_in_type484 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_type486 = new BitSet(new long[]{0x0000400000000000L});
+	public static final BitSet FOLLOW_OF_in_type490 = new BitSet(new long[]{0x0000000800800000L});
+	public static final BitSet FOLLOW_base_type_in_type492 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_type_id_in_return_type521 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VOID_in_return_type526 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_base_type_in_type_id537 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_type_id542 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_id_list573 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_id_list_tail_in_id_list575 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_id_list_tail586 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_ID_in_id_list_tail588 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_id_list_tail_in_id_list_tail590 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expr_in_expr_list615 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_expr_list_tail_in_expr_list617 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_expr_list_tail632 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_expr_list_tail634 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_expr_list_tail_in_expr_list_tail636 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expr_isolate_in_expr658 = new BitSet(new long[]{0x0002B98030104012L});
+	public static final BitSet FOLLOW_binary_operator_in_expr670 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_expr672 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constant_in_expr_isolate721 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAREN_in_expr_isolate726 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_expr_isolate728 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_expr_isolate730 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_expr_isolate741 = new BitSet(new long[]{0x0000004000000000L});
+	public static final BitSet FOLLOW_optional_subscript_in_expr_isolate743 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_statement_in_stat_list767 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_tail_in_stat_list769 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_statement_in_stat_tail791 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_tail_in_stat_tail793 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_if_stmt_in_statement814 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WHILE_in_statement819 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_statement821 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_DO_in_statement823 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_list_in_statement825 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_ENDDO_in_statement827 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_statement829 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FOR_in_statement844 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_ID_in_statement846 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_statement848 = new BitSet(new long[]{0x0000001040000000L});
+	public static final BitSet FOLLOW_index_expr_in_statement853 = new BitSet(new long[]{0x0800000000000000L});
+	public static final BitSet FOLLOW_TO_in_statement855 = new BitSet(new long[]{0x0000001040000000L});
+	public static final BitSet FOLLOW_index_expr_in_statement859 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_DO_in_statement862 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_list_in_statement864 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_ENDDO_in_statement866 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_statement868 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BREAK_in_statement891 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_statement893 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_RETURN_in_statement902 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_statement904 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_statement906 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_statement919 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_statement924 = new BitSet(new long[]{0x0000024000000040L});
+	public static final BitSet FOLLOW_LPAREN_in_statement935 = new BitSet(new long[]{0x0080021041000000L});
+	public static final BitSet FOLLOW_expr_list_in_statement937 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_statement939 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_optional_subscript_in_statement963 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_ASSIGN_in_statement965 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_statement_assignment_in_statement967 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_statement992 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_statement_assignment1003 = new BitSet(new long[]{0x0002BBC030104010L});
+	public static final BitSet FOLLOW_statement_assignment_id_in_statement_assignment1005 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_statement_assignment_expr_isolate_in_statement_assignment1021 = new BitSet(new long[]{0x0002B98030104012L});
+	public static final BitSet FOLLOW_binary_operator_in_statement_assignment1038 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_statement_assignment1040 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constant_in_statement_assignment_expr_isolate1100 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAREN_in_statement_assignment_expr_isolate1105 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_statement_assignment_expr_isolate1107 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_statement_assignment_expr_isolate1109 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAREN_in_statement_assignment_id1126 = new BitSet(new long[]{0x0080021041000000L});
+	public static final BitSet FOLLOW_expr_list_in_statement_assignment_id1128 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_RPAREN_in_statement_assignment_id1130 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_optional_subscript_in_statement_assignment_id1140 = new BitSet(new long[]{0x0002B98030104012L});
+	public static final BitSet FOLLOW_binary_operator_in_statement_assignment_id1153 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_statement_assignment_id1155 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_if_stmt1187 = new BitSet(new long[]{0x0000021041000000L});
+	public static final BitSet FOLLOW_expr_in_if_stmt1189 = new BitSet(new long[]{0x0400000000000000L});
+	public static final BitSet FOLLOW_THEN_in_if_stmt1191 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_list_in_if_stmt1195 = new BitSet(new long[]{0x0000000000090000L});
+	public static final BitSet FOLLOW_ELSE_in_if_stmt1206 = new BitSet(new long[]{0x0040000142000280L,0x0000000000000002L});
+	public static final BitSet FOLLOW_stat_list_in_if_stmt1210 = new BitSet(new long[]{0x0000000000080000L});
+	public static final BitSet FOLLOW_ENDIF_in_if_stmt1214 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_SEMI_in_if_stmt1216 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LBRACK_in_optional_subscript1255 = new BitSet(new long[]{0x0000001040000000L});
+	public static final BitSet FOLLOW_index_expr_in_optional_subscript1259 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_optional_subscript1261 = new BitSet(new long[]{0x0000004000000002L});
+	public static final BitSet FOLLOW_LBRACK_in_optional_subscript1264 = new BitSet(new long[]{0x0000001040000000L});
+	public static final BitSet FOLLOW_index_expr_in_optional_subscript1268 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_RBRACK_in_optional_subscript1270 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_index_expr_head_in_index_expr1311 = new BitSet(new long[]{0x0002180000000000L});
+	public static final BitSet FOLLOW_index_expr_tail_in_index_expr1313 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_index_oper_in_index_expr_tail1352 = new BitSet(new long[]{0x0000001040000000L});
+	public static final BitSet FOLLOW_index_expr_in_index_expr_tail1354 = new BitSet(new long[]{0x0000000000000002L});
 }

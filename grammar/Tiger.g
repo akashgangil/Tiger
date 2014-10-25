@@ -25,6 +25,10 @@ tokens {
 	REFERENCE;
 	VARS;
 	VAR;
+	DIMENSION;
+	RANGE;
+	IFTRUE;
+	IFFALSE;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -45,12 +49,12 @@ type_declaration_list
 	;
 
 function_declaration_list
-	:	(type_id FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION type_id ID ^(PARAMS param_list?)) function_declaration_list?
+	:	(return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION return_type ID ^(PARAMS param_list?)) function_declaration_list?
 	|
 	;
 
 var_declaration_list
-	:	(VAR id_list COLON type_id optional_init SEMI var_declaration_list) -> ^(VAR ^(IDS id_list) type_id optional_init?) var_declaration_list?
+	:	(VAR id_list COLON type_id (ASSIGN constant)? SEMI var_declaration_list) -> ^(VAR ^(IDS id_list) type_id constant?) var_declaration_list?
 	|
 	;
 
@@ -67,7 +71,11 @@ param_list_tail
 	:	COMMA param_list -> param_list
 	|	
 	;
-	
+
+/////////////////////////////////////////////////////////////////////
+// Blocks
+/////////////////////////////////////////////////////////////////////
+
 block_list
 	:	block block_tail
 	;
@@ -78,12 +86,21 @@ block_tail
 	;
 
 block
-	:	(BEGIN type_declaration_list var_declaration_list stat_seq END SEMI) -> ^(BLOCK ^(TYPES type_declaration_list?) ^(VARS var_declaration_list?) stat_seq)
+	:	(BEGIN type_declaration_list var_declaration_list stat_list END SEMI) -> ^(BLOCK ^(TYPES type_declaration_list?) ^(VARS var_declaration_list?) stat_list)
 	;
+
+/////////////////////////////////////////////////////////////////////
+// Types
+/////////////////////////////////////////////////////////////////////
 
 type
 	:	base_type
-	|	(ARRAY array_dimensions OF base_type) -> ^(ARRAY array_dimensions base_type)
+	|	ARRAY LBRACK rows=INTLIT RBRACK (LBRACK columns=INTLIT RBRACK)? OF base_type -> ^(ARRAY ^(DIMENSION $rows $columns) base_type)
+	;
+
+return_type
+	:	type_id
+	|	VOID
 	;
 
 type_id
@@ -96,14 +113,9 @@ base_type
 	|	FIXEDPT
 	;
 
-var_declaration
-	:	(VAR id_list COLON type_id optional_init SEMI) -> ^(VAR id_list type_id optional_init?)
-	;
-
-optional_init
-	:	ASSIGN constant -> constant
-	|	
-	;
+/////////////////////////////////////////////////////////////////////
+// Id
+/////////////////////////////////////////////////////////////////////
 
 id_list
 	:	ID id_list_tail
@@ -119,51 +131,45 @@ id_list_tail
 /////////////////////////////////////////////////////////////////////
 
 expr_list
-	:	expr expr_list_tail -> ^(EXPRS expr expr_list_tail?) 
+	:	expr expr_list_tail
 	|	
 	;
 
 expr_list_tail
-	:	(COMMA expr expr_list_tail) -> expr expr_list_tail?
+	:	COMMA expr expr_list_tail -> expr expr_list_tail?
 	|	
 	;
 
 expr
-	:	expr_head expr_tail
+	:	expr_isolate	(
+						:	binary_operator expr	-> ^(binary_operator expr_isolate expr)
+						|							-> ^(expr_isolate)
+						)
 	;
 
-expr_tail
-	:	(binary_operator expr) -> ^(binary_operator expr)
-	|	
-	;
-
-expr_head
-	:	expr_head_base
-	|	(ID	optional_subscript)	-> ^(REFERENCE ID optional_subscript?)
-	;
-
-expr_head_base
+expr_isolate
 	:	constant
-	|	(LPAREN expr RPAREN)	-> expr
+	|	LPAREN expr RPAREN 		-> expr
+	|	ID optional_subscript	-> ^(ID optional_subscript?)
 	;
 
 /////////////////////////////////////////////////////////////////////
 // Statements
 /////////////////////////////////////////////////////////////////////
 
-stat_seq
-	:	stat stat_tail -> ^(STATEMENTS stat stat_tail?)
+stat_list
+	:	statement stat_tail -> ^(STATEMENTS statement stat_tail?)
 	;
 
 stat_tail
-	:	stat stat_tail -> stat stat_tail?
+	:	statement stat_tail -> statement stat_tail?
 	|
 	;
 
-stat
+statement
 	:	if_stmt
-	|	(WHILE expr DO stat_seq ENDDO SEMI) -> ^(WHILE expr stat_seq)
-	|	(FOR ID ASSIGN range DO stat_seq ENDDO SEMI) -> ^(FOR range stat_seq)
+	|	WHILE expr DO stat_list ENDDO SEMI -> ^(WHILE expr stat_list)
+	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR ^(RANGE $start $stop) stat_list)
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
@@ -173,68 +179,44 @@ stat
 			) SEMI
 	;
 
-optional_subscript
-	:	array_subscripts
-	|	
-	;
-
-range
-	:	(start=index_expr TO stop=index_expr) -> $start $stop
-	;
-
 statement_assignment
-	:	(ID statement_assignment_id) -> ^(EXPR ID statement_assignment_id?)
-	|	(expr_head_base expr_tail) -> ^(EXPR expr_head_base expr_tail?)
+	:	ID statement_assignment_id -> ^(EXPR ID statement_assignment_id?)
+	|	statement_assignment_expr_isolate	(
+											:	binary_operator expr	-> ^(binary_operator statement_assignment_expr_isolate expr)
+											|							-> ^(statement_assignment_expr_isolate)
+											)
+	;
+
+// A base expression with the possibility of ID factored out
+statement_assignment_expr_isolate
+	:	constant
+	|	LPAREN expr RPAREN 		-> expr
 	;
 
 statement_assignment_id
-	:	(LPAREN expr_list RPAREN) -> expr_list?
-	|	optional_subscript expr_tail
+	:	LPAREN expr_list RPAREN -> expr_list?
+	|	optional_subscript	(
+							:	binary_operator expr	
+							|	
+							)
 	;
 
 if_stmt
-	:	(IF expr THEN stat_seq else_stmt ENDIF SEMI) -> ^(IF expr stat_seq else_stmt?)
+	:	(IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI) -> ^(IF expr ^(IFTRUE $iftrue) ^(IFFALSE $iffalse?))
 	;
-	
-else_stmt
-	:	ELSE stat_seq -> stat_seq
+
+/////////////////////////////////////////////////////////////////////
+// Array References
+/////////////////////////////////////////////////////////////////////
+
+optional_subscript
+	:	LBRACK row=index_expr RBRACK (LBRACK width=index_expr RBRACK)? -> $row $width
 	|	
 	;
 
 constant
 	:	INTLIT
 	|	FIXEDPTLIT
-	;
-
-binary_operator
-	:	PLUS
-	|	MINUS
-	|	MULT
-	|	DIV
-	|	EQ
-	|	NEQ
-	|	LESSER
-	|	GREATER
-	|	LEQ
-	|	GEQ
-	|	AND
-	|	OR
-	;
-	
-array_dimensions
-	:	array_dimension array_dimension?
-	;
-
-array_dimension
-	:	(LBRACK INTLIT RBRACK) -> INTLIT
-	;
-
-array_subscripts
-	:	array_subscript array_subscript?
-	;
-
-array_subscript
-	:	(LBRACK index_expr RBRACK) -> index_expr
 	;
 
 index_expr
@@ -256,6 +238,21 @@ index_oper
 	|	MINUS
 	|	MULT
 	;
+	
+binary_operator
+	:	PLUS
+	|	MINUS
+	|	MULT
+	|	DIV
+	|	EQ
+	|	NEQ
+	|	LESSER
+	|	GREATER
+	|	LEQ
+	|	GEQ
+	|	AND
+	|	OR
+	;
 
 /////////////////////////////////////////////////////////////////////
 // Lexer
@@ -265,7 +262,6 @@ FUNCTION	: 'function' ;
 BEGIN		: 'begin';
 END			: 'end';
 VOID		: 'void';
-MAIN		: 'main';
 TYPE		: 'type';
 ARRAY		: 'array';
 OF			: 'of';
