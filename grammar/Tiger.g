@@ -11,11 +11,14 @@ options {
 
 tokens {
 	PROGRAM;
+	CONSTANT;
 	TYPES;
 	FUNCS;
 	FUNC;
 	MAIN;
+	BLOCKS;
 	BLOCK;
+	STATEMENTS;
 	PARAMS;
 	EXPR;
 	EXPRS;
@@ -27,8 +30,6 @@ tokens {
 	VAR;
 	DIMENSION;
 	RANGE;
-	IFTRUE;
-	IFFALSE;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -49,7 +50,7 @@ type_declaration_list
 	;
 
 function_declaration_list
-	:	(return_type (FUNCTION name=ID | name=MAIN) LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNC return_type $name ^(PARAMS param_list?)) function_declaration_list?
+	:	(return_type (FUNCTION name=ID | name=MAIN) LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNC return_type $name ^(PARAMS param_list?) ^(BLOCKS block_list)) function_declaration_list?
 	|
 	;
 
@@ -86,7 +87,7 @@ block_tail
 	;
 
 block
-	:	(BEGIN type_declaration_list var_declaration_list stat_list END SEMI) -> ^(BLOCK ^(TYPES type_declaration_list?) ^(VARS var_declaration_list?) stat_list)
+	:	(BEGIN type_declaration_list var_declaration_list stat_list END SEMI) -> ^(BLOCK ^(TYPES type_declaration_list?) ^(VARS var_declaration_list?) ^(STATEMENTS stat_list))
 	;
 
 /////////////////////////////////////////////////////////////////////
@@ -95,7 +96,7 @@ block
 
 type
 	:	base_type
-	|	ARRAY LBRACK rows=INTLIT RBRACK (LBRACK columns=INTLIT RBRACK)? OF base_type -> ^(ARRAY ^(DIMENSION $rows $columns?) base_type)
+	|	ARRAY LBRACK rows=INTLIT RBRACK (LBRACK columns=INTLIT RBRACK)? OF base_type -> base_type $rows $columns?
 	;
 
 return_type
@@ -143,14 +144,14 @@ expr_list_tail
 expr
 	:	expr_isolate	(
 						:	binary_operator expr	-> ^(binary_operator expr_isolate expr)
-						|							-> ^(expr_isolate)
-						)
+						|	
+						)	-> expr_isolate
 	;
 
 expr_isolate
-	:	constant
+	:	constant				-> ^(CONSTANT constant)
 	|	LPAREN expr RPAREN 		-> expr
-	|	ID optional_subscript	-> ^(ID optional_subscript?)
+	|	ID optional_subscript	-> ^(REFERENCE ID optional_subscript?)
 	;
 
 /////////////////////////////////////////////////////////////////////
@@ -158,7 +159,7 @@ expr_isolate
 /////////////////////////////////////////////////////////////////////
 
 stat_list
-	:	statement stat_tail -> ^(STATEMENTS statement stat_tail?)
+	:	statement stat_tail
 	;
 
 stat_tail
@@ -166,43 +167,41 @@ stat_tail
 	|
 	;
 
+
+//
+// Because of special cases this whole thing has to be left factored significantly 
+//
+
 statement
-	:	if_stmt
-	|	WHILE expr DO stat_list ENDDO SEMI -> ^(WHILE expr stat_list)
-	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR ^(RANGE $start $stop) stat_list)
+	:	IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI -> ^(IF expr ^(STATEMENTS $iftrue) ^(STATEMENTS $iffalse?))
+	|	WHILE expr DO stat_list ENDDO SEMI -> ^(WHILE expr ^(STATEMENTS stat_list))
+	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR ^(RANGE $start $stop) ^(STATEMENTS stat_list))
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
-	|	ID 	(	
-			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID expr_list?)
+	|	ID 	(
+			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))
 			|	optional_subscript ASSIGN statement_assignment 	-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) statement_assignment)
 			) SEMI
 	;
 
 statement_assignment
-	:	ID statement_assignment_id -> ^(EXPR ID statement_assignment_id?)
+	:	ID	(
+			:	LPAREN expr_list RPAREN -> ^(INVOKE ID ^(EXPRS expr_list?))
+			|	optional_subscript	(
+									:	binary_operator expr	-> ^(binary_operator ^(REFERENCE ID optional_subscript?) expr)
+									|							-> ^(REFERENCE ID optional_subscript?)
+									)
+			)
 	|	statement_assignment_expr_isolate	(
 											:	binary_operator expr	-> ^(binary_operator statement_assignment_expr_isolate expr)
 											|							-> ^(statement_assignment_expr_isolate)
 											)
 	;
 
-// A base expression with the possibility of ID factored out
 statement_assignment_expr_isolate
 	:	constant
-	|	LPAREN expr RPAREN 		-> expr
-	;
-
-statement_assignment_id
-	:	LPAREN expr_list RPAREN -> expr_list?
-	|	optional_subscript	(
-							:	binary_operator expr	
-							|	
-							)
-	;
-
-if_stmt
-	:	(IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI) -> ^(IF expr ^(IFTRUE $iftrue) ^(IFFALSE $iffalse?))
+	|	LPAREN expr RPAREN -> expr
 	;
 
 /////////////////////////////////////////////////////////////////////
@@ -220,17 +219,15 @@ constant
 	;
 
 index_expr
-	:	index_expr_head index_expr_tail -> ^(EXPR index_expr_head index_expr_tail?)
+	:	index_expr_isolate	(
+							: index_oper index_expr -> ^(index_oper index_expr_isolate index_expr)
+							|
+							) -> index_expr_isolate 
 	;
 
-index_expr_head
-	:	INTLIT
-	|	ID
-	;
-
-index_expr_tail
-	:	(index_oper index_expr) -> ^(index_oper index_expr)
-	|
+index_expr_isolate
+	:	INTLIT -> ^(CONSTANT INTLIT)
+	|	ID -> ^(REFERENCE ID)
 	;
 
 index_oper
