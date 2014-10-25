@@ -10,8 +10,28 @@ import java.nio.file.Files;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 
 public class Tiger {
+
+    private static void bfs(CommonTree root){
+        Queue q = new LinkedList();
+        q.add(root);
+
+        while(q.peek() != null){
+            CommonTree node = (CommonTree)q.remove();
+            System.out.println("Node: "+ node.getText());
+            if (node.getChildren() != null) {
+                for(Object t: node.getChildren()){
+                    if(t != null)
+                        q.add((CommonTree)t);
+                } 
+            }
+        }
+    }
+
     private static String readFile(String path, Charset encoding) throws Exception {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
@@ -45,11 +65,15 @@ public class Tiger {
                 if(to.getType() == -1) break;
                 to = cts.LT(++i);
             }
-            System.out.println();
+            
+           System.out.println();
 
             CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
+            bfs(tree);
+            
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
+            
             writeDotFile(args[1], st.toString(), StandardCharsets.UTF_8);
     
             if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
