@@ -90,9 +90,8 @@ public class Tiger {
         private String dataType;
         private int value; //since we have only int and fixedpt as possible datatypes
 
-        public VariableInfo(String declaringProc, 
-                int lexicalLevel, String dataType, int value){
-            super(ASTTokens.VAR, declaringProc, lexicalLevel);
+        public VariableInfo(String dataType, int value){
+            super(ASTTokens.VAR, CURRENT_PROC_NAME, CURRENT_LEXICAL_LEVEL);
             setValue(value);
             setDataType(dataType);
         }
@@ -235,7 +234,6 @@ public class Tiger {
                             }
                             break; 
 
-
             case "FUNCTIONS": 
                             if(node.getChildren() == null) break; 
                             for(Object children: node.getChildren()){
@@ -260,14 +258,31 @@ public class Tiger {
                                 ht.put(new Symbol(name), new FunctionInfo(returnType, numArgs, argList ));
                             }
                             break;
+
             case "PARAMS":  break;
-            case "VARIABLES": break;
+
+            case "VARIABLES":
+                            if(node.getChildren() == null) break;
+                            for(Object children: node.getChildren()){
+                                CommonTree child = (CommonTree)children;
+                                String name = "null";
+                                String returnType = "null";
+
+                            }
+                            break;
+
             case "STATEMENTS": break;
+
             case "BLOCK": break;
+
             case "FOR": break;
+
             case "INVOKE": break;
+
             case "EXPRS": break;
+
             case "EXPR": break;
+
             case "REFERENCE":  break;  
             default: break;
         }
