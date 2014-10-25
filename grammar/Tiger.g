@@ -29,7 +29,6 @@ tokens {
 	VARS;
 	VAR;
 	DIMENSION;
-	RANGE;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -142,16 +141,30 @@ expr_list_tail
 	;
 
 expr
-	:	expr_isolate	(
-						:	binary_operator expr	-> ^(binary_operator expr_isolate expr)
-						|	
-						)	-> expr_isolate
+	:	expr_2 ((AND | OR)^ expr_2)*
 	;
 
-expr_isolate
+expr_2
+	:	expr_3 ((EQ | NEQ | LESSER | GREATER | LEQ | GEQ)^ expr_3)*
+	;
+
+expr_3
+	:	expr_4 ((PLUS | MINUS)^ expr_4)*
+	;
+
+expr_4
+	:	expr_atom ((MULT | DIV)^ expr_atom)*
+	;
+
+expr_atom
 	:	constant				-> ^(CONSTANT constant)
 	|	LPAREN expr RPAREN 		-> expr
 	|	ID optional_subscript	-> ^(REFERENCE ID optional_subscript?)
+	;
+
+constant
+	:	INTLIT
+	|	FIXEDPTLIT
 	;
 
 /////////////////////////////////////////////////////////////////////
@@ -175,32 +188,30 @@ stat_tail
 statement
 	:	IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI -> ^(IF expr ^(STATEMENTS $iftrue) ^(STATEMENTS $iffalse?))
 	|	WHILE expr DO stat_list ENDDO SEMI -> ^(WHILE expr ^(STATEMENTS stat_list))
-	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR ^(RANGE $start $stop) ^(STATEMENTS stat_list))
+	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR $start $stop ^(STATEMENTS stat_list))
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
 	|	ID 	(
-			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))
-			|	optional_subscript ASSIGN statement_assignment 	-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) statement_assignment)
+			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))										// Function Call
+			|	optional_subscript ASSIGN assignment_expr 		-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) assignment_expr)		// Assignment
 			) SEMI
 	;
 
-statement_assignment
+assignment_expr
 	:	ID	(
-			:	LPAREN expr_list RPAREN -> ^(INVOKE ID ^(EXPRS expr_list?))
-			|	optional_subscript	(
-									:	binary_operator expr	-> ^(binary_operator ^(REFERENCE ID optional_subscript?) expr)
-									|							-> ^(REFERENCE ID optional_subscript?)
-									)
+			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))
+			|	optional_subscript assignment_expr_tail			-> ^(REFERENCE ID optional_subscript?)
 			)
-	|	statement_assignment_expr_isolate	(
-											:	binary_operator expr	-> ^(binary_operator statement_assignment_expr_isolate expr)
-											|							-> ^(statement_assignment_expr_isolate)
-											)
+	|	(((assignment_expr_atom ((MULT | DIV)^ expr_atom)*) ((PLUS | MINUS)^ expr_4)*) ((EQ | NEQ | LESSER | GREATER | LEQ | GEQ)^ expr_3)*) ((AND | OR)^ expr_2)*			
 	;
 
-statement_assignment_expr_isolate
-	:	constant
+assignment_expr_tail
+	:	((MULT | DIV)^ expr_atom)* ((PLUS | MINUS)^ expr_4)* ((EQ | NEQ | LESSER | GREATER | LEQ | GEQ)^ expr_3)* ((AND | OR)^ expr_2)*
+	;
+
+assignment_expr_atom
+	:	constant -> ^(CONSTANT constant)
 	|	LPAREN expr RPAREN -> expr
 	;
 
@@ -213,42 +224,17 @@ optional_subscript
 	|	
 	;
 
-constant
-	:	INTLIT
-	|	FIXEDPTLIT
-	;
-
 index_expr
-	:	index_expr_isolate	(
-							: index_oper index_expr -> ^(index_oper index_expr_isolate index_expr)
-							|
-							) -> index_expr_isolate 
+	:	index_expr_2 ((PLUS^ | MINUS^) index_expr_2)* 
 	;
 
-index_expr_isolate
+index_expr_2
+	:	index_expr_atom (MULT^ index_expr_atom)*
+	;
+
+index_expr_atom
 	:	INTLIT -> ^(CONSTANT INTLIT)
 	|	ID -> ^(REFERENCE ID)
-	;
-
-index_oper
-	:	PLUS
-	|	MINUS
-	|	MULT
-	;
-	
-binary_operator
-	:	PLUS
-	|	MINUS
-	|	MULT
-	|	DIV
-	|	EQ
-	|	NEQ
-	|	LESSER
-	|	GREATER
-	|	LEQ
-	|	GEQ
-	|	AND
-	|	OR
 	;
 
 /////////////////////////////////////////////////////////////////////
