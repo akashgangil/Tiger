@@ -200,7 +200,6 @@ public class Tiger {
                             if(node.getChildren() == null) break;
                             for(Object children : node.getChildren()){
                                 CommonTree child = (CommonTree)children;
-                                String type = "UserDefinedDataType";
                                 String name = "NoNameDefined";
                                 for(Object sc: child.getChildren()){
                                     CommonTree subChildren = (CommonTree)sc;
