@@ -12,8 +12,8 @@ options {
 tokens {
 	PROGRAM;
 	TYPES;
-	FUNCTIONS;
-	FUNCTION;
+	FUNCS;
+	FUNC;
 	MAIN;
 	BLOCK;
 	PARAMS;
@@ -36,7 +36,7 @@ tokens {
 /////////////////////////////////////////////////////////////////////
 
 tiger_program
-	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM ^(TYPES type_declaration_list?) ^(FUNCTIONS function_declaration_list))
+	: (type_declaration_list function_declaration_list EOF) -> ^(PROGRAM ^(TYPES type_declaration_list?) ^(FUNCS function_declaration_list))
 	;
 
 /////////////////////////////////////////////////////////////////////
@@ -44,12 +44,12 @@ tiger_program
 /////////////////////////////////////////////////////////////////////
 
 type_declaration_list
-	:	(TYPE ID EQ type SEMI type_declaration_list) -> ^(TYPE ID) type type_declaration_list
+	:	(TYPE ID EQ type SEMI type_declaration_list) -> ^(TYPE ID type) type_declaration_list?
 	|
 	;
 
 function_declaration_list
-	:	(return_type (FUNCTION ID | MAIN) LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION return_type ID ^(PARAMS param_list?)) function_declaration_list?
+	:	(return_type (FUNCTION name=ID | name=MAIN) LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNC return_type $name ^(PARAMS param_list?)) function_declaration_list?
 	|
 	;
 
@@ -95,7 +95,7 @@ block
 
 type
 	:	base_type
-	|	ARRAY LBRACK rows=INTLIT RBRACK (LBRACK columns=INTLIT RBRACK)? OF base_type -> ^(ARRAY ^(DIMENSION $rows $columns) base_type)
+	|	ARRAY LBRACK rows=INTLIT RBRACK (LBRACK columns=INTLIT RBRACK)? OF base_type -> ^(ARRAY ^(DIMENSION $rows $columns?) base_type)
 	;
 
 return_type
@@ -210,7 +210,7 @@ if_stmt
 /////////////////////////////////////////////////////////////////////
 
 optional_subscript
-	:	LBRACK row=index_expr RBRACK (LBRACK width=index_expr RBRACK)? -> $row $width
+	:	LBRACK row=index_expr RBRACK (LBRACK width=index_expr RBRACK)? -> $row $width?
 	|	
 	;
 

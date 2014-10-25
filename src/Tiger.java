@@ -50,13 +50,15 @@ public class Tiger {
 
                 if (arg.equals("--tokens")) {
                     printTokens = true;    
-                } else if (arg.equals("--symbol-table")) {
-                    printSymbolTable = true;
-                } else if (arg.equals("--dot")) {
+                } else if (arg.equals("--ast")) {
                     idx += 1;
                     dotFilename = args[idx];
+                } else if (arg.equals("--symbol-table")) {
+                    printSymbolTable = true;
                 } else if (args.equals("--help")) {
                     help = true;
+                } else if (arg.indexOf("--") == 0) {
+                    usage(1);  
                 } else {
                     inputFilename = arg;
                 }
@@ -67,6 +69,7 @@ public class Tiger {
     public static void usage(int status) {
         System.out.println("usage: Tiger [options] <input file>");
         System.out.println("\t--tokens\toutput tokens");
+        System.out.println("\t--ast <dot output file>\tgenerate ast dot diagram");
         System.out.println("\t--symbol-table\toutput symbol table");
         System.out.println("\t--help\tthis help message");
 
@@ -88,11 +91,22 @@ public class Tiger {
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
 
             if (options.printTokens) {
+	            TigerLexer lexer1 = new TigerLexer(new ANTLRStringStream(source));
+	            CommonTokenStream cts = new CommonTokenStream(lexer1);
 
+	            int i = 1;
+	            Token to = cts.LT(i);
+	            while(to.getType() != -1){
+	                System.out.print(TigerParser.tokenNames[to.getType()] + " ");
+	                if(to.getType() == -1) break;
+	                to = cts.LT(++i);
+	            }
+
+	            System.out.println();
             }
 
             if (options.dotFilename != null) {
-
+				writeDotFile(parser, options);
             }
 
             if (options.printSymbolTable) {
