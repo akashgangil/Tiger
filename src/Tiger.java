@@ -196,10 +196,8 @@ public class Tiger {
         switch(ASTLabel){
             case "PROGRAM": break; //do nothing
             case "TYPES":
-                            System.out.println("TYPES FOUND!");
                             //Process the list of "TYPES"
                             if(node.getChildren() == null) break;
-                            System.out.println("Processing");
                             for(Object children : node.getChildren()){
                                 CommonTree child = (CommonTree)children;
                                 String type = "UserDefinedDataType";
@@ -208,10 +206,8 @@ public class Tiger {
                                     CommonTree subChildren = (CommonTree)sc;
                                     if(subChildren.childIndex == 0){
                                         name = subChildren.getText();
-                                        System.out.println("Child 0 " + name);
                                     }
                                     else if(subChildren.childIndex == 1){
-                                        System.out.println("Child 1 ");
                                         String dataType = subChildren.getText();
                                         if(dataType.equals("int") || dataType.equals("fixedpt")){
                                             ht.put(new Symbol(name), new DataTypeInfo(false, dataType, -1, -1)); 
@@ -256,7 +252,7 @@ public class Tiger {
 
         while(q.peek() != null){
             CommonTree node = (CommonTree)q.remove();
-            System.out.println("Node: "+ node.getText());
+            //System.out.println("Node: "+ node.getText());
 
             handleNode(node);
 
@@ -309,7 +305,7 @@ public class Tiger {
             //run bfs
             bfs(tree);
             //print sample symbol table
-            System.out.println("Sample Hash Table");
+            System.out.println("***Symbol Table***");
             printSymbolTable(ht);
 
 
