@@ -70,9 +70,9 @@ public class Tiger {
         public String toString(){
             return "[Type: " + 
                 type + "], [DP: " + 
-                declaringProc + "], LL: " + 
+                declaringProc + "], [LL: " + 
                 lexicalLevel + "], Chain: " +
-                next;
+                next + "], ";
         }
 
         //We will chain if we can same names
@@ -143,7 +143,7 @@ public class Tiger {
             return super.toString() + " [RT: " +
                 returnType + " ], [NumArgs: " + 
                 numArgs + " ], [ArgList: " +
-                argList;
+                argList + " ]";
         }
     }
 
@@ -187,7 +187,9 @@ public class Tiger {
 
     private static Hashtable<Symbol, SymbolInfo> ht = new Hashtable<Symbol, SymbolInfo>();
     private static void printSymbolTable(Hashtable<Symbol, SymbolInfo> ht){
-        System.out.println(ht); 
+        for(Symbol s : ht.keySet()){
+            System.out.println(s + " : " + ht.get(s));
+        } 
     }
 
 
@@ -196,11 +198,15 @@ public class Tiger {
         switch(ASTLabel){
             case "PROGRAM": break; //do nothing
             case "TYPES":
-                            //Process the list of "TYPES"
+                            /*
+                             * Process the list of "TYPES"
+                             * expects children with label "TYPE"
+                             * describing each type
+                             */
                             if(node.getChildren() == null) break;
                             for(Object children : node.getChildren()){
                                 CommonTree child = (CommonTree)children;
-                                String name = "NoNameDefined";
+                                String name = "null";
                                 for(Object sc: child.getChildren()){
                                     CommonTree subChildren = (CommonTree)sc;
                                     if(subChildren.childIndex == 0){
@@ -230,7 +236,30 @@ public class Tiger {
                             break; 
 
 
-            case "FUNCTIONS": break;
+            case "FUNCTIONS": 
+                            if(node.getChildren() == null) break; 
+                            for(Object children: node.getChildren()){
+                                CommonTree child = (CommonTree)children;
+                                String name = "null";
+                                String returnType = "null";
+                                int numArgs = 0;
+                                List<Arg> argList = Collections.EMPTY_LIST;
+                                for(Object sc:child.getChildren()){
+                                    CommonTree subChildren = (CommonTree)sc;
+                                   if(subChildren.childIndex == 0){
+                                        returnType = subChildren.getText();
+                                   }
+                                   else if(subChildren.childIndex == 1){
+                                        name = subChildren.getText(); 
+                                   }
+                                   else if(subChildren.childIndex == 2){
+                                        if(subChildren.getChildren() == null); 
+                                        //TODO params logic
+                                   }
+                                }
+                                ht.put(new Symbol(name), new FunctionInfo(returnType, numArgs, argList ));
+                            }
+                            break;
             case "PARAMS":  break;
             case "VARIABLES": break;
             case "STATEMENTS": break;
