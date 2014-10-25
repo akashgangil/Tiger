@@ -49,7 +49,7 @@ type_declaration_list
 	;
 
 function_declaration_list
-	:	(return_type FUNCTION ID LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION return_type ID ^(PARAMS param_list?)) function_declaration_list?
+	:	(return_type (FUNCTION ID | MAIN) LPAREN param_list RPAREN BEGIN block_list END SEMI) function_declaration_list -> ^(FUNCTION return_type ID ^(PARAMS param_list?)) function_declaration_list?
 	|
 	;
 
@@ -258,7 +258,8 @@ binary_operator
 // Lexer
 /////////////////////////////////////////////////////////////////////
 
-FUNCTION	: 'function' ;
+FUNCTION	: 'function';
+MAIN		: 'main';
 BEGIN		: 'begin';
 END			: 'end';
 VOID		: 'void';
