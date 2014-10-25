@@ -12,9 +12,57 @@ import java.io.IOException;
 
 import java.util.Queue;
 import java.util.LinkedList;
-
+import java.util.Hashtable;
+import java.util.Collections;
+import java.util.List;
 
 public class Tiger {
+
+    private static class Args{
+        String name;
+        String type;
+
+        public Args(String name, String type){
+            this.name = name;
+            this.type = type;
+        }
+    }
+
+    private static  class Symbol{
+        String name;
+        String type;
+        String declaringProc;//none for global variables
+        int lexicalLevel;
+        int func_num_args;//only applicable for functions
+        List<Args> arg_list;//only applicable for functions
+        
+        Symbol next;
+
+        public Symbol(String name, String type, String declaringProc, 
+                      int lexicalLevel, int func_num_args, List<Args> arg_list){
+            this.name = name;
+            this.type = type;
+            this.declaringProc = declaringProc;
+            this.lexicalLevel = lexicalLevel;
+            this.func_num_args = func_num_args;
+            this.arg_list = arg_list;
+
+            //is null for the first identifier occurence
+            this.next = null;
+
+        } 
+            
+        public String toString(){
+            return name + " " + type + " " + declaringProc + " " 
+                   + lexicalLevel + " " + func_num_args + " " + arg_list.size();
+        }
+    }
+
+    private static Hashtable<String, Symbol> ht = new Hashtable<String, Symbol>();
+    private static void printSymbolTable(Hashtable<String, Symbol> ht){
+        System.out.println(ht); 
+    }
+    
 
     private static void bfs(CommonTree root){
         Queue q = new LinkedList();
@@ -69,8 +117,16 @@ public class Tiger {
            System.out.println();
 
             CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
+            //run bfs
             bfs(tree);
-            
+            //print sample symbol table
+            System.out.println("Sample Hash Table");
+            ht.put("test", new Symbol("test_name", "test_type", "test_proc",
+                                      0, 0, Collections.EMPTY_LIST)
+            ); 
+            printSymbolTable(ht);
+
+
             DOTTreeGenerator gen = new DOTTreeGenerator();
             StringTemplate st = gen.toDOT(tree);
             
