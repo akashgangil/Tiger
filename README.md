@@ -1,6 +1,8 @@
 # TODO:
 
-- phase 2
+- Add 'VARS' to symbol table
+- Add conditional expressions(for, while) variable to symbol table.
+- Generate symbol table for the sample program
 
 # Usage
 
