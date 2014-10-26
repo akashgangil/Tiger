@@ -10,5 +10,5 @@ printf "Done\n"
 mkdir -p build
 
 printf "Compiling ... \n"
-javac -d ./build/ -classpath "lib/*:src" src/*.java
+javac -d ./build/ -classpath "lib/*:src" src/*.java -Xlint:unchecked
 printf "Done\n"
