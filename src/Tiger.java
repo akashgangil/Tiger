@@ -233,7 +233,7 @@ public class Tiger {
                             }
                             break; 
 
-            case "FUNCTIONS": 
+            case "FUNCS": 
                             if(node.getChildren() == null) break; 
                             for(Object children: node.getChildren()){
                                 CommonTree child = (CommonTree)children;
@@ -260,7 +260,7 @@ public class Tiger {
 
             case "PARAMS":  break;
 
-            case "VARIABLES":
+            case "VARS":
                             if(node.getChildren() == null) break;
                             for(Object children: node.getChildren()){
                                 CommonTree child = (CommonTree)children;
