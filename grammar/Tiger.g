@@ -20,6 +20,7 @@ tokens {
 	BLOCK;
 	STATEMENTS;
 	PARAMS;
+	PARAM;
 	EXPR;
 	EXPRS;
 	IDS;
@@ -63,7 +64,7 @@ var_declaration_list
 /////////////////////////////////////////////////////////////////////
 
 param_list
-	:	ID COLON type_id param_list_tail  -> ^(ID type_id) param_list_tail?
+	:	ID COLON type_id param_list_tail  -> ^(PARAM ID type_id) param_list_tail?
 	|	
 	;
 	
@@ -157,9 +158,12 @@ expr_4
 	;
 
 expr_atom
-	:	constant				-> ^(CONSTANT constant)
-	|	LPAREN expr RPAREN 		-> expr
-	|	ID optional_subscript	-> ^(REFERENCE ID optional_subscript?)
+	:	constant							-> ^(CONSTANT constant)
+	|	LPAREN expr RPAREN 					-> expr
+	|	ID	(
+			:	optional_subscript			-> ^(REFERENCE ID optional_subscript?)
+			|	LPAREN expr_list RPAREN		-> ^(INVOKE ID ^(EXPRS expr_list?))
+			)
 	;
 
 constant
@@ -182,8 +186,8 @@ stat_tail
 
 
 //
-// Because of special cases this whole thing has to be left factored significantly 
-//
+// Because of special cases this whole thing has to be factored significantly ................ AGHHHHHHHHHHHHHH
+// 
 
 statement
 	:	IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI -> ^(IF expr ^(STATEMENTS $iftrue) ^(STATEMENTS $iffalse?))
@@ -194,25 +198,8 @@ statement
 	|	block
 	|	ID 	(
 			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))										// Function Call
-			|	optional_subscript ASSIGN assignment_expr 		-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) assignment_expr)		// Assignment
+			|	optional_subscript ASSIGN expr 					-> ^(ASSIGN ^(REFERENCE ID optional_subscript?) expr)		// Assignment
 			) SEMI
-	;
-
-assignment_expr
-	:	ID	(
-			:	LPAREN expr_list RPAREN 						-> ^(INVOKE ID ^(EXPRS expr_list?))
-			|	optional_subscript assignment_expr_tail			-> ^(REFERENCE ID optional_subscript?)
-			)
-	|	(((assignment_expr_atom ((MULT | DIV)^ expr_atom)*) ((PLUS | MINUS)^ expr_4)*) ((EQ | NEQ | LESSER | GREATER | LEQ | GEQ)^ expr_3)*) ((AND | OR)^ expr_2)*			
-	;
-
-assignment_expr_tail
-	:	((MULT | DIV)^ expr_atom)* ((PLUS | MINUS)^ expr_4)* ((EQ | NEQ | LESSER | GREATER | LEQ | GEQ)^ expr_3)* ((AND | OR)^ expr_2)*
-	;
-
-assignment_expr_atom
-	:	constant -> ^(CONSTANT constant)
-	|	LPAREN expr RPAREN -> expr
 	;
 
 /////////////////////////////////////////////////////////////////////
