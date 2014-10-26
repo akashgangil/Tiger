@@ -7,19 +7,24 @@
 ## Build
 
 ```sh
-$ ./make
+$ ./make.sh
 ```
 
 ## Parse, Generate AST
 
 ```sh
-$ ./tiger.sh [tiger program]
+$ ./tiger.sh [options] <tiger source>
+```
+
+For full list of options
+```sh
+$ ./tiger.sh --help
 ```
 
 ## Clean
 
 ```sh
-$ ./clean
+$ ./clean.sh
 ```
 
 # Directory Structure
