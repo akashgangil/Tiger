@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 grammar/Tiger.g 2014-10-26 11:30:55
+// $ANTLR 3.5.1 grammar/Tiger.g 2014-10-26 16:12:49
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -146,8 +146,8 @@ public class TigerParser extends Parser {
 
 		Object EOF3_tree=null;
 		RewriteRuleTokenStream stream_EOF=new RewriteRuleTokenStream(adaptor,"token EOF");
-		RewriteRuleSubtreeStream stream_function_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule function_declaration_list");
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
+		RewriteRuleSubtreeStream stream_function_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule function_declaration_list");
 
 		try {
 			// grammar/Tiger.g:74:2: ( ( type_declaration_list function_declaration_list EOF ) -> ^( PROGRAM ^( TYPES ( type_declaration_list )? ) ^( FUNCS function_declaration_list ) ) )
@@ -264,12 +264,12 @@ public class TigerParser extends Parser {
 		Object ID5_tree=null;
 		Object EQ6_tree=null;
 		Object SEMI8_tree=null;
-		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
-		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 		RewriteRuleTokenStream stream_EQ=new RewriteRuleTokenStream(adaptor,"token EQ");
+		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
 		RewriteRuleTokenStream stream_TYPE=new RewriteRuleTokenStream(adaptor,"token TYPE");
-		RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
+		RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
 
 		try {
 			// grammar/Tiger.g:82:2: ( ( TYPE ID EQ type SEMI type_declaration_list ) -> ^( TYPE ID type ) ( type_declaration_list )? |)
@@ -320,7 +320,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: type, ID, type_declaration_list, TYPE
+					// elements: type, TYPE, type_declaration_list, ID
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -417,16 +417,16 @@ public class TigerParser extends Parser {
 		Object BEGIN15_tree=null;
 		Object END17_tree=null;
 		Object SEMI18_tree=null;
-		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
-		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
-		RewriteRuleTokenStream stream_MAIN=new RewriteRuleTokenStream(adaptor,"token MAIN");
-		RewriteRuleTokenStream stream_END=new RewriteRuleTokenStream(adaptor,"token END");
-		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
-		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
-		RewriteRuleTokenStream stream_BEGIN=new RewriteRuleTokenStream(adaptor,"token BEGIN");
 		RewriteRuleTokenStream stream_FUNCTION=new RewriteRuleTokenStream(adaptor,"token FUNCTION");
-		RewriteRuleSubtreeStream stream_return_type=new RewriteRuleSubtreeStream(adaptor,"rule return_type");
+		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
+		RewriteRuleTokenStream stream_MAIN=new RewriteRuleTokenStream(adaptor,"token MAIN");
+		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleTokenStream stream_END=new RewriteRuleTokenStream(adaptor,"token END");
+		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
+		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
+		RewriteRuleTokenStream stream_BEGIN=new RewriteRuleTokenStream(adaptor,"token BEGIN");
 		RewriteRuleSubtreeStream stream_function_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule function_declaration_list");
+		RewriteRuleSubtreeStream stream_return_type=new RewriteRuleSubtreeStream(adaptor,"rule return_type");
 		RewriteRuleSubtreeStream stream_block_list=new RewriteRuleSubtreeStream(adaptor,"rule block_list");
 		RewriteRuleSubtreeStream stream_param_list=new RewriteRuleSubtreeStream(adaptor,"rule param_list");
 
@@ -531,7 +531,7 @@ public class TigerParser extends Parser {
 
 					stream_function_declaration_list.add(function_declaration_list19.getTree());
 					// AST REWRITE
-					// elements: param_list, block_list, return_type, name, function_declaration_list
+					// elements: block_list, param_list, name, function_declaration_list, return_type
 					// token labels: name
 					// rule labels: retval
 					// token list labels: 
@@ -644,14 +644,14 @@ public class TigerParser extends Parser {
 		Object COLON22_tree=null;
 		Object ASSIGN24_tree=null;
 		Object SEMI26_tree=null;
+		RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
 		RewriteRuleTokenStream stream_VAR=new RewriteRuleTokenStream(adaptor,"token VAR");
 		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
-		RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
 		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
-		RewriteRuleSubtreeStream stream_id_list=new RewriteRuleSubtreeStream(adaptor,"rule id_list");
 		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
 		RewriteRuleSubtreeStream stream_var_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_list");
 		RewriteRuleSubtreeStream stream_type_id=new RewriteRuleSubtreeStream(adaptor,"rule type_id");
+		RewriteRuleSubtreeStream stream_id_list=new RewriteRuleSubtreeStream(adaptor,"rule id_list");
 
 		try {
 			// grammar/Tiger.g:92:2: ( ( VAR id_list COLON type_id ( ASSIGN constant )? SEMI var_declaration_list ) -> ^( VAR ^( IDS id_list ) type_id ( constant )? ) ( var_declaration_list )? |)
@@ -727,7 +727,7 @@ public class TigerParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: id_list, var_declaration_list, VAR, type_id, constant
+					// elements: type_id, id_list, var_declaration_list, VAR, constant
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -868,7 +868,7 @@ public class TigerParser extends Parser {
 
 					stream_param_list_tail.add(param_list_tail31.getTree());
 					// AST REWRITE
-					// elements: param_list_tail, type_id, ID
+					// elements: type_id, ID, param_list_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1202,12 +1202,12 @@ public class TigerParser extends Parser {
 		Object BEGIN38_tree=null;
 		Object END42_tree=null;
 		Object SEMI43_tree=null;
-		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
 		RewriteRuleTokenStream stream_END=new RewriteRuleTokenStream(adaptor,"token END");
+		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
 		RewriteRuleTokenStream stream_BEGIN=new RewriteRuleTokenStream(adaptor,"token BEGIN");
-		RewriteRuleSubtreeStream stream_var_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_list");
-		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
 		RewriteRuleSubtreeStream stream_type_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule type_declaration_list");
+		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
+		RewriteRuleSubtreeStream stream_var_declaration_list=new RewriteRuleSubtreeStream(adaptor,"rule var_declaration_list");
 
 		try {
 			// grammar/Tiger.g:124:2: ( ( BEGIN type_declaration_list var_declaration_list stat_list END SEMI ) -> ^( BLOCK ^( TYPES ( type_declaration_list )? ) ^( VARS ( var_declaration_list )? ) ^( STATEMENTS stat_list ) ) )
@@ -1243,7 +1243,7 @@ public class TigerParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: type_declaration_list, stat_list, var_declaration_list
+			// elements: stat_list, var_declaration_list, type_declaration_list
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1357,10 +1357,10 @@ public class TigerParser extends Parser {
 		Object RBRACK49_tree=null;
 		Object OF50_tree=null;
 		RewriteRuleTokenStream stream_RBRACK=new RewriteRuleTokenStream(adaptor,"token RBRACK");
-		RewriteRuleTokenStream stream_ARRAY=new RewriteRuleTokenStream(adaptor,"token ARRAY");
 		RewriteRuleTokenStream stream_LBRACK=new RewriteRuleTokenStream(adaptor,"token LBRACK");
-		RewriteRuleTokenStream stream_OF=new RewriteRuleTokenStream(adaptor,"token OF");
 		RewriteRuleTokenStream stream_INTLIT=new RewriteRuleTokenStream(adaptor,"token INTLIT");
+		RewriteRuleTokenStream stream_OF=new RewriteRuleTokenStream(adaptor,"token OF");
+		RewriteRuleTokenStream stream_ARRAY=new RewriteRuleTokenStream(adaptor,"token ARRAY");
 		RewriteRuleSubtreeStream stream_base_type=new RewriteRuleSubtreeStream(adaptor,"rule base_type");
 
 		try {
@@ -1443,7 +1443,7 @@ public class TigerParser extends Parser {
 
 					stream_base_type.add(base_type51.getTree());
 					// AST REWRITE
-					// elements: columns, rows, base_type
+					// elements: rows, columns, base_type
 					// token labels: columns, rows
 					// rule labels: retval
 					// token list labels: 
@@ -1799,8 +1799,8 @@ public class TigerParser extends Parser {
 
 		Object COMMA59_tree=null;
 		Object ID60_tree=null;
-		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_id_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule id_list_tail");
 
 		try {
@@ -1836,7 +1836,7 @@ public class TigerParser extends Parser {
 
 					stream_id_list_tail.add(id_list_tail61.getTree());
 					// AST REWRITE
-					// elements: id_list_tail, ID
+					// elements: ID, id_list_tail
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -1998,8 +1998,8 @@ public class TigerParser extends Parser {
 
 		Object COMMA64_tree=null;
 		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
-		RewriteRuleSubtreeStream stream_expr_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule expr_list_tail");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+		RewriteRuleSubtreeStream stream_expr_list_tail=new RewriteRuleSubtreeStream(adaptor,"rule expr_list_tail");
 
 		try {
 			// grammar/Tiger.g:174:2: ( COMMA expr expr_list_tail -> expr ( expr_list_tail )? |)
@@ -2493,13 +2493,13 @@ public class TigerParser extends Parser {
 		Object ID83_tree=null;
 		Object LPAREN85_tree=null;
 		Object RPAREN87_tree=null;
-		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
 		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
 		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
-		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
+		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
 		RewriteRuleSubtreeStream stream_constant=new RewriteRuleSubtreeStream(adaptor,"rule constant");
-		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
+		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
 		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
 
 		try {
 			// grammar/Tiger.g:195:2: ( constant -> ^( CONSTANT constant ) | LPAREN expr RPAREN -> expr | ID ( optional_subscript -> ^( REFERENCE ID ( optional_subscript )? ) | LPAREN expr_list RPAREN -> ^( INVOKE ID ^( EXPRS ( expr_list )? ) ) ) )
@@ -2630,7 +2630,7 @@ public class TigerParser extends Parser {
 
 							stream_optional_subscript.add(optional_subscript84.getTree());
 							// AST REWRITE
-							// elements: optional_subscript, ID
+							// elements: ID, optional_subscript
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3047,27 +3047,27 @@ public class TigerParser extends Parser {
 		Object RPAREN122_tree=null;
 		Object ASSIGN124_tree=null;
 		Object SEMI126_tree=null;
-		RewriteRuleTokenStream stream_ENDIF=new RewriteRuleTokenStream(adaptor,"token ENDIF");
-		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
-		RewriteRuleTokenStream stream_FOR=new RewriteRuleTokenStream(adaptor,"token FOR");
-		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
-		RewriteRuleTokenStream stream_DO=new RewriteRuleTokenStream(adaptor,"token DO");
 		RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
-		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
-		RewriteRuleTokenStream stream_RETURN=new RewriteRuleTokenStream(adaptor,"token RETURN");
-		RewriteRuleTokenStream stream_ENDDO=new RewriteRuleTokenStream(adaptor,"token ENDDO");
-		RewriteRuleTokenStream stream_BREAK=new RewriteRuleTokenStream(adaptor,"token BREAK");
-		RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
 		RewriteRuleTokenStream stream_THEN=new RewriteRuleTokenStream(adaptor,"token THEN");
 		RewriteRuleTokenStream stream_WHILE=new RewriteRuleTokenStream(adaptor,"token WHILE");
-		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 		RewriteRuleTokenStream stream_TO=new RewriteRuleTokenStream(adaptor,"token TO");
+		RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
+		RewriteRuleTokenStream stream_RETURN=new RewriteRuleTokenStream(adaptor,"token RETURN");
+		RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
+		RewriteRuleTokenStream stream_ENDIF=new RewriteRuleTokenStream(adaptor,"token ENDIF");
+		RewriteRuleTokenStream stream_DO=new RewriteRuleTokenStream(adaptor,"token DO");
+		RewriteRuleTokenStream stream_FOR=new RewriteRuleTokenStream(adaptor,"token FOR");
+		RewriteRuleTokenStream stream_ENDDO=new RewriteRuleTokenStream(adaptor,"token ENDDO");
+		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+		RewriteRuleTokenStream stream_SEMI=new RewriteRuleTokenStream(adaptor,"token SEMI");
+		RewriteRuleTokenStream stream_BREAK=new RewriteRuleTokenStream(adaptor,"token BREAK");
+		RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
 		RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
-		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
 		RewriteRuleSubtreeStream stream_index_expr=new RewriteRuleSubtreeStream(adaptor,"rule index_expr");
-		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
-		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
 		RewriteRuleSubtreeStream stream_stat_list=new RewriteRuleSubtreeStream(adaptor,"rule stat_list");
+		RewriteRuleSubtreeStream stream_optional_subscript=new RewriteRuleSubtreeStream(adaptor,"rule optional_subscript");
+		RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+		RewriteRuleSubtreeStream stream_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule expr_list");
 
 		try {
 			// grammar/Tiger.g:227:2: ( IF expr THEN iftrue= stat_list ( options {greedy=true; } : ELSE iffalse= stat_list )? ENDIF SEMI -> ^( IF expr ^( STATEMENTS $iftrue) ^( STATEMENTS ( $iffalse)? ) ) | WHILE expr DO stat_list ENDDO SEMI -> ^( WHILE expr ^( STATEMENTS stat_list ) ) | FOR ID ASSIGN (start= index_expr TO stop= index_expr ) DO stat_list ENDDO SEMI -> ^( FOR $start $stop ^( STATEMENTS stat_list ) ) | BREAK SEMI -> BREAK | RETURN expr SEMI -> ^( RETURN expr ) | block | ID ( LPAREN expr_list RPAREN -> ^( INVOKE ID ^( EXPRS ( expr_list )? ) ) | optional_subscript ASSIGN expr -> ^( ASSIGN ^( REFERENCE ID ( optional_subscript )? ) expr ) ) SEMI )
@@ -3163,16 +3163,16 @@ public class TigerParser extends Parser {
 					stream_SEMI.add(SEMI98);
 
 					// AST REWRITE
-					// elements: iftrue, IF, iffalse, expr
+					// elements: iffalse, iftrue, expr, IF
 					// token labels: 
-					// rule labels: iffalse, iftrue, retval
+					// rule labels: retval, iffalse, iftrue
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 					RewriteRuleSubtreeStream stream_iffalse=new RewriteRuleSubtreeStream(adaptor,"rule iffalse",iffalse!=null?iffalse.getTree():null);
 					RewriteRuleSubtreeStream stream_iftrue=new RewriteRuleSubtreeStream(adaptor,"rule iftrue",iftrue!=null?iftrue.getTree():null);
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
 					// 227:95: -> ^( IF expr ^( STATEMENTS $iftrue) ^( STATEMENTS ( $iffalse)? ) )
@@ -3319,16 +3319,16 @@ public class TigerParser extends Parser {
 					stream_SEMI.add(SEMI112);
 
 					// AST REWRITE
-					// elements: stat_list, FOR, start, stop
+					// elements: start, FOR, stop, stat_list
 					// token labels: 
-					// rule labels: stop, start, retval
+					// rule labels: stop, retval, start
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_stop=new RewriteRuleSubtreeStream(adaptor,"rule stop",stop!=null?stop.getTree():null);
-					RewriteRuleSubtreeStream stream_start=new RewriteRuleSubtreeStream(adaptor,"rule start",start!=null?start.getTree():null);
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+					RewriteRuleSubtreeStream stream_start=new RewriteRuleSubtreeStream(adaptor,"rule start",start!=null?start.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
 					// 229:80: -> ^( FOR $start $stop ^( STATEMENTS stat_list ) )
@@ -3402,7 +3402,7 @@ public class TigerParser extends Parser {
 					stream_SEMI.add(SEMI117);
 
 					// AST REWRITE
-					// elements: RETURN, expr
+					// elements: expr, RETURN
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -3481,7 +3481,7 @@ public class TigerParser extends Parser {
 							stream_RPAREN.add(RPAREN122);
 
 							// AST REWRITE
-							// elements: expr_list, ID
+							// elements: ID, expr_list
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3538,7 +3538,7 @@ public class TigerParser extends Parser {
 
 							stream_expr.add(expr125.getTree());
 							// AST REWRITE
-							// elements: ASSIGN, expr, ID, optional_subscript
+							// elements: ASSIGN, optional_subscript, ID, expr
 							// token labels: 
 							// rule labels: retval
 							// token list labels: 
@@ -3699,14 +3699,14 @@ public class TigerParser extends Parser {
 					// AST REWRITE
 					// elements: width, row
 					// token labels: 
-					// rule labels: width, row, retval
+					// rule labels: retval, width, row
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
 					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 					RewriteRuleSubtreeStream stream_width=new RewriteRuleSubtreeStream(adaptor,"rule width",width!=null?width.getTree():null);
 					RewriteRuleSubtreeStream stream_row=new RewriteRuleSubtreeStream(adaptor,"rule row",row!=null?row.getTree():null);
-					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (Object)adaptor.nil();
 					// 244:67: -> $row ( $width)?
@@ -3982,8 +3982,8 @@ public class TigerParser extends Parser {
 
 		Object INTLIT138_tree=null;
 		Object ID139_tree=null;
-		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 		RewriteRuleTokenStream stream_INTLIT=new RewriteRuleTokenStream(adaptor,"token INTLIT");
+		RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
 
 		try {
 			// grammar/Tiger.g:257:2: ( INTLIT -> ^( CONSTANT INTLIT ) | ID -> ^( REFERENCE ID ) )

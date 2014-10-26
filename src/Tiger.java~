@@ -116,10 +116,10 @@ public class Tiger {
 
             if (options.printSymbolTable) {
 	            //run bfs
-	            TigerUtil.bfs(tree);
+	            bfs(tree);
 	            //print sample symbol table
 	            System.out.println("***Symbol Table***");
-	            //printSymbolTable(ht);
+	            printSymbolTable(ht);
 			}
 
 			if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){

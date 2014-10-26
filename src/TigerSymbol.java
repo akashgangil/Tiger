@@ -6,6 +6,6 @@ public class TigerSymbol {
     }
 
     public String getName() {
-        return name;
+        return "[SymbolName: " + name;
     }
 }
