@@ -20,6 +20,19 @@ public class Tiger {
     private static int CURRENT_LEXICAL_LEVEL = 0;
     private static String CURRENT_PROC_NAME = "GLOBAL";
 
+    private static String getCurrentProcName(CommonTree node){
+        CommonTree temp = node.parent;
+        while(temp != null && !temp.getText().equals("FUNC")){
+            temp = temp.parent;
+        }
+
+        return temp.getChild(1).getText();
+    }
+
+    private static void setCurrentProcName(CommonTree node){
+        CURRENT_PROC_NAME = getCurrentProcName(node);
+    }
+
     private enum ASTTokens{
         VAR, FUNCTION, TYPE
     }
@@ -202,6 +215,9 @@ public class Tiger {
                              * describing each type
                              */
                             if(node.getChildren() == null) break;
+                            
+                            setCurrentProcName(node);
+                            
                             for(Object children : node.getChildren()){
                                 CommonTree child = (CommonTree)children;
                                 String name = "null";
