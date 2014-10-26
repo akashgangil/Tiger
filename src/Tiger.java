@@ -63,7 +63,7 @@ public class Tiger {
             this.type = type;
             this.declaringProc = declaringProc;
             this.lexicalLevel = lexicalLevel;
-            this.next = Collections.EMPTY_LIST;
+            this.next = Collections.emptyList();
         }
 
         public String toString(){
@@ -240,7 +240,7 @@ public class Tiger {
                                 String name = "null";
                                 String returnType = "null";
                                 int numArgs = 0;
-                                List<Arg> argList = Collections.EMPTY_LIST;
+                                List<Arg> argList = Collections.emptyList();
                                 for(Object sc:child.getChildren()){
                                     CommonTree subChildren = (CommonTree)sc;
                                    if(subChildren.childIndex == 0){
@@ -289,7 +289,7 @@ public class Tiger {
 
 
     private static void bfs(CommonTree root){
-        Queue q = new LinkedList();
+        Queue<CommonTree> q = new LinkedList<CommonTree>();
         q.add(root);
 
         while(q.peek() != null){
