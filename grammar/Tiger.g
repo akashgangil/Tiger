@@ -7,7 +7,9 @@ options {
 	output = AST;
 }
 
+/////////////////////////////////////////////////////////////////////
 // AST Nodes
+/////////////////////////////////////////////////////////////////////
 
 tokens {
 	PROGRAM;
@@ -30,6 +32,38 @@ tokens {
 	VARS;
 	VAR;
 	DIMENSION;
+}
+
+/////////////////////////////////////////////////////////////////////
+// Error Handling
+/////////////////////////////////////////////////////////////////////
+
+//add new members to generated lexer
+@lexer::members {
+    private  java.util.List<String> errors = new java.util.LinkedList<String>();
+    public void displayRecognitionError(String[] tokenNames,
+                                        RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        errors.add(hdr + " " + msg +  "           Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
+    }
+    public  java.util.List<String> getErrors() {
+        return errors;
+    }
+}
+
+//add new members to generated parser
+@parser::members {
+    private  java.util.List<String> errors = new java.util.LinkedList<String>();
+    public   void displayRecognitionError(String[] tokenNames,
+                                        RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        errors.add(hdr + " " + msg + "            Character at which the error occurred: " +  "['" + Character.toString((char)e.c) + "']");
+    }
+    public java.util.List<String> getErrors() {
+        return errors;
+    }
 }
 
 /////////////////////////////////////////////////////////////////////

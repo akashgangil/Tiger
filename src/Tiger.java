@@ -23,8 +23,7 @@ public class Tiger {
         return contents;
     }
 
-    private static void writeDotFile(TigerParser parser, TigerOptions options) throws RecognitionException {
-        CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
+    private static void writeDotFile(CommonTree tree, TigerOptions options) throws RecognitionException {
         DOTTreeGenerator gen = new DOTTreeGenerator();
         String output = gen.toDOT(tree).toString();
 
@@ -89,6 +88,7 @@ public class Tiger {
             String source = readFile(options.inputFilename);
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
+	        CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
 
             if (options.printTokens) {
 	            TigerLexer lexer1 = new TigerLexer(new ANTLRStringStream(source));
@@ -106,15 +106,30 @@ public class Tiger {
             }
 
             if (options.dotFilename != null) {
-				writeDotFile(parser, options);
+				writeDotFile(tree, options);
             }
 
             if (options.printSymbolTable) {
 
-            }
-        } catch (RecognitionException re) {
-            System.err.println(re);
-        } catch (Exception e) {
+			}
+
+			if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
+				System.out.println("***Successful Parse***");
+			}
+			else{
+				if(!parser.getErrors().isEmpty()){
+					System.out.println("*** Parser Errors ***"); 
+					for(String s : parser.getErrors()) System.out.println(s);
+				}
+
+				if(!lexer.getErrors().isEmpty()){
+					System.out.println("*** Lexer Errors ***"); 
+					for(String s : lexer.getErrors()) System.out.println(s);
+				}
+			}
+		} catch (RecognitionException re) {
+			System.err.println(re);
+		} catch (Exception e) {
             System.out.println(e);
             System.exit(1);
         }
