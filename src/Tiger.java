@@ -25,7 +25,7 @@ public class Tiger {
         while(temp != null && !temp.getText().equals("FUNC")){
             temp = temp.parent;
         }
-
+        //Since 0 is mandatory return type and 1 is the name
         return temp.getChild(1).getText();
     }
 
@@ -251,6 +251,7 @@ public class Tiger {
 
             case "FUNCS": 
                             if(node.getChildren() == null) break; 
+                            setCurrentProcName(node);
                             for(Object children: node.getChildren()){
                                 CommonTree child = (CommonTree)children;
                                 String name = "null";
