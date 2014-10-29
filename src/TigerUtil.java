@@ -21,7 +21,7 @@ public class TigerUtil{
                 for(Object t: node.getChildren()){
                     if(t != null)
                         q.add((CommonTree)t);
-                } 
+                }
             }
         }
     }

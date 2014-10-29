@@ -44,6 +44,7 @@ public class Tiger {
     public static class TigerOptions {
         public boolean printTokens = false;
         public boolean printSymbolTable = false;
+        public boolean intermediateRep = false;
         public boolean help = false;
         public String inputFilename = null;
         public String dotFilename = null;
@@ -53,16 +54,18 @@ public class Tiger {
                 String arg = args[idx];
 
                 if (arg.equals("--tokens")) {
-                    printTokens = true;    
+                    printTokens = true;
                 } else if (arg.equals("--ast")) {
                     idx += 1;
                     dotFilename = args[idx];
                 } else if (arg.equals("--symbol-table")) {
                     printSymbolTable = true;
+                } else if (arg.equals("--ir")) {
+                    intermediateRep = true;
                 } else if (args.equals("--help")) {
                     help = true;
                 } else if (arg.indexOf("--") == 0) {
-                    usage(1);  
+                    usage(1);
                 } else {
                     inputFilename = arg;
                 }
@@ -122,17 +125,21 @@ public class Tiger {
 	            //printSymbolTable(ht);
 			}
 
+            if (options.intermediateRep) {
+                new IRGenerator().generate(tree);
+            }
+
 			if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
 				System.out.println("***Successful Parse***");
 			}
 			else{
 				if(!parser.getErrors().isEmpty()){
-					System.out.println("*** Parser Errors ***"); 
+					System.out.println("*** Parser Errors ***");
 					for(String s : parser.getErrors()) System.out.println(s);
 				}
 
 				if(!lexer.getErrors().isEmpty()){
-					System.out.println("*** Lexer Errors ***"); 
+					System.out.println("*** Lexer Errors ***");
 					for(String s : lexer.getErrors()) System.out.println(s);
 				}
 			}
