@@ -1,17 +1,17 @@
 import java.util.*;
 
 public class TigerScope {
-    private String context;
+    public String label;
     private TigerScope parentScope;
     private List<TigerScope> childScopes;
     private HashMap<String, TigerSymbol> symbols;
 
     public TigerScope() {
-        this(null, "Global");
+        this(null);
     }
 
-    public TigerScope(TigerScope parentScope, String context) {
-        this.context = context;
+    public TigerScope(TigerScope parentScope) {
+        label = "Scope";
         this.parentScope = parentScope;
         childScopes = new LinkedList<TigerScope>();
         symbols = new HashMap<String, TigerSymbol>();
@@ -66,7 +66,7 @@ public class TigerScope {
             indent.append("\t");
         }
         
-        str.append(indent + context + " {\n");
+        str.append(indent + label + " {\n");
         for (Map.Entry<String, TigerSymbol> entry : symbols.entrySet()) {
             str.append(indent + "\t" + entry.getValue() + "\n");
         }

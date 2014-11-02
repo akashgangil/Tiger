@@ -11,12 +11,12 @@ public class TigerProgram extends TigerAstNode {
         CommonTree funcsTree = (CommonTree)root.getChild(1);
         
         for (Object child : typesTree.getChildren()) {
-            TigerType type = new TigerType((CommonTree)child, globalScope);
+            TigerType type = TigerType.fromAstNode((CommonTree)child, globalScope);
             globalScope.defineSymbol(type);
         }
         
         for (Object child : funcsTree.getChildren()) {
-            TigerFunction function = new TigerFunction((CommonTree)child, new TigerScope(globalScope, "function"));
+            TigerFunction function = TigerFunction.fromAstNode((CommonTree)child, globalScope);
             globalScope.defineSymbol(function);
         }
     }

@@ -7,17 +7,12 @@ public class TigerFunction extends TigerSymbol {
     private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
     
-    public TigerFunction(String name, TigerType returnType, List<TigerType> parameterTypes) {
-        super(name);
-        this.returnType = returnType;
-        this.parameterTypes = parameterTypes;
-    }
-    
-    public TigerFunction(CommonTree functionNode, TigerScope scope) throws Exception {
-        super(functionNode.getChild(1).getText());
-        this.scope = scope;
-        parameterTypes = new LinkedList<TigerType>();
-        blocks = new LinkedList<TigerBlock>();
+    public static TigerFunction fromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
+        String functionName = functionNode.getChild(1).getText();
+        List<TigerType> parameterTypes = new LinkedList<TigerType>();
+        TigerType returnType = null;
+        TigerScope scope = new TigerScope(parentScope);
+        List<TigerBlock> blocks = new LinkedList<TigerBlock>();
         
         String returnTypeName = functionNode.getChild(0).getText();
         if (!returnTypeName.equals("void")) {
@@ -28,13 +23,13 @@ public class TigerFunction extends TigerSymbol {
         if (treeParams.getChildren() != null) {
             for (Object child : treeParams.getChildren()) {
                 CommonTree paramTree = (CommonTree)child;
-                String name = paramTree.getChild(0).getText();
-                String typeName = paramTree.getChild(1).getText();
-                TigerType type = scope.lookupSymbol(typeName, TigerType.class);
-                TigerVariable param = new TigerVariable(name, type);
+                String paramName = paramTree.getChild(0).getText();
+                String paramTypeName = paramTree.getChild(1).getText();
+                TigerType paramType = scope.lookupSymbol(paramTypeName, TigerType.class);
+                TigerVariable param = new TigerVariable(paramName, paramType);
                 
                 scope.defineSymbol(param);
-                parameterTypes.add(type);
+                parameterTypes.add(paramType);
             }
         }
         
@@ -42,10 +37,21 @@ public class TigerFunction extends TigerSymbol {
         if (treeBlocks.getChildren() != null) {
             for (Object child : treeBlocks.getChildren()) {
                 CommonTree blockTree = (CommonTree)child;
-                TigerBlock block = new TigerBlock(blockTree, new TigerScope(scope, "block"));
+                TigerBlock block = TigerBlock.fromAstNode(blockTree, scope);
                 blocks.add(block);
             }
         }
+        
+        scope.label = "Scope : " + functionName;
+        
+        TigerFunction function = new TigerFunction();
+        function.name = functionName;
+        function.returnType = returnType;
+        function.parameterTypes = parameterTypes;
+        function.scope = scope;
+        function.blocks = blocks;
+        
+        return function;
     }
     
     public TigerType getReturnType() {

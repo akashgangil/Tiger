@@ -2,7 +2,7 @@ public class TigerVariable extends TigerSymbol {
     private TigerType type;
     
     public TigerVariable(String name, TigerType type) {
-        super(name);
+        this.name = name;
         this.type = type;
     }
     

@@ -9,8 +9,11 @@ public class TigerType extends TigerSymbol {
     private int height;
 
     static {
-        TigerType.Int = new TigerType("int");
-        TigerType.FixedPt = new TigerType("fixedpt");
+        TigerType.Int = new TigerType();
+        TigerType.Int.name = "int";
+        
+        TigerType.FixedPt = new TigerType();
+        TigerType.FixedPt.name = "fixedpt";
     }
     
     public static TigerType Int() {
@@ -21,19 +24,23 @@ public class TigerType extends TigerSymbol {
         return FixedPt;
     }
     
-    protected TigerType(String name) {
-        super(name);
-    }
-    
-    public TigerType(CommonTree typeNode, TigerScope scope) throws Exception {
-        super(typeNode.getChild(0).getText());
-        this.baseType = scope.lookupSymbol(typeNode.getChild(1).getText(), TigerType.class);
-        this.width = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
-        this.height = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
+    public static TigerType fromAstNode(CommonTree typeNode, TigerScope scope) throws Exception {
+        String name = typeNode.getChild(0).getText();
+        TigerType baseType = scope.lookupSymbol(typeNode.getChild(1).getText(), TigerType.class);
+        int width = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
+        int height = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
         
-        if (!this.baseType.isBaseType()) {
-            throw new Exception("base type required. found: " + this.baseType);
+        if (!baseType.isBaseType()) {
+            throw new Exception("base type required. found: " + baseType);
         }
+        
+        TigerType type = new TigerType();
+        type.name = name;
+        type.baseType = baseType;
+        type.width = width;
+        type.height = height;
+        
+        return type;
     }
     
     public boolean isBaseType() {
