@@ -19,8 +19,10 @@ public class TigerBlock {
         
         if (varsTree.getChildren() != null) {
             for (Object child : varsTree.getChildren()) {
-                //TigerFunction function = TigerVariable.fromAstNode((CommonTree)child, new TigerScope(globalScope));
-                //globalScope.defineSymbol(function);
+                List<TigerVariable> vars = TigerVariable.fromAstNode((CommonTree)child, scope);
+                for (TigerVariable var : vars) {
+                    scope.defineSymbol(var);
+                }
             }
         }
         
