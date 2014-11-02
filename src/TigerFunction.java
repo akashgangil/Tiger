@@ -16,26 +16,35 @@ public class TigerFunction extends TigerSymbol {
     public TigerFunction(CommonTree functionNode, TigerScope scope) throws Exception {
         super(functionNode.getChild(1).getText());
         this.scope = scope;
-        
-        returnType = scope.lookupSymbol(functionNode.getChild(1).getText(), TigerType.class);
         parameterTypes = new LinkedList<TigerType>();
+        blocks = new LinkedList<TigerBlock>();
+        
+        String returnTypeName = functionNode.getChild(0).getText();
+        if (!returnTypeName.equals("void")) {
+            returnType = scope.lookupSymbol(returnTypeName, TigerType.class);
+        }
+        
         CommonTree treeParams = (CommonTree)functionNode.getChild(2);
-        for (Object child : treeParams.getChildren()) {
-            CommonTree paramTree = (CommonTree)child;
-            String name = paramTree.getChild(0).getText();
-            String typeName = paramTree.getChild(1).getText();
-            TigerType type = scope.lookupSymbol(typeName, TigerType.class);
-            TigerVariable param = new TigerVariable(name, type);
-            
-            scope.defineSymbol(param);
-            parameterTypes.add(type);
+        if (treeParams.getChildren() != null) {
+            for (Object child : treeParams.getChildren()) {
+                CommonTree paramTree = (CommonTree)child;
+                String name = paramTree.getChild(0).getText();
+                String typeName = paramTree.getChild(1).getText();
+                TigerType type = scope.lookupSymbol(typeName, TigerType.class);
+                TigerVariable param = new TigerVariable(name, type);
+                
+                scope.defineSymbol(param);
+                parameterTypes.add(type);
+            }
         }
         
         CommonTree treeBlocks = (CommonTree)functionNode.getChild(3);
-        for (Object child : treeParams.getChildren()) {
-            CommonTree blockTree = (CommonTree)child;
-            TigerBlock block = new TigerBlock(blockTree, new TigerScope(scope, name));
-            blocks.add(block);
+        if (treeBlocks.getChildren() != null) {
+            for (Object child : treeBlocks.getChildren()) {
+                CommonTree blockTree = (CommonTree)child;
+                TigerBlock block = new TigerBlock(blockTree, new TigerScope(scope, "block"));
+                blocks.add(block);
+            }
         }
     }
     

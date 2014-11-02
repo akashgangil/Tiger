@@ -121,6 +121,8 @@ public class Tiger {
 
             if (options.printSymbolTable) {
                 System.out.println("***Symbol Table***");
+                TigerProgram program = new TigerProgram(ast);
+                System.out.println(program.getGlobalScope());
             }
 
             if (options.intermediateRep) {
@@ -144,7 +146,7 @@ public class Tiger {
             System.err.println(re);
         } catch (Exception e) {
             System.out.println(e);
-            System.exit(1);
+            e.printStackTrace();
         }
     }
 }

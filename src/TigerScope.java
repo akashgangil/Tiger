@@ -39,21 +39,21 @@ public class TigerScope {
     public <T extends TigerSymbol> T lookupSymbol(String name, Class<T> kind) throws Exception {
         TigerSymbol symbol = lookupSymbol(name);
         if (symbol == null) {
-            throw new Exception(kind.getName() + "undefined: " + name);
+            throw new Exception(kind.getName() + " undefined: " + name);
         } else if (!kind.isAssignableFrom(symbol.getClass())) {
-            throw new Exception(kind.getName() + "required. found: " + symbol);
+            throw new Exception(kind.getName() + " required. found: " + symbol);
         }
         return (T)symbol;
     }
 
     public TigerSymbol lookupSymbol(String name) {
         if (name.equals("int")) {
-            return TigerBaseType.Int();
+            return TigerType.Int();
         } else if (name.equals("fixedpt")) {
-            return TigerBaseType.FixedPt();
+            return TigerType.FixedPt();
         }
         TigerSymbol symbol = symbols.get(name);
-        if (name == null && parentScope != null) {
+        if (symbol == null && parentScope != null) {
             symbol = parentScope.lookupSymbol(name);
         }
         return symbol;
@@ -66,14 +66,14 @@ public class TigerScope {
             indent.append("\t");
         }
         
-        str.append(indent + context + " {");
+        str.append(indent + context + " {\n");
         for (Map.Entry<String, TigerSymbol> entry : symbols.entrySet()) {
-            str.append(indent + entry.getKey() + "\t" + entry.getValue() + "\n");
+            str.append(indent + "\t" + entry.getValue() + "\n");
         }
         for (TigerScope childScope : childScopes) {
             str.append(childScope.toString(level + 1));
         }
-        str.append(indent + "}");
+        str.append(indent + "}\n");
         
         return str.toString();
     }
