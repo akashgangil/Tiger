@@ -39,7 +39,7 @@ public class Tiger {
             System.err.println(ioe);
             System.exit(1);
         }
-	}
+    }
 
     public static class TigerOptions {
         public boolean printTokens = false;
@@ -75,10 +75,11 @@ public class Tiger {
 
     public static void usage(int status) {
         System.out.println("usage: Tiger [options] <input file>");
-        System.out.println("\t--tokens\toutput tokens");
-        System.out.println("\t--ast <dot output file>\tgenerate ast dot diagram");
-        System.out.println("\t--symbol-table\toutput symbol table");
-        System.out.println("\t--help\tthis help message");
+        System.out.println("\t--tokens\t\t\toutput tokens");
+        System.out.println("\t--ast <dot output file>\t\tgenerate ast dot diagram");
+        System.out.println("\t--symbol-table\t\t\toutput symbol table");
+        System.out.println("\t--ir\t\t\t\tintermediate representation");
+        System.out.println("\t--help\t\t\t\tthis help message");
 
         System.exit(status);
     }
@@ -96,56 +97,52 @@ public class Tiger {
             String source = readFile(options.inputFilename);
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
-	        CommonTree tree = (CommonTree)(parser.tiger_program().getTree());
-
+            CommonTree ast = (CommonTree)parser.tiger_program().getTree();            
+            
             if (options.printTokens) {
-	            TigerLexer lexer1 = new TigerLexer(new ANTLRStringStream(source));
-	            CommonTokenStream cts = new CommonTokenStream(lexer1);
+                System.out.println("***Tokens***");
+                lexer = new TigerLexer(new ANTLRStringStream(source));
+                CommonTokenStream cts = new CommonTokenStream(lexer);
 
-	            int i = 1;
-	            Token to = cts.LT(i);
-	            while(to.getType() != -1){
-	                System.out.print(TigerParser.tokenNames[to.getType()] + " ");
-	                if(to.getType() == -1) break;
-	                to = cts.LT(++i);
-	            }
+                int i = 1;
+                Token to = cts.LT(i);
+                while(to.getType() != -1){
+                    System.out.print(TigerParser.tokenNames[to.getType()] + " ");
+                    if(to.getType() == -1) break;
+                    to = cts.LT(++i);
+                }
 
-	            System.out.println();
+                System.out.println();
             }
 
             if (options.dotFilename != null) {
-				writeDotFile(tree, options);
+                writeDotFile(ast, options);
             }
 
             if (options.printSymbolTable) {
-	            //run bfs
-	            TigerUtil.bfs(tree);
-	            //print sample symbol table
-	            System.out.println("***Symbol Table***");
-	            //printSymbolTable(ht);
-			}
-
-            if (options.intermediateRep) {
-                new IRGenerator().generate(tree);
+                System.out.println("***Symbol Table***");
             }
 
-			if(parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()){
-				System.out.println("***Successful Parse***");
-			}
-			else{
-				if(!parser.getErrors().isEmpty()){
-					System.out.println("*** Parser Errors ***");
-					for(String s : parser.getErrors()) System.out.println(s);
-				}
+            if (options.intermediateRep) {
+                new IRGenerator().generate(ast);
+            }
 
-				if(!lexer.getErrors().isEmpty()){
-					System.out.println("*** Lexer Errors ***");
-					for(String s : lexer.getErrors()) System.out.println(s);
-				}
-			}
-		} catch (RecognitionException re) {
-			System.err.println(re);
-		} catch (Exception e) {
+            if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()) {
+                System.out.println("***Successful Parse***");
+            } else {
+                if(!parser.getErrors().isEmpty()){
+                    System.out.println("*** Parser Errors ***");
+                    for(String s : parser.getErrors()) System.out.println(s);
+                }
+
+                if(!lexer.getErrors().isEmpty()){
+                    System.out.println("*** Lexer Errors ***");
+                    for(String s : lexer.getErrors()) System.out.println(s);
+                }
+            }
+        } catch (RecognitionException re) {
+            System.err.println(re);
+        } catch (Exception e) {
             System.out.println(e);
             System.exit(1);
         }
