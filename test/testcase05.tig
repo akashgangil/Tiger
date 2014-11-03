@@ -27,7 +27,7 @@ begin
 end;
 
 /* basic function param fixedpt, return fixedpt */
-fixedpt function funcName3(x:fixept) 
+fixedpt function funcName3(x:fixedpt) 
 begin
 	begin
 		var a : fixedpt :=0;
@@ -37,7 +37,7 @@ begin
 end;
 
 /* basic function multiple params */
-void function funcName4(x:int, y:fixept) 
+void function funcName4(x:int, y:fixedpt) 
 begin
 	begin
 		var g,h,i,j,k: int:=1;
