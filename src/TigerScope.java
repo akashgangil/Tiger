@@ -27,10 +27,10 @@ public class TigerScope {
     
     public boolean defineSymbol(TigerSymbol symbol) {
         String symbolName = symbol.getName();
-        if(TigerSymbol.reservedSymbolNames.contains(symbolName)){
+       /* if(TigerSymbol.reservedSymbolNames.contains(symbolName)){
             System.out.println("Reserved Symbol Name Error");
             return false;
-        }
+        }*/
         TigerSymbol existing = lookupSymbol(symbolName);
         if (existing != null) {
             return false;
