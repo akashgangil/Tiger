@@ -8,7 +8,7 @@ public class TigerFunction extends TigerSymbol {
     private List<TigerBlock> blocks;
     
     public static TigerFunction fromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
-        String functionName = functionNode.getChild(1).getText();
+        String functionName = functionNode.getChild(1).getText();        
         List<TigerType> parameterTypes = new LinkedList<TigerType>();
         TigerType returnType = null;
         TigerScope scope = new TigerScope(parentScope);

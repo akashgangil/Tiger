@@ -7,12 +7,21 @@ public class TigerStatement extends TigerAstNode {
         TigerStatement statement = null;
         switch (statementTree.getText()) {
             case "if":
+                statement = TigerIf.fromAstNode(statementTree, scope);
+                break;
             case "for":
+                statement = TigerFor.fromAstNode(statementTree, scope);
+                break;
             case "while":
+                statement = TigerWhile.fromAstNode(statementTree, scope);
+                break;
             case ":=":
             case "INVOKE":
             case "break":
+                statement = TigerBreak.fromAstNode(statementTree, scope);
+                break;
             case "return":
+                statement = TigerReturn.fromAstNode(statementTree, scope);
                 break;
             case "BLOCK":
                 statement = TigerBlock.fromAstNode(statementTree, scope);
