@@ -28,7 +28,7 @@ public class TigerType extends TigerSymbol {
         String name = typeNode.getChild(0).getText();
         TigerType baseType = scope.lookupSymbol(typeNode.getChild(1).getText(), TigerType.class);
         int width = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
-        int height = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
+        int height = (typeNode.getChild(3) == null) ? 0 : Integer.parseInt(typeNode.getChild(3).getText());
         
         if (!baseType.isBaseType()) {
             throw new Exception("base type required. found: " + baseType);
