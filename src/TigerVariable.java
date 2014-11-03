@@ -7,11 +7,16 @@ public class TigerVariable extends TigerSymbol {
     public static List<TigerVariable> fromAstNode(CommonTree variableNode, TigerScope scope) throws Exception {
         List<String> ids = new LinkedList<String>();
         CommonTree idsNode = (CommonTree)variableNode.getChild(0);
+        if(idsNode == null){
+            System.out.println("Error here");
+            return null;
+        }
         for (Object idNode : idsNode.getChildren()) {
             ids.add(((CommonTree)idNode).getText());
         }
         
         String typeName = variableNode.getChild(1).getText();
+
         TigerType type = scope.lookupSymbol(typeName, TigerType.class);
         
         List<TigerVariable> variables = new LinkedList<TigerVariable>();
