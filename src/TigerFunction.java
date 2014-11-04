@@ -9,6 +9,10 @@ public class TigerFunction extends TigerSymbol {
     
     public static TigerFunction fromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
         String functionName = functionNode.getChild(1).getText();        
+        if( !functionName.equals("main") && TigerSymbol.reservedSymbolNames.contains(functionName)){
+            System.out.println("Error Reserved keyword for function name");
+        }
+        
         List<TigerType> parameterTypes = new LinkedList<TigerType>();
         TigerType returnType = null;
         TigerScope scope = new TigerScope(parentScope);

@@ -12,7 +12,12 @@ public class TigerVariable extends TigerSymbol {
             return null;
         }
         for (Object idNode : idsNode.getChildren()) {
-            ids.add(((CommonTree)idNode).getText());
+            String idName = ((CommonTree)idNode).getText();
+            if(TigerSymbol.reservedSymbolNames.contains(idName)){
+                System.out.println("Error Reserved keyword being used for variable name");
+            }
+            else
+                ids.add(idName);
         }
         
         String typeName = variableNode.getChild(1).getText();
