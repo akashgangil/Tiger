@@ -1,8 +1,29 @@
 # TODO:
 
-- Add 'VARS' to symbol table
-- Add conditional expressions(for, while) variable to symbol table.
-- Generate symbol table for the sample program
+## Symbol Table
+
+- [x] Scopes
+- [ ] output function parameter types on print
+
+## Semantic Checks
+
+- [x] Undefined type
+- [x] Undefined variable
+- [ ] Undefined function
+- [ ] Bounds check on array when possible
+- [ ] Assignment lhs.type = rhs.type
+- [ ] Binary operator types match
+- [ ] Function parameter types match
+- [ ] Return type matches function type
+- [ ] Control conditions are boolean
+
+## IR Gen
+
+- ???
+
+## Other
+
+- [ ] Better error reporting
 
 # Usage
 
