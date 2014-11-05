@@ -142,6 +142,8 @@ public class Tiger {
                     for(String s : lexer.getErrors()) System.out.println(s);
                 }
             }
+
+            System.out.println(TigerSemanticError.getAll());
         } catch (RecognitionException re) {
             System.err.println(re);
         } catch (Exception e) {

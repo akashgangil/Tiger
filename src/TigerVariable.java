@@ -15,7 +15,6 @@ public class TigerVariable extends TigerSymbol {
             String idName = ((CommonTree)idNode).getText();
             if(TigerSymbol.reservedSymbolNames.contains(idName)){
                 TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)idNode).getLine(), idName));
-                System.out.println(TigerSemanticError.getAll());
             }
             else
                 ids.add(idName);

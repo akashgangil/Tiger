@@ -56,7 +56,7 @@ public class TigerScope {
     public <T extends TigerSymbol> T lookupSymbol(String name, Class<T> kind) throws Exception {
         TigerSymbol symbol = lookupSymbol(name);
         if (symbol == null) {
-            throw new Exception(kind.getName() + " undefined: " + name);
+            TigerSemanticError.globalList.add(new TigerUndefinedVariableError(9999, name, kind.getName()));
         } else if (!kind.isAssignableFrom(symbol.getClass())) {
             throw new Exception(kind.getName() + " required. found: " + symbol);
         }
