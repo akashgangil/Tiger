@@ -19,8 +19,17 @@ public class TigerProgram extends TigerAstNode {
 
         if(funcsTree != null && funcsTree.getChildren() != null){    
             for (Object child : funcsTree.getChildren()) {
-                TigerFunction function = TigerFunction.fromAstNode((CommonTree)child, globalScope);
+                TigerFunction function = TigerFunction.prototypeFromAstNode((CommonTree)child, globalScope);
                 globalScope.defineSymbol(function);
+            }
+        }
+        
+        if(funcsTree != null && funcsTree.getChildren() != null){    
+            for (Object child : funcsTree.getChildren()) {
+                CommonTree functionTree = (CommonTree)child;
+                String functionName = functionTree.getChild(1).getText();
+                TigerFunction function = globalScope.lookupSymbol(functionName, TigerFunction.class);
+                function.setDefinition(functionTree, globalScope);
             }
         }
     }

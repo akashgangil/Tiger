@@ -7,7 +7,7 @@ public class TigerFunction extends TigerSymbol {
     private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
     
-    public static TigerFunction fromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
+    public static TigerFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
         String functionName = functionNode.getChild(1).getText();        
         if( !functionName.equals("main") && TigerSymbol.reservedSymbolNames.contains(functionName)){
             System.out.println("Error Reserved keyword for function name");
@@ -16,8 +16,7 @@ public class TigerFunction extends TigerSymbol {
         List<TigerType> parameterTypes = new LinkedList<TigerType>();
         TigerType returnType = null;
         TigerScope scope = new TigerScope(parentScope);
-        List<TigerBlock> blocks = new LinkedList<TigerBlock>();
-        
+
         String returnTypeName = functionNode.getChild(0).getText();
         if (!returnTypeName.equals("void")) {
             returnType = scope.lookupSymbol(returnTypeName, TigerType.class);
@@ -37,6 +36,20 @@ public class TigerFunction extends TigerSymbol {
             }
         }
         
+        scope.label = "Scope : " + functionName;
+        
+        TigerFunction function = new TigerFunction();
+        function.name = functionName;
+        function.returnType = returnType;
+        function.parameterTypes = parameterTypes;
+        function.scope = scope;
+        
+        return function;
+    }
+    
+    public void setDefinition(CommonTree functionNode, TigerScope parentScope) throws Exception {
+        List<TigerBlock> blocks = new LinkedList<TigerBlock>();
+        
         CommonTree treeBlocks = (CommonTree)functionNode.getChild(3);
         if (treeBlocks.getChildren() != null) {
             for (Object child : treeBlocks.getChildren()) {
@@ -46,16 +59,7 @@ public class TigerFunction extends TigerSymbol {
             }
         }
         
-        scope.label = "Scope : " + functionName;
-        
-        TigerFunction function = new TigerFunction();
-        function.name = functionName;
-        function.returnType = returnType;
-        function.parameterTypes = parameterTypes;
-        function.scope = scope;
-        function.blocks = blocks;
-        
-        return function;
+        this.blocks = blocks;
     }
     
     public TigerType getReturnType() {
