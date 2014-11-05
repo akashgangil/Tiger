@@ -28,4 +28,12 @@ public class TigerStandardFunction extends TigerFunction {
     private TigerStandardFunction(String name) {
         this.name = name;
     }
+    
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(name + " : " + "TigerStandardFunction<(");
+        str.append(") -> ()>");
+        
+        return str.toString();
+    }
 }
