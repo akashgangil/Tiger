@@ -3,13 +3,13 @@
 ## Symbol Table
 
 - [x] Scopes
-- [ ] output function parameter types on print
+- [x] output function parameter types on print
 
 ## Semantic Checks
 
 - [x] Undefined type
 - [x] Undefined variable
-- [ ] Undefined function
+- [x] Undefined function
 - [ ] Bounds check on array when possible
 - [ ] Assignment lhs.type = rhs.type
 - [ ] Binary operator types match
