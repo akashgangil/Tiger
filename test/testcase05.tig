@@ -103,6 +103,7 @@ begin
 		type ArrayIntLocal = array [100] of int;
 		var X, Y : ArrayIntLocal := 10;
 		var i: int := 0;
+        var sum: int; /* MODIFIED */
 		for i := 1 to 100 do
 			sum := sum + X[i] * Y[i];
 		enddo;
@@ -280,6 +281,6 @@ begin
 			enddo;
 			printi(sum);
 		end;
-		funcName( X);
+		funcName19( X); /* MODIFIED */
 	end;
 end;

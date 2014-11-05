@@ -19,7 +19,7 @@ public class TigerStatement extends TigerAstNode {
                 statement = TigerAssign.fromAstNode(statementTree, scope);
                 break;
             case "INVOKE":
-                // invoke
+                statement = TigerInvocation.fromAstNode(statementTree, scope);
                 break;
             case "break":
                 statement = TigerBreak.fromAstNode(statementTree, scope);

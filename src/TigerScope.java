@@ -16,9 +16,26 @@ public class TigerScope {
         childScopes = new LinkedList<TigerScope>();
         symbols = new HashMap<String, TigerSymbol>();
         
+        if (parentScope == null) {
+            // define global built ins
+            defineSymbol(TigerType.Int());
+            defineSymbol(TigerType.FixedPt());
+            defineSymbol(TigerStandardFunction.print);
+            defineSymbol(TigerStandardFunction.printi);
+            defineSymbol(TigerStandardFunction.flush);
+            defineSymbol(TigerStandardFunction.getchar);
+            defineSymbol(TigerStandardFunction.ord);
+            defineSymbol(TigerStandardFunction.chr);
+            defineSymbol(TigerStandardFunction.size);
+            defineSymbol(TigerStandardFunction.substring);
+            defineSymbol(TigerStandardFunction.concat);
+            defineSymbol(TigerStandardFunction.not);
+            defineSymbol(TigerStandardFunction.exit);
+        }
+        
         if (parentScope != null) {
             parentScope.addChildScope(this);
-        }
+        } 
     }
 
     private void addChildScope(TigerScope childScope) {
@@ -47,11 +64,6 @@ public class TigerScope {
     }
 
     public TigerSymbol lookupSymbol(String name) {
-        if (name.equals("int")) {
-            return TigerType.Int();
-        } else if (name.equals("fixedpt")) {
-            return TigerType.FixedPt();
-        }
         TigerSymbol symbol = symbols.get(name);
         if (symbol == null && parentScope != null) {
             symbol = parentScope.lookupSymbol(name);
