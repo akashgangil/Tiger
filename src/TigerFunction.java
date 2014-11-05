@@ -67,6 +67,21 @@ public class TigerFunction extends TigerSymbol {
     }
     
     public String toString() {
-        return name + " : " + "TigerFunction<" + "()" + " -> "+ returnType + ">";
+        StringBuilder str = new StringBuilder();
+        str.append(name + " : " + "TigerFunction<(");
+        for (int idx = 0; idx < parameterTypes.size(); idx += 1) {
+            TigerType type = parameterTypes.get(idx);
+            str.append(type);
+            if (idx != (parameterTypes.size() - 1)) {
+                str.append(", ");
+            }
+        }
+        if (returnType == null) {
+            str.append(") -> (void)>");
+        } else {
+            str.append(") -> ("+ returnType + ")>");
+        }
+        
+        return str.toString();
     }
 }
