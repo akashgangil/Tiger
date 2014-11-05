@@ -4,3 +4,5 @@ build
 *.dot
 *.png
 *.swp
+src/TigerParser.java
+src/TigerLexer.java
