@@ -23,7 +23,7 @@
 
 ## Other
 
-- [ ] Do multiple semantic passes. Global functions and types should be accessible from anywhere
+- [x] Do multiple semantic passes. Global functions and types should be accessible from anywhere
 - [ ] Better error reporting
 
 # Usage
