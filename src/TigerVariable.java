@@ -14,12 +14,14 @@ public class TigerVariable extends TigerSymbol {
         for (Object idNode : idsNode.getChildren()) {
             String idName = ((CommonTree)idNode).getText();
             if(TigerSymbol.reservedSymbolNames.contains(idName)){
-                System.out.println("Error Reserved keyword being used for variable name");
+                TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)idNode).getLine(), idName));
+                System.out.println(TigerSemanticError.getAll());
             }
             else
                 ids.add(idName);
         }
-        
+
+
         String typeName = variableNode.getChild(1).getText();
 
         TigerType type = scope.lookupSymbol(typeName, TigerType.class);
