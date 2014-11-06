@@ -19,7 +19,16 @@
 
 ## IR Gen
 
-- ???
+- [x] Functions (call, callr)
+- [ ] Variable assignment (assign)
+- [ ] Binary operation (op)
+- [ ] Goto operation (goto) 
+- [ ] Branch (breq, brneq etc.)
+- [ ] Return statements (return)
+- [ ] Store into array (array_store)
+- [ ] Load into array (array_load)
+- [ ] Array Assignment (assign)
+
 
 ## Other
 
