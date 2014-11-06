@@ -147,11 +147,7 @@ public class IRGenerator {
         TigerFunctionIR ir = new TigerFunctionIR();
 
         String returnType= functionNode.getChild(0).getText();
-        if(returnType != null && returnType.equals(TigerOps.VOID)){
-            ir.setCallCode(TigerOps.CALL);
-        }
-        else
-            ir.setCallCode(TigerOps.CALL_R);
+        ir.setCallCode(TigerOps.CALL);
 
         String name = functionNode.getChild(1).getText(); 
         ir.setFunctionName(name);
