@@ -6,13 +6,12 @@ public class TigerUserFunction extends TigerFunction {
     private TigerType returnType;
     private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
-    private static TigerFunctionIR functionIR = new TigerFunctionIR();
+    private TigerFunctionIR functionIR;
 
     public static TigerUserFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
         
 
         String functionName = functionNode.getChild(1).getText();        
-        functionIR.setFunctionName(functionName);
 
         if( !functionName.equals("main") && TigerSymbol.reservedSymbolNames.contains(functionName)){
             TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)functionNode).getLine(), functionName)); 
@@ -25,11 +24,7 @@ public class TigerUserFunction extends TigerFunction {
         String returnTypeName = functionNode.getChild(0).getText();
         if (!returnTypeName.equals("void")) {
             returnType = scope.lookupSymbol(returnTypeName, TigerType.class);
-            functionIR.setCallCode(TigerOps.CALL);
         }
-        else{
-            functionIR.setCallCode(TigerOps.CALL_R);
-        }   
  
         CommonTree treeParams = (CommonTree)functionNode.getChild(2);
         if (treeParams.getChildren() != null) {
@@ -39,7 +34,6 @@ public class TigerUserFunction extends TigerFunction {
                 String paramTypeName = paramTree.getChild(1).getText();
                 TigerType paramType = scope.lookupSymbol(paramTypeName, TigerType.class);
                 TigerVariable param = new TigerVariable(paramName, paramType);
-                functionIR.addParameters(paramName);        
                 scope.defineSymbol(param);
                 parameterTypes.add(paramType);
             }
@@ -52,8 +46,6 @@ public class TigerUserFunction extends TigerFunction {
         function.returnType = returnType;
         function.parameterTypes = parameterTypes;
         function.scope = scope;
-       
-        TigerIR.IRList.add(functionIR);
         return function;
     }
     
@@ -72,6 +64,22 @@ public class TigerUserFunction extends TigerFunction {
         this.blocks = blocks;
     }
     
+    public TigerIR getIR(){
+        TigerFunctionIR ir = new TigerFunctionIR();
+            
+        if(this.returnType != null && this.returnType.equals(TigerOps.VOID)){
+            ir.setCallCode(TigerOps.CALL);
+        }
+        else
+            ir.setCallCode(TigerOps.CALL_R);
+
+        ir.setFunctionName(this.name);
+        for(TigerType t: this.parameterTypes){
+            ir.addParameter(t.name);
+        }
+        return ir;
+    }
+
     public TigerType getReturnType() {
         return returnType;
     }

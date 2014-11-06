@@ -13,7 +13,7 @@ public class TigerFunctionIR extends TigerIR{
         this.functionName = fName;
     }
 
-    public void addParameters(String param){
+    public void addParameter(String param){
         this.parameters.add(param);
     }
 
