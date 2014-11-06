@@ -146,7 +146,7 @@ public class Tiger {
             System.out.println(TigerSemanticError.getAll());
 
             System.out.println("*******IR**********");
-            for(TigerIR ir: TigerProgram.IRCode){
+            for(String ir: TigerProgram.IRCode){
                 System.out.println(ir);
             }
 

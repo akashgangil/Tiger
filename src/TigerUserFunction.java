@@ -67,22 +67,9 @@ public class TigerUserFunction extends TigerFunction {
         this.blocks = blocks;
     }
     
-    public TigerIR getIR(){
-        TigerFunctionIR ir = new TigerFunctionIR();
-            
-        if(this.returnType != null && this.returnType.equals(TigerOps.VOID)){
-            ir.setCallCode(TigerOps.CALL);
-        }
-        else
-            ir.setCallCode(TigerOps.CALL_R);
-
-        ir.setFunctionName(this.name);
-
-        if(this.parameterNames != null){
-            for(String name: this.parameterNames){
-                ir.addParameter(name);                
-            }
-        }    
+    public String getIR(CommonTree functionNode){
+        IRGenerator irGen = new IRGenerator();
+        String ir = irGen.generateFunc(functionNode);
         return ir;
     }
 

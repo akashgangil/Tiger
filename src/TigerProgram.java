@@ -3,7 +3,7 @@ import org.antlr.runtime.tree.*;
 
 public class TigerProgram extends TigerAstNode {
     private TigerScope globalScope;
-    public static List<TigerIR> IRCode = new ArrayList<TigerIR>();
+    public static List<String> IRCode = new ArrayList<String>();
     public TigerProgram(CommonTree root) throws Exception {
         globalScope = new TigerScope();
         
@@ -30,7 +30,7 @@ public class TigerProgram extends TigerAstNode {
                 String functionName = functionTree.getChild(1).getText();
                 TigerUserFunction function = globalScope.lookupSymbol(functionName, TigerUserFunction.class);
                 function.setDefinition(functionTree, globalScope);
-                IRCode.add(function.getIR());
+                IRCode.add(function.getIR(functionTree));
             }
         }
     }

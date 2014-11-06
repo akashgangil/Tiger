@@ -25,27 +25,30 @@ public class IRGenerator {
             case "|":
                 return binaryOp("or", children);
             case ":=":
-                return assignOp(children);
+                   return assignOp(children);
             case "STATEMENTS":
-                int length = children.size();
-                for (int i = 0; i < length; i++){
-                    generate((CommonTree)children.get(i));
-                }
-                return null;
+                   int length = children.size();
+                   for (int i = 0; i < length; i++){
+                       generate((CommonTree)children.get(i));
+                   }
+                   return null;
             case "REFERENCE":
-                return reference(children);
+                   return reference(children);
             case "INVOKE":
-                return invoke(children);
+                   return invoke(children);
             case "CONSTANT":
-                return constant(children);
+                   return constant(children);
             case "while":
-                return generateWhile(children);
+                   return generateWhile(children);
             case "for":
-                return generateFor(children);
+                   return generateFor(children);
             case "if":
-                return generateIf(children);
+                   return generateIf(children);
+            case "FUNC":
+                   return generateFunc(node);
+
             default:
-                return null;
+                   return null;
         }
     }
 
@@ -138,6 +141,32 @@ public class IRGenerator {
         }
 
         return null;
+    }
+
+    public String generateFunc(CommonTree functionNode){
+        TigerFunctionIR ir = new TigerFunctionIR();
+
+        String returnType= functionNode.getChild(0).getText();
+        if(returnType != null && returnType.equals(TigerOps.VOID)){
+            ir.setCallCode(TigerOps.CALL);
+        }
+        else
+            ir.setCallCode(TigerOps.CALL_R);
+
+        String name = functionNode.getChild(1).getText(); 
+        ir.setFunctionName(name);
+
+        CommonTree treeParams = (CommonTree)functionNode.getChild(2);
+        if (treeParams.getChildren() != null) {
+            for (Object child : treeParams.getChildren()) {
+                CommonTree paramTree = (CommonTree)child;
+                System.out.println(paramTree.getText());
+                String paramName = paramTree.getChild(0).getText();
+                ir.addParameter(paramName);
+            }
+        }
+
+        return ir.toString();  
     }
 
     private String generateWhile(List children) {
