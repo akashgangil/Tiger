@@ -63,6 +63,14 @@ public class TigerType extends TigerSymbol {
         if (this == TigerType.Int || this == TigerType.FixedPt) {
             return name + " : TigerBaseType";
         }
-        return name + " : " + "TigerType<" + baseType + ">[" + width + "]" + "[" + height + "]";
+        StringBuilder str = new StringBuilder(name + " : " + "TigerType<" + baseType + ">");
+        if (width != 0) {
+            str.append("[" + width + "]");
+            if (height != 0) {
+                str.append("[" + height + "]");
+            }
+        }
+        
+        return str.toString();
     }
 }

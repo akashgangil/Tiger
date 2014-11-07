@@ -56,7 +56,7 @@ public class TigerSemanticError {
     }
 
     public static boolean assertTypesMatch(CommonTree origin, TigerType expected, TigerType found) {
-        if (expected == found) {
+        if (expected == found || (expected.isBaseType() && expected.isBaseType())) {
             return true;
         } else {
             typeMismatch(origin, expected, found);
@@ -69,7 +69,7 @@ public class TigerSemanticError {
             undefinedSymbol(origin);
             return false;
         } else if (!type.isAssignableFrom(symbol.getClass())) {
-            errors.add(new TigerSemanticError(origin, "Expected " + type + ", found " + symbol.getClass()));
+            errors.add(new TigerSemanticError(origin, "\n\tExpected " + type + "\n\tfound " + symbol.getClass()));
             return false;
         } else {
             return true;

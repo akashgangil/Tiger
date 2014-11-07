@@ -226,7 +226,7 @@ stat_tail
 statement
 	:	IF expr THEN iftrue=stat_list (options {greedy=true;}: ELSE iffalse=stat_list)? ENDIF SEMI -> ^(IF expr ^(STATEMENTS $iftrue) ^(STATEMENTS $iffalse?))
 	|	WHILE expr DO stat_list ENDDO SEMI -> ^(WHILE expr ^(STATEMENTS stat_list))
-	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR $start $stop ^(STATEMENTS stat_list))
+	|	FOR ID ASSIGN (start=index_expr TO stop=index_expr) DO stat_list ENDDO SEMI -> ^(FOR ID $start $stop ^(STATEMENTS stat_list))
 	|	BREAK SEMI -> BREAK
 	|	RETURN expr SEMI -> ^(RETURN expr)
 	|	block
