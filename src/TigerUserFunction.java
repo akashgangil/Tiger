@@ -9,12 +9,9 @@ public class TigerUserFunction extends TigerFunction {
     private List<String> parameterNames; 
 
     public static TigerUserFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
-        
-
-        String functionName = functionNode.getChild(1).getText();        
-
-        if( !functionName.equals(TigerOps.MAIN) && TigerSymbol.reservedSymbolNames.contains(functionName)){
-            TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)functionNode).getLine(), functionName)); 
+        String functionName = TigerSemanticError.notReservedFunctionName((CommonTree)functionNode.getChild(1));
+        if (functionName == null) {
+            return null;
         }
         
         List<TigerType> parameterTypes = new LinkedList<TigerType>();
@@ -24,20 +21,29 @@ public class TigerUserFunction extends TigerFunction {
 
         String returnTypeName = functionNode.getChild(0).getText();
         if (!returnTypeName.equals(TigerOps.VOID)) {
-            returnType = scope.lookupSymbol(returnTypeName, TigerType.class);
+            returnType = TigerSemanticError.type((CommonTree)functionNode.getChild(0), scope);
+            if (returnType == null) {
+                return null;
+            }
         }
- 
+        
         CommonTree treeParams = (CommonTree)functionNode.getChild(2);
         if (treeParams.getChildren() != null) {
             for (Object child : treeParams.getChildren()) {
                 CommonTree paramTree = (CommonTree)child;
-                String paramName = paramTree.getChild(0).getText();
-                String paramTypeName = paramTree.getChild(1).getText();
-                TigerType paramType = scope.lookupSymbol(paramTypeName, TigerType.class);
-                TigerVariable param = new TigerVariable(paramName, paramType);
+                
+                String name = paramTree.getChild(0).getText();
+                TigerType type = TigerSemanticError.type((CommonTree)paramTree.getChild(1), scope);
+                if (type == null) {
+                    return null;
+                }
+
+                TigerVariable param = new TigerVariable(name, type);
+                
                 scope.defineSymbol(param);
-                parameterNames.add(paramName);
-                parameterTypes.add(paramType);
+
+                parameterNames.add(name);
+                parameterTypes.add(type);
             }
         }
         
@@ -49,6 +55,9 @@ public class TigerUserFunction extends TigerFunction {
         function.parameterTypes = parameterTypes;
         function.scope = scope;
         function.parameterNames = parameterNames;
+        
+        parentScope.addChildScope(scope);
+        
         return function;
     }
     

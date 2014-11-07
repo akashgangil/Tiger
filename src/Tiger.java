@@ -95,12 +95,12 @@ public class Tiger {
 
         try {
             String source = readFile(options.inputFilename);
+            TigerSemanticError.setSource(source.split("\n"));
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree ast = (CommonTree)parser.tiger_program().getTree();            
             
             if (options.printTokens) {
-                System.out.println("***Tokens***");
                 lexer = new TigerLexer(new ANTLRStringStream(source));
                 CommonTokenStream cts = new CommonTokenStream(lexer);
 
@@ -120,34 +120,26 @@ public class Tiger {
             }
 
             if (options.printSymbolTable) {
-                System.out.println("***Symbol Table***");
                 TigerProgram program = new TigerProgram(ast);
                 System.out.println(program.getGlobalScope());
             }
 
-            if (options.intermediateRep) {
-                new IRGenerator().generate(ast);
-            }
-
-            if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()) {
-                System.out.println("***Successful Parse***");
+            if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty() && TigerSemanticError.getErrors().isEmpty()) {                
+                if (options.intermediateRep) {
+                    for(String ir: TigerProgram.IRCode){
+                        System.out.println(ir);
+                    }
+                }
             } else {
-                if(!parser.getErrors().isEmpty()){
-                    System.out.println("*** Parser Errors ***");
-                    for(String s : parser.getErrors()) System.out.println(s);
+                for(String error : parser.getErrors()) {
+                    System.out.println(error);
                 }
-
-                if(!lexer.getErrors().isEmpty()){
-                    System.out.println("*** Lexer Errors ***");
-                    for(String s : lexer.getErrors()) System.out.println(s);
+                for(String error : lexer.getErrors()) {
+                    System.out.println(error);
                 }
-            }
-            System.out.println("******SEMANTIC ERRORS*********");
-            System.out.println(TigerSemanticError.getAll());
-
-            System.out.println("*******IR**********");
-            for(String ir: TigerProgram.IRCode){
-                System.out.println(ir);
+                for(TigerSemanticError error : TigerSemanticError.getErrors()) {
+                    System.out.println(error);
+                }
             }
 
         } catch (RecognitionException re) {

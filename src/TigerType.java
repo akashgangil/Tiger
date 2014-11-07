@@ -25,15 +25,23 @@ public class TigerType extends TigerSymbol {
     }
     
     public static TigerType fromAstNode(CommonTree typeNode, TigerScope scope) throws Exception {
-        String name = typeNode.getChild(0).getText();
-        TigerType baseType = scope.lookupSymbol(typeNode.getChild(1).getText(), TigerType.class);
-        int width = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
-        int height = (typeNode.getChild(3) == null) ? 0 : Integer.parseInt(typeNode.getChild(3).getText());
-        
-        if (!baseType.isBaseType()) {
-            throw new Exception("base type required. found: " + baseType);
+        String name = TigerSemanticError.notReservedName((CommonTree)typeNode.getChild(0));
+        if (name == null) {
+            return null;
         }
         
+        CommonTree baseTypeTree = (CommonTree)typeNode.getChild(1);
+        TigerType baseType = TigerSemanticError.type(baseTypeTree, scope);
+        if (baseType == null) {
+            return null;
+        } else if (!baseType.isBaseType()) {
+            TigerSemanticError.baseTypeRequired(baseTypeTree);
+            return null;
+        }
+        
+        int width = (typeNode.getChild(2) == null) ? 0 : Integer.parseInt(typeNode.getChild(2).getText());
+        int height = (typeNode.getChild(3) == null) ? 0 : Integer.parseInt(typeNode.getChild(3).getText());
+
         TigerType type = new TigerType();
         type.name = name;
         type.baseType = baseType;
@@ -45,6 +53,10 @@ public class TigerType extends TigerSymbol {
     
     public boolean isBaseType() {
         return (this == TigerType.Int || this == TigerType.FixedPt);
+    }
+    
+    public TigerType getBaseType() {
+        return baseType;
     }
     
     public String toString() {
