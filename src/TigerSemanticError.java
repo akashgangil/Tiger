@@ -101,7 +101,7 @@ public class TigerSemanticError {
     }
     
     public static void typeMismatch(CommonTree origin, TigerType expected, TigerType found) {
-        errors.add(new TigerSemanticError(origin, "Expected: " + expected + ", found: " + found));
+        errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: " + found));
     }
     
     private static void reservedSymbol(CommonTree origin) {
