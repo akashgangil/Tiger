@@ -16,13 +16,13 @@ public class Quad {
 
     public String toString(){
         String s = "";
-        s += op.toString();
-        s += ", " + addr1.toString();
-        s += ", " + addr2.toString();
-        s += ", " + addr3.toString();
+        if (op != null) s += op.toString();
+        if (addr1 != null) s += ", " + addr1.toString();
+        if (addr2 != null) s += ", " + addr2.toString();
+        if (addr3 != null) s += ", " + addr3.toString();
         if (params != null){
             for(String t : params){
-                s += ", " + t.toString();
+                if (t != null) s += ", " + t.toString();
             }
         }
 

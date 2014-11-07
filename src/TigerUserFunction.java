@@ -6,17 +6,17 @@ public class TigerUserFunction extends TigerFunction {
     private TigerType returnType;
     private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
-    private List<String> parameterNames; 
+    private List<String> parameterNames;
 
     public static TigerUserFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
-        
 
-        String functionName = functionNode.getChild(1).getText();        
+
+        String functionName = functionNode.getChild(1).getText();
 
         if( !functionName.equals(TigerOps.MAIN) && TigerSymbol.reservedSymbolNames.contains(functionName)){
-            TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)functionNode).getLine(), functionName)); 
+            TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)functionNode).getLine(), functionName));
         }
-        
+
         List<TigerType> parameterTypes = new LinkedList<TigerType>();
         List<String> parameterNames = new LinkedList<String>();
         TigerType returnType = null;
@@ -26,7 +26,7 @@ public class TigerUserFunction extends TigerFunction {
         if (!returnTypeName.equals(TigerOps.VOID)) {
             returnType = scope.lookupSymbol(returnTypeName, TigerType.class);
         }
- 
+
         CommonTree treeParams = (CommonTree)functionNode.getChild(2);
         if (treeParams.getChildren() != null) {
             for (Object child : treeParams.getChildren()) {
@@ -40,9 +40,9 @@ public class TigerUserFunction extends TigerFunction {
                 parameterTypes.add(paramType);
             }
         }
-        
+
         scope.label = "Scope : " + functionName;
-        
+
         TigerUserFunction function = new TigerUserFunction();
         function.name = functionName;
         function.returnType = returnType;
@@ -51,10 +51,10 @@ public class TigerUserFunction extends TigerFunction {
         function.parameterNames = parameterNames;
         return function;
     }
-    
+
     public void setDefinition(CommonTree functionNode, TigerScope parentScope) throws Exception {
         List<TigerBlock> blocks = new LinkedList<TigerBlock>();
-        
+
         CommonTree treeBlocks = (CommonTree)functionNode.getChild(3);
         if (treeBlocks.getChildren() != null) {
             for (Object child : treeBlocks.getChildren()) {
@@ -63,24 +63,25 @@ public class TigerUserFunction extends TigerFunction {
                 blocks.add(block);
             }
         }
-        
+
         this.blocks = blocks;
     }
-    
+
     public String getIR(CommonTree functionNode){
         IRGenerator irGen = new IRGenerator();
-        String ir = irGen.generateFunc(functionNode);
-        return ir;
+        //String ir = irGen.generateFunc(functionNode);
+        //return ir;
+        return null;
     }
 
     public TigerType getReturnType() {
         return returnType;
     }
-    
+
     public List<TigerType> getParameterTypes() {
         return parameterTypes;
     }
-    
+
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(name + " : " + "TigerFunction<(");
@@ -96,7 +97,7 @@ public class TigerUserFunction extends TigerFunction {
         } else {
             str.append(") -> ("+ returnType + ")>");
         }
-        
+
         return str.toString();
     }
 }

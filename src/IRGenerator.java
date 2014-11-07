@@ -25,30 +25,58 @@ public class IRGenerator {
             case "|":
                 return binaryOp("or", children);
             case ":=":
-                   return assignOp(children);
+                return assignOp(children);
             case "STATEMENTS":
-                   int length = children.size();
-                   for (int i = 0; i < length; i++){
-                       generate((CommonTree)children.get(i));
-                   }
-                   return null;
+                int length = children.size();
+                for (int i = 0; i < length; i++){
+                    generate((CommonTree)children.get(i));
+                }
+                return null;
             case "REFERENCE":
-                   return reference(children);
+                return reference(children);
             case "INVOKE":
-                   return invoke(children);
+                return invoke(children);
             case "CONSTANT":
-                   return constant(children);
+                return constant(children);
             case "while":
-                   return generateWhile(children);
+                return generateWhile(children);
             case "for":
-                   return generateFor(children);
+                return generateFor(children);
             case "if":
-                   return generateIf(children);
+                return generateIf(children);
             case "FUNC":
-                   return generateFunc(node);
+                return generateFunc(children);
+            case "FUNCS":
+                for (Object child : children) {
+                    generate((CommonTree)child);
+                }
+                return null;
+            case "BLOCK":
+                CommonTree vars = (CommonTree)children.get(1);
+                CommonTree stmts = (CommonTree)children.get(2);
+                generate(vars);
+                generate(stmts);
+                return null;
+            case "BLOCKS":
+                for (Object child : children) {
+                    generate((CommonTree)child);
+                    //System.out.println(((CommonTree)child).getText());
+                }
+                return null;
+            case "PROGRAM":
+                program(children);
+                return null;
+            case "VARS":
+                if (children != null && children.size() > 0) {
+                    for (Object child : children) {
+                        generate((CommonTree)child);
+                    }
+                }
+                return null;
+            case "VAR":
 
             default:
-                   return null;
+                return null;
         }
     }
 
@@ -63,7 +91,8 @@ public class IRGenerator {
     private String assignOp(List children) {
         String left = generate((CommonTree)children.get(0));
         String right = generate((CommonTree)children.get(1));
-        emit("assign", left, right);
+        int size = -1; //TODO: get size from type table
+        emit("assign", left, size + "", right);
         return left;
     }
 
@@ -71,7 +100,7 @@ public class IRGenerator {
         int length = children.size();
         switch (length) {
             case 1:
-                return generate((CommonTree)children.get(0));
+                return ((CommonTree)children.get(0)).getText();
             case 2:
                 return array(children);
             case 3:
@@ -105,7 +134,7 @@ public class IRGenerator {
     }
 
     private String invoke(List children) {
-        String a = generate((CommonTree)children.get(0));
+        String a = ((CommonTree)children.get(0)).getText();
         ArrayList<String> params = null;
 
         if (children.size() > 1) {
@@ -119,9 +148,8 @@ public class IRGenerator {
             }
         }
 
-        String t1 = newTemp();
-        emit("call", a, t1, null, params);
-        return t1;
+        emit("call", a, null, null, params);
+        return a;
     }
 
     private String generateIf(List children) {
@@ -143,26 +171,28 @@ public class IRGenerator {
         return null;
     }
 
-    public String generateFunc(CommonTree functionNode){
+    public String generateFunc(List children){
         TigerFunctionIR ir = new TigerFunctionIR();
 
-        String returnType= functionNode.getChild(0).getText();
-        ir.setCallCode(TigerOps.CALL);
+        // String returnType= functionNode.getChild(0).getText();
+        // //ir.setCallCode(TigerOps.CALL);
+        //
+        // String name = functionNode.getChild(1).getText();
+        // ir.setFunctionName(name);
+        //
+        // CommonTree treeParams = (CommonTree)functionNode.getChild(2);
+        // if (treeParams.getChildren() != null) {
+        //     for (Object child : treeParams.getChildren()) {
+        //         CommonTree paramTree = (CommonTree)child;
+        //         System.out.println(paramTree.getText());
+        //         String paramName = paramTree.getChild(0).getText();
+        //         ir.addParameter(paramName);
+        //     }
+        // }
 
-        String name = functionNode.getChild(1).getText(); 
-        ir.setFunctionName(name);
-
-        CommonTree treeParams = (CommonTree)functionNode.getChild(2);
-        if (treeParams.getChildren() != null) {
-            for (Object child : treeParams.getChildren()) {
-                CommonTree paramTree = (CommonTree)child;
-                System.out.println(paramTree.getText());
-                String paramName = paramTree.getChild(0).getText();
-                ir.addParameter(paramName);
-            }
-        }
-
-        return ir.toString();  
+        generate((CommonTree)children.get(3));
+        //return ir.toString();
+        return null;
     }
 
     private String generateWhile(List children) {
@@ -190,6 +220,10 @@ public class IRGenerator {
         String firstBound = generate((CommonTree)children.get(0));
         String secondBound = generate((CommonTree)children.get(1));
         return null;
+    }
+
+    private String program(List children) {
+        return generate((CommonTree)children.get(1));
     }
 
     private String getBranchOp(CommonTree opNode) {
