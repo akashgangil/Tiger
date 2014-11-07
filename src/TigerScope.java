@@ -32,13 +32,9 @@ public class TigerScope {
             defineSymbol(TigerStandardFunction.not);
             defineSymbol(TigerStandardFunction.exit);
         }
-        
-        if (parentScope != null) {
-            parentScope.addChildScope(this);
-        } 
     }
 
-    private void addChildScope(TigerScope childScope) {
+    public void addChildScope(TigerScope childScope) {
         childScopes.add(childScope);
     }
     
@@ -50,17 +46,6 @@ public class TigerScope {
         }
         symbols.put(symbolName, symbol); 
         return true;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T extends TigerSymbol> T lookupSymbol(String name, Class<T> kind) throws Exception {
-        TigerSymbol symbol = lookupSymbol(name);
-        if (symbol == null) {
-            TigerSemanticError.globalList.add(new TigerUndefinedVariableError(9999, name, kind.getName()));
-        } else if (!kind.isAssignableFrom(symbol.getClass())) {
-            throw new Exception(kind.getName() + " required. found: " + symbol);
-        }
-        return (T)symbol;
     }
 
     public TigerSymbol lookupSymbol(String name) {

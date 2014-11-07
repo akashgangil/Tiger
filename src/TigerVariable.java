@@ -6,24 +6,28 @@ public class TigerVariable extends TigerSymbol {
     
     public static List<TigerVariable> fromAstNode(CommonTree variableNode, TigerScope scope) throws Exception {
         List<String> ids = new LinkedList<String>();
+        
         CommonTree idsNode = (CommonTree)variableNode.getChild(0);
-        if(idsNode == null){
-            System.out.println("Error here");
+        if (idsNode != null) {
+            for (Object idNode : idsNode.getChildren()) {
+                String idName = TigerSemanticError.notReservedName((CommonTree)idNode);
+                if (idName == null) {
+                    continue;
+                }
+                
+                ids.add(idName);
+            }
+        }
+        
+        if (ids.isEmpty()) {
+            TigerSemanticError.idExpected(idsNode);
             return null;
         }
-        for (Object idNode : idsNode.getChildren()) {
-            String idName = ((CommonTree)idNode).getText();
-            if(TigerSymbol.reservedSymbolNames.contains(idName)){
-                TigerSemanticError.globalList.add(new TigerReservedSymbolError(((CommonTree)idNode).getLine(), idName));
-            }
-            else
-                ids.add(idName);
+
+        TigerType type = TigerSemanticError.type((CommonTree)variableNode.getChild(1), scope);
+        if (type == null) {
+            return null;
         }
-
-
-        String typeName = variableNode.getChild(1).getText();
-
-        TigerType type = scope.lookupSymbol(typeName, TigerType.class);
         
         List<TigerVariable> variables = new LinkedList<TigerVariable>();
         for (String id : ids) {
@@ -36,6 +40,10 @@ public class TigerVariable extends TigerSymbol {
     public TigerVariable(String name, TigerType type) {
         this.name = name;
         this.type = type;
+    }
+    
+    public TigerType getType() {
+        return type;
     }
     
     public String toString() {

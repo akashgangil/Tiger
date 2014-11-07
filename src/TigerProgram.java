@@ -28,7 +28,7 @@ public class TigerProgram extends TigerAstNode {
             for (Object child : funcsTree.getChildren()) {
                 CommonTree functionTree = (CommonTree)child;
                 String functionName = functionTree.getChild(1).getText();
-                TigerUserFunction function = globalScope.lookupSymbol(functionName, TigerUserFunction.class);
+                TigerUserFunction function = (TigerUserFunction)globalScope.lookupSymbol(functionName);
                 function.setDefinition(functionTree, globalScope);
                 IRCode.add(function.getIR(functionTree));
             }

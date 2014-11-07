@@ -92,7 +92,7 @@ public class IRGenerator {
         String left = generate((CommonTree)children.get(0));
         String right = generate((CommonTree)children.get(1));
         int size = -1; //TODO: get size from type table
-        emit("assign", left, size + "", right);
+        emit("assign", left, "SIZE", right);
         return left;
     }
 
@@ -111,9 +111,9 @@ public class IRGenerator {
 
     private String array(List children) {
         String r = newTemp();
-        String a = generate((CommonTree)children.get(0)); //array
+        String a = ((CommonTree)children.get(0)).getText(); //array
         String o = generate((CommonTree)children.get(1)); //offset
-        emit("+", a, o, a);
+        emit("add", a, o, a);
         emit("array_load", r, a, o);
         return r;
     }
@@ -217,8 +217,19 @@ public class IRGenerator {
     }
 
     private String generateFor(List children) {
-        String firstBound = generate((CommonTree)children.get(0));
-        String secondBound = generate((CommonTree)children.get(1));
+        String top = newLabel();
+        String end = newLabel();
+        String t = newTemp();
+
+        String index = generate((CommonTree)children.get(0));
+        String bound = generate((CommonTree)children.get(1));
+        emit("assign", t, "SIZE", index);
+        emit(top + ":", null, null, null);
+        emit("brgt", t, bound, end);
+        generate((CommonTree)children.get(2));
+        emit("add", 1 + "", t, t);
+        emit("goto", top, null, null);
+        emit(end + ":", null, null, null);
         return null;
     }
 
