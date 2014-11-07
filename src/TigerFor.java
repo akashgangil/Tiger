@@ -48,6 +48,8 @@ public class TigerFor extends TigerStatement {
         forStatement.rangeFrom = from;
         forStatement.rangeTo = to;
         
+        parentScope.addChildScope(scope);
+        
         return forStatement;
     }
 }

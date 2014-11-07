@@ -42,6 +42,8 @@ public class TigerBlock extends TigerStatement {
         block.scope = scope;
         block.statements = statements;
         
+        parentScope.addChildScope(scope);
+        
         return block;
     }
     

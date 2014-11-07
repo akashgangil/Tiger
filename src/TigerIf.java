@@ -35,7 +35,7 @@ public class TigerIf extends TigerStatement {
         ifStatement.condition = condition;
         ifStatement.ifTrueStatements = ifTrueStatements;
         ifStatement.ifFalseStatements = ifFalseStatements;
-        
+                
         return ifStatement;
     }
 }
