@@ -10,73 +10,78 @@ public class IRGenerator {
     private int numOfLabels;
 
     public String generate(CommonTree node) {
-        List children = node.getChildren();
-        switch (node.getText()) {
-            case "+":
-                return binaryOp("add", children);
-            case "-":
-                return binaryOp("sub", children);
-            case "*":
-                return binaryOp("mult", children);
-            case "/":
-                return binaryOp("div", children);
-            case "&":
-                return binaryOp("and", children);
-            case "|":
-                return binaryOp("or", children);
-            case ":=":
-                return assignOp(children);
-            case "STATEMENTS":
-                int length = children.size();
-                for (int i = 0; i < length; i++){
-                    generate((CommonTree)children.get(i));
-                }
-                return null;
-            case "REFERENCE":
-                return reference(children);
-            case "INVOKE":
-                return invoke(children);
-            case "CONSTANT":
-                return constant(children);
-            case "while":
-                return generateWhile(children);
-            case "for":
-                return generateFor(children);
-            case "if":
-                return generateIf(children);
-            case "FUNC":
-                return generateFunc(children);
-            case "FUNCS":
-                for (Object child : children) {
-                    generate((CommonTree)child);
-                }
-                return null;
-            case "BLOCK":
-                CommonTree vars = (CommonTree)children.get(1);
-                CommonTree stmts = (CommonTree)children.get(2);
-                generate(vars);
-                generate(stmts);
-                return null;
-            case "BLOCKS":
-                for (Object child : children) {
-                    generate((CommonTree)child);
-                    //System.out.println(((CommonTree)child).getText());
-                }
-                return null;
-            case "PROGRAM":
-                program(children);
-                return null;
-            case "VARS":
-                if (children != null && children.size() > 0) {
+        try {
+            List children = node.getChildren();
+            switch (node.getText()) {
+                case "+":
+                    return binaryOp("add", children);
+                case "-":
+                    return binaryOp("sub", children);
+                case "*":
+                    return binaryOp("mult", children);
+                case "/":
+                    return binaryOp("div", children);
+                case "&":
+                    return binaryOp("and", children);
+                case "|":
+                    return binaryOp("or", children);
+                case ":=":
+                    return assignOp(children);
+                case "STATEMENTS":
+                    int length = children.size();
+                    for (int i = 0; i < length; i++){
+                        generate((CommonTree)children.get(i));
+                    }
+                    return null;
+                case "REFERENCE":
+                    return reference(children);
+                case "INVOKE":
+                    return invoke(children);
+                case "CONSTANT":
+                    return constant(children);
+                case "while":
+                    return generateWhile(children);
+                case "for":
+                    return generateFor(children);
+                case "if":
+                    return generateIf(children);
+                case "FUNC":
+                    return generateFunc(children);
+                case "FUNCS":
                     for (Object child : children) {
                         generate((CommonTree)child);
                     }
-                }
-                return null;
-            case "VAR":
+                    return null;
+                case "BLOCK":
+                    CommonTree vars = (CommonTree)children.get(1);
+                    CommonTree stmts = (CommonTree)children.get(2);
+                    generate(vars);
+                    generate(stmts);
+                    return null;
+                case "BLOCKS":
+                    for (Object child : children) {
+                        generate((CommonTree)child);
+                        //System.out.println(((CommonTree)child).getText());
+                    }
+                    return null;
+                case "PROGRAM":
+                    program(children);
+                    return null;
+                case "VARS":
+                    if (children != null && children.size() > 0) {
+                        for (Object child : children) {
+                            generate((CommonTree)child);
+                        }
+                    }
+                    return null;
+                case "VAR":
 
-            default:
-                return null;
+                default:
+                    return null;
+            }
+        } catch (Exception ex) {
+            System.err.print(node.getText() + " <- ");
+            throw ex;
         }
     }
 
@@ -141,10 +146,12 @@ public class IRGenerator {
             params = new ArrayList<String>();
             CommonTree exprs = (CommonTree)children.get(1);
             List exprChildren = exprs.getChildren();
+            if (exprChildren != null){
             int length = exprChildren.size();
-            for (int i = 0; i < length; i++) {
-                String ti = generate((CommonTree)exprChildren.get(i));
-                params.add(ti);
+                for (int i = 0; i < length; i++) {
+                    String ti = generate((CommonTree)exprChildren.get(i));
+                    params.add(ti);
+                }
             }
         }
 
