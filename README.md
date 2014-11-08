@@ -32,7 +32,7 @@
 ## Other
 
 - [x] Do multiple semantic passes. Global functions and types should be accessible from anywhere
-- [ ] Better error reporting
+- [x] Better error reporting
 
 # Usage
 
