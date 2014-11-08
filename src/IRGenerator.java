@@ -111,9 +111,12 @@ public class IRGenerator {
                         else{
                             /*All user defined types are declared in global scope in Tiger*/
                             TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
-                            int width = userDefinedType.getWidth(); int height = userDefinedType.getHeight();
                             /*Base Type*/
-                            if(type != null && width == 0 && height == 0){
+                            int width = -1;
+                            int height = -1;
+                            if(userDefinedType != null && width == 0 && height == 0){
+                                width = userDefinedType.getWidth();
+                                height = userDefinedType.getHeight();
                                 for(Object child: ids.getChildren()){
                                     String varName = ((CommonTree)child).getText();
                                     emit("assign", varName, value);
