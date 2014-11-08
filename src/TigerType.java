@@ -58,6 +58,14 @@ public class TigerType extends TigerSymbol {
     public TigerType getBaseType() {
         return baseType;
     }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
     
     public String toString() {
         if (this == TigerType.Int || this == TigerType.FixedPt) {

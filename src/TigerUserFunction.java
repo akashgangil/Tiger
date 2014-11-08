@@ -76,13 +76,6 @@ public class TigerUserFunction extends TigerFunction {
         this.blocks = blocks;
     }
 
-    public String getIR(CommonTree functionNode){
-        IRGenerator irGen = new IRGenerator();
-        //String ir = irGen.generateFunc(functionNode);
-        //return ir;
-        return null;
-    }
-
     public TigerType getReturnType() {
         return returnType;
     }

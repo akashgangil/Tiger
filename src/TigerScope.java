@@ -3,7 +3,7 @@ import java.util.*;
 public class TigerScope {
     public String label;
     private TigerScope parentScope;
-    private List<TigerScope> childScopes;
+    public List<TigerScope> childScopes;
     private HashMap<String, TigerSymbol> symbols;
 
     public TigerScope() {

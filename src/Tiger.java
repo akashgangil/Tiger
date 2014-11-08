@@ -126,10 +126,8 @@ public class Tiger {
 
             if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty() && TigerSemanticError.getErrors().isEmpty()) {
                 if (options.intermediateRep) {
-                    new IRGenerator().generate(ast);
-                    for(String ir: TigerProgram.IRCode){
-                        System.out.println(ir);
-                    }
+                    TigerProgram program = new TigerProgram(ast);
+                    new IRGenerator(program.getGlobalScope()).generate(ast);
                 }
             } else {
                 for(String error : parser.getErrors()) {

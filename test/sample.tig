@@ -1,7 +1,7 @@
+type ArrayInt = array [100] of int;
 void main()
 begin
   begin
-    type ArrayInt = array [100] of int;
     var X, Y : ArrayInt := 10;
     var i, sum : int := 0;
     begin
