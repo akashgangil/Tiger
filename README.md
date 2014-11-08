@@ -10,12 +10,11 @@
 - [x] Undefined type
 - [x] Undefined variable
 - [x] Undefined function
-- [ ] Bounds check on array when possible
-- [ ] Assignment lhs.type = rhs.type
-- [ ] Binary operator types match
-- [ ] Function parameter types match
+- [x] Assignment lhs.type = rhs.type
+- [x] Binary operator types match
+- [x] Function parameter types match
 - [ ] Return type matches function type
-- [ ] Control conditions are boolean
+- [x] Control conditions are boolean
 
 ## IR Gen
 
