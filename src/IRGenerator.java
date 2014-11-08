@@ -91,7 +91,20 @@ public class IRGenerator {
                         }
                     }
                     return null;
-                case "VAR":
+                case "var": 
+                    //we generate IR only if the variable is initialized
+                    if(children != null && children.size() > 2){
+                        String type = ((CommonTree)children.get(1)).getText();
+                        String value = ((CommonTree)children.get(2)).getText();
+                        if(type.equals("int") || type.equals("fixedpt")){
+                            CommonTree ids = (CommonTree)children.get(0);
+                            for(Object child: ids.getChildren()){
+                                String varName = ((CommonTree)child).getText();
+                                emit("assign", varName, value);
+                            }
+                        }
+                    }
+                
                 default:
                     return null;
             }
