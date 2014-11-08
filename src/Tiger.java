@@ -100,7 +100,7 @@ public class Tiger {
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree ast = (CommonTree)parser.tiger_program().getTree();
 
-            if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty() && TigerSemanticError.getErrors().isEmpty()) {
+            if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()) {
                 TigerProgram program = new TigerProgram(ast);
                 
                 if (options.printTokens) {
@@ -116,14 +116,6 @@ public class Tiger {
                     }
 
                     System.out.println();
-                }
-
-                if (options.dotFilename != null) {
-                    writeDotFile(ast, options);
-                }
-
-                if (options.printSymbolTable) {
-                    System.out.println(program.getGlobalScope());
                 }
                 
                 if (TigerSemanticError.getErrors().isEmpty()) {
