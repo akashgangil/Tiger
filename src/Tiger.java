@@ -99,6 +99,7 @@ public class Tiger {
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree ast = (CommonTree)parser.tiger_program().getTree();
+            TigerProgram program = new TigerProgram(ast);
 
             if (options.printTokens) {
                 lexer = new TigerLexer(new ANTLRStringStream(source));
@@ -120,13 +121,11 @@ public class Tiger {
             }
 
             if (options.printSymbolTable) {
-                TigerProgram program = new TigerProgram(ast);
                 System.out.println(program.getGlobalScope());
             }
 
             if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty() && TigerSemanticError.getErrors().isEmpty()) {
                 if (options.intermediateRep) {
-                    TigerProgram program = new TigerProgram(ast);
                     new IRGenerator(program.getGlobalScope()).generate(ast);
                 }
             } else {
