@@ -99,43 +99,51 @@ public class Tiger {
             TigerLexer lexer = new TigerLexer(new ANTLRStringStream(source));
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree ast = (CommonTree)parser.tiger_program().getTree();
-            TigerProgram program = new TigerProgram(ast);
-
-            if (options.printTokens) {
-                lexer = new TigerLexer(new ANTLRStringStream(source));
-                CommonTokenStream cts = new CommonTokenStream(lexer);
-
-                int i = 1;
-                Token to = cts.LT(i);
-                while(to.getType() != -1){
-                    System.out.print(TigerParser.tokenNames[to.getType()] + " ");
-                    if(to.getType() == -1) break;
-                    to = cts.LT(++i);
-                }
-
-                System.out.println();
-            }
-
-            if (options.dotFilename != null) {
-                writeDotFile(ast, options);
-            }
-
-            if (options.printSymbolTable) {
-                System.out.println(program.getGlobalScope());
-            }
 
             if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty() && TigerSemanticError.getErrors().isEmpty()) {
-                if (options.intermediateRep) {
-                    new IRGenerator(program.getGlobalScope()).generate(ast);
+                TigerProgram program = new TigerProgram(ast);
+                
+                if (options.printTokens) {
+                    lexer = new TigerLexer(new ANTLRStringStream(source));
+                    CommonTokenStream cts = new CommonTokenStream(lexer);
+
+                    int i = 1;
+                    Token to = cts.LT(i);
+                    while(to.getType() != -1){
+                        System.out.print(TigerParser.tokenNames[to.getType()] + " ");
+                        if(to.getType() == -1) break;
+                        to = cts.LT(++i);
+                    }
+
+                    System.out.println();
+                }
+
+                if (options.dotFilename != null) {
+                    writeDotFile(ast, options);
+                }
+
+                if (options.printSymbolTable) {
+                    System.out.println(program.getGlobalScope());
+                }
+                
+                if (TigerSemanticError.getErrors().isEmpty()) {
+                    if (options.printSymbolTable) {
+                        System.out.println(program.getGlobalScope());
+                    }
+                    
+                    if (options.intermediateRep) {
+                        new IRGenerator(program.getGlobalScope()).generate(ast);
+                    }
+                } else {
+                    for(TigerSemanticError error : TigerSemanticError.getErrors()) {
+                        System.out.println(error);
+                    }
                 }
             } else {
                 for(String error : parser.getErrors()) {
                     System.out.println(error);
                 }
                 for(String error : lexer.getErrors()) {
-                    System.out.println(error);
-                }
-                for(TigerSemanticError error : TigerSemanticError.getErrors()) {
                     System.out.println(error);
                 }
             }

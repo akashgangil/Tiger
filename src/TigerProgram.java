@@ -19,6 +19,9 @@ public class TigerProgram extends TigerAstNode {
         if (funcsTree != null && funcsTree.getChildren() != null){    
             for (Object child : funcsTree.getChildren()) {
                 TigerUserFunction function = TigerUserFunction.prototypeFromAstNode((CommonTree)child, globalScope);
+                if (function == null) {
+                    return;
+                }
                 globalScope.defineSymbol(function);
             }
         }

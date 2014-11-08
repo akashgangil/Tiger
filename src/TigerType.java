@@ -3,6 +3,7 @@ import org.antlr.runtime.tree.*;
 public class TigerType extends TigerSymbol {
     private static TigerType Int;
     private static TigerType FixedPt;
+    private static TigerType Boolean;
     
     private TigerType baseType;
     private int width;
@@ -14,6 +15,9 @@ public class TigerType extends TigerSymbol {
         
         TigerType.FixedPt = new TigerType();
         TigerType.FixedPt.name = "fixedpt";
+
+        TigerType.Boolean = new TigerType();
+        TigerType.Boolean.name = "boolean";
     }
     
     public static TigerType Int() {
@@ -22,6 +26,10 @@ public class TigerType extends TigerSymbol {
     
     public static TigerType FixedPt() {
         return FixedPt;
+    }
+    
+    public static TigerType Boolean() {
+        return Boolean;
     }
     
     public static TigerType fromAstNode(CommonTree typeNode, TigerScope scope) throws Exception {

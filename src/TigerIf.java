@@ -10,9 +10,12 @@ public class TigerIf extends TigerStatement {
         List<TigerStatement> ifTrueStatements = new LinkedList<TigerStatement>();
         List<TigerStatement> ifFalseStatements = new LinkedList<TigerStatement>();
         
-        TigerExpression condition = TigerExpression.fromAstNode((CommonTree)ifTree.getChild(0), scope);
-        // TODO: condition.type = boolean
-        
+        CommonTree conditionTree = (CommonTree)ifTree.getChild(0);
+        TigerExpression condition = TigerExpression.fromAstNode(conditionTree, scope);
+        if (condition == null || !TigerSemanticError.assertTypesMatch(conditionTree, TigerType.Boolean(), condition.type)) {
+            return null;
+        }
+                
         CommonTree ifTrueTree = (CommonTree)ifTree.getChild(1);
         if (ifTrueTree.getChildren() != null) {
             for (Object child : ifTrueTree.getChildren()) {

@@ -25,6 +25,10 @@ public class TigerBlock extends TigerStatement {
         if (varsTree.getChildren() != null) {
             for (Object child : varsTree.getChildren()) {
                 List<TigerVariable> vars = TigerVariable.fromAstNode((CommonTree)child, scope);
+                if (vars == null) {
+                    return null;
+                }
+                
                 for (TigerVariable var : vars) {
                     scope.defineSymbol(var);
                 }

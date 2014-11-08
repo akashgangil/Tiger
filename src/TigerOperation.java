@@ -21,7 +21,7 @@ public class TigerOperation extends TigerExpression {
                 operation.type = TigerType.Int();
             }
         } else if (lhs.type != rhs.type){
-            TigerSemanticError.typeMismatch((CommonTree)expressionTree.getChild(0), lhs.type, rhs.type);
+            TigerSemanticError.typeMismatch((CommonTree)expressionTree.getChild(0), rhs.type, lhs.type);
             return null;
         } else {
             operation.type = lhs.type;
@@ -30,6 +30,18 @@ public class TigerOperation extends TigerExpression {
         operation.op = expressionTree.getText();
         operation.lhs = lhs;
         operation.rhs = rhs;
+        
+        switch (operation.op) {
+            case "=":
+            case "<>":
+            case "<":
+            case ">":
+            case "<=":
+            case ">=":
+                // convert to boolean type
+                operation.type = TigerType.Boolean();
+                break;
+        }
         
         return operation;
     }
