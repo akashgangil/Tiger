@@ -14,7 +14,7 @@ begin
     end;
 end;
 
-int function add(add1 : int, add2 : int)
+int function cakes(add1 : int, add2 : int)
 begin
     begin
         for x := 0 to add1 + 1 do
