@@ -24,8 +24,9 @@ public class TigerFor extends TigerStatement {
         TigerExpression from = TigerExpression.fromAstNode(fromTree, parentScope);
         TigerExpression to = TigerExpression.fromAstNode(toTree, parentScope);
 
-        if (!TigerSemanticError.assertTypesMatch(fromTree, TigerType.Int(), from.type) 
-        || !TigerSemanticError.assertTypesMatch(toTree, TigerType.Int(), to.type)) {
+        if (from == null || to == null
+            || !TigerSemanticError.assertTypesMatch(fromTree, TigerType.Int(), from.type) 
+            || !TigerSemanticError.assertTypesMatch(toTree, TigerType.Int(), to.type)) {
             return null;
         }
 
