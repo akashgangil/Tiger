@@ -1,9 +1,5 @@
 # TODO:
 
-- [ ]   callr IR
-- [x]   handle break IR
-- [ ]   User defined types IR
-
 ## Known Bugs
 
 - [ ] Type promotion. We only allow type promotion from fixedpt to int and not vice versa. So we should flag an error.
@@ -34,12 +30,14 @@
 - [x] Functions (call, callr)
 - [x] Variable assignment (assign)
 - [x] Binary operation (op)
-- [ ] Goto operation (goto) 
+- [x] Goto operation (goto) 
 - [x] Branch (breq, brneq etc.)
 - [x] Return statements (return)
 - [x] Store into array (array_store)
 - [x] Load into array (array_load)
 - [x] Array Assignment (assign)
+- [ ] callr IR
+- [ ] User defined types IR
 
 
 ## Other
