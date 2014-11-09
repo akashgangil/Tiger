@@ -1,5 +1,8 @@
 # TODO:
 
+- [ ]   callr opcode
+- [ ]   handle break IR
+
 ## Known Bugs
 
 - [ ] Type promotion. We only allow type promotion from fixedpt to int and not vice versa. So we should flag an error.
