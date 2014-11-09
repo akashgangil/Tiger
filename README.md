@@ -2,13 +2,6 @@
 
 ## Known Bugs
 
-- [ ] Type promotion. We only allow type promotion from fixedpt to int and not vice versa. So we should flag an error.
-      To reproduce, in testcase02.tig, change the arugment of function add to fixedpt and pass a int. It succeeds right now.
-
-- [ ] Type promotion in variable assignment. var x:int := 3.0. This should not be allowed.
-
-- [ ] Report a warning if a uninitialized variable is used in a expression.
-
 ## Symbol Table
 
 - [x] Scopes
