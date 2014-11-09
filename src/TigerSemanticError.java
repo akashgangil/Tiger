@@ -101,7 +101,11 @@ public class TigerSemanticError {
     }
     
     public static void typeMismatch(CommonTree origin, TigerType expected, TigerType found) {
-        errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: " + found));
+        if (found == null) {
+            errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: void"));
+        } else { 
+            errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: " + found));
+        }
     }
     
     private static void reservedSymbol(CommonTree origin) {
@@ -110,6 +114,10 @@ public class TigerSemanticError {
     
     public static void idExpected(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "id expected."));
+    }
+    
+    public static void typeExpected(CommonTree origin) {
+        errors.add(new TigerSemanticError(origin, "\n\tExpected: type\n\tFound: void"));
     }
     
     public static void baseTypeRequired(CommonTree origin) {

@@ -6,11 +6,6 @@ begin
     begin
         var b, a, A : int := 12;
         b := 12;
-        if (((a + A) + a) < b * b) then
-            print(b);
-        else
-            print(a);
-        endif;
     end;
 end;
 
@@ -36,6 +31,9 @@ void function loops()
 begin
     begin
         var k : fixedpt := 0.1;
+        var a : fixedpt := 0.1;
+        a := cakes() + cakes();
+        
         while k <= 10 do
             k := k * 2;
         enddo;

@@ -9,11 +9,20 @@ public class TigerOperation extends TigerExpression {
     public static TigerOperation fromAstNode(CommonTree expressionTree, TigerScope scope) throws Exception {
         TigerOperation operation = new TigerOperation();
         
-        TigerExpression lhs = TigerExpression.fromAstNode((CommonTree)expressionTree.getChild(0), scope);
-        TigerExpression rhs = TigerExpression.fromAstNode((CommonTree)expressionTree.getChild(1), scope);
+        CommonTree lhsTree = (CommonTree)expressionTree.getChild(0);
+        CommonTree rhsTree = (CommonTree)expressionTree.getChild(1);
         
-        if (lhs == null || rhs == null || lhs.type == null || rhs.type == null) {
+        TigerExpression lhs = TigerExpression.fromAstNode(lhsTree, scope);
+        TigerExpression rhs = TigerExpression.fromAstNode(rhsTree, scope);
+        
+        if (lhs == null || rhs == null) {
             return null;
+        } else if (lhs.type == null && rhs.type == null) {
+            TigerSemanticError.typeExpected(lhsTree);
+        } else if (lhs.type == null) {
+            TigerSemanticError.typeMismatch(lhsTree, rhs.type, null);
+        } else if (rhs.type == null) {
+            TigerSemanticError.typeMismatch(rhsTree, lhs.type, null);
         } else if (lhs.type.isBaseType() && rhs.type.isBaseType()) {
             if (lhs.type == TigerType.FixedPt() || rhs.type == TigerType.FixedPt()) {
                 operation.type = TigerType.FixedPt();
