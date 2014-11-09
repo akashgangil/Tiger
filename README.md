@@ -1,5 +1,8 @@
 # TODO:
 
+- [ ] Array load for 2-D arrays
+- [ ] Short Circuting
+
 ## Known Bugs
 
 ## Symbol Table
