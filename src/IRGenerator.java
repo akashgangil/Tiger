@@ -205,11 +205,22 @@ public class IRGenerator {
     }
 
     private String assignOp(List children) {
-        String left = generate((CommonTree)children.get(0));
         String right = generate((CommonTree)children.get(1));
-        if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
-            emit("assign", left, right);
-        return left;
+        CommonTree leftNode = (CommonTree)children.get(0);
+        /*Array and variables are handled with different opcodes*/
+        if(leftNode.getText().equals("REFERENCE") && leftNode.getChildren().size() > 1){
+            String arrayName = ((CommonTree)leftNode.getChild(0)).getText();
+            /*Since the index can be an expression*/
+            String arrayIndex = generate((CommonTree)leftNode.getChild(1));
+            emit("array_store", arrayName, arrayIndex, right); 
+            return arrayName;
+        }
+        else{ 
+            String left = generate((CommonTree)children.get(0));
+            if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
+               emit("assign", left, right);
+            return left;
+        }
     }
 
     private String reference(List children) {
