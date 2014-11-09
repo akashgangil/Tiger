@@ -1,9 +1,11 @@
 # TODO:
 
-- [ ] Array load for 2-D arrays
+- [x] Array load for 2-D arrays
 - [ ] Short Circuting
 
 ## Known Bugs
+ 
+- [ ] OR opcode in testcase10? function concat
 
 ## Symbol Table
 
