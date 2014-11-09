@@ -13,7 +13,7 @@ public class IRGenerator {
     public IRGenerator(TigerScope scope){
         this.scope = scope;
     }
-        
+
     private String end = "";
 
     public String generate(CommonTree node) {
@@ -33,126 +33,162 @@ public class IRGenerator {
                 case "|":
                     return binaryOp("or", children);
                 case ":=":
-                    return assignOp(children);
+                       return assignOp(children);
                 case "STATEMENTS":
-                    if (children != null) {
-                        int length = children.size();
-                        for (int i = 0; i < length; i++){
-                            generate((CommonTree)children.get(i));
-                        }
-                    }
-                    return null;
+                       if (children != null) {
+                           int length = children.size();
+                           for (int i = 0; i < length; i++){
+                               generate((CommonTree)children.get(i));
+                           }
+                       }
+                       return null;
                 case "REFERENCE":
-                    return reference(children);
+                       return reference(children);
                 case "INVOKE":
-                    if(node.getParent().getText().equals("STATEMENTS")){
-                        return invoke(children, true, null);
-                    }
-                    else{
-                        CommonTree temp = node;
-                        if(temp.getParent().getText().equals(":=")){
-                            return invoke(children, false, temp.getParent().getChild(0).getChild(0).getText());
-                        }
-                        else return invoke(children, false, null); 
-                    }
+                       if(node.getParent().getText().equals("STATEMENTS")){
+                           return invoke(children, true, null);
+                       }
+                       else{
+                           CommonTree temp = node;
+                           if(temp.getParent().getText().equals(":=")){
+                               return invoke(children, false, temp.getParent().getChild(0).getChild(0).getText());
+                           }
+                           else return invoke(children, false, null); 
+                       }
                 case "CONSTANT":
-                    return constant(children);
+                       return constant(children);
                 case "while":
-                    return generateWhile(children);
+                       return generateWhile(children);
                 case "for":
-                    return generateFor(children);
+                       return generateFor(children);
                 case "if":
-                    return generateIf(children);
+                       return generateIf(children);
                 case "FUNC":
-                    return generateFunc(node);
+                       return generateFunc(node);
                 case "FUNCS":
-                    CommonTree main = null;
-                    for (Object child : children) {
-                        CommonTree curr = (CommonTree)child;
-                        if (((CommonTree)curr.getChildren().get(1)).getText().equals("main")) {
-                            main = curr;
-                        }
-                    }
-                    generateMain(main.getChildren());
+                       CommonTree main = null;
+                       for (Object child : children) {
+                           CommonTree curr = (CommonTree)child;
+                           if (((CommonTree)curr.getChildren().get(1)).getText().equals("main")) {
+                               main = curr;
+                           }
+                       }
+                       generateMain(main.getChildren());
 
-                    for (Object child : children) {
-                        CommonTree curr = (CommonTree)child;
-                        if (!((CommonTree)curr.getChildren().get(1)).getText().equals("main")) {
-                            generate((CommonTree)child);
-                        }
-                    }
+                       for (Object child : children) {
+                           CommonTree curr = (CommonTree)child;
+                           if (!((CommonTree)curr.getChildren().get(1)).getText().equals("main")) {
+                               generate((CommonTree)child);
+                           }
+                       }
 
-                    return null;
+                       return null;
                 case "BLOCK":
-                    CommonTree vars = (CommonTree)children.get(1);
-                    CommonTree stmts = (CommonTree)children.get(2);
-                    generate(vars);
-                    generate(stmts);
-                    return null;
+                       CommonTree vars = (CommonTree)children.get(1);
+                       CommonTree stmts = (CommonTree)children.get(2);
+                       generate(vars);
+                       generate(stmts);
+                       return null;
                 case "BLOCKS":
-                    for (Object child : children) {
-                        generate((CommonTree)child);
-                        //System.out.println(((CommonTree)child).getText());
-                    }
-                    return null;
+                       for (Object child : children) {
+                           generate((CommonTree)child);
+                           //System.out.println(((CommonTree)child).getText());
+                       }
+                       return null;
                 case "PROGRAM":
-                    program(children);
-                    return null;
+                       program(children);
+                       return null;
                 case "return":
-                    return generateReturn(children);
+                       return generateReturn(children);
                 case "VARS":
-                    if (children != null && children.size() > 0) {
-                        for (Object child : children) {
-                            generate((CommonTree)child);
-                        }
-                    }
-                    return null;
+                       if (children != null && children.size() > 0) {
+                           for (Object child : children) {
+                               generate((CommonTree)child);
+                           }
+                       }
+                       return null;
 
                 case "break":
-                    emit("goto", end, null, null);
+                       emit("goto", end, null, null);
 
                 case "var": 
-                    /*We generate IR only if the variable is initialized*/
-                    if(children != null && children.size() > 2){
-                        String type = ((CommonTree)children.get(1)).getText();
-                        String value = ((CommonTree)children.get(2)).getText();
-                        CommonTree ids = (CommonTree)children.get(0);
-                        if(type.equals("int") || type.equals("fixedpt")){
-                            for(Object child: ids.getChildren()){
-                                String varName = ((CommonTree)child).getText();
-                                emit("assign", varName, value);
-                            }
-                        } /*Else its a user defined type and needs to be handled appropriately*/
-                        else{
-                            /*All user defined types are declared in global scope in Tiger*/
-                            TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
-                            /*Base Type*/
-                            int width = -1;
-                            int height = -1;
-                            if(userDefinedType != null && width == 0 && height == 0){
-                                width = userDefinedType.getWidth();
-                                height = userDefinedType.getHeight();
-                                for(Object child: ids.getChildren()){
-                                    String varName = ((CommonTree)child).getText();
-                                    emit("assign", varName, value);
-                                }
-                            }/*1-D or 2-D array*/
-                            else if(type != null){
-                                int size = -1;
-                                if(width == 0) size = height;
-                                else if(height == 0) size = width;
-                                else size = height * width;
-                                
-                                for(Object child: ids.getChildren()){
-                                    String varName = ((CommonTree)child).getText();
-                                    emit("assign", varName, size + "", value);
-                                }
-                            }
-                        }
-                    }
-                
+                       /*We generate IR only if the variable is initialized*/
+                       if(children != null && children.size() > 2){
+                           String type = ((CommonTree)children.get(1)).getText();
+                           String value = ((CommonTree)children.get(2)).getText();
+                           CommonTree ids = (CommonTree)children.get(0);
+                           if(type.equals("int") || type.equals("fixedpt")){
+                               for(Object child: ids.getChildren()){
+                                   String varName = ((CommonTree)child).getText();
+                                   emit("assign", varName, value);
+                               }
+                           } /*Else its a user defined type and needs to be handled appropriately*/
+                           else{
+                               /*First check in the local scope*/
+                               int foundLocalType = 0;
+                               CommonTree temp = node;
+                               while(!((CommonTree)temp.getParent()).getText().equals("BLOCKS")){
+                                   temp = (CommonTree)temp.getParent();
+                               }                          
+                               CommonTree typesNode = (CommonTree)temp.getChild(0);
+                               int size = -1;
+                               if(typesNode.getChildren() != null){
+                                   for(Object child : typesNode.getChildren()){
+                                       CommonTree childNode = (CommonTree)child;
+                                       if(childNode.getChild(0).getText().equals(type)){
+                                           foundLocalType = 1;
+                                           if(childNode.getChildren().size() == 3){
+                                               size = Integer.parseInt(childNode.getChild(2).getText());
+                                           }
+                                           else if(childNode.getChildren().size() == 4){
+                                               size = Integer.parseInt(childNode.getChild(2).getText())
+                                                   * Integer.parseInt(childNode.getChild(3).getText());
+                                           }    
+                                       }
+                                   }  
+                               }
+                               if(foundLocalType == 1){
+                                   if(size == -1){
+                                       for(Object child: ids.getChildren()){
+                                           String varName = ((CommonTree)child).getText();
+                                           emit("assign", varName, value);
+                                       }
+                                    }
+                                    else{
+                                           for(Object child: ids.getChildren()){
+                                               String varName = ((CommonTree)child).getText(); 
+                                               emit("assign", varName, size+"", value);
+                                           }
+                                       }
+                               }  
+                                   else{
+                                       /*All user defined types are declared in global scope in Tiger*/
+                                       TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
+                                       /*Base Type*/
+                                       int width = userDefinedType.getWidth();
+                                       int height = userDefinedType.getHeight();
+                                       if(userDefinedType != null && width == 0 && height == 0){
+                                           for(Object child: ids.getChildren()){
+                                               String varName = ((CommonTree)child).getText();
+                                               emit("assign", varName, value);
+                                           }
+                                       }/*1-D or 2-D array*/
+                                       else {
+                                           size = -1;
+                                           if(width == 0) size = height;
+                                           else if(height == 0) size = width;
+                                           else size = height * width;
+
+                                           for(Object child: ids.getChildren()){
+                                               String varName = ((CommonTree)child).getText();
+                                               emit("assign", varName, size + "", value);
+                                           }
+                                       }
+                                   }
+                               }
+                           }
                 default:
-                    return null;
+                return null;
             }
         } catch (Exception ex) {
             System.err.print(node.getText() + " <- ");
