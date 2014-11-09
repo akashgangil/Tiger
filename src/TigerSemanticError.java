@@ -56,7 +56,9 @@ public class TigerSemanticError {
     }
 
     public static boolean assertTypesMatch(CommonTree origin, TigerType expected, TigerType found) {
-        if (expected == found || (expected.isBaseType() && expected.isBaseType())) {
+        if (expected == found) {
+            return true;
+        } else if (expected == TigerType.FixedPt() && found == TigerType.Int()) {
             return true;
         } else {
             typeMismatch(origin, expected, found);

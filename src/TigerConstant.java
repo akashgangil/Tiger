@@ -8,7 +8,7 @@ public class TigerConstant extends TigerExpression {
         String stringValue = expressionTree.getChild(0).getText();
         float value = Float.parseFloat(stringValue);
         
-        if (value == Math.floor(value)) {
+        if (!stringValue.contains(".")) {
             constant.type = TigerType.Int();
         } else {
             constant.type = TigerType.FixedPt();

@@ -22,7 +22,10 @@ FixedPtArray function fixedptArrayStuff(arr : FixedPtArray)
 begin
     begin
         var finalArray : FixedPtArray := 1;
+        var test : int := 1.0;
         finalArray[0] := arr[0];
+        add(0.0, 1);
+        add(1, 1.0);
         return finalArray;
     end;
 end;
@@ -32,7 +35,7 @@ begin
     begin
         var k : fixedpt := 0.1;
         var a : fixedpt := 0.1;
-        a := cakes() + cakes();
+        a := 1 + cakes();
         
         while k <= 10 do
             k := k * 2;
