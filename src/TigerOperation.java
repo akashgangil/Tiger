@@ -12,7 +12,7 @@ public class TigerOperation extends TigerExpression {
         TigerExpression lhs = TigerExpression.fromAstNode((CommonTree)expressionTree.getChild(0), scope);
         TigerExpression rhs = TigerExpression.fromAstNode((CommonTree)expressionTree.getChild(1), scope);
         
-        if (lhs == null || rhs == null) {
+        if (lhs == null || rhs == null || lhs.type == null || rhs.type == null) {
             return null;
         } else if (lhs.type.isBaseType() && rhs.type.isBaseType()) {
             if (lhs.type == TigerType.FixedPt() || rhs.type == TigerType.FixedPt()) {
