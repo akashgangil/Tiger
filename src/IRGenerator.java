@@ -214,11 +214,7 @@ public class IRGenerator {
                 }
             }
         }
-        if (returnsValue) {
-            emit("callr", a, null, null, params);
-        } else {
-            emit("call", a, null, null, params);
-        }
+        emit("call", a, null, null, params);
         return a;
     }
 

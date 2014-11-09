@@ -4,7 +4,7 @@ type Int2DArray = array [2] [3] of int;
 void function cakes()
 begin
     begin
-        var b : int := 12;
+        var b, a, A : int := 12;
         b := 12;
         if (((a + A) + a) < b * b) then
             print(b);
@@ -14,13 +14,12 @@ begin
     end;
 end;
 
-int function cakes(add1 : int, add2 : int)
+int function add(add1 : int, add2 : int)
 begin
     begin
         for x := 0 to add1 + 1 do
             add2 := add2 + 1;
         enddo;
-        return add2;
     end;
 end;
 
@@ -66,6 +65,6 @@ begin
         printi(sum); /* library call to printi to print the dot product */
         end;
         cakes();
-        add(40, sum);
+        a := add(40, sum);
     end;
 end;
