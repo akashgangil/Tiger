@@ -153,42 +153,42 @@ public class IRGenerator {
                                            String varName = ((CommonTree)child).getText();
                                            emit("assign", varName, value);
                                        }
-                                    }
-                                    else{
-                                           for(Object child: ids.getChildren()){
-                                               String varName = ((CommonTree)child).getText(); 
-                                               emit("assign", varName, size+"", value);
-                                           }
-                                       }
-                               }  
+                                   }
                                    else{
-                                       /*All user defined types are declared in global scope in Tiger*/
-                                       TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
-                                       /*Base Type*/
-                                       int width = userDefinedType.getWidth();
-                                       int height = userDefinedType.getHeight();
-                                       if(userDefinedType != null && width == 0 && height == 0){
-                                           for(Object child: ids.getChildren()){
-                                               String varName = ((CommonTree)child).getText();
-                                               emit("assign", varName, value);
-                                           }
-                                       }/*1-D or 2-D array*/
-                                       else {
-                                           size = -1;
-                                           if(width == 0) size = height;
-                                           else if(height == 0) size = width;
-                                           else size = height * width;
+                                       for(Object child: ids.getChildren()){
+                                           String varName = ((CommonTree)child).getText(); 
+                                           emit("assign", varName, size+"", value);
+                                       }
+                                   }
+                               }  
+                               else{
+                                   /*All user defined types are declared in global scope in Tiger*/
+                                   TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
+                                   /*Base Type*/
+                                   int width = userDefinedType.getWidth();
+                                   int height = userDefinedType.getHeight();
+                                   if(userDefinedType != null && width == 0 && height == 0){
+                                       for(Object child: ids.getChildren()){
+                                           String varName = ((CommonTree)child).getText();
+                                           emit("assign", varName, value);
+                                       }
+                                   }/*1-D or 2-D array*/
+                                   else {
+                                       size = -1;
+                                       if(width == 0) size = height;
+                                       else if(height == 0) size = width;
+                                       else size = height * width;
 
-                                           for(Object child: ids.getChildren()){
-                                               String varName = ((CommonTree)child).getText();
-                                               emit("assign", varName, size + "", value);
-                                           }
+                                       for(Object child: ids.getChildren()){
+                                           String varName = ((CommonTree)child).getText();
+                                           emit("assign", varName, size + "", value);
                                        }
                                    }
                                }
                            }
+                       }
                 default:
-                return null;
+                       return null;
             }
         } catch (Exception ex) {
             System.err.print(node.getText() + " <- ");
@@ -221,7 +221,9 @@ public class IRGenerator {
                 /*Since the index can be an expression*/
                 String arrayIndexRow = generate((CommonTree)leftNode.getChild(1));
                 String arrayIndexColumn = generate((CommonTree)leftNode.getChild(2));
-                String offset = arrayIndexing(arrayIndexRow, arrayIndexColumn, "999");
+                String arrayType =  getType((CommonTree)leftNode.getChild(0));
+                String size = getSize((CommonTree)children.get(0), arrayType);
+                String offset = arrayIndexing(arrayIndexRow, arrayIndexColumn, size);
                 emit("array_store", arrayName, offset, right); 
                 return arrayName;
             }
@@ -230,7 +232,7 @@ public class IRGenerator {
         else{ 
             String left = generate((CommonTree)children.get(0));
             if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
-               emit("assign", left, right);
+                emit("assign", left, right);
             return left;
         }
     }
@@ -260,11 +262,72 @@ public class IRGenerator {
         //TODO: get size of array from symbol table and multiply offset
         String r = newTemp();
         String a = ((CommonTree)children.get(0)).getText();
+        
+        String arrayType =  getType((CommonTree)children.get(0));
+        String size = getSize((CommonTree)children.get(0), arrayType);
+        
         String o1 = generate((CommonTree)children.get(1));
         String o2 = generate((CommonTree)children.get(2));
-        String offset = arrayIndexing(o1, o2, "100");
+        String offset = arrayIndexing(o1, o2, size);
         emit("array_load", r, a, offset);
         return r;
+    }
+
+    private String getSize(CommonTree node, String typeName){
+        CommonTree temp = node;
+        int found = 0;
+        while(true){
+            while(!temp.getText().equals("BLOCK")){
+                temp = (CommonTree)temp.getParent();
+            }
+            CommonTree typesNode = (CommonTree)temp.getChild(0);
+            if(typesNode.getChildren() != null && typesNode.getChildren().size() != 0){
+                for(Object typeNode: typesNode.getChildren()){
+                    String type = ((CommonTree)(((CommonTree)typeNode).getChild(0))).getText();
+                    if(type.equals(typeName)){
+                        return ((CommonTree)(((CommonTree)typeNode).getChild(3))).getText();
+                    }
+                }
+            }
+            temp = (CommonTree) temp.getParent();
+            if(temp.getText().equals("BLOCKS")) break;
+        }
+        /*If we reach here then search in global scope*/
+        TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(typeName);
+        return userDefinedType.getHeight() + "";
+
+    } 
+    
+
+    private String getType(CommonTree node){
+        CommonTree temp = node;
+        String varName = node.getText();
+        int found = 0;
+        while(true){
+            while(!temp.getText().equals("BLOCK")){
+                temp = (CommonTree)temp.getParent();
+            }
+            String typeName = "";
+            CommonTree varsNode = (CommonTree)temp.getChild(1);
+            if(varsNode.getChildren() != null && varsNode.getChildren().size() != 0){
+                for(Object var: varsNode.getChildren()){
+                    if(((CommonTree)var).getChild(0) != null){
+                        if(((CommonTree)(((CommonTree)var).getChild(0))).getChildren() != null){
+                            for(Object varId: ((CommonTree)(((CommonTree)var).getChild(0))).getChildren()){
+                                String name = ((CommonTree)varId).getText();
+                                if(name.equals(varName)){
+                                    typeName = ((CommonTree)(((CommonTree)var).getChild(1))).getText();
+                                    found = 1;
+                                    return typeName;
+                                }
+                            }            
+                        }
+                    }
+                }
+            }
+            temp = (CommonTree) temp.getParent();
+            if(temp.getText().equals("BLOCKS")) return null;
+        }
     }
 
     private String constant(List children) {
