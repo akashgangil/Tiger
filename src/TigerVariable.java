@@ -65,6 +65,10 @@ public class TigerVariable extends TigerSymbol {
         return initialized;
     }
     
+    public void ignoreInitialized() {
+        initialized = true;
+    }
+    
     public String toString() {
         return name + " : " + "TigerVariable<" + type + ">";
     }

@@ -49,6 +49,7 @@ public class TigerSemanticError {
         if (verifySymbol(origin, symbol, TigerVariable.class)) {
             TigerVariable variable = (TigerVariable)symbol;
             if (!variable.initialized()) {
+                variable.ignoreInitialized(); // only warn once per var
                 TigerSemanticError.variableMayNotBeInitialized(origin);
             }
             
