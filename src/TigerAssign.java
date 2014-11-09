@@ -14,7 +14,9 @@ public class TigerAssign extends TigerStatement {
         CommonTree rhsTree = (CommonTree)ifTree.getChild(1);
         TigerExpression rhs = TigerExpression.fromAstNode(rhsTree, scope);
 
-        // TODO: verify lhs.type == rhs.type
+        if (!TigerSemanticError.assertTypesMatch(rhsTree, lhs.type, rhs.type)) {
+            return null;
+        }
         
         return assignStatement;
     }
