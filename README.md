@@ -1,7 +1,7 @@
 # TODO:
 
 - [ ]   callr IR
-- [ ]   handle break IR
+- [x]   handle break IR
 - [ ]   User defined types IR
 
 ## Known Bugs
