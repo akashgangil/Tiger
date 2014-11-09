@@ -252,11 +252,6 @@ public class IRGenerator {
         String name = ((CommonTree)children.get(1)).getText();
         emit(name + ":", null, null, null);
         generate((CommonTree)children.get(3));
-        if (returnType.equals("void")) {
-            emit("return", null, null, null);
-        } else {
-            //handled inside the function
-        }
         return null;
     }
 
