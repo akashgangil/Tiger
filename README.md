@@ -7,6 +7,7 @@
 
 - [ ] Type promotion in variable assignment. var x:int := 3.0. This should not be allowed.
 
+- [ ] Report a warning if a uninitialized variable is used in a expression.
 
 ## Symbol Table
 
