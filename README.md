@@ -16,6 +16,8 @@
         at TigerProgram.<init>(TigerProgram.java:34)
         at Tiger.main(Tiger.java:104)
    ```
+- [ ] Type promotion. We only allow type promotion from fixedpt to int and not vice versa. So we should flag an error.
+      To reproduce, in testcase02.tig, change the arugment of function add to fixedpt and pass a int. It succeeds right now.
 
 ## Symbol Table
 
