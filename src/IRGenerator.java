@@ -209,11 +209,23 @@ public class IRGenerator {
         CommonTree leftNode = (CommonTree)children.get(0);
         /*Array and variables are handled with different opcodes*/
         if(leftNode.getText().equals("REFERENCE") && leftNode.getChildren().size() > 1){
-            String arrayName = ((CommonTree)leftNode.getChild(0)).getText();
-            /*Since the index can be an expression*/
-            String arrayIndex = generate((CommonTree)leftNode.getChild(1));
-            emit("array_store", arrayName, arrayIndex, right); 
-            return arrayName;
+            if(leftNode.getChildren().size() == 2){
+                String arrayName = ((CommonTree)leftNode.getChild(0)).getText();
+                /*Since the index can be an expression*/
+                String arrayIndex = generate((CommonTree)leftNode.getChild(1));
+                emit("array_store", arrayName, arrayIndex, right); 
+                return arrayName;
+            }
+            else if(leftNode.getChildren().size() == 3){
+                String arrayName = ((CommonTree)leftNode.getChild(0)).getText();
+                /*Since the index can be an expression*/
+                String arrayIndexRow = generate((CommonTree)leftNode.getChild(1));
+                String arrayIndexColumn = generate((CommonTree)leftNode.getChild(2));
+                String offset = arrayIndexing(arrayIndexRow, arrayIndexColumn, "999");
+                emit("array_store", arrayName, offset, right); 
+                return arrayName;
+            }
+            return "t"; // I dont know why but t would look good in case this ever comes here
         }
         else{ 
             String left = generate((CommonTree)children.get(0));
@@ -240,7 +252,6 @@ public class IRGenerator {
         String r = newTemp();
         String a = ((CommonTree)children.get(0)).getText(); //array
         String o = generate((CommonTree)children.get(1)); //offset
-        //emit("add", a, o, a); // we dont need array offsetting
         emit("array_load", r, a, o);
         return r;
     }
@@ -248,11 +259,11 @@ public class IRGenerator {
     private String array2d(List children) {
         //TODO: get size of array from symbol table and multiply offset
         String r = newTemp();
-        String a = generate((CommonTree)children.get(0));
+        String a = ((CommonTree)children.get(0)).getText();
         String o1 = generate((CommonTree)children.get(1));
         String o2 = generate((CommonTree)children.get(2));
-
-        //emit("array_load", a, r);
+        String offset = arrayIndexing(o1, o2, "100");
+        emit("array_load", r, a, offset);
         return r;
     }
 
@@ -401,6 +412,14 @@ public class IRGenerator {
 
     private String newLabel() {
         return "L" + numOfLabels++;
+    }
+
+    private String arrayIndexing(String i, String j, String columnSize){
+        String rowLine = newTemp();
+        String ele = newTemp();
+        emit("mult", i, columnSize, rowLine);
+        emit("add", j, rowLine, ele);
+        return ele;
     }
 
     private void emit(String op, String x, String y) {
