@@ -14,7 +14,8 @@ public class TigerAssign extends TigerStatement {
         CommonTree rhsTree = (CommonTree)ifTree.getChild(1);
         TigerExpression rhs = TigerExpression.fromAstNode(rhsTree, scope);
 
-        if (!TigerSemanticError.assertTypesMatch(rhsTree, lhs.type, rhs.type)) {
+        if (lhs == null || rhs == null || lhs.type == null || rhs.type == null 
+            || !TigerSemanticError.assertTypesMatch(rhsTree, lhs.type, rhs.type)) {
             return null;
         }
         
