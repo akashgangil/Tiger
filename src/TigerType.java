@@ -66,6 +66,10 @@ public class TigerType extends TigerSymbol {
     public TigerType getBaseType() {
         return baseType;
     }
+    
+    public boolean isAggregate() {
+        return (width != 0);
+    }
 
     public int getWidth(){
         return width;

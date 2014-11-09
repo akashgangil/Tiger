@@ -6,8 +6,7 @@ public class TigerReference extends TigerExpression {
     private TigerExpression width;
     private TigerExpression height;
     
-    public static TigerReference fromAstNode(CommonTree expressionTree, TigerScope scope) throws Exception {
-        TigerVariable var = TigerSemanticError.variable((CommonTree)expressionTree.getChild(0), scope);
+    private static TigerReference commonInit(TigerVariable var, CommonTree expressionTree, TigerScope scope) throws Exception {
         TigerExpression width = null;
         TigerExpression height = null;
         
@@ -47,5 +46,15 @@ public class TigerReference extends TigerExpression {
         }
         
         return reference;
+    }
+    
+    public static TigerReference forAssignment(CommonTree expressionTree, TigerScope scope) throws Exception {
+        TigerVariable var = TigerSemanticError.variableForAssignment((CommonTree)expressionTree.getChild(0), scope);
+        return commonInit(var, expressionTree, scope);
+    }
+    
+    public static TigerReference fromAstNode(CommonTree expressionTree, TigerScope scope) throws Exception {
+        TigerVariable var = TigerSemanticError.variable((CommonTree)expressionTree.getChild(0), scope);
+        return commonInit(var, expressionTree, scope);
     }
 }

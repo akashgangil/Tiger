@@ -16,7 +16,7 @@ public class TigerFor extends TigerStatement {
             return null;
         }
         
-        TigerVariable rangeVariable = new TigerVariable(indexVariableName, TigerType.Int());
+        TigerVariable rangeVariable = new TigerVariable(indexVariableName, TigerType.Int(), true);
         
         CommonTree fromTree = (CommonTree)forTree.getChild(1);
         CommonTree toTree = (CommonTree)forTree.getChild(2);

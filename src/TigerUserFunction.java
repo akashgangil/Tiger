@@ -38,7 +38,7 @@ public class TigerUserFunction extends TigerFunction {
                     return null;
                 }
 
-                TigerVariable param = new TigerVariable(name, type);
+                TigerVariable param = new TigerVariable(name, type, true);
 
                 scope.defineSymbol(param);
 

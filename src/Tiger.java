@@ -122,9 +122,15 @@ public class Tiger {
                     writeDotFile(ast, options);
                 }
                 
+                if (!TigerSemanticError.getWarnings().isEmpty()) {
+                    for(TigerSemanticError warning : TigerSemanticError.getWarnings()) {
+                        System.err.println(warning);
+                    }
+                }
+                
                 if (TigerSemanticError.getErrors().isEmpty()) {
                     if (options.printSymbolTable) {
-                        System.out.println(program.getGlobalScope());
+                        System.err.println(program.getGlobalScope());
                     }
                     
                     if (options.intermediateRep) {
@@ -132,15 +138,15 @@ public class Tiger {
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {
-                        System.out.println(error);
+                        System.err.println(error);
                     }
                 }
             } else {
                 for(String error : parser.getErrors()) {
-                    System.out.println(error);
+                    System.err.println(error);
                 }
                 for(String error : lexer.getErrors()) {
-                    System.out.println(error);
+                    System.err.println(error);
                 }
             }
 

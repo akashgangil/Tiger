@@ -7,6 +7,7 @@ import org.antlr.runtime.tree.*;
 
 public class TigerSemanticError {
     private static List<TigerSemanticError> errors = new ArrayList<TigerSemanticError>();
+    private static List<TigerSemanticError> warnings = new ArrayList<TigerSemanticError>();
     private static String[] source;
     public static List<String> reservedNames = Arrays.asList(
         "print", "printi", "flush", "getchar", "ord", "chr", "size", "substring", "concat", "not", "exit",
@@ -18,6 +19,7 @@ public class TigerSemanticError {
     private String message;
     private int line;
     private int character;
+    private boolean warning;
     
     public static void setSource(String[] source) {
         TigerSemanticError.source = source;
@@ -26,6 +28,11 @@ public class TigerSemanticError {
     public static List<TigerSemanticError> getErrors() {
         // Do not modify the error list directly
         return Collections.unmodifiableList(errors);
+    }
+
+    public static List<TigerSemanticError> getWarnings() {
+        // Do not modify the error list directly
+        return Collections.unmodifiableList(warnings);
     }
 
     public static TigerFunction function(CommonTree origin, TigerScope scope) {
@@ -40,7 +47,22 @@ public class TigerSemanticError {
     public static TigerVariable variable(CommonTree origin, TigerScope scope) {
         TigerSymbol symbol = scope.lookupSymbol(origin.getText());
         if (verifySymbol(origin, symbol, TigerVariable.class)) {
-            return (TigerVariable)symbol;
+            TigerVariable variable = (TigerVariable)symbol;
+            if (!variable.initialized()) {
+                TigerSemanticError.variableMayNotBeInitialized(origin);
+            }
+            
+            return variable;
+        } else {
+            return null;
+        }
+    }
+
+    public static TigerVariable variableForAssignment(CommonTree origin, TigerScope scope) {
+        TigerSymbol symbol = scope.lookupSymbol(origin.getText());
+        if (verifySymbol(origin, symbol, TigerVariable.class)) {
+            TigerVariable variable = (TigerVariable)symbol;            
+            return variable;
         } else {
             return null;
         }
@@ -126,16 +148,26 @@ public class TigerSemanticError {
         errors.add(new TigerSemanticError(origin, "Base type expected."));
     }
     
+    public static void variableMayNotBeInitialized(CommonTree origin) {
+        warnings.add(new TigerSemanticError(origin, "Variable may not be initialized.", true));
+    }
+    
     private TigerSemanticError(CommonTree origin, String message) {
+        this(origin, message, false);
+    }
+    
+    private TigerSemanticError(CommonTree origin, String message, boolean warning) {
         this.origin = origin;
         this.message = message;
+        this.warning = warning;
         
         line = origin.getLine();
         character = origin.getCharPositionInLine() + 1; // always seems to be 1 off???
     }
-
+    
     public String toString(){
-        StringBuilder str = new StringBuilder("line: " + line + ":" + character + ": error: " + message);
+        String type = (warning) ? "warning" : "error";
+        StringBuilder str = new StringBuilder("line: " + line + ":" + character + ": " + type + ": " + message);
         if (source != null) {
             str.append("\n");
             String sourceLine = source[line - 1];

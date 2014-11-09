@@ -9,7 +9,7 @@ public class TigerAssign extends TigerStatement {
         TigerAssign assignStatement = new TigerAssign();
         
         CommonTree lhsTree = (CommonTree)ifTree.getChild(0);
-        TigerReference lhs = TigerReference.fromAstNode(lhsTree, scope);
+        TigerReference lhs = TigerReference.forAssignment(lhsTree, scope);
         
         CommonTree rhsTree = (CommonTree)ifTree.getChild(1);
         TigerExpression rhs = TigerExpression.fromAstNode(rhsTree, scope);

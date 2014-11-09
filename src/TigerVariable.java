@@ -3,6 +3,7 @@ import org.antlr.runtime.tree.*;
 
 public class TigerVariable extends TigerSymbol {
     private TigerType type;
+    private boolean initialized;
     
     public static List<TigerVariable> fromAstNode(CommonTree variableNode, TigerScope scope) throws Exception {
         List<String> ids = new LinkedList<String>();
@@ -29,21 +30,39 @@ public class TigerVariable extends TigerSymbol {
             return null;
         }
         
+        boolean initialized = false;
+        CommonTree initTree = (CommonTree)variableNode.getChild(2);
+        if (initTree != null) {
+            TigerConstant init = TigerConstant.fromAstNode(initTree, scope);
+            if (type.isAggregate() && !TigerSemanticError.assertTypesMatch(initTree, type.getBaseType(), init.type)) {
+                return null;
+            } else if (!type.isAggregate() && !TigerSemanticError.assertTypesMatch(initTree, type, init.type)) {
+                return null;
+            }
+            
+            initialized = true;
+        }
+        
         List<TigerVariable> variables = new LinkedList<TigerVariable>();
         for (String id : ids) {
-            variables.add(new TigerVariable(id, type));
+            variables.add(new TigerVariable(id, type, initialized));
         }
         
         return variables;
     }
     
-    public TigerVariable(String name, TigerType type) {
+    public TigerVariable(String name, TigerType type, boolean initialized) {
         this.name = name;
         this.type = type;
+        this.initialized = initialized;
     }
     
     public TigerType getType() {
         return type;
+    }
+    
+    public boolean initialized() {
+        return initialized;
     }
     
     public String toString() {
