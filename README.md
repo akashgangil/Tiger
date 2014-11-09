@@ -3,6 +3,8 @@
 ## Known Bugs
 
 - [ ] Null Pointer exception if two functions have same name. To reproduce, in testcase02.tig change the function name "add" to "cakes".
+
+
   ```
   [09:08 gangil@gangil:~/dev/Tiger]./tiger.sh --symbol-table test/testcase02.tig 
         java.lang.NullPointerException
