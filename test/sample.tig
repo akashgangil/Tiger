@@ -7,6 +7,7 @@ begin
     begin
       for i := 1 to 100 do
         sum := sum + X[i] * Y[i];
+        break;
       enddo;
       printi(sum);
     end;

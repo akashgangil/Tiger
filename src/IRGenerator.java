@@ -13,6 +13,8 @@ public class IRGenerator {
     public IRGenerator(TigerScope scope){
         this.scope = scope;
     }
+        
+    private String end = "";
 
     public String generate(CommonTree node) {
         try {
@@ -96,6 +98,10 @@ public class IRGenerator {
                         }
                     }
                     return null;
+
+                case "break":
+                    emit("goto", end, null, null);
+
                 case "var": 
                     /*We generate IR only if the variable is initialized*/
                     if(children != null && children.size() > 2){
@@ -252,7 +258,7 @@ public class IRGenerator {
     }
 
     private String generateWhile(List children) {
-        String e = newLabel();
+        end = newLabel();
         String t = newLabel();
         emit(t + ":", null, null, null);
         CommonTree opNode = (CommonTree)children.get(0);
@@ -263,18 +269,18 @@ public class IRGenerator {
         CommonTree right = (CommonTree)opNode.getChildren().get(1);
         String t2 = generate(left);
         String t3 = generate(right);
-        emit(branchOp, t2, t3, e);
+        emit(branchOp, t2, t3, end);
 
         CommonTree stmts = (CommonTree)children.get(1);
         generate(stmts);
         emit("goto", t, null, null);
-        emit(e + ":", null, null, null);
+        emit(end + ":", null, null, null);
         return null;
     }
 
     private String generateFor(List children) {
         String top = newLabel();
-        String end = newLabel();
+        end = newLabel();
         String var = ((CommonTree)children.get(0)).getText();
 
         String lower = generate((CommonTree)children.get(1));
