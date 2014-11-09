@@ -1,5 +1,20 @@
 # TODO:
 
+## Known Bugs
+
+- [ ] Null Pointer exception if two functions have same name. To reproduce, in testcase02.tig change the function name "add" to "cakes".
+  ```
+  [09:08 gangil@gangil:~/dev/Tiger]./tiger.sh --symbol-table test/testcase02.tig 
+        java.lang.NullPointerException
+        java.lang.NullPointerException
+        at TigerFor.fromAstNode(TigerFor.java:27)
+        at TigerStatement.fromAstNode(TigerStatement.java:13)
+        at TigerBlock.fromAstNode(TigerBlock.java:40)
+        at TigerUserFunction.setDefinition(TigerUserFunction.java:71)
+        at TigerProgram.<init>(TigerProgram.java:34)
+        at Tiger.main(Tiger.java:104)
+   ```
+
 ## Symbol Table
 
 - [x] Scopes
