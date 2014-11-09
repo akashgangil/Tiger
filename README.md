@@ -1,7 +1,8 @@
 # TODO:
 
-- [ ]   callr opcode
+- [ ]   callr IR
 - [ ]   handle break IR
+- [ ]   User defined types IR
 
 ## Known Bugs
 
