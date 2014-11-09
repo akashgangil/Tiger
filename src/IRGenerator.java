@@ -171,7 +171,6 @@ public class IRGenerator {
     private String assignOp(List children) {
         String left = generate((CommonTree)children.get(0));
         String right = generate((CommonTree)children.get(1));
-        int size = -1; //TODO: get size from type table
         if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
             emit("assign", left, right);
         return left;
