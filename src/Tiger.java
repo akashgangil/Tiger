@@ -100,6 +100,10 @@ public class Tiger {
             TigerParser parser = new TigerParser(new CommonTokenStream(lexer));
             CommonTree ast = (CommonTree)parser.tiger_program().getTree();
 
+            if(options.dotFilename != null){
+                writeDotFile(ast, options);
+            }
+
             if (parser.getErrors().isEmpty() && lexer.getErrors().isEmpty()) {
                 TigerProgram program = new TigerProgram(ast);
                 
