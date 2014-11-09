@@ -45,7 +45,16 @@ public class IRGenerator {
                 case "REFERENCE":
                     return reference(children);
                 case "INVOKE":
-                    return invoke(children);
+                    if(node.getParent().getText().equals("STATEMENTS")){
+                        return invoke(children, true, null);
+                    }
+                    else{
+                        CommonTree temp = node;
+                        if(temp.getParent().getText().equals(":=")){
+                            return invoke(children, false, temp.getParent().getChild(0).getChild(0).getText());
+                        }
+                        else return invoke(children, false, null); 
+                    }
                 case "CONSTANT":
                     return constant(children);
                 case "while":
@@ -163,7 +172,8 @@ public class IRGenerator {
         String left = generate((CommonTree)children.get(0));
         String right = generate((CommonTree)children.get(1));
         int size = -1; //TODO: get size from type table
-        emit("assign", left, right);
+        if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
+            emit("assign", left, right);
         return left;
     }
 
@@ -204,7 +214,7 @@ public class IRGenerator {
         return ((CommonTree)children.get(0)).getText();
     }
 
-    private String invoke(List children) {
+    private String invoke(List children, boolean call, String temp) {
         String a = ((CommonTree)children.get(0)).getText();
         ArrayList<String> params = null;
         boolean returnsValue = false; //TODO: get this from the symbol table
@@ -220,8 +230,14 @@ public class IRGenerator {
                 }
             }
         }
-        emit("call", a, null, null, params);
-        return a;
+        if(call){
+            emit("call", a, null, null, params);
+        }
+        else{
+            if(temp == null) temp = newTemp();
+            emit("callr", temp, a, null, params);
+        }
+        return temp;
     }
 
     private String generateIf(List children) {

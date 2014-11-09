@@ -29,7 +29,7 @@
 - [x] Store into array (array_store)
 - [x] Load into array (array_load)
 - [x] Array Assignment (assign)
-- [ ] callr IR
+- [x] callr IR
 - [ ] User defined types IR
 
 
