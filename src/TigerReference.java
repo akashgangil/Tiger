@@ -14,23 +14,41 @@ public class TigerReference extends TigerExpression {
             return null;
         }
         
-        if (expressionTree.getChild(1) != null) {
-            CommonTree widthTree = (CommonTree)expressionTree.getChild(1);
+        CommonTree widthTree = (CommonTree)expressionTree.getChild(1);
+        CommonTree heightTree = (CommonTree)expressionTree.getChild(2);
+        
+        
+        if (widthTree != null) {
             width = TigerExpression.fromAstNode(widthTree, scope);
             if (width == null) {
                 return null;
             } else if (!TigerSemanticError.assertTypesMatch(widthTree, TigerType.Int(), width.type)) {
                 return null;
             }
-        }
         
-        if (expressionTree.getChild(2) != null) {
-            CommonTree heightTree = (CommonTree)expressionTree.getChild(2);
-            height = TigerExpression.fromAstNode(heightTree, scope);
-            if (height == null) {
-                return null;
-            } else if (!TigerSemanticError.assertTypesMatch(heightTree, TigerType.Int(), height.type)) {
-                return null;
+            if (width.staticValue() != null) {
+                int staticWidth = width.staticValue().intValue();
+                if (staticWidth < 0 || staticWidth >= var.getType().getWidth()) {
+                    TigerSemanticError.indexOutOfBounds(widthTree, staticWidth, var.getType().getWidth());
+                    return null;
+                }
+            }
+        
+            if (heightTree != null) {
+                height = TigerExpression.fromAstNode(heightTree, scope);
+                if (height == null) {
+                    return null;
+                } else if (!TigerSemanticError.assertTypesMatch(heightTree, TigerType.Int(), height.type)) {
+                    return null;
+                }
+                
+                if (height.staticValue() != null) {
+                    int staticHeight = height.staticValue().intValue();
+                    if (staticHeight < 0 || staticHeight >= var.getType().getHeight()) {
+                        TigerSemanticError.indexOutOfBounds(heightTree, staticHeight, var.getType().getHeight());
+                        return null;
+                    }
+                }
             }
         }
         

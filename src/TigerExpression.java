@@ -36,4 +36,8 @@ public class TigerExpression extends TigerStatement {
         
         return expression;
     }
+    
+    public Float staticValue() {
+        return null;
+    }
 }

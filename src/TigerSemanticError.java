@@ -132,6 +132,14 @@ public class TigerSemanticError {
             errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: " + found));
         }
     }
+    
+    public static void indexOutOfBounds(CommonTree origin, int index, int bound) {
+        if (index < 0) {
+            errors.add(new TigerSemanticError(origin, "Index out of bounds: " + index + " < 0"));
+        } else {
+            errors.add(new TigerSemanticError(origin, "Index out of bounds: " + index + " >= " + bound));
+        }
+    }
 
     public static void functionSignatureMismatch(CommonTree origin, List<TigerType> found, List<TigerType> expected) {
         StringBuilder error = new StringBuilder("Function signature mismatch.\n\tParameters expected: ");
