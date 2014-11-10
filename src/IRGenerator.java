@@ -29,9 +29,21 @@ public class IRGenerator {
                 case "/":
                     return binaryOp("div", children);
                 case "&":
-                    return binaryOp("and", children);
+                    return booleanOp(node);
                 case "|":
-                    return binaryOp("or", children);
+                    return booleanOp(node);
+                case "<":
+                    return comparisonOp(node);
+                case ">":
+                    return comparisonOp(node);
+                case "<=":
+                    return comparisonOp(node);
+                case ">=":
+                    return comparisonOp(node);
+                case "=":
+                    return comparisonOp(node);
+                case "<>":
+                    return comparisonOp(node);
                 case ":=":
                        return assignOp(children);
                 case "STATEMENTS":
@@ -53,7 +65,7 @@ public class IRGenerator {
                            if(temp.getParent().getText().equals(":=")){
                                return invoke(children, false, temp.getParent().getChild(0).getChild(0).getText());
                            }
-                           else return invoke(children, false, null); 
+                           else return invoke(children, false, null);
                        }
                 case "CONSTANT":
                        return constant(children);
@@ -111,7 +123,7 @@ public class IRGenerator {
                 case "break":
                        emit("goto", end, null, null);
 
-                case "var": 
+                case "var":
                        /*We generate IR only if the variable is initialized*/
                        if(children != null && children.size() > 2){
                            String type = ((CommonTree)children.get(1)).getText();
@@ -129,7 +141,7 @@ public class IRGenerator {
                                CommonTree temp = node;
                                while(!((CommonTree)temp.getParent()).getText().equals("BLOCKS")){
                                    temp = (CommonTree)temp.getParent();
-                               }                          
+                               }
                                CommonTree typesNode = (CommonTree)temp.getChild(0);
                                int size = -1;
                                if(typesNode.getChildren() != null){
@@ -143,9 +155,9 @@ public class IRGenerator {
                                            else if(childNode.getChildren().size() == 4){
                                                size = Integer.parseInt(childNode.getChild(2).getText())
                                                    * Integer.parseInt(childNode.getChild(3).getText());
-                                           }    
+                                           }
                                        }
-                                   }  
+                                   }
                                }
                                if(foundLocalType == 1){
                                    if(size == -1){
@@ -156,11 +168,11 @@ public class IRGenerator {
                                    }
                                    else{
                                        for(Object child: ids.getChildren()){
-                                           String varName = ((CommonTree)child).getText(); 
+                                           String varName = ((CommonTree)child).getText();
                                            emit("assign", varName, size+"", value);
                                        }
                                    }
-                               }  
+                               }
                                else{
                                    /*All user defined types are declared in global scope in Tiger*/
                                    TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(type);
@@ -213,7 +225,7 @@ public class IRGenerator {
                 String arrayName = ((CommonTree)leftNode.getChild(0)).getText();
                 /*Since the index can be an expression*/
                 String arrayIndex = generate((CommonTree)leftNode.getChild(1));
-                emit("array_store", arrayName, arrayIndex, right); 
+                emit("array_store", arrayName, arrayIndex, right);
                 return arrayName;
             }
             else if(leftNode.getChildren().size() == 3){
@@ -224,12 +236,12 @@ public class IRGenerator {
                 String arrayType =  getType((CommonTree)leftNode.getChild(0));
                 String size = getSize((CommonTree)children.get(0), arrayType);
                 String offset = arrayIndexing(arrayIndexRow, arrayIndexColumn, size);
-                emit("array_store", arrayName, offset, right); 
+                emit("array_store", arrayName, offset, right);
                 return arrayName;
             }
             return "t"; // I dont know why but t would look good in case this ever comes here
         }
-        else{ 
+        else{
             String left = generate((CommonTree)children.get(0));
             if(!((CommonTree)children.get(1)).getText().equals("INVOKE"))
                 emit("assign", left, right);
@@ -262,10 +274,10 @@ public class IRGenerator {
         //TODO: get size of array from symbol table and multiply offset
         String r = newTemp();
         String a = ((CommonTree)children.get(0)).getText();
-        
+
         String arrayType =  getType((CommonTree)children.get(0));
         String size = getSize((CommonTree)children.get(0), arrayType);
-        
+
         String o1 = generate((CommonTree)children.get(1));
         String o2 = generate((CommonTree)children.get(2));
         String offset = arrayIndexing(o1, o2, size);
@@ -296,8 +308,8 @@ public class IRGenerator {
         TigerType userDefinedType = (TigerType)scope.childScopes.get(0).lookupSymbol(typeName);
         return userDefinedType.getHeight() + "";
 
-    } 
-    
+    }
+
 
     private String getType(CommonTree node){
         CommonTree temp = node;
@@ -320,7 +332,7 @@ public class IRGenerator {
                                     found = 1;
                                     return typeName;
                                 }
-                            }            
+                            }
                         }
                     }
                 }
@@ -364,14 +376,10 @@ public class IRGenerator {
         String e = newLabel();
         CommonTree opNode = (CommonTree)children.get(0);
         String t = generate(opNode);
-        String branchOp = getBranchOp(opNode);
-        String left = generate((CommonTree)opNode.getChildren().get(0));
-        String right = generate((CommonTree)opNode.getChildren().get(1));
-        emit(branchOp, left, right, e);
-
+        emit("breq", t, 0 + "", e);
         generate((CommonTree)children.get(1));
-        emit(e + ":", null, null, null);
 
+        emit(e + ":", null, null, null);
         if (children.size() > 2) {
             generate((CommonTree)children.get(2));
         }
@@ -418,7 +426,6 @@ public class IRGenerator {
         String top = newLabel();
         end = newLabel();
         String var = ((CommonTree)children.get(0)).getText();
-
         String lower = generate((CommonTree)children.get(1));
         String upper = generate((CommonTree)children.get(2));
         emit("assign", var, lower);
@@ -429,6 +436,80 @@ public class IRGenerator {
         emit("goto", top, null, null);
         emit(end + ":", null, null, null);
         return null;
+    }
+
+    private String booleanOp(CommonTree node) {
+        List children = node.getChildren();
+        CommonTree leftNode = (CommonTree)children.get(0);
+        CommonTree rightNode = (CommonTree)children.get(1);
+
+        if (node.getText().equals("|")){
+            String e = newLabel();
+            String r = newTemp();
+            String t1 = generate(leftNode);
+            emit("assign", r, t1);
+            emit("brneq", t1, 0 + "", e);
+            String t2 = generate(rightNode);
+            emit("assign", r, t2);
+            emit(e + ":", null, null);
+            return r;
+        } else if (node.getText().equals("&")) {
+            String e = newLabel();
+            String r = newTemp();
+            String t1 = generate(leftNode);
+            emit("assign", r, t1);
+            emit("breq", t1, 0 + "", e);
+            String t2 = generate(rightNode);
+            emit("assign", r, t2);
+            emit(e + ":", null, null);
+            return r;
+        }
+
+        return null;
+    }
+
+    private String comparisonOp(CommonTree node){
+        List children = node.getChildren();
+        CommonTree leftNode = (CommonTree)children.get(0);
+        CommonTree rightNode = (CommonTree)children.get(1);
+
+        String t1 = generate(leftNode);
+        String t2 = generate(rightNode);
+
+        String result = newTemp();
+        String trueLabel = newLabel();
+        String falseLabel = newLabel();
+        String e = newLabel();
+        emit("sub", t2, t1, result);
+
+        switch (node.getText()) {
+            case "<":
+                emit("brgeq", result, 0 + "", falseLabel);
+                break;
+            case ">":
+                emit("brleq", result, 0 + "", falseLabel);
+                break;
+            case "<=":
+                emit("brgt", result, 0 + "", falseLabel);
+                break;
+            case ">=":
+                emit("brlt", result, 0 + "", falseLabel);
+                break;
+            case "=":
+                emit("brneq", result, 0 + "", falseLabel);
+                break;
+            case "<>":
+                emit("breq", result, 0 + "", falseLabel);
+                break;
+        }
+
+        emit(trueLabel + ":", null, null);
+        emit("assign", result, 1 + "");
+        emit("goto", e, null, null);
+        emit(falseLabel + ":", null, null);
+        emit("assign", result, 0 + "");
+        emit(e + ":", null, null);
+        return result;
     }
 
     private String program(List children) {
