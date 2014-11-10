@@ -149,6 +149,14 @@ public class TigerSemanticError {
         errors.add(new TigerSemanticError(origin, "Base type expected."));
     }
     
+    public static void returnExpected(CommonTree origin) {
+        errors.add(new TigerSemanticError(origin, "Function expects return value."));
+    }
+    
+    public static void noReturnExpected(CommonTree origin) {
+        errors.add(new TigerSemanticError(origin, "Function has no return type."));
+    }
+    
     public static void variableMayNotBeInitialized(CommonTree origin) {
         warnings.add(new TigerSemanticError(origin, "Variable may not be initialized.", true));
     }

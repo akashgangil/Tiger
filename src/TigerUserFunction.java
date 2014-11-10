@@ -7,6 +7,7 @@ public class TigerUserFunction extends TigerFunction {
     private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
     private List<String> parameterNames;
+    private boolean hasReturned;
 
     public static TigerUserFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
         String functionName = TigerSemanticError.notReservedFunctionName((CommonTree)functionNode.getChild(1));
@@ -56,6 +57,7 @@ public class TigerUserFunction extends TigerFunction {
         function.scope = scope;
         function.parameterNames = parameterNames;
 
+        scope.setFunction(function);
         parentScope.addChildScope(scope);
 
         return function;
@@ -72,7 +74,11 @@ public class TigerUserFunction extends TigerFunction {
                 blocks.add(block);
             }
         }
-
+        
+        if (returnType != null && !hasReturned) {
+            TigerSemanticError.returnExpected(functionNode);
+        }
+        
         this.blocks = blocks;
     }
 
@@ -82,6 +88,10 @@ public class TigerUserFunction extends TigerFunction {
 
     public List<TigerType> getParameterTypes() {
         return parameterTypes;
+    }
+
+    public void setHasReturned() {
+        hasReturned = true;
     }
 
     public String toString() {

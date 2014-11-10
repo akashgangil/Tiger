@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TigerScope {
     public String label;
-    private TigerFunction function;
+    private TigerUserFunction function;
     private TigerScope parentScope;
     public List<TigerScope> childScopes;
     private HashMap<String, TigerSymbol> symbols;
@@ -57,15 +57,15 @@ public class TigerScope {
         return symbol;
     }
     
-    public void setFunction(TigerFunction function) {
+    public void setFunction(TigerUserFunction function) {
         this.function = function;
     }
     
-    public TigerFunction function() {
+    public TigerUserFunction getFunction() {
         if (function != null) {
             return function;
         } else if (parentScope != null) {
-            return parentScope.function();
+            return parentScope.getFunction();
         } else {
             return null;
         }
