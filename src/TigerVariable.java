@@ -34,9 +34,10 @@ public class TigerVariable extends TigerSymbol {
         CommonTree initTree = (CommonTree)variableNode.getChild(2);
         if (initTree != null) {
             TigerConstant init = TigerConstant.fromAstNode(initTree, scope);
-            if (type.isAggregate() && !TigerSemanticError.assertTypesMatch(initTree, type.getBaseType(), init.type)) {
+            // one place casting is allowed ...
+            if (!type.isBaseType() && !TigerSemanticError.assertTypesMatch(initTree, type.getBaseType(), init.type)) {
                 return null;
-            } else if (!type.isAggregate() && !TigerSemanticError.assertTypesMatch(initTree, type, init.type)) {
+            } else if (type.isBaseType() && !TigerSemanticError.assertTypesMatch(initTree, type, init.type)) {
                 return null;
             }
             

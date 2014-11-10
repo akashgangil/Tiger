@@ -80,7 +80,7 @@ public class TigerType extends TigerSymbol {
     }
     
     public String toString() {
-        if (this == TigerType.Int || this == TigerType.FixedPt) {
+        if (this == TigerType.Int || this == TigerType.FixedPt || this == TigerType.Boolean) {
             return name + " : TigerBaseType";
         }
         StringBuilder str = new StringBuilder(name + " : " + "TigerType<" + baseType + ">");

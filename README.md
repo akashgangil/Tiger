@@ -7,21 +7,8 @@
  
 - [ ] OR opcode in testcase10? function concat
 
-## Symbol Table
-
-- [x] Scopes
-- [x] output function parameter types on print
-
-## Semantic Checks
-
-- [x] Undefined type
-- [x] Undefined variable
-- [x] Undefined function
-- [x] Assignment lhs.type = rhs.type
-- [x] Binary operator types match
-- [x] Function parameter types match
-- [ ] Return type matches function type
-- [x] Control conditions are boolean
+## ~~Symbol Table~~
+## ~~Semantic Checks~~
 
 ## IR Gen
 
@@ -34,12 +21,6 @@
 - [x] Store into array (array_store)
 - [x] Load into array (array_load)
 - [x] Array Assignment (assign)
-
-
-## Other
-
-- [x] Do multiple semantic passes. Global functions and types should be accessible from anywhere
-- [x] Better error reporting
 
 # Usage
 

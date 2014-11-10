@@ -33,7 +33,7 @@ public class TigerFor extends TigerStatement {
         TigerScope scope = new TigerScope(parentScope);
         scope.defineSymbol(rangeVariable);
 
-        CommonTree statementstTree = (CommonTree)forTree.getChild(0);
+        CommonTree statementstTree = (CommonTree)forTree.getChild(3);
         if (statementstTree.getChildren() != null) {
             for (Object child : statementstTree.getChildren()) {
                 CommonTree statementTree = (CommonTree)child;
