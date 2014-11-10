@@ -3,8 +3,6 @@ import org.antlr.runtime.tree.*;
 
 public class TigerUserFunction extends TigerFunction {
     private TigerScope scope;
-    private TigerType returnType;
-    private List<TigerType> parameterTypes;
     private List<TigerBlock> blocks;
     private List<String> parameterNames;
     private boolean hasReturned;
@@ -74,20 +72,12 @@ public class TigerUserFunction extends TigerFunction {
                 blocks.add(block);
             }
         }
-        
+
         if (returnType != null && !hasReturned) {
             TigerSemanticError.returnExpected(functionNode);
         }
-        
+
         this.blocks = blocks;
-    }
-
-    public TigerType getReturnType() {
-        return returnType;
-    }
-
-    public List<TigerType> getParameterTypes() {
-        return parameterTypes;
     }
 
     public void setHasReturned() {

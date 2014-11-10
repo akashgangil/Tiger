@@ -14,17 +14,17 @@ public class TigerSemanticError {
         "function", "begin", "end", "void", "main", "type", "array", "of", "int", "fixedpt", "var", "if",
         "then", "endif", "else", "while", "do", "enddo", "for", "id", "to", "do", "break", "return"
     );
-    
+
     private CommonTree origin;
     private String message;
     private int line;
     private int character;
     private boolean warning;
-    
+
     public static void setSource(String[] source) {
         TigerSemanticError.source = source;
     }
-    
+
     public static List<TigerSemanticError> getErrors() {
         // Do not modify the error list directly
         return Collections.unmodifiableList(errors);
@@ -52,7 +52,7 @@ public class TigerSemanticError {
                 variable.ignoreInitialized(); // only warn once per var
                 TigerSemanticError.variableMayNotBeInitialized(origin);
             }
-            
+
             return variable;
         } else {
             return null;
@@ -62,7 +62,7 @@ public class TigerSemanticError {
     public static TigerVariable variableForAssignment(CommonTree origin, TigerScope scope) {
         TigerSymbol symbol = scope.lookupSymbol(origin.getText());
         if (verifySymbol(origin, symbol, TigerVariable.class)) {
-            TigerVariable variable = (TigerVariable)symbol;            
+            TigerVariable variable = (TigerVariable)symbol;
             return variable;
         } else {
             return null;
@@ -100,7 +100,7 @@ public class TigerSemanticError {
             return true;
         }
     }
-    
+
     public static String notReservedName(CommonTree origin) {
         String name = origin.getText();
         if (reservedNames.contains(name)) {
@@ -110,7 +110,7 @@ public class TigerSemanticError {
             return name;
         }
     }
-    
+
     public static String notReservedFunctionName(CommonTree origin) {
         String name = origin.getText();
         if (!name.equals(TigerOps.MAIN) && reservedNames.contains(name)) {
@@ -120,60 +120,91 @@ public class TigerSemanticError {
             return name;
         }
     }
-    
+
     private static void undefinedSymbol(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "Undefined symbol: " + origin.getText()));
     }
-    
+
     public static void typeMismatch(CommonTree origin, TigerType expected, TigerType found) {
         if (found == null) {
             errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: void"));
-        } else { 
+        } else {
             errors.add(new TigerSemanticError(origin, "\n\tExpected: " + expected + "\n\tFound: " + found));
         }
     }
-    
+
+    public static void functionSignatureMismatch(CommonTree origin, List<TigerType> found, List<TigerType> expected) {
+        StringBuilder error = new StringBuilder("Function signature mismatch.\n\tParameters expected: ");
+        if (expected.size() > 0) {
+            for (TigerType t : expected) {
+                error.append(t.getName());
+                if (t.isAggregate()) {
+                    error.append("[]");
+                }
+                error.append(", ");
+            }
+            error.delete(error.length() - 2, error.length() - 1);
+        } else {
+            error.append("(none)");
+        }
+
+        error.append("\n\tParameters found: ");
+        if (found.size() > 0) {
+            for (TigerType t : found) {
+                error.append(t.getName());
+                if (t.isAggregate()) {
+                    error.append("[]");
+                }
+                error.append(", ");
+            }
+            error.delete(error.length() - 2, error.length() - 1);
+        } else {
+            error.append("(none)");
+        }
+        errors.add(new TigerSemanticError(origin, error.toString()));
+    }
+
     private static void reservedSymbol(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "Reserved symbol: " + origin.getText()));
     }
-    
+
     public static void idExpected(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "id expected."));
     }
-    
+
     public static void typeExpected(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "\n\tExpected: type\n\tFound: void"));
     }
-    
+
     public static void baseTypeRequired(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "Base type expected."));
     }
-    
+
     public static void returnExpected(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "Function expects return value."));
     }
-    
+
     public static void noReturnExpected(CommonTree origin) {
         errors.add(new TigerSemanticError(origin, "Function has no return type."));
     }
-    
+
     public static void variableMayNotBeInitialized(CommonTree origin) {
         warnings.add(new TigerSemanticError(origin, "Variable may not be initialized.", true));
     }
-    
+
     private TigerSemanticError(CommonTree origin, String message) {
         this(origin, message, false);
     }
-    
+
     private TigerSemanticError(CommonTree origin, String message, boolean warning) {
         this.origin = origin;
         this.message = message;
         this.warning = warning;
-        
+
         line = origin.getLine();
         character = origin.getCharPositionInLine() + 1; // always seems to be 1 off???
     }
-    
+
     public String toString(){
         String type = (warning) ? "warning" : "error";
         StringBuilder str = new StringBuilder("line: " + line + ":" + character + ": " + type + ": " + message);

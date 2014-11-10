@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class TigerStandardFunction extends TigerFunction {
     public static TigerStandardFunction print;
     public static TigerStandardFunction printi;
@@ -10,30 +12,42 @@ public class TigerStandardFunction extends TigerFunction {
     public static TigerStandardFunction concat;
     public static TigerStandardFunction not;
     public static TigerStandardFunction exit;
-    
+
     static {
         print = new TigerStandardFunction("print");
-        printi = new TigerStandardFunction("printi");
+        printi = new TigerStandardFunction("printi", null, TigerType.Int);
         flush = new TigerStandardFunction("flush");
         getchar = new TigerStandardFunction("getchar");
-        ord = new TigerStandardFunction("ord");
-        chr = new TigerStandardFunction("chr");
-        size = new TigerStandardFunction("size");
+        ord = new TigerStandardFunction("ord", TigerType.Int);
+        chr = new TigerStandardFunction("chr", null, TigerType.Int);
+        size = new TigerStandardFunction("size", TigerType.Int);
         substring = new TigerStandardFunction("substring");
         concat = new TigerStandardFunction("concat");
-        not = new TigerStandardFunction("not");
-        exit = new TigerStandardFunction("exit");
+        not = new TigerStandardFunction("not", TigerType.Int, TigerType.Int);
+        exit = new TigerStandardFunction("exit", null, TigerType.Int);
     }
 
     private TigerStandardFunction(String name) {
-        this.name = name;
+        this(name, null);
     }
-    
+
+    private TigerStandardFunction(String name, TigerType returnType) {
+        this(name, returnType, (TigerType[])null);
+    }
+
+    private TigerStandardFunction(String name, TigerType returnType, TigerType... parameterTypes) {
+        this.name = name;
+        this.returnType = returnType;
+        if (parameterTypes != null) {
+            this.parameterTypes = Arrays.asList(parameterTypes);
+        }
+    }
+
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(name + " : " + "TigerStandardFunction<(");
         str.append(") -> ()>");
-        
+
         return str.toString();
     }
 }

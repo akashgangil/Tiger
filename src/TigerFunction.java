@@ -1,11 +1,14 @@
 import java.util.*;
 
 public class TigerFunction extends TigerSymbol {
+    protected TigerType returnType;
+    protected List<TigerType> parameterTypes;
+
     public TigerType getReturnType() {
-        return null;
+        return returnType;
     }
-    
+
     public List<TigerType> getParameterTypes() {
-        return new LinkedList<TigerType>();
+        return parameterTypes;
     }
 }
