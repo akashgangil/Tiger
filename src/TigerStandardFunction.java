@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class TigerStandardFunction extends TigerFunction {
     public static TigerStandardFunction print;
@@ -40,14 +41,12 @@ public class TigerStandardFunction extends TigerFunction {
         this.returnType = returnType;
         if (parameterTypes != null) {
             this.parameterTypes = Arrays.asList(parameterTypes);
+        } else {
+            this.parameterTypes = new LinkedList<TigerType>();
         }
     }
 
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(name + " : " + "TigerStandardFunction<(");
-        str.append(") -> ()>");
-
-        return str.toString();
+    protected String label() {
+        return "TigerStandardFunction";
     }
 }
