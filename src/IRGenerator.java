@@ -481,26 +481,31 @@ public class IRGenerator {
         String falseLabel = newLabel();
         String e = newLabel();
         emit("sub", t2, t1, result);
-
-        switch (node.getText()) {
-            case "<":
-                emit("brgeq", result, 0 + "", falseLabel);
-                break;
-            case ">":
-                emit("brleq", result, 0 + "", falseLabel);
-                break;
-            case "<=":
-                emit("brgt", result, 0 + "", falseLabel);
-                break;
-            case ">=":
-                emit("brlt", result, 0 + "", falseLabel);
-                break;
-            case "=":
-                emit("brneq", result, 0 + "", falseLabel);
-                break;
-            case "<>":
-                emit("breq", result, 0 + "", falseLabel);
-                break;
+        boolean isOr = node.getParent().getText().equals("|");
+         if (isOr) {
+            switch (node.getText()) {
+                case "<":
+                    emit("brlt", result, 0 + "", falseLabel);
+                    break;
+                case ">":
+                    emit("brgt", result, 0 + "", falseLabel);
+                    break;
+                case "<=":
+                    emit("brleq", result, 0 + "", falseLabel);
+                    break;
+                case ">=":
+                    emit("brgeq", result, 0 + "", falseLabel);
+                    break;
+                case "=":
+                    emit("breq", result, 0 + "", falseLabel);
+                    break;
+                case "<>":
+                    emit("brneq", result, 0 + "", falseLabel);
+                    break;
+            }
+        } else {
+            String branchOp = getBranchOp(node);
+            emit(branchOp, 0 + "", result, falseLabel);
         }
 
         emit(trueLabel + ":", null, null);
