@@ -234,7 +234,7 @@ public class IRGenerator {
                 String arrayIndexRow = generate((CommonTree)leftNode.getChild(1));
                 String arrayIndexColumn = generate((CommonTree)leftNode.getChild(2));
                 String arrayType =  getType((CommonTree)leftNode.getChild(0));
-                String size = getSize((CommonTree)children.get(0), arrayType);
+                String size = getSize((CommonTree)(leftNode.getChild(0)), arrayType);
                 String offset = arrayIndexing(arrayIndexRow, arrayIndexColumn, size);
                 emit("array_store", arrayName, offset, right);
                 return arrayName;
@@ -338,7 +338,21 @@ public class IRGenerator {
                 }
             }
             temp = (CommonTree) temp.getParent();
-            if(temp.getText().equals("BLOCKS")) return null;
+            if(temp.getText().equals("BLOCKS")){
+                /*Only place left to check is function param*/
+                CommonTree functionNode = (CommonTree)temp.getParent();
+                CommonTree paramsNode = (CommonTree)functionNode.getChild(2);
+                if(paramsNode.getChildren() != null){
+                    for(Object param: paramsNode.getChildren()){
+                        CommonTree paramNode = (CommonTree) param;
+                        if(((CommonTree)paramNode.getChild(0)).getText().equals(varName)){
+                            return ((CommonTree)(paramNode.getChild(1))).getText();
+                        }
+                    }
+                }
+                /*If not here then return null*/
+                return null;
+            }
         }
     }
 
