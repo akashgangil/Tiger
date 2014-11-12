@@ -1,0 +1,33 @@
+type ArrayInt = array [100] of int;
+
+void function takesanint(x: int)
+begin
+    begin
+         return 10;
+    end;
+end;
+
+void main()
+begin
+  begin
+    var i, sum : int := 0;
+    var X, Y : ArrayInt := 10;
+    var afixedpt: fixedpt := 1.1;
+    var notafixedpt: int := 1.1;
+    var notinitialized: int;
+    if (i + 1) then
+        sum := sum + 1;
+    endif;
+    takesanint(nosuchvar);
+    takesanint(notinitialized);
+    takesanint(afixedpt);
+    sum := X[101];
+    begin
+      for i := 1 to 100 do
+        sum := sum + X[i] * Y[i];
+        break;
+      enddo;
+      printi(sum);
+    end;
+  end;
+end;
