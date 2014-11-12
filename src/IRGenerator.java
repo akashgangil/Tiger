@@ -421,13 +421,14 @@ public class IRGenerator {
         emit(t + ":", null, null, null);
         CommonTree opNode = (CommonTree)children.get(0);
         String t1 = generate(opNode);
-        String branchOp = getBranchOp(opNode);
-
-        CommonTree left = (CommonTree)opNode.getChildren().get(0);
-        CommonTree right = (CommonTree)opNode.getChildren().get(1);
-        String t2 = generate(left);
-        String t3 = generate(right);
-        emit(branchOp, t2, t3, end);
+        emit("breq", t1, 0 + "", end);
+        //String branchOp = getBranchOp(opNode);
+        //emit("goto", t, null, null);
+        //CommonTree left = (CommonTree)opNode.getChildren().get(0);
+        //CommonTree right = (CommonTree)opNode.getChildren().get(1);
+        //String t2 = generate(left);
+        //String t3 = generate(right);
+        //emit(branchOp, t2, t3, end);
 
         CommonTree stmts = (CommonTree)children.get(1);
         generate(stmts);
@@ -499,22 +500,22 @@ public class IRGenerator {
          if (isOr) {
             switch (node.getText()) {
                 case "<":
-                    emit("brlt", result, 0 + "", falseLabel);
-                    break;
-                case ">":
-                    emit("brgt", result, 0 + "", falseLabel);
-                    break;
-                case "<=":
                     emit("brleq", result, 0 + "", falseLabel);
                     break;
-                case ">=":
+                case ">":
                     emit("brgeq", result, 0 + "", falseLabel);
                     break;
+                case "<=":
+                    emit("brlt", result, 0 + "", falseLabel);
+                    break;
+                case ">=":
+                    emit("brgt", result, 0 + "", falseLabel);
+                    break;
                 case "=":
-                    emit("breq", result, 0 + "", falseLabel);
+                    emit("brneq", result, 0 + "", falseLabel);
                     break;
                 case "<>":
-                    emit("brneq", result, 0 + "", falseLabel);
+                    emit("breq", result, 0 + "", falseLabel);
                     break;
             }
         } else {
