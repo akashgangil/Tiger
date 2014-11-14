@@ -15,6 +15,15 @@
 ## Phase 3
 - [ ] Function Calls
 
+
+# References:
+
+* MIPS http://en.wikipedia.org/wiki/MIPS_architecture
+* .data http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Mips/dataseg.html
+* Functions calls http://people.cs.pitt.edu/~xujie/cs447/Mips/sub.html
+* SPIM http://spimsimulator.sourceforge.net/ 
+
+
 # Usage
 
 ## Build
