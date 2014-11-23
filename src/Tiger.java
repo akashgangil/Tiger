@@ -134,7 +134,8 @@ public class Tiger {
                     }
                     
                     if (options.intermediateRep) {
-                        new IRGenerator(program.getGlobalScope()).generate(ast);
+                        IRGenerator irGen = new IRGenerator(program.getGlobalScope());
+                        irGen.generate(ast);
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {

@@ -9,12 +9,23 @@ public class IRGenerator {
     private int numOfTemps;
     private int numOfLabels;
     private TigerScope scope;
+    
+    private List<Quad> IRCode;
 
     public IRGenerator(TigerScope scope){
         this.scope = scope;
+        this.IRCode = new ArrayList<Quad>(); 
     }
 
     private String end = "";
+
+    private void addIR(Quad quad){
+        this.IRCode.add(quad);
+    }
+
+    public List<Quad> getIR(){
+        return this.IRCode;
+    }
 
     public String generate(CommonTree node) {
         try {
@@ -596,6 +607,7 @@ public class IRGenerator {
 
     private void emit(String op, String x, String y, String z, List<String> params) {
         Quad quad = new Quad(op, x, y, z, params);
+        addIR(quad);
         System.out.println(quad);
     }
 }
