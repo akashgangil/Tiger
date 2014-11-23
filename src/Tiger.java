@@ -136,6 +136,13 @@ public class Tiger {
                     if (options.intermediateRep) {
                         IRGenerator irGen = new IRGenerator(program.getGlobalScope());
                         irGen.generate(ast);
+                      
+                        BasicBlockGenerator bbg = new BasicBlockGenerator(); 
+                        /* Uncomment to print out the basic blocks */
+                        /* System.out.println("Basic Blocks");
+                        for (BasicBlock b : bbg.findBasicBlocks(irGen.getIR())){
+                            System.out.println(b);
+                        } */
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {

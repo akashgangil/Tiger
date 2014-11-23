@@ -14,6 +14,10 @@ public class Quad {
         params = p;
     }
 
+    public String getOp(){
+        return this.op;
+    }
+
     public String toString(){
         String s = "";
         if (op != null) s += op.toString();
