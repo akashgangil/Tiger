@@ -2,7 +2,7 @@
 
 ## Phase 1
 - [ ] Naive Register Allocation
-- [ ] Detect basic blocks
+- [x] Detect basic blocks
 - [ ] Construct CFG
 - [ ] Graph Coloring (intra block level)
 - [ ] EBB construction
