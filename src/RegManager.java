@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class RegAllocator{
+public class RegManager{
     Set<String> inUse;
     Set<String> free; 
     boolean limited;
 
-    public RegAllocator(List<String> regList, boolean limited) {
+    public RegManager(List<String> regList, boolean limited) {
            this.free = new HashSet<String>();
            for(String reg :regList){
                 this.free.add(reg);

@@ -18,7 +18,10 @@ public class MIPSGenerator{
         String res = "";
         for(Quad q: ir)
         if(q.getOp().equals("assign")){
-          res += "addi " + this.rb.regBank.get("TEMPS").getReg() + " "  + this.rb.regBank.get("ZERO").getReg() + " "  + q.getAddr2() + "\n";
+          res += "addi "
+                 + this.rb.regBank.get("TEMPS").getReg() + " "  
+                 + this.rb.regBank.get("ZERO").getReg() + " "  
+                 + q.getAddr2() + "\n";
         }    
         System.out.println("here3");
         return res;
