@@ -13,7 +13,7 @@ public class MIPSGenerator{
         this.rb = MIPSRegisterBank.getMIPSRegisterBank();
     }
 
-    private String naiveAllocation(List<Quad> ir){
+    private String naiveRegAllocation(List<Quad> ir){
         System.out.println("here1");
         String res = "";
         for(Quad q: ir)
@@ -34,7 +34,7 @@ public class MIPSGenerator{
 
        mipsCode += textSegment;
 
-       mipsCode += naiveAllocation(ir);
+       mipsCode += naiveRegAllocation(ir);
 
        mipsCode += exitProgram;
        return mipsCode; 
