@@ -143,6 +143,9 @@ public class Tiger {
                         for (BasicBlock b : bbg.findBasicBlocks(irGen.getIR())){
                             System.out.println(b);
                         } */
+                        System.out.println("MIPS Code");
+                        MIPSGenerator mips = new MIPSGenerator();
+                        System.out.println(mips.getMIPSCode(irGen.getIR()));
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {
