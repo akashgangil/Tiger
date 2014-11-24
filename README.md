@@ -22,7 +22,7 @@
 * .data http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Mips/dataseg.html
 * Functions calls http://people.cs.pitt.edu/~xujie/cs447/Mips/sub.html
 * SPIM http://spimsimulator.sourceforge.net/ 
-
+* http://courses.cs.washington.edu/courses/cse378/04au/sec378au04-02.pdf
 
 # Usage
 
