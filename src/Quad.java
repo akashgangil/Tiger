@@ -29,6 +29,10 @@ public class Quad {
     public String getAddr3(){
         return this.addr3;
     }
+    
+    public String getParam(){
+        return params.get(0);
+    }
 
     public String toString(){
         String s = "";

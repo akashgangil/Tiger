@@ -144,7 +144,7 @@ public class Tiger {
                             System.out.println(b);
                         } */
                         System.out.println("MIPS Code");
-                        MIPSGenerator mips = new MIPSGenerator();
+                        MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());
                         System.out.println(mips.getMIPSCode(irGen.getIR()));
                     }
                 } else {

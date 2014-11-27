@@ -136,9 +136,12 @@ public class IRGenerator {
 
                 case "var":
                        /*We generate IR only if the variable is initialized*/
-                       if(children != null && children.size() > 2){
+                       if(children != null && children.size() > 1){
                            String type = ((CommonTree)children.get(1)).getText();
-                           String value = ((CommonTree)children.get(2)).getText();
+                           String value = "undefined garbage";
+                           if(children.size() > 2)
+                               value = ((CommonTree)children.get(2)).getText();
+                           
                            CommonTree ids = (CommonTree)children.get(0);
                            if(type.equals("int") || type.equals("fixedpt")){
                                for(Object child: ids.getChildren()){
