@@ -611,6 +611,5 @@ public class IRGenerator {
     private void emit(String op, String x, String y, String z, List<String> params) {
         Quad quad = new Quad(op, x, y, z, params);
         addIR(quad);
-        System.out.println(quad);
     }
 }

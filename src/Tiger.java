@@ -58,6 +58,7 @@ public class Tiger {
         public boolean printTokens = false;
         public boolean printSymbolTable = false;
         public boolean intermediateRep = false;
+        public boolean mips = false;
         public boolean help = false;
         public String inputFilename = null;
         public String dotFilename = null;
@@ -77,6 +78,8 @@ public class Tiger {
                     intermediateRep = true;
                 } else if (args.equals("--help")) {
                     help = true;
+                } else if (arg.equals("--mips")) {
+                    mips = true;
                 } else if (arg.indexOf("--") == 0) {
                     usage(1);
                 } else {
@@ -92,6 +95,7 @@ public class Tiger {
         System.out.println("\t--ast <dot output file>\t\tgenerate ast dot diagram");
         System.out.println("\t--symbol-table\t\t\toutput symbol table");
         System.out.println("\t--ir\t\t\t\tintermediate representation");
+        System.out.println("\t--mips\t\t\t\toutput mips code");
         System.out.println("\t--help\t\t\t\tthis help message");
 
         System.exit(status);
@@ -146,19 +150,29 @@ public class Tiger {
                         System.err.println(program.getGlobalScope());
                     }
                     
-                    if (options.intermediateRep) {
+                    if (options.intermediateRep || options.mips) {
                         IRGenerator irGen = new IRGenerator(program.getGlobalScope());
                         irGen.generate(ast);
-                      
+                    
+                        if(options.intermediateRep) { 
+                            for(Quad ir: irGen.getIR()){
+                                System.out.println(ir);
+                            }   
+                        }
+
                         BasicBlockGenerator bbg = new BasicBlockGenerator(); 
                         /* Uncomment to print out the basic blocks */
                         /* System.out.println("Basic Blocks");
                         for (BasicBlock b : bbg.findBasicBlocks(irGen.getIR())){
                             System.out.println(b);
                         } */
-                        MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());
-                        String result = mips.getMIPSCode(irGen.getIR());
-                        writeMipsFile(result, options);
+
+                        if(options.mips){
+                            MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());
+                            String result = mips.getMIPSCode(irGen.getIR());
+                            System.out.println(result);
+                            writeMipsFile(result, options);
+                        }
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {
