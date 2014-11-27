@@ -41,6 +41,19 @@ public class Tiger {
         }
     }
 
+    private static void writeMipsFile(String mipsCode, TigerOptions options){
+        Path file = Paths.get(options.inputFilename);
+        String fileName = file.getFileName().toString();
+        String mipsFileName = fileName.substring(0, fileName.lastIndexOf(".")+1) + "s";
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(mipsFileName), StandardCharsets.UTF_8)){
+            writer.write(mipsCode);
+        }catch(IOException ioe){
+            System.err.println(ioe);
+            System.exit(1);
+        }
+    }
+
+
     public static class TigerOptions {
         public boolean printTokens = false;
         public boolean printSymbolTable = false;
@@ -48,7 +61,7 @@ public class Tiger {
         public boolean help = false;
         public String inputFilename = null;
         public String dotFilename = null;
-
+        
         public TigerOptions(String[] args) {
             for (int idx = 0; idx < args.length; idx += 1) {
                 String arg = args[idx];
@@ -143,9 +156,9 @@ public class Tiger {
                         for (BasicBlock b : bbg.findBasicBlocks(irGen.getIR())){
                             System.out.println(b);
                         } */
-                        System.out.println("MIPS Code");
                         MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());
-                        System.out.println(mips.getMIPSCode(irGen.getIR()));
+                        String result = mips.getMIPSCode(irGen.getIR());
+                        writeMipsFile(result, options);
                     }
                 } else {
                     for(TigerSemanticError error : TigerSemanticError.getErrors()) {

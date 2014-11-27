@@ -18,8 +18,16 @@ public class RegManager{
         if(!this.limited) return this.free.iterator().next();
 
         if(this.free.isEmpty()) return null;
-       
-        String reg =  this.free.iterator().next();
+            
+        Iterator<String> iterator = this.free.iterator();
+        String reg = "";
+
+        while(iterator.hasNext()){
+            reg = iterator.next();
+            if(!reg.isEmpty()) break;   
+        }
+        
+   
         this.inUse.add(reg);
         this.free.remove(reg);
         return reg;

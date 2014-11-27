@@ -23,14 +23,69 @@ public class MIPSGenerator{
             if(!entry.getValue()){
                 if(entry.getKey().getOp().equals("assign")){
                     Operand o = new Operand(entry.getKey().getAddr1());
-                    res += naiveLoad(o);    
-                    res += "addi "
-                         + o.getValReg() + " "  
-                         + this.rb.regBank.get("ZERO").getReg() + " "  
-                         + entry.getKey().getAddr2() + "\n";
+                    res += naiveLoad(o, false);
+
+                    String dest = "";
+                    Operand temp = Operand.tempReg.get(entry.getKey().getAddr2());
+                    String inst = "";
+                    if(temp != null){
+                        dest = temp.getValReg();
+                        inst = "add ";
+                    }
+                    else{
+                        dest = entry.getKey().getAddr2();
+                        inst = "addi ";
+                    }
+
+                    res += inst
+                         + o.getValReg() + ", "  
+                         + this.rb.regBank.get("ZERO").getReg() + ", "  
+                         + dest + "\n";
                     res += naiveStore(o.getValReg(), o.getAddReg() );
                     this.rb.regBank.get("TEMPS").freeReg(o.getValReg());
                     this.rb.regBank.get("TEMPS").freeReg(o.getAddReg());
+                    Operand.free(o.getName());
+                }
+                else if(isArithmeticOp(entry.getKey().getOp())){
+                    Operand o1, o2, o3, temp;
+
+                    temp = Operand.tempReg.get(entry.getKey().getAddr1());
+                    if(temp != null){
+                        o1 = temp;
+                    }
+                    else{ 
+                        o1 = new Operand(entry.getKey().getAddr1());
+                        res += naiveLoad(o1, false);
+                    }
+                    
+                    temp = Operand.tempReg.get(entry.getKey().getAddr1());
+                    if(temp != null){
+                        o2 = temp;
+                    }
+                    else{ 
+                        o2 = new Operand(entry.getKey().getAddr2());
+                        res += naiveLoad(o2, false);
+                    }
+                    
+                    temp = Operand.tempReg.get(entry.getKey().getAddr1());
+                    if(temp != null){
+                        o3 = temp;
+                    }
+                    else{ 
+                        o3 = new Operand(entry.getKey().getAddr3());
+                        res += naiveLoad(o3, true);
+                    }
+                    
+                    res += entry.getKey().getOp() + "  " + o3.getValReg() + ", "  
+                           + o1.getValReg() + ", " + o2.getValReg() + "\n"; 
+                    this.rb.regBank.get("TEMPS").freeReg(o3.getValReg());
+                    this.rb.regBank.get("TEMPS").freeReg(o3.getAddReg());
+                    this.rb.regBank.get("TEMPS").freeReg(o1.getAddReg());
+                    this.rb.regBank.get("TEMPS").freeReg(o1.getAddReg());
+                    this.rb.regBank.get("TEMPS").freeReg(o2.getAddReg());
+                    this.rb.regBank.get("TEMPS").freeReg(o2.getAddReg());
+                    Operand.free(o1.getName());
+                    Operand.free(o2.getName());
                 }
                 else if(entry.getKey().getOp().equals("call")){
                     if(entry.getKey().getAddr1().equals("printi")){
@@ -44,12 +99,25 @@ public class MIPSGenerator{
             return res;
     }
 
-    private String naiveLoad(Operand o){
+    private boolean isArithmeticOp(String op){
+        return op.equals("add") ||
+               op.equals("sub") ||
+               op.equals("mult") ||
+               op.equals("div") ||
+               op.equals("and") ||
+               op.equals("or");
+    }
+
+    private String naiveLoad(Operand o, boolean isTemp){
         String loadMips = "";
-        String addReg = this.rb.regBank.get("TEMPS").getReg();
+        String addReg = "";
+        if(!isTemp) 
+            addReg = this.rb.regBank.get("TEMPS").getReg();
         String valueReg = this.rb.regBank.get("TEMPS").getReg();
-        loadMips += "la  " + addReg + ",  " + o.getName() + "\n";
-        loadMips += "lw  " + valueReg + ",  " + "0(" + addReg + ")\n";
+        if(!isTemp){
+            loadMips += "la  " + addReg + ",  " + o.getName() + "\n";
+            loadMips += "lw  " + valueReg + ",  " + "0(" + addReg + ")\n";
+        }
         o.setAddReg(addReg);
         o.setValReg(valueReg);
         return loadMips;

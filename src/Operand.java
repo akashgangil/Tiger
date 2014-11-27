@@ -1,10 +1,15 @@
+import java.util.*;
+
 public class Operand{
     String name;
     String addressRegister;
     String valueRegister;
 
+    public static Map<String, Operand> tempReg = new HashMap<String, Operand>();
+
     public Operand(String name){
         this.name = name;
+        tempReg.put(this.name, this);
     }
 
     public String getName(){
@@ -25,6 +30,10 @@ public class Operand{
     
     public void setValReg(String reg){
         this.valueRegister = reg;
+    }
+
+    public static void free(String name){
+        tempReg.remove(name);
     }
 
 
