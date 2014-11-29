@@ -52,3 +52,7 @@ $ ./clean.sh
 # Directory Structure
 
 - xxx
+
+
+## Credits
+(c) 2014 Akash Gangil, Tyler Bell, Brandon Chastain. MIT License
