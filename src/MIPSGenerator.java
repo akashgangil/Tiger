@@ -20,6 +20,15 @@ public class MIPSGenerator{
         this.tempRegMap = new HashMap<String, String>();
     }
 
+    private String cfgRegAllocation(List<Quad> ir) {
+        BasicBlockGenerator bbg = new BasicBlockGenerator(ir); 
+        List<BasicBlock> blocks = bbg.getBasicBlocks();
+        
+        
+        
+        return "";
+    }
+
     private String naiveRegAllocation(Map<Quad, Boolean> ir){
         String res = "";
 

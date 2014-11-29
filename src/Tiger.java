@@ -53,7 +53,6 @@ public class Tiger {
         }
     }
 
-
     public static class TigerOptions {
         public boolean printTokens = false;
         public boolean printSymbolTable = false;
@@ -159,17 +158,6 @@ public class Tiger {
                                 System.out.println(ir);
                             }   
                         }
-
-                        BasicBlockGenerator bbg = new BasicBlockGenerator(irGen.getIR()); 
-                        System.out.println("Basic Blocks");
-                        for (BasicBlock b : bbg.getBasicBlocks()){
-                            System.out.println(b);
-                        }
-                        
-                        System.out.println("Extended Blocks");
-                        for (BasicBlock b : bbg.getExtendedBlocks()){
-                            System.out.println(b);
-                        }  
 
                         if(options.mips){
                             MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());

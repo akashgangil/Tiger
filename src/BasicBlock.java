@@ -1,8 +1,8 @@
 import java.util.*;
+import java.util.regex.*;
 
 public class BasicBlock {
 
-    private boolean isLabel;
     private List<Quad> quads;
     private List<BasicBlock> parents;
     private List<BasicBlock> children;
@@ -13,8 +13,6 @@ public class BasicBlock {
         quads = new ArrayList<Quad>();
         parents = new ArrayList<BasicBlock>();
         children = new ArrayList<BasicBlock>();
-        
-        isLabel = false;
     }
     
     public void append(BasicBlock block) {
@@ -23,7 +21,7 @@ public class BasicBlock {
         }
         
         if (block == next) {
-            next = null;
+            next = block.next;
         }
         
         for (Quad quad : block.quads) {
@@ -49,14 +47,6 @@ public class BasicBlock {
 
     public void addQuad(Quad ir){
         quads.add(ir);
-    }
-
-    public void setIsLabel() {
-        isLabel = true;
-    }
-
-    public boolean isLabel() {
-        return isLabel;
     }
 
     public String toString() {
