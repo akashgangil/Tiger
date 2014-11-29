@@ -3,8 +3,7 @@ begin
     begin
         var s:int := 4;
         var a:int := 5;
-        s := 1;
-        a := 6;
+        s := 1; 
         printi(s);
         printi(a);
     end;
