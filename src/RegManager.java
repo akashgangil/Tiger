@@ -24,7 +24,7 @@ public class RegManager{
 
         while(iterator.hasNext()){
             reg = iterator.next();
-            if(!reg.isEmpty()) break;   
+            if(reg != null && !reg.isEmpty()) break;   
         }
         
    
