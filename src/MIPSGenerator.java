@@ -89,6 +89,33 @@ public class MIPSGenerator{
                         res += "syscall"  + "\n";
                     }
                 }
+                else if(isLabel(entry.getKey().getOp())){
+                    res += entry.getKey().getOp() + "\n";
+                }
+                else if(entry.getKey().getOp().equals("goto")){
+                    res += "j " + entry.getKey().getAddr1() + "\n";
+                }
+                else if(isRelationalOp(entry.getKey().getOp())){
+                    Operand op1 = new Operand(entry.getKey().getAddr1());
+                    Operand op2 = new Operand(entry.getKey().getAddr2());
+
+                    res += naiveLoad(op1);
+                    res += naiveLoad(op2);
+                    
+                    String inst = entry.getKey().getOp();
+                    if(inst.equals("breq")){
+                        inst = "beq";
+                    }
+                    else if(inst.equals("brneq")){
+                        inst = "bne";
+                    }
+                    res += inst + "  " + op1.getValReg()  + ",  "
+                                + op2.getValReg() + ",  "
+                                + entry.getKey().getAddr3() + "\n"; 
+                    
+                    /*Free*/
+                    freeRegs(op1); freeRegs(op2);
+                }
             }
         }    
             return res;
@@ -101,6 +128,23 @@ public class MIPSGenerator{
                op.equals("div") ||
                op.equals("and") ||
                op.equals("or");
+    }
+
+    private boolean isRelationalOp(String op){
+        return op.equals("breq") ||
+               op.equals("brneq") || 
+               op.equals("brlt") || 
+               op.equals("brgt") || 
+               op.equals("brgeq") || 
+               op.equals("brleq");
+    }
+
+    private boolean isLabel(String op){
+        return op.matches("L\\d*:");     
+    }
+    
+    public static boolean isNumeric(String str){
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
     }
 
     private String naiveLoad(Operand o){
@@ -160,7 +204,7 @@ public class MIPSGenerator{
         Set<String> variables = new HashSet<String>();
         String dataSection = ".data\n"; 
         for(Map.Entry<Quad, Boolean> entry: ir.entrySet()){
-            if(entry.getKey().getOp().equals("assign")){
+            if(entry.getKey().getOp().equals("assign") && !isTemp(entry.getKey().getAddr1())){
                 variables.add(entry.getKey().getAddr1());
             }
         }
@@ -192,9 +236,6 @@ public class MIPSGenerator{
         return m.matches();
     }
 
-    public static boolean isNumeric(String str){
-        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
-    }
 
     public String getMIPSCode(List<Quad> ir){
 
