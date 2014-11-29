@@ -84,9 +84,9 @@ public class MIPSGenerator{
                         res += "li $v0 1\n";
                         res += "lw $a0 " + entry.getKey().getParam() + "\n"; 
                         res += "syscall" + "\n"; 
-                        //res += "li $v0 4\n";
-                        //res += "la $a0 newline\n";
-                        //res += "syscall"  + "\n";
+                        res += "li $v0 4\n";
+                        res += "la $a0 newline\n";
+                        res += "syscall"  + "\n";
                     }
                 }
             }
@@ -208,7 +208,7 @@ public class MIPSGenerator{
        String mipsCode = "";
        mipsCode += genDataSection(irCode);
        mipsCode += addTempData();
-    //   mipsCode += addNewline();
+       mipsCode += addNewline();
        mipsCode += textSegment;
        mipsCode += mainSegment;
        mipsCode += naiveRegAllocation(irCode);
