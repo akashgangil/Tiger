@@ -196,7 +196,6 @@ public class MIPSGenerator{
         return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
     }
 
-
     public String getMIPSCode(List<Quad> ir){
 
        /*All instructions not/"false" processed*/
@@ -215,4 +214,5 @@ public class MIPSGenerator{
        mipsCode += exitProgram;
        return mipsCode; 
     }
+    
 }

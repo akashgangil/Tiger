@@ -1,58 +1,106 @@
 import java.util.*;
 
-public class BasicBlockGenerator{
+public class BasicBlockGenerator {
     
-    private List<BasicBlock> basicBlockList;
+    private List<Quad> ir;
 
-    private List<String> leaderOpCodes = Arrays.asList("brleq", "brgeq", "brlt", "brgt", "brneq", "breq");
-    private List<Integer> leaderIndex;
-
-    public BasicBlockGenerator(){
-        this.basicBlockList = new ArrayList<BasicBlock>();
-        this.leaderIndex = new ArrayList<Integer>();
+    public BasicBlockGenerator(List<Quad> ir) {
+        this.ir = ir;
     }
-
-    public List<BasicBlock> findBasicBlocks(List<Quad> irCode){
-        BasicBlock b = getNewBasicBlock();
-        boolean inblock = false; 
-        for(int i = 0; i < irCode.size(); ++i){
-            if(isLeader(irCode.get(i), i, irCode.size())){
-                if(i == 0){
-                    b.addQuad(irCode.get(i));
+    
+    public LinkedList<BasicBlock> getBasicBlocks() {
+        HashMap<String, BasicBlock> labels = new HashMap<String, BasicBlock>();
+        LinkedList<BasicBlock> basicBlocks = new LinkedList<BasicBlock>();
+        
+        BasicBlock currentBlock = null;
+        for (int idx = 0; idx < ir.size(); idx += 1) {
+            Quad quad = ir.get(idx);
+            String target = quad.getTarget();
+            String label = quad.getLabel();
+            if (target != null) {
+                currentBlock.addQuad(quad);
+                
+                BasicBlock targetBlock = labels.get(label);
+                if (targetBlock == null) {
+                    targetBlock = getNewBasicBlock();
+                    basicBlocks.add(targetBlock);
+                    labels.put(target, targetBlock);
                 }
-                else{
-                    basicBlockList.add(b);
-                    b = getNewBasicBlock();
-                    b.addQuad(irCode.get(i));
+                targetBlock.addParent(currentBlock);
+                currentBlock.addChild(targetBlock);
+                
+                if (quad.canFallthrough()) {
+                    // this starts a new block
+                    BasicBlock nextBlock = getNewBasicBlock();
+                    currentBlock.next = nextBlock;
+                    nextBlock.prev = currentBlock;
+                    
+                    basicBlocks.add(nextBlock);
+                    nextBlock.addChild(currentBlock);
+                    nextBlock.addParent(currentBlock);
+                    
+                    currentBlock = nextBlock;
                 }
-            }
-            else{
-                b.addQuad(irCode.get(i));
+            } else if (label != null) {
+                BasicBlock nextBlock = labels.get(label);
+                if (nextBlock == null) {
+                    nextBlock = getNewBasicBlock();
+                    basicBlocks.add(nextBlock);
+                    labels.put(label, nextBlock);
+                }
+                
+                currentBlock.addChild(nextBlock);
+                nextBlock.addParent(currentBlock);
+                currentBlock.next = nextBlock;
+                nextBlock.prev = currentBlock;
+                
+                currentBlock = nextBlock;
+                
+                currentBlock.addQuad(quad);
+            } else {
+                if (currentBlock == null) {
+                    currentBlock = getNewBasicBlock();
+                    basicBlocks.add(currentBlock);
+                }
+                currentBlock.addQuad(quad);
             }
         }
-        basicBlockList.add(b);
-
-        return this.basicBlockList;
+        
+        return basicBlocks;
     }
+    
+    public LinkedList<BasicBlock> getExtendedBlocks() {
+        LinkedList<BasicBlock> blocks = getBasicBlocks();
+        
+        while (true) {
+            boolean merged = false;
+            
+            LinkedList<BasicBlock> blocksCopy = new LinkedList<BasicBlock>(blocks);
 
-    private BasicBlock getNewBasicBlock(){
+            for (BasicBlock block : blocks) {
+                List<BasicBlock> parents = block.getParents();
+                if (parents.size() == 1) {
+                    BasicBlock parent = parents.get(0);
+                    if (parent.next == null || parent.next == block) {
+                        blocksCopy.remove(block);
+                        parent.append(block);
+                        merged = true;
+                    }
+                }
+            }
+            
+            blocks = blocksCopy;
+            
+            if (!merged) {
+                break;
+            }
+        }
+        
+        return blocks;
+    }
+    
+    private BasicBlock getNewBasicBlock() {
         return new BasicBlock();
     }
-
-    public boolean isLeader(Quad ir, int index, int total){
-        /*Branch Targets Label or goto*/
-        if(leaderIndex.contains(index))
-            return true;
-
-        if(this.leaderOpCodes.contains(ir.getOp())) 
-            leaderIndex.add(index + 1);
-
-        if(index == 0 || ir.getOp().matches("^L\\d*:$"))
-            return true;
-
-        if(ir.getOp().equals("goto"))
-            return true;
-            
-        return false;
-    } 
+    
 }

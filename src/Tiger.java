@@ -160,12 +160,16 @@ public class Tiger {
                             }   
                         }
 
-                        BasicBlockGenerator bbg = new BasicBlockGenerator(); 
-                        /* Uncomment to print out the basic blocks */
-                        /* System.out.println("Basic Blocks");
-                        for (BasicBlock b : bbg.findBasicBlocks(irGen.getIR())){
+                        BasicBlockGenerator bbg = new BasicBlockGenerator(irGen.getIR()); 
+                        System.out.println("Basic Blocks");
+                        for (BasicBlock b : bbg.getBasicBlocks()){
                             System.out.println(b);
-                        } */
+                        }
+                        
+                        System.out.println("Extended Blocks");
+                        for (BasicBlock b : bbg.getExtendedBlocks()){
+                            System.out.println(b);
+                        }  
 
                         if(options.mips){
                             MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());

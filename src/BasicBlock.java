@@ -1,28 +1,71 @@
 import java.util.*;
 
-public class BasicBlock{
+public class BasicBlock {
 
-    private List<Quad> basicBlock;
-
-    public BasicBlock(){
-        this.basicBlock = new ArrayList<Quad>();
+    private boolean isLabel;
+    private List<Quad> quads;
+    private List<BasicBlock> parents;
+    private List<BasicBlock> children;
+    public BasicBlock prev;
+    public BasicBlock next;
+    
+    public BasicBlock() {
+        quads = new ArrayList<Quad>();
+        parents = new ArrayList<BasicBlock>();
+        children = new ArrayList<BasicBlock>();
+        
+        isLabel = false;
+    }
+    
+    public void append(BasicBlock block) {
+        if (block == null) {
+            return;
+        }
+        
+        if (block == next) {
+            next = null;
+        }
+        
+        for (Quad quad : block.quads) {
+            addQuad(quad);
+        }
+    }
+    
+    public void addParent(BasicBlock parent) {
+        parents.add(parent);
+    }
+    
+    public void addChild(BasicBlock child) {
+        children.add(child);
+    }
+    
+    public List<BasicBlock> getParents() {
+        return parents;
+    }
+    
+    public List<BasicBlock> getChildren() {
+        return children;
     }
 
     public void addQuad(Quad ir){
-        this.basicBlock.add(ir);
+        quads.add(ir);
     }
 
-    public List<Quad> getBasicBlock(){
-        return basicBlock; 
+    public void setIsLabel() {
+        isLabel = true;
     }
 
-    public String toString(){
-        String res = "";
-        res += "BLOCK\n";
-        for(Quad quad : basicBlock){
-            res += quad.toString() + "\n";
+    public boolean isLabel() {
+        return isLabel;
+    }
+
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("Block [" + hashCode() + "](" + children.size() + ":" + parents.size() + ") {\n");
+        for (Quad quad : quads) {
+            str.append("\t" + quad + "\n");
         }
-        return res;
+        str.append("}\n");
+        return str.toString();
     }
-
 }
