@@ -106,7 +106,13 @@ public class MIPSGenerator{
                 else if(entry.getKey().getOp().equals("call")){
                     if(entry.getKey().getAddr1().equals("printi")){
                         res += "li $v0 1\n";
-                        res += "lw $a0 " + entry.getKey().getParam() + "\n"; 
+                        /*hack*/
+                        String isReg = "";
+                        if(isTemp(entry.getKey().getParam())){
+                            isReg = ", $";
+                        }
+
+                        res += "lw $a0 " + isReg + entry.getKey().getParam() + "\n"; 
                         res += "syscall" + "\n"; 
                         res += "li $v0 4\n";
                         res += "la $a0 newline\n";
@@ -134,8 +140,9 @@ public class MIPSGenerator{
                         res += "mul  " + array_index_add_reg + ",  " + op3.getValReg() + ", 4\n";
                         res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
                         res += naiveLoad(op1);
-                        res += "lw  " + op3.getValReg() + ", 0(" + final_array_address + ")\n"; 
-            
+                        res += "lw  " + op1.getValReg() + ", 0(" + final_array_address + ")\n"; 
+                        res += naiveStore(op1);
+
                         this.rb.regBank.get("TEMPS").freeReg(array_base_add_reg);
                         this.rb.regBank.get("TEMPS").freeReg(array_index_add_reg);
                         this.rb.regBank.get("TEMPS").freeReg(final_array_address);
