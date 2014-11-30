@@ -26,7 +26,6 @@ public class MIPSGenerator{
         TigerScope sc = this.scope.childScopes.get(0).childScopes.get(0);
         TigerSymbol s = sc.lookupSymbol(varName);
         TigerVariable var = (TigerVariable)s;
-        System.out.println(varName);
         return var.getType().name;
     }
 
@@ -77,7 +76,16 @@ public class MIPSGenerator{
                     Operand op1 = new Operand(entry.getKey().getAddr1());
                     Operand op2 = new Operand(entry.getKey().getAddr2());
                     Operand op3 = new Operand(entry.getKey().getAddr3());
-                            
+                    
+                    String fp_inst = "";
+                    if(getType(op1.getName()).equals("fixedpt") ||
+                       getType(op2.getName()).equals("fixedpt") ||
+                       getType(op3.getName()).equals("fixedpt")
+                      )
+                        fp_inst += ".s";
+
+
+
                     /*Load */
                     res += naiveLoad(op1);
                     res += naiveLoad(op2);
@@ -87,7 +95,7 @@ public class MIPSGenerator{
                     if(inst.equals("mult")){
                         inst = "mul";
                     }
-                    res += inst + " "  + op3.getValReg() + 
+                    res += inst + fp_inst + " "  + op3.getValReg() + 
                            ", " + op1.getValReg() + 
                            ", " + op2.getValReg() + "\n";
                     
