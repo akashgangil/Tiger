@@ -28,17 +28,17 @@ public class MIPSRegisterBank{
         initRegBank.put("FRAME_POINTER", new RegManager (Arrays.asList("$fp"), false));
         initRegBank.put("RETURN_ADDRESS", new RegManager (Arrays.asList("$ra"), false));
         initRegBank.put("FLOAT_RETURN VALUES", 
-                        new RegManager (Arrays.asList("$f0", "$f1", "$f2", "$f3"), false));
+                        new RegManager (Arrays.asList("$f0", "$f1", "$f2", "$f3"), true));
 
         initRegBank.put("FLOAT_TEMPS", 
                         new RegManager (Arrays.asList("$f4", "$f5", "$f6", "$f7", 
-                                        "$f8", "$f9", "f10", "$f16", "$f17", "$f18"), false));
+                                        "$f8", "$f9", "f10", "$f16", "$f17", "$f18"), true));
 
-        initRegBank.put("FLOAT_ARGS", new RegManager (Arrays.asList("$f12", "$f13", "f14"), false));
+        initRegBank.put("FLOAT_ARGS", new RegManager (Arrays.asList("$f12", "$f13", "f14"), true));
         initRegBank.put("FLOAT_SAVED_TEMP", 
                          new RegManager (Arrays.asList("$f20", "$f21", "$f22", "$f23", "$f24", "$f25",
                                                        "$f26", "$f27", "$f28", "$f28", "$f29", "$f30", 
-                                                       "$f31"), false));
+                                                       "$f31"), true));
 
         regBank = Collections.unmodifiableMap(initRegBank);
     }
