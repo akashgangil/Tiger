@@ -119,6 +119,33 @@ public class MIPSGenerator{
                 else if(entry.getKey().getOp().equals("goto")){
                     res += "j " + entry.getKey().getAddr1() + "\n";
                 }
+                else if(isArrayLS(entry.getKey().getOp())){
+                    if(entry.getKey().getOp().equals("array_load")){
+                        Operand op1 = new Operand(entry.getKey().getAddr1());
+                        res += naiveLoad(op1);
+                        
+                        freeRegs(op1);
+                    }
+                    if(entry.getKey().getOp().equals("array_store")){
+                        Operand op2 = new Operand(entry.getKey().getAddr2());
+                        Operand op3 = new Operand(entry.getKey().getAddr3());
+
+                        String array_base_add_reg = this.rb.regBank.get("TEMPS").getReg();
+                        String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
+                        String final_array_address = this.rb.regBank.get("TEMPS").getReg();
+
+                        res += "la " + array_base_add_reg  + ", " +entry.getKey().getAddr1() + "\n";
+                        res += naiveLoad(op2);
+                        res += "mul  " + array_index_add_reg + ", " + op2.getValReg() + ", 4\n";
+                        res += "add  " + final_array_address + ", " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
+                        res += naiveLoad(op3); 
+                        res += "sw  " + op3.getValReg() + ", (" + final_array_address + ")\n"; 
+
+                        this.rb.regBank.get("TEMPS").freeReg(array_base_add_reg);
+                        this.rb.regBank.get("TEMPS").freeReg(array_index_add_reg);
+                        this.rb.regBank.get("TEMPS").freeReg(final_array_address);
+                    }       
+                }
                 else if(isRelationalOp(entry.getKey().getOp())){
                     Operand op1 = new Operand(entry.getKey().getAddr1());
                     Operand op2 = new Operand(entry.getKey().getAddr2());
@@ -156,6 +183,11 @@ public class MIPSGenerator{
             }
         }    
             return res;
+    }
+
+    private boolean isArrayLS(String op){
+        return op.equals("array_load") ||
+               op.equals("array_store");
     }
 
     private boolean isArithmeticOp(String op){
