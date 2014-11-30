@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 public class Quad {
 
@@ -56,6 +56,56 @@ public class Quad {
         }
     }
 
+    public List<String> defs() {
+        List<String> defs = new LinkedList<String>();
+        switch (op) {
+            case "assign":
+                defs.add(addr1);
+                break;
+            case "add":
+            case "sub":
+            case "mult":
+            case "div":
+            case "and":
+            case "or":
+                defs.add(addr3);
+                break;
+            default:
+                break;
+        }
+        return defs;
+    }
+    
+    public List<String> uses() {
+        List<String> uses = new LinkedList<String>();
+        switch (op) {
+            case "assign":
+                uses.add(addr2);
+                break;
+            case "add":
+            case "sub":
+            case "mult":
+            case "div":
+            case "and":
+            case "or":
+                uses.add(addr1);
+                uses.add(addr2);
+            case "goto": 
+                break;
+            case "breq":
+            case "brneq":
+            case "brlt":
+            case "brgt":
+            case "brgeq":
+            case "brleq": 
+                uses.add(addr1);
+                uses.add(addr2);
+                break;
+        }
+        
+        return uses;
+    }
+
     public boolean isLabel() {
         return op.matches("^L\\d*:$");
     }
@@ -80,8 +130,8 @@ public class Quad {
         if (addr1 != null) s += ", " + addr1.toString();
         if (addr2 != null) s += ", " + addr2.toString();
         if (addr3 != null) s += ", " + addr3.toString();
-        if (params != null){
-            for(String t : params){
+        if (params != null) {
+            for (String t : params) {
                 if (t != null) s += ", " + t.toString();
             }
         }

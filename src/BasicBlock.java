@@ -8,6 +8,9 @@ public class BasicBlock {
     private List<BasicBlock> children;
     public BasicBlock prev;
     public BasicBlock next;
+    public int start;
+    public int end;
+    
     
     public BasicBlock() {
         quads = new ArrayList<Quad>();
@@ -43,6 +46,14 @@ public class BasicBlock {
     
     public List<BasicBlock> getChildren() {
         return children;
+    }
+
+    public int start() {
+        return start;
+    }
+    
+    public int end() {
+        return end;
     }
 
     public void addQuad(Quad ir){

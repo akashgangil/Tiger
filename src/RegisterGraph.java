@@ -2,18 +2,6 @@ import java.util.*;
 import java.util.regex.*;
 
 public class RegisterGraph {
-
-    public class Interval {
-        public String var;
-        public int start;
-        public int end;
-        
-        public Interval(String var, int start, int end) {
-            this.var = var;
-            this.start = start;
-            this.end = end;
-        }
-    }
     
     public class RegisterColoring {
         public HashMap<String, List<String>> registers;
