@@ -14,6 +14,14 @@ public class Quad {
         params = p;
     }
 
+    public int getTotalOperands(){
+        int count = 0;
+        if(addr1 != null) count++;
+        if(addr2 != null) count++;
+        if(addr3 != null) count++;
+        return count;
+    }
+
     public String getOp() {
         return this.op;
     }

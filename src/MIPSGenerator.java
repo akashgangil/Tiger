@@ -133,6 +133,19 @@ public class MIPSGenerator{
                     else if(inst.equals("brneq")){
                         inst = "bne";
                     }
+                    else if(inst.equals("brgt")){
+                        inst = "bgt";
+                    }
+                    else if(inst.equals("brlt")){
+                        inst = "blt";
+                    }
+                    else if(inst.equals("brgeq")){
+                        inst = "bge";
+                    }
+                    else if(inst.equals("brleq")){
+                        inst = "ble";
+                    }
+
                     res += inst + "  " + op1.getValReg()  + ",  "
                                 + op2.getValReg() + ",  "
                                 + entry.getKey().getAddr3() + "\n"; 
@@ -253,7 +266,13 @@ public class MIPSGenerator{
         for(Map.Entry<Quad, Boolean> entry: ir.entrySet()){
             if(entry.getKey().getOp().equals("assign")){
                 if(variables.contains(entry.getKey().getAddr1())){
-                    dataSection += entry.getKey().getAddr1() + ":\t" + ".word\t" + entry.getKey().getAddr2() + "\n";  
+                    if(entry.getKey().getTotalOperands() == 3){
+                        dataSection += entry.getKey().getAddr1() + ":\t" + ".word\t" + 
+                            entry.getKey().getAddr3() + ":" + entry.getKey().getAddr2() + "\n";  
+                    }
+                    else {
+                        dataSection += entry.getKey().getAddr1() + ":\t" + ".word\t" + entry.getKey().getAddr2() + "\n";  
+                    }
                     variables.remove(entry.getKey().getAddr1());
                     ir.put(entry.getKey(), true);
                 }
