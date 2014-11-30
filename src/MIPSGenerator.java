@@ -25,8 +25,8 @@ public class MIPSGenerator{
         if(isFixedpt(varName)) return "fixedpt";
         TigerScope sc = this.scope.childScopes.get(0).childScopes.get(0);
         TigerSymbol s = sc.lookupSymbol(varName);
+        if(s == null) return "int";
         TigerVariable var = (TigerVariable)s;
-        System.out.println(varName);
         return var.getType().name;
     }
 
@@ -165,7 +165,7 @@ public class MIPSGenerator{
     }
 
     public static boolean isFixedpt(String str){
-        return str.matches("-?\\d*.\\d+");
+        return str.matches("-?\\d+.\\d+");
     }   
 
     public static boolean isInt(String str){
