@@ -121,10 +121,26 @@ public class MIPSGenerator{
                 }
                 else if(isArrayLS(entry.getKey().getOp())){
                     if(entry.getKey().getOp().equals("array_load")){
-                        Operand op1 = new Operand(entry.getKey().getAddr1());
-                        res += naiveLoad(op1);
                         
-                        freeRegs(op1);
+                        Operand op1 = new Operand(entry.getKey().getAddr1());
+                        Operand op3 = new Operand(entry.getKey().getAddr3());
+                        
+                        String array_base_add_reg = this.rb.regBank.get("TEMPS").getReg();
+                        String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
+                        String final_array_address = this.rb.regBank.get("TEMPS").getReg();
+                        
+                        res += "la  " + array_base_add_reg  + ",  " +entry.getKey().getAddr2() + "\n";
+                        res += naiveLoad(op3);
+                        res += "mul  " + array_index_add_reg + ",  " + op3.getValReg() + ", 4\n";
+                        res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
+                        res += naiveLoad(op1);
+                        res += "lw  " + op3.getValReg() + ", 0(" + final_array_address + ")\n"; 
+            
+                        this.rb.regBank.get("TEMPS").freeReg(array_base_add_reg);
+                        this.rb.regBank.get("TEMPS").freeReg(array_index_add_reg);
+                        this.rb.regBank.get("TEMPS").freeReg(final_array_address);
+                        
+                        freeRegs(op1); freeRegs(op3);
                     }
                     if(entry.getKey().getOp().equals("array_store")){
                         Operand op2 = new Operand(entry.getKey().getAddr2());
@@ -134,7 +150,7 @@ public class MIPSGenerator{
                         String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
                         String final_array_address = this.rb.regBank.get("TEMPS").getReg();
 
-                        res += "la " + array_base_add_reg  + ",  " +entry.getKey().getAddr1() + "\n";
+                        res += "la  " + array_base_add_reg  + ",  " +entry.getKey().getAddr1() + "\n";
                         res += naiveLoad(op2);
                         res += "mul  " + array_index_add_reg + ",  " + op2.getValReg() + ", 4\n";
                         res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
@@ -144,6 +160,8 @@ public class MIPSGenerator{
                         this.rb.regBank.get("TEMPS").freeReg(array_base_add_reg);
                         this.rb.regBank.get("TEMPS").freeReg(array_index_add_reg);
                         this.rb.regBank.get("TEMPS").freeReg(final_array_address);
+
+                        freeRegs(op2); freeRegs(op3);
                     }       
                 }
                 else if(isRelationalOp(entry.getKey().getOp())){
