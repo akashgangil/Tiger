@@ -85,8 +85,6 @@ public class MIPSGenerator{
                       )
                         fp_inst += ".s";
 
-
-
                     /*Load */
                     res += naiveLoad(op1);
                     res += naiveLoad(op2);
