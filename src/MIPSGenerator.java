@@ -20,11 +20,19 @@ public class MIPSGenerator{
         this.tempRegMap = new HashMap<String, String>();
     }
 
+    public String getType(String varName){
+        if(isInt(varName)) return "int";
+        if(isFixedpt(varName)) return "fixedpt";
+        TigerScope sc = this.scope.childScopes.get(0).childScopes.get(0);
+        TigerSymbol s = sc.lookupSymbol(varName);
+        TigerVariable var = (TigerVariable)s;
+        System.out.println(varName);
+        return var.getType().name;
+    }
+
     private String cfgRegAllocation(List<Quad> ir) {
         BasicBlockGenerator bbg = new BasicBlockGenerator(ir); 
         List<BasicBlock> blocks = bbg.getBasicBlocks();
-        
-        
         
         return "";
     }
@@ -153,12 +161,22 @@ public class MIPSGenerator{
     }
     
     public static boolean isNumeric(String str){
-        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+        return isFixedpt(str) || isInt(str);  //match a number with optional '-' and decimal.
+    }
+
+    public static boolean isFixedpt(String str){
+        return str.matches("-?\\d*.\\d+");
+    }   
+
+    public static boolean isInt(String str){
+        return str.matches("-?\\d+");
     }
 
     private String naiveLoad(Operand o){
+        String registerType = getRegisterType(o);
+
         if(isNumeric(o.getName())){
-            String valReg = this.rb.regBank.get("TEMPS").getReg();
+            String valReg = this.rb.regBank.get(registerType).getReg();
             String res = "";
             res += "li  " + valReg + ", " + o.getName() + "\n";
             o.setValReg(valReg);
@@ -167,8 +185,8 @@ public class MIPSGenerator{
         if(isTemp(o.getName())){
             int offset = getTempNum(o.getName());
             String res = "";
-            String addReg = this.rb.regBank.get("TEMPS").getReg();
-            String valueReg = this.rb.regBank.get("TEMPS").getReg();
+            String addReg = this.rb.regBank.get(registerType).getReg();
+            String valueReg = this.rb.regBank.get(registerType).getReg();
             res += "la  " + addReg + ", itemp\n";
             res += "lw  " + valueReg + ",  " +  Integer.toString(offset) + "(" + addReg + ")\n";
             o.setAddReg(addReg);
@@ -177,8 +195,8 @@ public class MIPSGenerator{
         }
         else{
             String loadMips = "";
-            String addReg = this.rb.regBank.get("TEMPS").getReg();
-            String valueReg = this.rb.regBank.get("TEMPS").getReg();
+            String addReg = this.rb.regBank.get(registerType).getReg();
+            String valueReg = this.rb.regBank.get(registerType).getReg();
             loadMips += "la  " + addReg + ",  " + o.getName() + "\n";
             loadMips += "lw  " + valueReg + ",  " + "0(" + addReg + ")\n";
             o.setAddReg(addReg);
@@ -193,10 +211,17 @@ public class MIPSGenerator{
         return i * 4;
     }
 
+    private String getRegisterType(Operand o){
+        if(getType(o.getName()).equals("int"))
+            return "TEMPS";
+        else return "FLOAT_TEMPS";
+    }
+
     private void freeRegs(Operand o){
-        this.rb.regBank.get("TEMPS").freeReg(o.getValReg());
+        String registerType = getRegisterType(o);
+        this.rb.regBank.get(registerType).freeReg(o.getValReg());
         if(!isNumeric(o.getName()))
-            this.rb.regBank.get("TEMPS").freeReg(o.getAddReg());
+            this.rb.regBank.get(registerType).freeReg(o.getAddReg());
     }
 
     private String naiveStore(Operand o){
