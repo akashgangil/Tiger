@@ -134,12 +134,12 @@ public class MIPSGenerator{
                         String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
                         String final_array_address = this.rb.regBank.get("TEMPS").getReg();
 
-                        res += "la " + array_base_add_reg  + ", " +entry.getKey().getAddr1() + "\n";
+                        res += "la " + array_base_add_reg  + ",  " +entry.getKey().getAddr1() + "\n";
                         res += naiveLoad(op2);
-                        res += "mul  " + array_index_add_reg + ", " + op2.getValReg() + ", 4\n";
-                        res += "add  " + final_array_address + ", " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
+                        res += "mul  " + array_index_add_reg + ",  " + op2.getValReg() + ", 4\n";
+                        res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
                         res += naiveLoad(op3); 
-                        res += "sw  " + op3.getValReg() + ", (" + final_array_address + ")\n"; 
+                        res += "sw  " + op3.getValReg() + ", 0(" + final_array_address + ")\n"; 
 
                         this.rb.regBank.get("TEMPS").freeReg(array_base_add_reg);
                         this.rb.regBank.get("TEMPS").freeReg(array_index_add_reg);
