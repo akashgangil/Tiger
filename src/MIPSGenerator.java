@@ -5,11 +5,12 @@ public class MIPSGenerator{
     private List<Quad> mipsCode;
     private final MIPSRegisterBank rb;  
     private TigerScope scope;
+    private String currentProc;
 
     private final String dataSegment = ".data\n";
     private final String textSegment = ".text\n";
     private final String mainSegment = ".globl main\nmain:\n";
-    private final String exitProgram = "li $v0, 10\nsyscall\n";
+    private final String exitProgram = "jr $ra\n";
 
     private Map<String, String> tempRegMap;
 
@@ -103,7 +104,12 @@ public class MIPSGenerator{
                     /*Free Regs*/
                     freeRegs(op1); freeRegs(op2); freeRegs(op3);
                 }
-                else if(entry.getKey().getOp().equals("call")){
+                else if (isFunction(entry.getKey().getOp())) {
+                    res += "jr $ra\n";
+                    currentProc = entry.getKey().getOp();
+                    res += currentProc + "\n";
+                }
+                else if(entry.getKey().getOp().equals("call") || entry.getKey().getOp().equals("callr")){
                     if(entry.getKey().getAddr1().equals("printi")){
                         res += "li $v0 1\n";
                         /*hack*/
@@ -117,6 +123,49 @@ public class MIPSGenerator{
                         res += "li $v0 4\n";
                         res += "la $a0 newline\n";
                         res += "syscall"  + "\n";
+                    } else {
+                        Quad q = entry.getKey();
+
+                        
+
+                        String[] params = q.getParams();
+
+                        if (params.length > 0) {
+                            Operand p1 = new Operand(params[0]);
+                            res += naiveLoad(p1);
+                            res += "add " + "$a0, " + p1.getValReg() + ", $zero\n";
+                            freeRegs(p1);
+                            if (params.length > 1) {
+                                Operand p2 = new Operand(params[1]);
+                                res += naiveLoad(p2);
+                                res += "add " + "$a1, " + p2.getValReg() + ", $zero\n";
+                                freeRegs(p2);
+                                if (params.length > 2) {
+                                    Operand p3 = new Operand(params[2]);
+                                    res += naiveLoad(p3);
+                                    res += "add " + "$a2, " + p3.getValReg() + ", $zero\n";
+                                    freeRegs(p3);
+                                    if (params.length > 3) {
+                                        Operand p4 = new Operand(params[3]);
+                                        res += naiveLoad(p4);
+                                        res += "add " + "$a3, " + p4.getValReg() + ", $zero\n";
+                                        freeRegs(p4);
+                                    }
+                                }
+                            }
+                        }
+                        if (params.length > 4) {
+                            //push remaining params onto the stack
+                            for (int i = 4; i < params.length; i++) {
+                                Operand p = new Operand(params[i]);
+                                res += naiveLoad(p);
+                                int offset = i * 4;
+                                res += "sw " + p.getValReg() + ", " + offset + "($sp)\n";
+                                freeRegs(p);
+                            }
+                        }
+                        res += "jal " + entry.getKey().getAddr2() + "\n";
+                        //res += callerEnd();
                     }
                 }
                 else if(isLabel(entry.getKey().getOp())){
@@ -235,6 +284,10 @@ public class MIPSGenerator{
 
     private boolean isLabel(String op){
         return op.matches("L\\d*:");     
+    }
+
+    private boolean isFunction(String op) {
+        return op.matches("[0-9a-zA-Z]*:");
     }
     
     public static boolean isNumeric(String str){

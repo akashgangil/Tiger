@@ -1,10 +1,19 @@
+int function add(a:int, b:int, c:int, d:int, e:int)
+begin
+    begin
+    	var c : int := 0;
+    	c := a + b;
+    	return c;
+    end;
+end;
+
 void main()
 begin
     begin
         var s:int := 4;
         var a:int := 5;
-        s := 1; 
-        printi(s);
-        printi(a);
+        var sum : int := 0;
+        sum := add(s, a, 1, 2, 3);
+        printi(sum);
     end;
 end;

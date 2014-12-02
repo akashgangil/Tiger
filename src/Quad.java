@@ -41,6 +41,10 @@ public class Quad {
     public String getParam() {
         return params.get(0);
     }
+
+    public String[] getParams() {
+        return params.toArray(new String[params.size()]);
+    }
     
     public String getTarget() {
         switch (op) {
