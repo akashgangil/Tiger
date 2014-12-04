@@ -5,13 +5,20 @@ begin
     end;
 end;
 
+int function multNums(a:int, b:int)
+begin
+    begin
+        return a * b;
+    end;
+end;
+
 void main()
 begin
     begin
         var s:int := 100;
         var a:int := 5;
-        var sum : int := 0;
-        sum := addNums(s, a);
-        printi(sum);
+        var product:int := 0;
+        product := multNums(s, a);
+        printi(product);
     end;
 end;

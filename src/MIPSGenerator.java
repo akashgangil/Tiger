@@ -73,7 +73,7 @@ public class MIPSGenerator{
 
                     /*Store the value to the memory location*/
                     res += naiveStore(op1);
-                    
+
                     /*Free the regs to make them resuable*/
                     freeRegs(op1); freeRegs(op2);
                 }
@@ -109,7 +109,7 @@ public class MIPSGenerator{
                 }
                 else if (isFunction(entry.getKey().getOp())) {
                     //if (!currentFunction.equals("main")) {
-                        res += calleeEnd();
+                        res += calleeEnd(currentFunction);
                     //}
                     Quad q = entry.getKey();
                     res += "jr $ra\n";
@@ -143,22 +143,40 @@ public class MIPSGenerator{
                         Quad q = entry.getKey();
                         
                         //caller setup
-                        String[] params = q.getParams();
-                        for (int i = 0; i < 4 && i < params.length; i++) {
-                            Operand p = new Operand(params[i]);
-                            res += naiveLoad(p);
-                            res += "move $a" + i + ", " + p.getValReg() + "\n";
-                            freeRegs(p);
+                        //push existing args registers into stack
+                        for (int i = 0; i < 4; i++){
+                            res += "sw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
                         }
-                        int argsInStack = Math.max(params.length - 4, 0);
+                        res += "addi $sp, $sp, -16\n";
 
-                        //push extra args in stack
-                        res += "addi $sp, $sp, -" + (argsInStack * 4) + "\n";
                         //push $t0-$t9 into stack
                         for (int i = 0; i < 10; i++) {
                             res += "sw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
                         }
                         res += "addi $sp, $sp, -40\n";
+
+                        //args for function to be called
+                        String[] params = q.getParams();
+                        List<Operand> ops = new LinkedList<Operand>();
+                        for (int i = 0; i < 4 && i < params.length; i++) {
+                            Operand p = new Operand(params[i]);
+                            res += naiveLoad(p);
+                            ops.add(p);
+                        }
+                        for (int i = 0; i < ops.size(); i++){
+                            res += "move $a" + i + ", " + ops.get(i).getValReg() + "\n";
+                            freeRegs(ops.get(i));
+                        }
+                        int argsInStack = Math.max(params.length - 4, 0);
+                        //push extra args in stack
+                        for (int i = 0; i < argsInStack; i++){
+                            Operand p = new Operand(params[i+4]);
+                            res += naiveLoad(p);
+                            res += "sw " + p.getValReg() + ", -" + 4*(i+1) + "($sp)\n";
+                            freeRegs(p);
+                        }
+
+                        res += "addi $sp, $sp, -" + (argsInStack * 4) + "\n";
                         //caller setup end
                         if (q.getOp().equals("callr")){
                             res += "jal " + entry.getKey().getAddr2() + "\n";
@@ -181,6 +199,12 @@ public class MIPSGenerator{
                             res += naiveStore(o);
                             freeRegs(o);
                         }
+                        //restore args registers from stack
+                        res += "addi $sp, $sp, 16\n";
+                        for (int i = 0; i < 4; i++){
+                            res += "lw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
+                        }
+                        
                         //caller cleanup end
                     }
                 }
@@ -271,8 +295,8 @@ public class MIPSGenerator{
                     freeRegs(op1); freeRegs(op2);
                 }
             }
-        }    
-            return res;
+        } 
+        return res;
     }
 
     private String calleeBegin(String functionName) {
@@ -281,7 +305,6 @@ public class MIPSGenerator{
         StringBuilder res = new StringBuilder();
         res.append("sw $ra, -4($sp)\n");
         res.append("addi $sp, $sp, -4\n");
-        // System.out.println(params);
         List<String> params = function.getParameterNames();
         if (params != null) {
             for (int i = 0; i < params.size(); i++) {
@@ -291,10 +314,13 @@ public class MIPSGenerator{
         return res.toString();
     }
 
-    private String calleeEnd() {
+    private String calleeEnd(String functionName) {
         paramNamesToNumbers.clear();
-
         StringBuilder res = new StringBuilder();
+        TigerSymbol temp = scope.lookupSymbol(functionName);
+        TigerUserFunction function = (TigerUserFunction)temp;
+        //int numLocals = function.getNumberOfLocals();
+        //res.append("addi $sp, $sp, " + numLocals * 4 + "\n");
         res.append("lw $ra, 0($sp)\n");
         res.append("addi $sp, $sp, 4\n");
         return res.toString();
@@ -328,7 +354,7 @@ public class MIPSGenerator{
     }
 
     private boolean isFunction(String op) {
-        return op.matches("[0-9a-zA-Z]*:");
+        return op.matches("[^L][0-9a-zA-Z]*:");
     }
     
     public static boolean isNumeric(String str){
@@ -352,7 +378,10 @@ public class MIPSGenerator{
             String valueReg = this.rb.regBank.get(registerType).getReg();
             if (paramNum < 4) {
                 res += "move " + valueReg + ", $a" + paramNum + "\n";
-                o.setAddReg("$a" + paramNum);
+                naiveStore(o);
+            } else {
+                int offsetFromSp = (paramNamesToNumbers.size() - paramNum);
+                res += "lw " + valueReg + ", " + offsetFromSp*4 + "($sp)\n";
             }
             o.setValReg(valueReg);
             return res;
@@ -486,7 +515,7 @@ public class MIPSGenerator{
         mipsCode += mainSegment;
         mipsCode += storeRaForMain();
         mipsCode += naiveRegAllocation(irCode);
-        mipsCode += calleeEnd();
+        mipsCode += calleeEnd("main");
         mipsCode += "jr $ra\n";
         return mipsCode; 
     }

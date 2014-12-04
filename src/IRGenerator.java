@@ -285,7 +285,6 @@ public class IRGenerator {
     }
 
     private String array2d(List children) {
-        //TODO: get size of array from symbol table and multiply offset
         String r = newTemp();
         String a = ((CommonTree)children.get(0)).getText();
 

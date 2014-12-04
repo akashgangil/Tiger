@@ -5,6 +5,7 @@ public class TigerUserFunction extends TigerFunction {
     private TigerScope scope;
     private List<TigerBlock> blocks;
     private List<String> parameterNames;
+    private int numberOfLocals;
     private boolean hasReturned;
 
     public static TigerUserFunction prototypeFromAstNode(CommonTree functionNode, TigerScope parentScope) throws Exception {
@@ -46,6 +47,18 @@ public class TigerUserFunction extends TigerFunction {
             }
         }
 
+        int numberOfDecs = 0;
+        CommonTree blocks = (CommonTree)functionNode.getChild(3);
+        if (blocks != null && blocks.getChildren() != null) {
+            for (Object child : blocks.getChildren()) {
+                CommonTree node = (CommonTree)child;
+                List decs = ((CommonTree)node.getChild(1)).getChildren();
+                if (decs != null) {
+                    numberOfDecs += decs.size();
+                }
+            }
+        }
+
         scope.label = "Scope : " + functionName;
 
         TigerUserFunction function = new TigerUserFunction();
@@ -54,6 +67,7 @@ public class TigerUserFunction extends TigerFunction {
         function.parameterTypes = parameterTypes;
         function.scope = scope;
         function.parameterNames = parameterNames;
+        function.numberOfLocals = numberOfDecs;
 
         scope.setFunction(function);
         parentScope.addChildScope(scope);
@@ -82,6 +96,10 @@ public class TigerUserFunction extends TigerFunction {
 
     public List<String> getParameterNames() {
         return parameterNames;
+    }
+
+    public int getNumberOfLocals(){
+        return numberOfLocals;
     }
 
     public void setHasReturned() {
