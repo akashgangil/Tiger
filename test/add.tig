@@ -1,9 +1,7 @@
 int function addNums(a:int, b:int)
 begin
     begin
-    	var c : int := 0;
-    	c := a + b;
-    	return c;
+    	return a + b;
     end;
 end;
 
