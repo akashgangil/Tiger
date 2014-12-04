@@ -136,8 +136,8 @@ public class MIPSGenerator{
 
                         res += "move $a0, " + o.getValReg() + "\n"; 
                         res += "syscall" + "\n"; 
-                        res += "li $v0 4\n";
-                        res += "la $a0 newline\n";
+                        res += "li $v0 11\n"; //print single character
+                        res += "li $a0 0xA\n"; //new line ASCII value
                         res += "syscall"  + "\n";
                     } else {
                         Quad q = entry.getKey();
@@ -456,10 +456,6 @@ public class MIPSGenerator{
     private String addTempData(){
         return "itemp:  .word  1000\n";
     }
-   
-    private String addNewline(){
-        return "newline:  .asciiz \"\\n\"\n";
-    }
  
     private boolean isTemp(String var){
         Pattern p = Pattern.compile("t\\d*");
@@ -486,7 +482,6 @@ public class MIPSGenerator{
         String mipsCode = "";
         mipsCode += genDataSection(irCode);
         mipsCode += addTempData();
-        mipsCode += addNewline();
         mipsCode += textSegment;
         mipsCode += mainSegment;
         mipsCode += storeRaForMain();
