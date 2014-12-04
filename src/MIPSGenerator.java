@@ -5,7 +5,8 @@ public class MIPSGenerator{
     private List<Quad> mipsCode;
     private final MIPSRegisterBank rb;  
     private TigerScope scope;
-    private String currentProc;
+    private String currentFunction;
+    private HashMap<String, Integer> paramNamesToNumbers;
 
     private final String dataSegment = ".data\n";
     private final String textSegment = ".text\n";
@@ -19,6 +20,8 @@ public class MIPSGenerator{
         this.rb = MIPSRegisterBank.getMIPSRegisterBank();
         this.scope = scope;
         this.tempRegMap = new HashMap<String, String>();
+        this.paramNamesToNumbers = new HashMap<String, Integer>();
+        this.currentFunction = "main";
     }
 
     public String getType(String varName){
@@ -105,67 +108,80 @@ public class MIPSGenerator{
                     freeRegs(op1); freeRegs(op2); freeRegs(op3);
                 }
                 else if (isFunction(entry.getKey().getOp())) {
+                    //if (!currentFunction.equals("main")) {
+                        res += calleeEnd();
+                    //}
+                    Quad q = entry.getKey();
                     res += "jr $ra\n";
-                    currentProc = entry.getKey().getOp();
-                    res += currentProc + "\n";
+                    currentFunction = q.getOp().substring(0, q.getOp().length()-1);
+                    res += currentFunction + ":\n";
+                    res += calleeBegin(currentFunction);
+                } else if (entry.getKey().getOp().equals("return")){
+                    String returnVal = entry.getKey().getAddr1();
+                    Operand o = new Operand(returnVal);
+                    res += naiveLoad(o);
+                    res += "move $v0, " + o.getValReg() + "\n";
+                    freeRegs(o);
                 }
                 else if(entry.getKey().getOp().equals("call") || entry.getKey().getOp().equals("callr")){
                     if(entry.getKey().getAddr1().equals("printi")){
                         res += "li $v0 1\n";
                         /*hack*/
-                        String isReg = "";
-                        if(isTemp(entry.getKey().getParam())){
-                            isReg = ", $";
-                        }
+                        //String isReg = "";
+                        //if(isTemp(entry.getKey().getParam())){
+                            //isReg = ", $";
+                        //}
+                        Operand o = new Operand(entry.getKey().getParam());
+                        res += naiveLoad(o);
 
-                        res += "lw $a0 " + isReg + entry.getKey().getParam() + "\n"; 
+                        res += "move $a0, " + o.getValReg() + "\n"; 
                         res += "syscall" + "\n"; 
                         res += "li $v0 4\n";
                         res += "la $a0 newline\n";
                         res += "syscall"  + "\n";
                     } else {
                         Quad q = entry.getKey();
-
                         
-
+                        //caller setup
                         String[] params = q.getParams();
+                        for (int i = 0; i < 4 && i < params.length; i++) {
+                            Operand p = new Operand(params[i]);
+                            res += naiveLoad(p);
+                            res += "move $a" + i + ", " + p.getValReg() + "\n";
+                            freeRegs(p);
+                        }
+                        int argsInStack = Math.max(params.length - 4, 0);
 
-                        if (params.length > 0) {
-                            Operand p1 = new Operand(params[0]);
-                            res += naiveLoad(p1);
-                            res += "add " + "$a0, " + p1.getValReg() + ", $zero\n";
-                            freeRegs(p1);
-                            if (params.length > 1) {
-                                Operand p2 = new Operand(params[1]);
-                                res += naiveLoad(p2);
-                                res += "add " + "$a1, " + p2.getValReg() + ", $zero\n";
-                                freeRegs(p2);
-                                if (params.length > 2) {
-                                    Operand p3 = new Operand(params[2]);
-                                    res += naiveLoad(p3);
-                                    res += "add " + "$a2, " + p3.getValReg() + ", $zero\n";
-                                    freeRegs(p3);
-                                    if (params.length > 3) {
-                                        Operand p4 = new Operand(params[3]);
-                                        res += naiveLoad(p4);
-                                        res += "add " + "$a3, " + p4.getValReg() + ", $zero\n";
-                                        freeRegs(p4);
-                                    }
-                                }
-                            }
+                        //push extra args in stack
+                        res += "addi $sp, $sp, -" + (argsInStack * 4) + "\n";
+                        //push $t0-$t9 into stack
+                        for (int i = 0; i < 10; i++) {
+                            res += "sw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
                         }
-                        if (params.length > 4) {
-                            //push remaining params onto the stack
-                            for (int i = 4; i < params.length; i++) {
-                                Operand p = new Operand(params[i]);
-                                res += naiveLoad(p);
-                                int offset = i * 4;
-                                res += "sw " + p.getValReg() + ", " + offset + "($sp)\n";
-                                freeRegs(p);
-                            }
+                        res += "addi $sp, $sp, -40\n";
+                        //caller setup end
+                        if (q.getOp().equals("callr")){
+                            res += "jal " + entry.getKey().getAddr2() + "\n";
+                        } else {
+                            res += "jal " + entry.getKey().getAddr1() + "\n";
                         }
-                        res += "jal " + entry.getKey().getAddr2() + "\n";
-                        //res += callerEnd();
+
+                        //caller cleanup
+                        res += "addi $sp, $sp, 40\n";
+                        for (int i = 0; i < 10; i++) {
+                            res += "lw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
+                        }
+                        res += "addi $sp, $sp, " + (argsInStack * 4) + "\n"; //pop extra args off
+                        if (q.getOp().equals("callr")) {
+                            //load return value
+                            String returnName = q.getAddr1();
+                            Operand o = new Operand(returnName);
+                            res += naiveLoad(o);
+                            res += "move " + o.getValReg() + ", $v0\n";
+                            res += naiveStore(o);
+                            freeRegs(o);
+                        }
+                        //caller cleanup end
                     }
                 }
                 else if(isLabel(entry.getKey().getOp())){
@@ -259,6 +275,31 @@ public class MIPSGenerator{
             return res;
     }
 
+    private String calleeBegin(String functionName) {
+        TigerSymbol temp = scope.lookupSymbol(functionName);
+        TigerUserFunction function = (TigerUserFunction)temp;
+        StringBuilder res = new StringBuilder();
+        res.append("sw $ra, -4($sp)\n");
+        res.append("addi $sp, $sp, -4\n");
+        // System.out.println(params);
+        List<String> params = function.getParameterNames();
+        if (params != null) {
+            for (int i = 0; i < params.size(); i++) {
+                paramNamesToNumbers.put(currentFunction + "_" + params.get(i), i);
+            }
+        }
+        return res.toString();
+    }
+
+    private String calleeEnd() {
+        paramNamesToNumbers.clear();
+
+        StringBuilder res = new StringBuilder();
+        res.append("lw $ra, 0($sp)\n");
+        res.append("addi $sp, $sp, 4\n");
+        return res.toString();
+    }
+
     private boolean isArrayLS(String op){
         return op.equals("array_load") ||
                op.equals("array_store");
@@ -304,15 +345,26 @@ public class MIPSGenerator{
 
     private String naiveLoad(Operand o){
         String registerType = getRegisterType(o);
-
-        if(isNumeric(o.getName())){
+        String varName = currentFunction + "_" + o.getName();
+        if (paramNamesToNumbers.containsKey(varName)) {
+            int paramNum = paramNamesToNumbers.get(varName);
+            String res = "";
+            String valueReg = this.rb.regBank.get(registerType).getReg();
+            if (paramNum < 4) {
+                res += "move " + valueReg + ", $a" + paramNum + "\n";
+                o.setAddReg("$a" + paramNum);
+            }
+            o.setValReg(valueReg);
+            return res;
+        }
+        else if(isNumeric(o.getName())){
             String valReg = this.rb.regBank.get(registerType).getReg();
             String res = "";
             res += "li  " + valReg + ", " + o.getName() + "\n";
             o.setValReg(valReg);
             return res;
         }
-        if(isTemp(o.getName())){
+        else if(isTemp(o.getName())){
             int offset = getTempNum(o.getName());
             String res = "";
             String addReg = this.rb.regBank.get(registerType).getReg();
@@ -327,7 +379,7 @@ public class MIPSGenerator{
             String loadMips = "";
             String addReg = this.rb.regBank.get(registerType).getReg();
             String valueReg = this.rb.regBank.get(registerType).getReg();
-            loadMips += "la  " + addReg + ",  " + o.getName() + "\n";
+            loadMips += "la  " + addReg + ",  " + varName + "\n";
             loadMips += "lw  " + valueReg + ",  " + "0(" + addReg + ")\n";
             o.setAddReg(addReg);
             o.setValReg(valueReg);
@@ -367,25 +419,34 @@ public class MIPSGenerator{
     public String genDataSection(Map<Quad, Boolean> ir){
         Set<String> variables = new HashSet<String>();
         String dataSection = ".data\n"; 
+        String currentProc = "main";
         for(Map.Entry<Quad, Boolean> entry: ir.entrySet()){
-            if(entry.getKey().getOp().equals("assign") && !isTemp(entry.getKey().getAddr1())){
-                variables.add(entry.getKey().getAddr1());
+            String opName = entry.getKey().getOp();
+            if(opName.equals("assign") && !isTemp(entry.getKey().getAddr1())){
+                variables.add(currentProc + "_" + entry.getKey().getAddr1());
+            } else if (isFunction(opName)) {
+                currentProc = opName.substring(0, opName.length()-1);
             }
         }
 
+        currentProc = "main";
         for(Map.Entry<Quad, Boolean> entry: ir.entrySet()){
-            if(entry.getKey().getOp().equals("assign")){
-                if(variables.contains(entry.getKey().getAddr1())){
+            String opName = entry.getKey().getOp();
+            if(opName.equals("assign")){
+                String varName = currentProc + "_" + entry.getKey().getAddr1();
+                if(variables.contains(varName)){
                     if(entry.getKey().getTotalOperands() == 3){
-                        dataSection += entry.getKey().getAddr1() + ":\t" + ".word\t" + 
+                        dataSection += varName + ":\t" + ".word\t" + 
                             entry.getKey().getAddr3() + ":" + entry.getKey().getAddr2() + "\n";  
                     }
                     else {
-                        dataSection += entry.getKey().getAddr1() + ":\t" + ".word\t" + entry.getKey().getAddr2() + "\n";  
+                        dataSection += varName + ":\t" + ".word\t" + entry.getKey().getAddr2() + "\n";  
                     }
-                    variables.remove(entry.getKey().getAddr1());
+                    variables.remove(varName);
                     ir.put(entry.getKey(), true);
                 }
+            } else if (isFunction(opName)){
+                currentProc = opName.substring(0, opName.length()-1);
             }
         }
 
@@ -406,24 +467,33 @@ public class MIPSGenerator{
         return m.matches();
     }
 
+    private String storeRaForMain(){
+        String res = "";
+        res += "sw $ra, -4($sp)\n";
+        res += "addi $sp, $sp, -4\n";
+        return res;
+    }
+
 
     public String getMIPSCode(List<Quad> ir){
 
-       /*All instructions not/"false" processed*/
-       Map<Quad, Boolean> irCode = new LinkedHashMap<Quad, Boolean>();
-       for(Quad q: ir){
+        /*All instructions not/"false" processed*/
+        Map<Quad, Boolean> irCode = new LinkedHashMap<Quad, Boolean>();
+        for(Quad q: ir){
             irCode.put(q, false);
-       }
+        }
 
-       String mipsCode = "";
-       mipsCode += genDataSection(irCode);
-       mipsCode += addTempData();
-       mipsCode += addNewline();
-       mipsCode += textSegment;
-       mipsCode += mainSegment;
-       mipsCode += naiveRegAllocation(irCode);
-       mipsCode += exitProgram;
-       return mipsCode; 
+        String mipsCode = "";
+        mipsCode += genDataSection(irCode);
+        mipsCode += addTempData();
+        mipsCode += addNewline();
+        mipsCode += textSegment;
+        mipsCode += mainSegment;
+        mipsCode += storeRaForMain();
+        mipsCode += naiveRegAllocation(irCode);
+        mipsCode += calleeEnd();
+        mipsCode += "jr $ra\n";
+        return mipsCode; 
     }
     
 }

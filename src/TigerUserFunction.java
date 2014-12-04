@@ -80,6 +80,10 @@ public class TigerUserFunction extends TigerFunction {
         this.blocks = blocks;
     }
 
+    public List<String> getParameterNames() {
+        return parameterNames;
+    }
+
     public void setHasReturned() {
         hasReturned = true;
     }

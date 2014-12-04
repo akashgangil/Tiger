@@ -1,4 +1,4 @@
-int function add(a:int, b:int, c:int, d:int, e:int)
+int function addNums(a:int, b:int)
 begin
     begin
     	var c : int := 0;
@@ -10,10 +10,10 @@ end;
 void main()
 begin
     begin
-        var s:int := 4;
+        var s:int := 100;
         var a:int := 5;
         var sum : int := 0;
-        sum := add(s, a, 1, 2, 3);
+        sum := addNums(s, a);
         printi(sum);
     end;
 end;
