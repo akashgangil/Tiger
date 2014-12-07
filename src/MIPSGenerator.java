@@ -152,7 +152,7 @@ public class MIPSGenerator{
                         }
 
                         //caller cleanup
-                        
+                        res += callerEnd(q);
                         
                         //caller cleanup end
                     }
@@ -338,8 +338,6 @@ public class MIPSGenerator{
         StringBuilder res = new StringBuilder();
         TigerSymbol temp = scope.lookupSymbol(functionName);
         TigerUserFunction function = (TigerUserFunction)temp;
-        //int numLocals = function.getNumberOfLocals();
-        //res.append("addi $sp, $sp, " + numLocals * 4 + "\n");
         res.append("lw $ra, 0($sp)\n");
         res.append("addi $sp, $sp, 4\n");
         return res.toString();
