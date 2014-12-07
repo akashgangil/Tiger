@@ -1,13 +1,12 @@
-type ArrayInt = array [100] of int;
+type ArrayInt = array [101] of int;
 void main()
 begin
   begin
     var X, Y : ArrayInt := 10;
     var i, sum : int := 0;
     begin
-      for i := 1 to 100 do
+      for i := 0 to 100 do
         sum := sum + X[i] * Y[i];
-        break;
       enddo;
       printi(sum);
     end;

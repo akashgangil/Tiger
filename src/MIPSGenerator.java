@@ -143,40 +143,7 @@ public class MIPSGenerator{
                         Quad q = entry.getKey();
                         
                         //caller setup
-                        //push existing args registers into stack
-                        for (int i = 0; i < 4; i++){
-                            res += "sw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
-                        }
-                        res += "addi $sp, $sp, -16\n";
-
-                        //push $t0-$t9 into stack
-                        for (int i = 0; i < 10; i++) {
-                            res += "sw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
-                        }
-                        res += "addi $sp, $sp, -40\n";
-
-                        //args for function to be called
-                        String[] params = q.getParams();
-                        List<Operand> ops = new LinkedList<Operand>();
-                        for (int i = 0; i < 4 && i < params.length; i++) {
-                            Operand p = new Operand(params[i]);
-                            res += naiveLoad(p);
-                            ops.add(p);
-                        }
-                        for (int i = 0; i < ops.size(); i++){
-                            res += "move $a" + i + ", " + ops.get(i).getValReg() + "\n";
-                            freeRegs(ops.get(i));
-                        }
-                        int argsInStack = Math.max(params.length - 4, 0);
-                        //push extra args in stack
-                        for (int i = 0; i < argsInStack; i++){
-                            Operand p = new Operand(params[i+4]);
-                            res += naiveLoad(p);
-                            res += "sw " + p.getValReg() + ", -" + 4*(i+1) + "($sp)\n";
-                            freeRegs(p);
-                        }
-
-                        res += "addi $sp, $sp, -" + (argsInStack * 4) + "\n";
+                        res += callerBegin(q);
                         //caller setup end
                         if (q.getOp().equals("callr")){
                             res += "jal " + entry.getKey().getAddr2() + "\n";
@@ -185,25 +152,7 @@ public class MIPSGenerator{
                         }
 
                         //caller cleanup
-                        res += "addi $sp, $sp, 40\n";
-                        for (int i = 0; i < 10; i++) {
-                            res += "lw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
-                        }
-                        res += "addi $sp, $sp, " + (argsInStack * 4) + "\n"; //pop extra args off
-                        if (q.getOp().equals("callr")) {
-                            //load return value
-                            String returnName = q.getAddr1();
-                            Operand o = new Operand(returnName);
-                            res += naiveLoad(o);
-                            res += "move " + o.getValReg() + ", $v0\n";
-                            res += naiveStore(o);
-                            freeRegs(o);
-                        }
-                        //restore args registers from stack
-                        res += "addi $sp, $sp, 16\n";
-                        for (int i = 0; i < 4; i++){
-                            res += "lw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
-                        }
+                        
                         
                         //caller cleanup end
                     }
@@ -217,6 +166,7 @@ public class MIPSGenerator{
                 else if(isArrayLS(entry.getKey().getOp())){
                     if(entry.getKey().getOp().equals("array_load")){
                         
+                        String arrName = currentFunction + "_" + entry.getKey().getAddr2();
                         Operand op1 = new Operand(entry.getKey().getAddr1());
                         Operand op3 = new Operand(entry.getKey().getAddr3());
                         
@@ -224,7 +174,7 @@ public class MIPSGenerator{
                         String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
                         String final_array_address = this.rb.regBank.get("TEMPS").getReg();
                         
-                        res += "la  " + array_base_add_reg  + ",  " +entry.getKey().getAddr2() + "\n";
+                        res += "la  " + array_base_add_reg  + ",  " + arrName + "\n";
                         res += naiveLoad(op3);
                         res += "mul  " + array_index_add_reg + ",  " + op3.getValReg() + ", 4\n";
                         res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
@@ -239,6 +189,7 @@ public class MIPSGenerator{
                         freeRegs(op1); freeRegs(op3);
                     }
                     if(entry.getKey().getOp().equals("array_store")){
+                        String arrName = currentFunction + "_" + entry.getKey().getAddr1();
                         Operand op2 = new Operand(entry.getKey().getAddr2());
                         Operand op3 = new Operand(entry.getKey().getAddr3());
 
@@ -246,7 +197,7 @@ public class MIPSGenerator{
                         String array_index_add_reg = this.rb.regBank.get("TEMPS").getReg();
                         String final_array_address = this.rb.regBank.get("TEMPS").getReg();
 
-                        res += "la  " + array_base_add_reg  + ",  " +entry.getKey().getAddr1() + "\n";
+                        res += "la  " + array_base_add_reg  + ",  " + arrName + "\n";
                         res += naiveLoad(op2);
                         res += "mul  " + array_index_add_reg + ",  " + op2.getValReg() + ", 4\n";
                         res += "add  " + final_array_address + ",  " + array_base_add_reg + ", " + array_index_add_reg + "\n"; 
@@ -296,6 +247,74 @@ public class MIPSGenerator{
                 }
             }
         } 
+        return res;
+    }
+
+    private String callerBegin(Quad q){
+        String res = "";
+        //push existing args registers into stack
+        for (int i = 0; i < 4; i++){
+            res += "sw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
+        }
+        res += "addi $sp, $sp, -16\n";
+
+        //push $t0-$t9 into stack
+        for (int i = 0; i < 10; i++) {
+            res += "sw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
+        }
+        res += "addi $sp, $sp, -40\n";
+
+        //args for function to be called
+        String[] params = q.getParams();
+        List<Operand> ops = new LinkedList<Operand>();
+        for (int i = 0; i < 4 && i < params.length; i++) {
+            Operand p = new Operand(params[i]);
+            res += naiveLoad(p);
+            ops.add(p);
+        }
+        for (int i = 0; i < ops.size(); i++){
+            res += "move $a" + i + ", " + ops.get(i).getValReg() + "\n";
+            //ops.get(i).setValReg("$a" + i);
+            naiveStore(ops.get(i));
+            freeRegs(ops.get(i));
+        }
+        int argsInStack = Math.max(params.length - 4, 0);
+        //push extra args in stack
+        for (int i = 0; i < argsInStack; i++){
+            Operand p = new Operand(params[i+4]);
+            res += naiveLoad(p);
+            res += "sw " + p.getValReg() + ", -" + 4*(i+1) + "($sp)\n";
+            freeRegs(p);
+        }
+
+        res += "addi $sp, $sp, -" + (argsInStack * 4) + "\n";
+        return res;
+    }
+
+    private String callerEnd(Quad q){
+        String res = "";
+        String[] params = q.getParams();
+        int argsInStack = Math.max(params.length - 4, 0);
+
+        res += "addi $sp, $sp, 40\n";
+        for (int i = 0; i < 10; i++) {
+            res += "lw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
+        }
+        res += "addi $sp, $sp, " + (argsInStack * 4) + "\n"; //pop extra args off
+        if (q.getOp().equals("callr")) {
+            //load return value
+            String returnName = q.getAddr1();
+            Operand o = new Operand(returnName);
+            res += naiveLoad(o);
+            res += "move " + o.getValReg() + ", $v0\n";
+            res += naiveStore(o);
+            freeRegs(o);
+        }
+        //restore args registers from stack
+        res += "addi $sp, $sp, 16\n";
+        for (int i = 0; i < 4; i++){
+            res += "lw $a" + i + ", -" + (i+1) * 4 + "($sp)\n";
+        }
         return res;
     }
 
@@ -376,14 +395,17 @@ public class MIPSGenerator{
             int paramNum = paramNamesToNumbers.get(varName);
             String res = "";
             String valueReg = this.rb.regBank.get(registerType).getReg();
+            String addReg = this.rb.regBank.get(registerType).getReg();
+            res += "la " + addReg + ", itemp\n";
+            res += "lw " + valueReg + ", 0(" + addReg + ")\n"; 
             if (paramNum < 4) {
                 res += "move " + valueReg + ", $a" + paramNum + "\n";
-                naiveStore(o);
             } else {
                 int offsetFromSp = (paramNamesToNumbers.size() - paramNum);
                 res += "lw " + valueReg + ", " + offsetFromSp*4 + "($sp)\n";
             }
             o.setValReg(valueReg);
+            o.setAddReg(addReg);
             return res;
         }
         else if(isNumeric(o.getName())){

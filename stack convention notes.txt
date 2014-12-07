@@ -1,0 +1,22 @@
+------ Caller
+Old $a0
+old $a1
+old $a2
+old $a3
+$t0
+$t1
+$t2
+.
+.
+.
+.
+.
+.
+$t9
+arg4
+.
+.
+.
+argn
+------ Callee
+old $ra
