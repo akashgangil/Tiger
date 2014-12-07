@@ -94,7 +94,7 @@ public class Tiger {
         System.out.println("\t--ast <dot output file>\t\tgenerate ast dot diagram");
         System.out.println("\t--symbol-table\t\t\toutput symbol table");
         System.out.println("\t--ir\t\t\t\tintermediate representation");
-        System.out.println("\t--mips\t\t\t\toutput mips code");
+        System.out.println("\t--mips\t\t\t\toutput mips code into <input file>.s");
         System.out.println("\t--help\t\t\t\tthis help message");
 
         System.exit(status);
@@ -162,7 +162,7 @@ public class Tiger {
                         if(options.mips){
                             MIPSGenerator mips = new MIPSGenerator(program.getGlobalScope());
                             String result = mips.getMIPSCode(irGen.getIR());
-                            System.out.println(result);
+                            //System.out.println(result);
                             writeMipsFile(result, options);
                         }
                     }

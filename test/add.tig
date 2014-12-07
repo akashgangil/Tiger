@@ -1,14 +1,7 @@
-int function addNums2(a:int, b:int)
-begin
-    begin
-        return a + b;
-    end;
-end;
-
 int function addNums(a:int, b:int)
 begin
     begin
-    	return addNums2(a, b);
+        return a + b;
     end;
 end;
 
@@ -18,7 +11,7 @@ begin
         var total:int := 0;
         var i:int := 0;
         while i < b do
-            total := total + a;
+            total := addNums(total, a);
             i := i + 1;
         enddo;
         return total;
@@ -35,8 +28,8 @@ end;
 void main()
 begin
     begin
-        var s:int := 100;
-        var a:int := 3;
+        var s:int := 30;
+        var a:int := 6;
         var product:int := 0;
         product := multNums(s, a);
         myPrint(product);

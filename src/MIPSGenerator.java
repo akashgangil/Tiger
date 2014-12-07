@@ -295,12 +295,12 @@ public class MIPSGenerator{
         String res = "";
         String[] params = q.getParams();
         int argsInStack = Math.max(params.length - 4, 0);
-
+        res += "addi $sp, $sp, " + (argsInStack * 4) + "\n"; //pop extra args off
         res += "addi $sp, $sp, 40\n";
         for (int i = 0; i < 10; i++) {
             res += "lw $t" + i + ", -" + (i+1) * 4 + "($sp)\n";
         }
-        res += "addi $sp, $sp, " + (argsInStack * 4) + "\n"; //pop extra args off
+        
         if (q.getOp().equals("callr")) {
             //load return value
             String returnName = q.getAddr1();
