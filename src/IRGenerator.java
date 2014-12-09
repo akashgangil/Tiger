@@ -9,12 +9,12 @@ public class IRGenerator {
     private int numOfTemps;
     private int numOfLabels;
     private TigerScope scope;
-    
+
     private List<Quad> IRCode;
 
     public IRGenerator(TigerScope scope){
         this.scope = scope;
-        this.IRCode = new ArrayList<Quad>(); 
+        this.IRCode = new ArrayList<Quad>();
     }
 
     private String end = "";
@@ -141,7 +141,7 @@ public class IRGenerator {
                            String value = "undefined garbage";
                            if(children.size() > 2)
                                value = ((CommonTree)children.get(2)).getText();
-                           
+
                            CommonTree ids = (CommonTree)children.get(0);
                            if(type.equals("int") || type.equals("fixedpt")){
                                for(Object child: ids.getChildren()){
@@ -401,16 +401,17 @@ public class IRGenerator {
 
     private String generateIf(List children) {
         String e = newLabel();
+        String afterElse = newLabel();
         CommonTree opNode = (CommonTree)children.get(0);
         String t = generate(opNode);
         emit("breq", t, 0 + "", e);
         generate((CommonTree)children.get(1));
-
+        emit("goto", afterElse, null, null);
         emit(e + ":", null, null, null);
         if (children.size() > 2) {
             generate((CommonTree)children.get(2));
         }
-
+        emit(afterElse + ":", null, null, null);
         return null;
     }
 
